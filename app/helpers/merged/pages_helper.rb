@@ -1,0 +1,2 @@
+module Merged::PagesHelper
+end

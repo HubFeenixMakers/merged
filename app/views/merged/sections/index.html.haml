@@ -1,0 +1,19 @@
+%h1 Listing merge_sections
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @merge_sections.each do |merge_section|
+      %tr
+        %td= link_to 'Show', merge_section
+        %td= link_to 'Edit', edit_merge_section_path(merge_section)
+        %td= link_to 'Destroy', merge_section, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Section', new_merge_section_path

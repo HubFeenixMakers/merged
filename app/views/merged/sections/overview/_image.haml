@@ -1,0 +1,6 @@
+.p-6
+  %h3.mt-4.text-lg.font-bold= key.upcase
+  -if value
+    = image_tag "merge/" + value
+  -else
+    No image

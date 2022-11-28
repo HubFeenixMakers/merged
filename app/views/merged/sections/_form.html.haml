@@ -1,0 +1,10 @@
+= form_for @merge_section do |f|
+  - if @merge_section.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@merge_section.errors.count, "error")} prohibited this merge_section from being saved:"
+      %ul
+        - @merge_section.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'
