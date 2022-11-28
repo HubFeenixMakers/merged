@@ -7,5 +7,5 @@
         = section["text"]
       .mt-4.md:mt-8
         -if section["button"]
-          = render 'elements/button' , button: section["button"]
+          = render 'merged/view/elements/button' , button: section["button"]
   = image_for( section , "p-5 h-56 w-full object-cover sm:h-full")

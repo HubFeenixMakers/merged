@@ -4,7 +4,8 @@ module Merged
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
 
-    @@files = Set.new Dir.new(Rails.root.join("merge")).children
+    @@root
+    @@files = Set.new Dir.new(Rails.root.join(@@root)).children
 
     attr_reader :name , :content
 
@@ -16,7 +17,7 @@ module Merged
 
     def initialize file_name
       @name = file_name.split(".").first
-      @content = YAML.load_file(Rails.root.join("merge" , file_name))
+      @content = YAML.load_file(Rails.root.join(@@root , file_name))
     end
 
     def sections
@@ -47,7 +48,7 @@ module Merged
     end
 
     def save
-      file_name = Rails.root.join("merge" , name + ".yaml")
+      file_name = Rails.root.join(@root , name + ".yaml")
       File.write( file_name , @content.to_yaml)
     end
 

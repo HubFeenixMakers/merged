@@ -12,4 +12,4 @@
   -@images.each do |name , image|
     .relative.block.border.border-gray-100
       = link_to( merge_page_section_set_image_path( image: name)) do
-        =image_tag("merge/#{name}" , class: "h-56 w-full object-contain lg:h-72")
+        =image_tag("cms/#{name}" , class: "h-56 w-full object-contain lg:h-72")

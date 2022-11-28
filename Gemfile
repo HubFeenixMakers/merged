@@ -6,7 +6,7 @@ gemspec
 
 gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'rspec-rails' , require: "rspec-rails"
-gem 'haml-rails'
+gem 'haml-rails' , require: "haml-rails"
 
 group :development, :test do
 end

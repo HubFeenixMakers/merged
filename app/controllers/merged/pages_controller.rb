@@ -2,25 +2,25 @@ module Merged
   class PagesController < MergedController
     before_action :set_page, only: %i[ show edit update destroy ]
 
-    # GET /merge/pages
+    # GET /merged/pages
     def index
       @pages = Merged::Page.all
     end
 
-    # GET /merge/pages/1
+    # GET /merged/pages/1
     def show
     end
 
-    # GET /merge/pages/new
+    # GET /merged/pages/new
     def new
       @page = Merged::Page.new
     end
 
-    # GET /merge/pages/1/edit
+    # GET /merged/pages/1/edit
     def edit
     end
 
-    # POST /merge/pages
+    # POST /merged/pages
     def create
       @page = Merged::Page.new(page_params)
 
@@ -31,7 +31,7 @@ module Merged
       end
     end
 
-    # PATCH/PUT /merge/pages/1
+    # PATCH/PUT /merged/pages/1
     def update
       if @page.update(page_params)
         redirect_to @page, notice: "Page was successfully updated."
@@ -40,7 +40,7 @@ module Merged
       end
     end
 
-    # DELETE /merge/pages/1
+    # DELETE /merged/pages/1
     def destroy
       @page.destroy
       redirect_to page_url, notice: "Page was successfully destroyed."
