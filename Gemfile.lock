@@ -3,7 +3,6 @@ PATH
   specs:
     merged (0.1.0)
       rails (>= 7.0.4)
-      sprockets-rails (>= 3.4)
 
 GEM
   remote: https://rubygems.org/
@@ -80,6 +79,15 @@ GEM
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    haml (6.0.12)
+      temple (>= 0.8.2)
+      thor
+      tilt
+    haml-rails (2.1.0)
+      actionpack (>= 5.1)
+      activesupport (>= 5.1)
+      haml (>= 4.0.6)
+      railties (>= 5.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     loofah (2.19.0)
@@ -157,7 +165,9 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    temple (0.9.1)
     thor (1.2.1)
+    tilt (2.0.11)
     timeout (0.3.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
@@ -170,8 +180,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  haml-rails
   merged!
-  rspec-rails (~> 6.0.0)
+  rspec-rails
   sprockets-rails
 
 BUNDLED WITH

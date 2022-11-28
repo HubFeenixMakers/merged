@@ -4,6 +4,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Specify your gem's dependencies in merged.gemspec.
 gemspec
 
+gem 'sprockets-rails', require: 'sprockets/railtie'
+gem 'rspec-rails' , require: "rspec-rails"
+gem 'haml-rails'
+
 group :development, :test do
 end
 
