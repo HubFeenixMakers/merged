@@ -1,0 +1,25 @@
+.grid.grid-cols-3.gap-4.m-8
+  -@styles.each do |style|
+    %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+      =image_tag(style.preview , class: "h-56 w-full object-contain lg:h-72")
+      %p.mt-2.text-sm.text-gray-500
+        =style.template
+    %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+      .p-6
+        %h3.text-lg.font-medium.text-gray-900
+          =style.header
+        %p.mt-2.text-sm.leading-relaxed.text-gray-500.line-clamp-3
+          = style.text
+    %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+      .p-6
+        %h3.text-lg.font-medium.text-gray-900
+          Option
+        %p.mt-2.text-sm.leading-relaxed.text-gray-500.line-clamp-3
+          Following options: none (wip)
+        %h3.text-lg.font-medium.text-gray-900
+          Cards
+        %p.mt-2.text-sm.leading-relaxed.text-gray-500.line-clamp-3
+          -if(style.cards)
+            Section may include cards. See card styles below
+          -else
+            Section may not include cards

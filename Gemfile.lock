@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     merged (0.1.0)
+      haml-rails
       rails (>= 7.0.4)
 
 GEM

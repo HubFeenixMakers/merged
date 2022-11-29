@@ -48,7 +48,7 @@ module Merged
     end
 
     def save
-      file_name = Rails.root.join(@root , name + ".yaml")
+      file_name = Rails.root.join(@@root , name + ".yaml")
       File.write( file_name , @content.to_yaml)
     end
 
