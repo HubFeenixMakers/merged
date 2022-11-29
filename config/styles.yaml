@@ -1,3 +1,5 @@
+---
+sections:
 - template: section_2_col
   header: Two column  layout with header
   text: A header with text and two column layout. Columns have a little gap, so
@@ -18,4 +20,8 @@
   text: Image left, header and text on the right. Optional button.
 - template: section_spacer
   header: Spacer
-  text: Just for extra padding 
+  text: Just for extra padding
+cards:
+- template: card_full_image
+  header: Full background
+  text: With text in bottom right corner, offset with solid color

@@ -2,6 +2,9 @@ module Merged
   class Style
     include ActiveModel::API
 
+    cattr_accessor :sections , :cards
+    @@sections = []
+    @@cards = []
 
     attr_reader :content
 
@@ -21,14 +24,29 @@ module Merged
     def cards
       @content["cards"] == true
     end
-    def preview
+    def section_preview
       "merged/section_preview/" + template
+    end
+    def card_preview
+      "merged/card_preview/" + template
+    end
+
+    def self.cards
+      self.all
+      @@cards
+    end
+    def self.sections
+      self.all
+      @@sections
     end
 
     def self.all
-      # should account for app styles. now just loading engines
-      @@styles = YAML.load_file(Engine.root.join("config/styles.yaml"))
-      @@styles.collect{ |content| Style.new(content) }
+      if @@sections.length == 0
+        all = YAML.load_file(Engine.root.join("config/styles.yaml"))
+        all["sections"].each { |content| @@sections << Style.new(content) }
+        all["cards"].each { |content| @@cards << Style.new(content) }
+      end
+      [@@sections , @@cards]
     end
 
   end
