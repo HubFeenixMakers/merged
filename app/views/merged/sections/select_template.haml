@@ -1,0 +1,6 @@
+.grid.grid-cols-4.gap-2.m-8
+  - @sections.each do |style|
+    .relative.block.border.border-gray-100
+      = link_to( page_section_set_template_path( template: style.template )) do
+        =image_tag(style.section_preview , class: "h-56 w-full object-contain lg:h-72")
+        = style.header

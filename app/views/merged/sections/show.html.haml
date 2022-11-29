@@ -13,6 +13,6 @@
   - @section.content.each do |key , value|
     = render "merged/sections/editors/#{key}", section: @section , key: key , value: value
 
-= #link_to 'Edit', edit_merged_section_path(@merged_section)
+= #link_to 'Edit', edit_section_path(@merged_section)
 \|
-= #link_to 'Back', merged_sections_path
+= #link_to 'Back', sections_path
