@@ -9,7 +9,7 @@ module Merged
     def set_image
       @section.content["image"] = params[:image]
       @page.save
-      redirect_to merge_page_section_url(@page.id,@section.id)
+      redirect_to page_section_url(@page.id,@section.id)
     end
 
     def update
@@ -21,7 +21,7 @@ module Merged
         end
       end
       @page.save
-      redirect_to :merge_page_section
+      redirect_to :merged_page_section
     end
 
     private

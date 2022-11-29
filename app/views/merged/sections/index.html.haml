@@ -1,4 +1,4 @@
-%h1 Listing merge_sections
+%h1 Listing merged_sections
 
 %table
   %thead
@@ -8,12 +8,12 @@
       %th
 
   %tbody
-    - @merge_sections.each do |merge_section|
+    - @merged_sections.each do |merged_section|
       %tr
-        %td= link_to 'Show', merge_section
-        %td= link_to 'Edit', edit_merge_section_path(merge_section)
-        %td= link_to 'Destroy', merge_section, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Show', merged_section
+        %td= link_to 'Edit', edit_merged_section_path(merged_section)
+        %td= link_to 'Destroy', merged_section, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 
-= link_to 'New Section', new_merge_section_path
+= link_to 'New Section', new_merged_section_path

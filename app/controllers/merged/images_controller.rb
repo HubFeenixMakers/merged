@@ -8,7 +8,7 @@ module Merged
 
     def create
       new_image = Image.create_new(params['filename'] , params['image_file'])
-      redirect = :merge_images
+      redirect = :merged_images
       if(params[:redirect])
         redirect = params[:redirect].gsub("NEW" ,new_image.name)
         puts "image redirect #{redirect}"

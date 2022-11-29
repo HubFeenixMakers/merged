@@ -4,7 +4,7 @@ module Merged
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
 
-    @@root
+    @@root = "cms"
     @@files = Set.new Dir.new(Rails.root.join(@@root)).children
 
     attr_reader :name , :content

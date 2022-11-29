@@ -6,7 +6,7 @@
       %h5.mt-4.text-lg.font-bold Name is optional
       %p will be taken from uploaded file
       = file_field_tag 'image_file'
-      .inline-block.rounded.border.border-indigo-600.bg-indigo-600.px-12.py-3.text-sm.font-medium.text-white.hover:bg-transparent.hover:text-indigo-600.focus:outline-none.focus:ring.active:text-indigo-500{:href => new_merge_image_path}
+      .inline-block.rounded.border.border-indigo-600.bg-indigo-600.px-12.py-3.text-sm.font-medium.text-white.hover:bg-transparent.hover:text-indigo-600.focus:outline-none.focus:ring.active:text-indigo-500{:href => merged.new_image_path}
         = submit_tag 'Submit'
   -@images.each do |name , image|
     .relative.block.border.border-gray-100

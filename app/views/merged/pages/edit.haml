@@ -1,7 +1,7 @@
-%h1 Editing #{@merge_page.name}
+%h1 Editing #{@merged_page.name}
 
 = render 'form'
 
-= link_to 'Show', merge_page_url(@merge_page.name)
+= link_to 'Show', merged_page_url(@merged_page.name)
 \|
-= link_to 'Back', merge_pages_path
+= link_to 'Back', merged_pages_path

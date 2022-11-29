@@ -19,7 +19,8 @@ module Merged
 
     def self.all
       return @@images unless @@images.empty?
-      Dir[Rails.root.join Image.asset_root + "*.*"].each do |f|
+      dir = Rails.root.join Image.asset_root + "/*.*"
+      Dir[dir].each do |f|
         file = f.split("/").last
         self.add( file )
       end
@@ -40,7 +41,7 @@ module Merged
     def self.asset_root
       "app/assets/images/" + root
     end
-    
+
     def self.root
       "cms"
     end

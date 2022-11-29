@@ -1,9 +1,9 @@
-= form_for @merge_section do |f|
-  - if @merge_section.errors.any?
+= form_for @merged_section do |f|
+  - if @merged_section.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@merge_section.errors.count, "error")} prohibited this merge_section from being saved:"
+      %h2= "#{pluralize(@merged_section.errors.count, "error")} prohibited this merged_section from being saved:"
       %ul
-        - @merge_section.errors.full_messages.each do |message|
+        - @merged_section.errors.full_messages.each do |message|
           %li= message
 
   .actions

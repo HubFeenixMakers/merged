@@ -1,6 +1,6 @@
 module Merged
   class MergedController < ApplicationController
-    layout 'merge_layout'
+    layout 'merged_layout'
 
   end
 end
