@@ -1,0 +1,6 @@
+.grid.grid-cols-4.gap-2.m-8
+  - @cards.each do |style|
+    .relative.block.border.border-gray-100
+      = link_to( page_section_set_card_template_path( card_template: style.template )) do
+        =image_tag(style.card_preview , class: "h-56 w-full object-contain lg:h-72")
+        = style.header

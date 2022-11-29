@@ -3,5 +3,7 @@
   %p= value
   %p #{section.content['cards'].length} cards
   %p view cards (index)
+  %button.ml-3.inline-block.rounded-lg.bg-blue-500.px-5.py-3.text-md.font-medium.text-white
+    =link_to "Change Card Template" , page_section_select_card_template_url(@page.name,@section.id)
 .relative.block.border.border-gray-100
   =image_tag("merged/card_preview/#{value}" , class: "w-full object-contain")

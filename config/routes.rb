@@ -7,6 +7,8 @@ Merged::Engine.routes.draw do
       get :set_image
       get :select_template
       get :set_template
+      get :select_card_template
+      get :set_card_template
     end
   end
   resources :images

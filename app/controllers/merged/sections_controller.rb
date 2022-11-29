@@ -9,6 +9,9 @@ module Merged
     def select_template
       @sections = Style.sections
     end
+    def select_card_template
+      @cards = Style.cards
+    end
 
     def set_image
       @section.content["image"] = params[:image]
@@ -17,7 +20,17 @@ module Merged
     end
 
     def set_template
-      @section.content["template"] = params[:template]
+      template = params[:template]
+      raise "no template given" if template.blank?
+      @section.content["template"] = template
+      @page.save
+      redirect_to page_section_url(@page.id,@section.id)
+    end
+
+    def set_card_template
+      card_template = params[:card_template]
+      raise "no card template given" if card_template.blank?
+      @section.content["card_template"] = card_template
       @page.save
       redirect_to page_section_url(@page.id,@section.id)
     end

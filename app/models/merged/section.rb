@@ -31,6 +31,9 @@ module Merged
     def template
       @content["template"]
     end
+    def card_template
+      @content["card_template"]
+    end
 
     def id
       @content["id"]

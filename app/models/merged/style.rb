@@ -11,7 +11,6 @@ module Merged
     def initialize content
       @content = content
     end
-
     def template
       @content["template"]
     end
