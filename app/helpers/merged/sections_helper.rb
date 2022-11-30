@@ -3,7 +3,6 @@ module Merged
 
     def section_form(options)
       url = section_url( @section.id)
-      puts "URL #{url}"
       form_tag( url , {method: :patch}) do
         yield
       end

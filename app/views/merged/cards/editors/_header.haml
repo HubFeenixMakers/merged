@@ -1,6 +1,6 @@
 .relative.block.border.border-gray-100
-  %h3.mt-4.text-lg.font-bold= key.upcase
-= section_form( class: "mx-auto mt-8 mb-0 max-w space-y-4") do
-  = text_field_tag( :header , @section.content["header"], class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
-  %button.ml-3.inline-block.rounded-lg.bg-blue-500.px-5.py-3.text-sm.font-medium.text-white{:type => "submit"}
-    Update
+  %h3.mt-4.text-lg.font-bold Header
+  = form_tag( card_url(card.id) , {method: :patch  } ) do
+    = text_field_tag( :header , card.content["header"], class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
+    %button.ml-3.inline-block.rounded-lg.bg-blue-500.px-5.py-3.text-sm.font-medium.text-white{:type => "submit"}
+      Update

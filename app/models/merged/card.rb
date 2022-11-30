@@ -22,11 +22,21 @@ module Merged
       @content['id']
     end
 
+    def update(key , value)
+      return if key == "id" #not updating that
+      if(! @content[key].nil? )
+        if( @content[key].class != value.class )
+          raise "Type mismatch #{key} #{key.class}!=#{value.class}"
+        end
+      end
+      @content[key] = value
+    end
+
     def save
       section.save
     end
 
-    def self.find(id)
+    def self.find_card(id)
       raise "nil given" if id.blank?
       card = @@all[id]
       raise "Section not found #{id}" unless card

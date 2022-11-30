@@ -6,11 +6,32 @@ module Merged
       @section = Section.find(params[:section_id])
     end
 
+    def select_image
+      @images = Image.all
+    end
+
+    def set_image
+      @card.content["image"] = params[:image]
+      @card.save
+      redirect_to section_cards_url(@card.section.id)
+    end
+
+    def update
+      @card.content.each do |key , value|
+        next if key == "id"
+        if(!params[key].nil?)
+          @card.update(key, params[key])
+          puts "updating:#{key}=#{params[key]}"
+        end
+      end
+      @card.save
+      redirect_to section_cards_url(@card.section.id)
+    end
+
     private
-    def set_page
-      @page = Page.find(params[:page_id])
-      section_id = params[:id] || params[:section_id]
-      @section = @page.find_section( section_id )
+    def set_card
+      card_id = params[:id] || params[:card_id]
+      @card = Card.find_card( card_id )
     end
 
   end

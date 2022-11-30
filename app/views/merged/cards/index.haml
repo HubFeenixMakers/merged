@@ -24,6 +24,12 @@
           =link_to "New" , "/index"
         %button.mt-4.rounded-lg.bg-red-400.p-4
           =link_to "Delete" , "/index"
+      .p-4
+        %h3.mt-4.text-lg.font-bold Image
+        %button.ml-3.inline-block.rounded-lg.bg-blue-500.px-5.py-3.text-md.font-medium.text-white
+          =link_to "Change Image" , card_select_image_url(card.id)
+        %button.ml-3.inline-block.rounded-lg.bg-red-500.px-5.py-3.text-md.font-medium.text-white
+          = link_to( "Remove image" , card_set_image_path( card.id  , image: ""))
 
     - card.content.each do |key , value|
-      = render "merged/cards/view/#{key}", card: card , key: key , value: value
+      = render "merged/cards/editors/#{key}", card: card , key: key , value: value
