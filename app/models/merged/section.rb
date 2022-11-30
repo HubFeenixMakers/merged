@@ -4,11 +4,10 @@ module Merged
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
 
-    attr_reader :name , :content , :page , :index
+    cattr_reader :all
+    @@all = {}
 
-    def persisted?
-      false
-    end
+    attr_reader :name , :content , :page , :index , :cards
 
     def initialize(page , index , section_data)
       @page = page
@@ -16,7 +15,16 @@ module Merged
       raise "No hash #{section_data}" unless section_data.is_a?(Hash)
       @index = index
       @content = section_data
+      @@all[self.id] = self
+      @cards = {}
+      element = @content["cards"]
+      return if element.nil?
+      element.each do|card_content|
+        card = Card.new(self , card_content)
+        @cards[card.id] = card
+      end
     end
+
 
     def update(key , value)
       return if key == "id" #not updating that
@@ -26,12 +34,6 @@ module Merged
         end
       end
       @content[key] = value
-    end
-
-    def cards
-      element = @content["cards"]
-      return [] if element.nil?
-      element.collect{|card_content| Card.new(self , card_content)}
     end
 
     def template
@@ -47,10 +49,6 @@ module Merged
 
     def save
       raise "Called"
-    end
-
-    def self.all
-      @page.sections
     end
 
     def self.find(page_name , section_id)

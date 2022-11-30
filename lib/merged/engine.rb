@@ -7,6 +7,13 @@ module Merged
       add_image_assets(app.config , "card_preview")
     end
 
+    initializer "after_initialize" do |app|
+      ActiveSupport::Reloader.to_prepare do
+        Merged::Page.load_pages()
+        Image.load_images()
+      end
+    end
+
     private
     def add_image_assets(config ,  sub_dir )
       dir = Dir.new(Engine.root.join("app/assets/images/merged/" , sub_dir))

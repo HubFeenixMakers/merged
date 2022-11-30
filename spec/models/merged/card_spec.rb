@@ -2,6 +2,13 @@ require 'rails_helper'
 
 module Merged
   RSpec.describe Card, type: :model do
-    pending "add some examples to (or delete) #{__FILE__}"
+    let(:first) {Card.all.values.first}
+
+    it "has Card.all" do
+      expect(Card.all.class).to be Hash
+    end
+    it "has cards" do
+      expect(first.class).to be Card
+    end
   end
 end

@@ -4,28 +4,34 @@ module Merged
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
 
-    @@root = "cms"
-    @@files = Set.new Dir.new(Rails.root.join(@@root)).children
+    # could be config options
+    def self.cms_root
+      "cms"
+    end
 
-    attr_reader :name , :content
+    cattr_reader :all
+    @@all = {}
+
+    def self.load_pages()
+      files = Set.new Dir.new(Rails.root.join(Page.cms_root)).children
+      files.each do |file|
+        page = Page.new(file)
+      end
+    end
+
+    attr_reader :name , :content , :sections
 
     alias :id  :name
 
-    def persisted?
-      false
-    end
-
-    def initialize file_name
+    def initialize( file_name )
       @name = file_name.split(".").first
-      @content = YAML.load_file(Rails.root.join(@@root , file_name))
-    end
-
-    def sections
-      sections = []
+      @content = YAML.load_file(Rails.root.join(Page.cms_root , file_name))
+      @sections = {}
       @content.each_with_index do |section_data, index|
-        sections << Section.new(self , index,  section_data)
+        section = Section.new(self , index,  section_data)
+        @sections[ section.id] = section
       end
-      sections
+      @@all[@name] = self
     end
 
     def find_section(section_id)
@@ -48,16 +54,12 @@ module Merged
     end
 
     def save
-      file_name = Rails.root.join(@@root , name + ".yaml")
+      file_name = Rails.root.join(Page.cms_root , name + ".yaml")
       File.write( file_name , @content.to_yaml)
     end
 
-    def self.all
-      @@files.collect{ |file| Page.new(file) }
-    end
-
     def self.find(name)
-      Page.new(name + ".yaml")
+      @@all[name]
     end
 
   end

@@ -1,0 +1,24 @@
+---
+- template: section_2_col
+  header: Sizes and kinds
+  text: We offer different sizes and different types of studios for artists. There
+    large and small rooms, with more or less light, also rooms with tiles for wet-work.
+    The rooms are in the old hospital wings, so most are old patient rooms, but there
+    are plenty of others too. Prices do not include electricity or vat, but do include
+    the use of common spaces, see below.
+  image:
+  id: b7d16d4da518bafd3d39
+  card_template: card_full_image
+  cards:
+  - header: Standard
+    text: This is the standard 2 patient room. They are mostly towards the south,
+      so may have great, or too much light, depending on how you see it. The size
+      is about 3x5, cost 120e.
+    image: standard
+    id: b7d16d4da618bafd3d39
+  - header: Large
+    text: The old 4 patient rooms are basically twice the size as the small. They
+      are large enough to be shared. The size is about 30m2 and the cost 240e. Like
+      the small rooms these are south facing, very light.
+    image: large
+    id: b7d76d4da518bafd3d39

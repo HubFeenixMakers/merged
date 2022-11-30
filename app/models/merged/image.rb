@@ -4,27 +4,27 @@ module Merged
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
 
-    @@images = {}
+    cattr_reader :all
+    @@all = {}
+
+    def self.load_images()
+      glob = Rails.root.join Image.asset_root + "/*.*"
+      Dir[glob].each do |f|
+        file = f.split("/").last
+        Image.new( file )
+      end
+    end
+
 
     attr_reader :name , :type , :size , :created_at , :updated_at
 
     def initialize(filename)
-      puts "New Image #{filename}"
       @name , @type = filename.split(".")
       file = File.new(Rails.root.join(Image.asset_root,filename))
       @created_at = file.birthtime
       @updated_at = file.ctime
       @size = (file.size/1024).to_i
-    end
-
-    def self.all
-      return @@images unless @@images.empty?
-      dir = Rails.root.join Image.asset_root + "/*.*"
-      Dir[dir].each do |f|
-        file = f.split("/").last
-        self.add( file )
-      end
-      @@images
+      @@all[@name] = self
     end
 
     #save an io with given name (without ending, that is taken from io)
@@ -39,17 +39,12 @@ module Merged
     end
 
     def self.asset_root
-      "app/assets/images/" + root
+      "app/assets/images/" + image_root
     end
 
-    def self.root
+    def self.image_root
       "cms"
     end
 
-    private
-    def self.add(filename)
-      key = filename.split(".").first
-      @@images[key] = Image.new(filename)
-    end
   end
 end
