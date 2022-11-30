@@ -1,24 +1,29 @@
 %p#notice= notice
+
 .flex.flex-col.bg-white
   .flex.items-center.justify-center.flex-1
     .max-w-xl.px-4.py-8.mx-auto.text-center
-      %h1.text-2xl.font-bold.tracking-tight.text-gray-900.sm:text-4xl
+      %h1.text-2xl.font-bold.tracking-tight.text-gray-900
         Page #{@page.name}
+  .flex.items-center.justify-center.flex-1
+    %h3.text-xl.font-bold.tracking-tight.text-gray-900
+      Cards for Section #{@section.id}
 
--@page.sections.each_with_index do |section , index|
-  .grid.grid-cols-6.gap-2.m-8{class: (index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' }
+.grid.grid-cols-4.gap-2.m-8
+  - @section.cards.each_with_index do |card , index|
     .relative.block.border.border-gray-100
       .p-4
-        %h3.mt-4.text-lg.font-bold Section #{index + 1}
+        %h3.mt-4.text-lg.font-bold Card #{index + 1}
         %button.mt-4.rounded-lg.bg-yellow-500.p-4
           =link_to( "Up" , "/index")
         %button.mt-4.rounded-lg.bg-yellow-500.p-4
           =link_to "Down" , "/index"
         %button.mt-4.rounded-lg.bg-blue-400.p-4
-          =link_to "Edit" , page_section_path(@page.name , section.id)
+          =link_to "Edit" , page_section_path(@page.name , @section.id)
         %button.mt-4.rounded-lg.bg-cyan-400.p-4
           =link_to "New" , "/index"
         %button.mt-4.rounded-lg.bg-red-400.p-4
           =link_to "Delete" , "/index"
-    -section.content.each do |key , value|
-      = render "merged/sections/overview/#{key}", section: section , key: key , value: value
+
+    - card.content.each do |key , value|
+      = render "merged/cards/view/#{key}", card: card , key: key , value: value

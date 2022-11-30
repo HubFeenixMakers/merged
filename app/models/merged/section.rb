@@ -13,7 +13,7 @@ module Merged
     def initialize(page , index , section_data)
       @page = page
       raise "No number #{index}" unless index.is_a?(Integer)
-      raise "No has #{section_data}" unless section_data.is_a?(Hash)
+      raise "No hash #{section_data}" unless section_data.is_a?(Hash)
       @index = index
       @content = section_data
     end
@@ -26,6 +26,12 @@ module Merged
         end
       end
       @content[key] = value
+    end
+
+    def cards
+      element = @content["cards"]
+      return [] if element.nil?
+      element.collect{|card_content| Card.new(self , card_content)}
     end
 
     def template

@@ -1,0 +1,5 @@
+.p-6
+  %h3.mt-4.text-lg.font-bold= key.upcase
+  %p= value
+  =image_tag("merged/card_preview/#{value}" , class: "w-full object-contain")
+  %p #{section.content['cards'].length} cards

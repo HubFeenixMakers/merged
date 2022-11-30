@@ -1,0 +1,13 @@
+.relative.block.border.border-gray-100
+  %h3.mt-4.text-lg.font-bold= key.upcase
+  %button.ml-3.inline-block.rounded-lg.bg-blue-500.px-5.py-3.text-md.font-medium.text-white
+    =link_to "Change Image" , page_section_select_image_url(@page.name,@section.id)
+  %button.ml-3.inline-block.rounded-lg.bg-red-500.px-5.py-3.text-md.font-medium.text-white
+    = link_to( "Remove image" , page_section_set_image_path( @page.name, @section.id  , image: ""))
+
+
+.relative.block.border.border-gray-100
+  -if( value.blank? )
+    No image
+  -else
+    = image_tag( "cms/" + value)
