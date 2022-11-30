@@ -13,5 +13,8 @@ module Merged
     it "has sections" do
       expect(index.sections.length).to be 1
     end
+    it "has section array" do
+      expect(index.sections.class).to be Array
+    end
   end
 end

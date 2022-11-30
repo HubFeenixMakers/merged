@@ -1,7 +1,7 @@
 Merged::Engine.routes.draw do
 
   get "/styles/index" , to: "styles#index"
-  resources :pages do
+  resources :pages , shallow: true  do
     resources :sections do
       get :select_image
       get :set_image

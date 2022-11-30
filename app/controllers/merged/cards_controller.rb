@@ -1,9 +1,9 @@
 module Merged
   class CardsController < MergedController
-    before_action :set_page
+    before_action :set_card , except: :index
 
     def index
-
+      @section = Section.find(params[:section_id])
     end
 
     private

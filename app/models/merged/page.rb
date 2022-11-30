@@ -26,20 +26,12 @@ module Merged
     def initialize( file_name )
       @name = file_name.split(".").first
       @content = YAML.load_file(Rails.root.join(Page.cms_root , file_name))
-      @sections = {}
+      @sections = []
       @content.each_with_index do |section_data, index|
         section = Section.new(self , index,  section_data)
-        @sections[ section.id] = section
+        @sections << section
       end
       @@all[@name] = self
-    end
-
-    def find_section(section_id)
-      @content.each_with_index do |section , index|
-        next unless section["id"] == section_id
-        return Section.new(self , index , section)
-      end
-      raise "Page #{name} as no section #{section_id}"
     end
 
     def first_template
@@ -59,7 +51,11 @@ module Merged
     end
 
     def self.find(name)
-      @@all[name]
+      raise "nil given" if name.blank?
+      page = @@all[name]
+      raise "Page not found #{name}" unless page
+      return page
+
     end
 
   end

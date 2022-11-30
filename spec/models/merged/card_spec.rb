@@ -10,5 +10,8 @@ module Merged
     it "has cards" do
       expect(first.class).to be Card
     end
+    it "has index" do
+      expect(first.index).to eq 0
+    end
   end
 end

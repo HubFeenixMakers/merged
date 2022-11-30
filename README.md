@@ -92,8 +92,19 @@ $ bundle
 ```
 
 Mount engine in routes for editing.
+```ruby
+mount Merged::Engine => "/merged"
+```
 
 Create route to serve content.
+```ruby
+get ":id" , to: "merged/view#view" , id: :id
+```
+
+If Merged served the root:
+```ruby
+root "merged/view#view" , id: 'index'
+```
 
 ## Contributing
 Ask first.

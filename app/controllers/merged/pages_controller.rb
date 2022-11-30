@@ -4,7 +4,7 @@ module Merged
 
     # GET /merged/pages
     def index
-      @pages = Merged::Page.all
+      @pages = Page.all.values
     end
 
     # GET /merged/pages/1
@@ -13,7 +13,6 @@ module Merged
 
     # GET /merged/pages/new
     def new
-      @page = Merged::Page.new
     end
 
     # GET /merged/pages/1/edit
@@ -49,7 +48,7 @@ module Merged
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_page
-        @page = Merged::Page.find(params[:id])
+        @page = Page.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.

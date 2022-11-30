@@ -35,7 +35,7 @@ module Merged
       File.open(Rails.root.join(Image.asset_root, full_filename), "wb") do |f|
         f.write( io.read )
       end
-      self.add( full_filename )
+      Image.new( full_filename )
     end
 
     def self.asset_root

@@ -10,8 +10,14 @@ module Merged
     it "has index page" do
       expect(first.class).to be Section
     end
-    it "has sections" do
-      expect(first.cards.length).to be 2
+    it "has index" do
+      expect(first.index).to eq 0
+    end
+    it "has cards" do
+      expect(first.cards.length).to eq 2
+    end
+    it "has cards array" do
+      expect(first.cards.class).to be Array
     end
   end
 end

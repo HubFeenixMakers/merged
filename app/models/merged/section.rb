@@ -16,12 +16,11 @@ module Merged
       @index = index
       @content = section_data
       @@all[self.id] = self
-      @cards = {}
+      @cards = []
       element = @content["cards"]
       return if element.nil?
-      element.each do|card_content|
-        card = Card.new(self , card_content)
-        @cards[card.id] = card
+      element.each_with_index do|card_content , index|
+        @cards << Card.new(self , index , card_content)
       end
     end
 
@@ -48,12 +47,14 @@ module Merged
     end
 
     def save
-      raise "Called"
+      page.save
     end
 
-    def self.find(page_name , section_id)
-      raise "buggy"
-      Page.new(name + ".yaml")
+    def self.find(section_id)
+      raise "nil given" if section_id.blank?
+      section = @@all[section_id]
+      raise "Section not found #{section_id}" unless section
+      return section
     end
 
   end
