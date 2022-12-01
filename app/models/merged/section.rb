@@ -39,7 +39,7 @@ module Merged
       @page.move_section_up(self)
     end
     def move_down
-      @section.move_section_down(self)
+      @page.move_section_down(self)
     end
 
     def move_card_up(card)
@@ -81,6 +81,10 @@ module Merged
 
     def save
       page.save
+    end
+
+    def set_index(index)
+      @index = index
     end
 
     def self.find(section_id)

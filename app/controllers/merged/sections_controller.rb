@@ -38,6 +38,16 @@ module Merged
       redirect_to section_url(@section.id)
     end
 
+    def move
+      if( params[:dir] == "up")
+        @section.move_up
+      else
+        @section.move_down
+      end
+      @section.save
+      redirect_to page_sections_url(@section.page.name)
+    end
+
     def update
       @section.content.each do |key , value|
         next if key == "id"

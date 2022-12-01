@@ -38,11 +38,30 @@ module Merged
       @content[0]["template"]
     end
 
-    def new_section
-      section = Hash.new
-      section['id'] = SecureRandom.hex(10)
-      @content << section
-      Section.new(self , 0 , section)
+    def move_section_up(section)
+      return if sections.length == 1
+      return if section.index == 0
+      swap( section , sections[section.index - 1])
+    end
+
+    def move_section_down(section)
+      return if sections.length == 1
+      return if section.index == sections.last.index
+      swap( section , sections[section.index + 1])
+    end
+
+    def swap( this_section , that_section)
+      # swap in the actual objects, index is cached in the objects
+      this_old_index = this_section.index
+      this_section.set_index( that_section.index )
+      that_section.set_index( this_old_index )
+
+      # swap in the sections cache
+      sections[ this_section.index ] = this_section
+      sections[ that_section.index ] = that_section
+      # swap in the yaml
+      content[this_section.index] = this_section.content
+      content[that_section.index] = that_section.content
     end
 
     def save
@@ -55,7 +74,6 @@ module Merged
       page = @@all[name]
       raise "Page not found #{name}" unless page
       return page
-
     end
 
   end
