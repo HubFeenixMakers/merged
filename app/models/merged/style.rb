@@ -20,7 +20,7 @@ module Merged
     def text
       @content["text"]
     end
-    def cards
+    def cards?
       @content["cards"] == true
     end
     def section_preview

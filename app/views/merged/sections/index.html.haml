@@ -6,19 +6,38 @@
         Page #{@page.name}
 
 -@page.sections.each do |section |
-  .grid.grid-cols-6.gap-2.m-8{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' }
-    .relative.block.border.border-gray-100
-      .p-4
-        %h3.mt-4.text-lg.font-bold Section #{section.index + 1}
-        %button.mt-4.rounded-lg.bg-yellow-500.p-4
-          =link_to( "Up" , "/index")
-        %button.mt-4.rounded-lg.bg-yellow-500.p-4
-          =link_to "Down" , "/index"
-        %button.mt-4.rounded-lg.bg-blue-400.p-4
-          =link_to "Edit" , section_path(section.id)
-        %button.mt-4.rounded-lg.bg-cyan-400.p-4
-          =link_to "New" , "/index"
-        %button.mt-4.rounded-lg.bg-red-400.p-4
-          =link_to "Delete" , "/index"
-    -section.content.each do |key , value|
-      = render "merged/sections/overview/#{key}", section: section , key: key , value: value
+  .grid.grid-cols-5.gap-2.m-8{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' }
+    .relative.block.border.border-gray-100.p-4
+      %h3.mt-4.text-lg.font-bold Section #{section.index + 1}
+      %button.mt-4.rounded-lg.bg-yellow-500.p-4
+        =link_to( "Up" , "/index")
+      %button.mt-4.rounded-lg.bg-yellow-500.p-4
+        =link_to "Down" , "/index"
+      %button.mt-4.rounded-lg.bg-blue-400.p-4
+        =link_to "Edit" , section_path(section.id)
+      %button.mt-4.rounded-lg.bg-cyan-400.p-4
+        =link_to "New" , "/index"
+      %button.mt-4.rounded-lg.bg-red-400.p-4
+        =link_to "Delete" , "/index"
+    .relative.block.border.border-gray-100.p-4
+      %h3.mt-4.text-lg.font-bold Template
+      %p= section.template
+      = section_preview(section , class: "w-full object-contain")
+    .relative.block.border.border-gray-100.p-4
+      %h3.mt-4.text-lg.font-bold Header
+      %p= section.header
+      %h3.mt-4.text-lg.font-bold Text
+      %p= section.text
+    .relative.block.border.border-gray-100.p-4
+      - if section.cards?
+        %h3.mt-4.text-lg.font-bold #{section.content['cards'].length} Cards
+        =card_preview(section , class: "w-full object-contain")
+      - else
+        %h3.mt-4.text-lg.font-bold Image
+        -if section.image
+          = image_tag "cms/" + section.image
+        -else
+          No image
+    .relative.block.border.border-gray-100.p-4
+      %h3.mt-4.text-lg.font-bold Options
+      %p To be done

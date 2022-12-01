@@ -9,6 +9,7 @@ module Merged
 
     attr_reader :name , :content , :page , :index , :cards
 
+
     def initialize(page , index , section_data)
       @page = page
       raise "No number #{index}" unless index.is_a?(Integer)
@@ -24,6 +25,15 @@ module Merged
       end
     end
 
+    [:template , :card_template , :id , :text , :header, :image].each do |meth|
+      define_method(meth) do
+        @content[meth.to_s]
+      end
+    end
+
+    def cards?
+      @content["cards"] == true
+    end
 
     def update(key , value)
       return if key == "id" #not updating that
@@ -33,17 +43,6 @@ module Merged
         end
       end
       @content[key] = value
-    end
-
-    def template
-      @content["template"]
-    end
-    def card_template
-      @content["card_template"]
-    end
-
-    def id
-      @content["id"]
     end
 
     def save
