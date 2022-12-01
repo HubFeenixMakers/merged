@@ -31,7 +31,8 @@
     .relative.block.border.border-gray-100.p-4
       - if section.cards?
         %h3.mt-4.text-lg.font-bold #{section.content['cards'].length} Cards
-        =card_preview(section , class: "w-full object-contain")
+        =link_to section_cards_url(section.id) do
+          =card_preview(section , class: "w-full object-contain")
       - else
         %h3.mt-4.text-lg.font-bold Image
         -if section.image
