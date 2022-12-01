@@ -16,6 +16,16 @@ module Merged
       redirect_to section_cards_url(@card.section.id)
     end
 
+    def move
+      if( params[:dir] == "up")
+        @card.move_up
+      else
+        @card.move_down
+      end
+      @card.save
+      redirect_to section_cards_url(@card.section.id)
+    end
+
     def update
       @card.content.each do |key , value|
         next if key == "id"

@@ -35,6 +35,40 @@ module Merged
       ! cards.empty?
     end
 
+    def move_up
+      @page.move_section_up(self)
+    end
+    def move_down
+      @section.move_section_down(self)
+    end
+
+    def move_card_up(card)
+      return if cards.length == 1
+      return if card.index == 0
+      swap( card , cards[card.index - 1])
+    end
+
+    def move_card_down(card)
+      return if cards.length == 1
+      return if card.index == cards.last.index
+      swap( card , cards[card.index + 1])
+    end
+
+    def swap( this_card , that_card)
+      # swap in the actual objects, index is cached in the objects
+      this_old_index = this_card.index
+      this_card.set_index( that_card.index )
+      that_card.set_index( this_old_index )
+
+      # swap in the cards cache
+      cards[ this_card.index ] = this_card
+      cards[ that_card.index ] = that_card
+      # swap in the yaml
+      card_content = content["cards"]
+      card_content[this_card.index] = this_card.content
+      card_content[that_card.index] = that_card.content
+    end
+
     def update(key , value)
       return if key == "id" #not updating that
       if(! @content[key].nil? )

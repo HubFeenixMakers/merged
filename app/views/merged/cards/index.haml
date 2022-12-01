@@ -15,9 +15,9 @@
       .p-4
         %h3.mt-4.text-lg.font-bold Card #{index + 1}
         %button.mt-4.rounded-lg.bg-yellow-500.p-4
-          =link_to( "Up" , "/index")
+          =link_to( "Up" , card_move_url(card.id , dir: :up) )
         %button.mt-4.rounded-lg.bg-yellow-500.p-4
-          =link_to "Down" , "/index"
+          =link_to( "Down" , card_move_url(card.id , dir: :down) )
         %button.mt-4.rounded-lg.bg-cyan-400.p-4
           =link_to "New" , "/index"
         %button.mt-4.rounded-lg.bg-red-400.p-4

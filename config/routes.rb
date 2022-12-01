@@ -12,6 +12,7 @@ Merged::Engine.routes.draw do
       resources :cards do
         get :select_image
         get :set_image
+        get :move
       end
     end
   end

@@ -35,6 +35,13 @@ module Merged
       @content[key] = value
     end
 
+    def move_up
+      @section.move_card_up(self)
+    end
+    def move_down
+      @section.move_card_down(self)
+    end
+
     def save
       section.save
     end
@@ -44,6 +51,10 @@ module Merged
       card = @@all[id]
       raise "Section not found #{id}" unless card
       return card
+    end
+
+    def set_index(index)
+      @index = index
     end
   end
 end
