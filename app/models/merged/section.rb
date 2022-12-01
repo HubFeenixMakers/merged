@@ -32,7 +32,7 @@ module Merged
     end
 
     def cards?
-      @content["cards"] == true
+      ! cards.empty?
     end
 
     def update(key , value)

@@ -9,6 +9,12 @@ module Merged
 
     attr_reader  :content  , :index , :section
 
+    [ :id , :text , :header, :image ].each do |meth|
+      define_method(meth) do
+        @content[meth.to_s]
+      end
+    end
+
     def initialize(section , index , card_data)
       @section = section
       @index = index
@@ -18,9 +24,6 @@ module Merged
       @@all[self.id] = self
     end
 
-    def id
-      @content['id']
-    end
 
     def update(key , value)
       return if key == "id" #not updating that
