@@ -4,11 +4,10 @@
       .p-8.md:p-12.lg:px-16.lg:py-24{class: 'bg-black/25'}
         .mx-auto.max-w-xl.text-center
           %h2.text-2xl.font-bold.text-white.md:text-5xl
-            = section["header"]
+            = section.header
           %p.hidden.sm:mt-4.sm:block.text-2xl.text-white
-            = section["text"]
+            = section.text
           .mt-4.md:mt-8
-            -if section["button_text"]
-              %a.inline-block.rounded.border.border-white.bg-white.px-12.py-3.text-sm.font-medium.text-blue-500.transition.hover:bg-transparent.hover:text-white.focus:outline-none.focus:ring.focus:ring-yellow-400{:href => section["button_link"]}
-                =section["button_text"]
+            -if section.has_option?("button_text")
+              = render 'merged/view/elements/button' , section: section
       .grid.grid-cols-2.gap-4.md:grid-cols-1.lg:grid-cols-2

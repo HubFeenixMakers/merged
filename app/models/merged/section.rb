@@ -31,6 +31,25 @@ module Merged
       end
     end
 
+    [:button_link , :button_text ].each do |meth|
+      define_method(meth) do
+        @content["options"][meth.to_s]
+      end
+    end
+
+    def has_option?(option)
+      options.has_key?(option)
+    end
+
+    def options
+      @content["options"] || {}
+    end
+
+    def set_option( option , value)
+      @content["options"] = {} if @content["options"].nil?
+      options[option] = value
+    end
+
     def cards?
       ! cards.empty?
     end

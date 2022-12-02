@@ -2,10 +2,10 @@
   .flex.items-center.justify-center.flex-1
     .max-w-prose.px-4.py-8.mx-auto.text-center
       %h1.text-2xl.font-bold.tracking-tight.text-gray-900.sm:text-4xl
-        = section["header"]
+        = section.header
       %p.mt-4.text-gray-500
-        = section["text"]
-  - template = "merged/view/cards/" + section["card_template"]
+        = section.text
+  - template = "merged/view/cards/" + section.card_template
   .grid.grid-cols-1.md:grid-cols-2
-    - section["cards"].each do |element|
+    - section.cards.each do |element|
       = render( template , element: element)

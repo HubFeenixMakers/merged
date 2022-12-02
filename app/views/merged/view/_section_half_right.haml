@@ -2,10 +2,10 @@
   .p-8.m-5.bg-cyan-100.md:p-12.lg:px-16.lg:py-24
     .mx-auto.max-w-xl.text-center.sm:text-left
       %h2.text-2xl.font-bold.text-gray-900.md:text-3xl
-        = section["header"]
+        = section.header
       %p.hidden.text-gray-500.md:mt-4.md:block
-        = section["text"]
+        = section.text
       .mt-4.md:mt-8
-        -if section["button"]
-          = render 'merged/view/elements/button' , button: section["button"]
+        -if section.has_option?("button_text")
+          = render 'merged/view/elements/button' , section: section
   = image_for( section , "p-5 h-56 w-full object-cover sm:h-full")
