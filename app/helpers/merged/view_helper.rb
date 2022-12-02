@@ -7,6 +7,7 @@ module Merged
     end
 
     def bg(section)
+      return "" if section.image.blank?
       puts "--#{Image.image_root}/#{section.image}--"
       img = asset_url( "#{Image.image_root}/#{section.image}" )
       "background-image: url('#{img}');"

@@ -25,6 +25,12 @@ module Merged
       end
     end
 
+    def self.build_data
+      data = { "template" => "spacer"}
+      data["id"] = SecureRandom.hex(10)
+      data
+    end
+
     [:template , :card_template , :id , :text , :header, :image].each do |meth|
       define_method(meth) do
         @content[meth.to_s]
@@ -48,6 +54,13 @@ module Merged
     def set_option( option , value)
       @content["options"] = {} if @content["options"].nil?
       options[option] = value
+    end
+
+    def template_style
+      Style.sections[ template ]
+    end
+    def allowed_fields
+      template_style.fields
     end
 
     def cards?
@@ -89,8 +102,8 @@ module Merged
     end
 
     def update(key , value)
-      return if key == "id" #not updating that
-      if(! @content[key].nil? )
+      raise "unsuported field #{key} for #{template}" unless allowed_fields.include?(key)
+      if(! @content[key].nil? ) # first setting ok, types not (yet?) specified
         if( @content[key].class != value.class )
           raise "Type mismatch #{key} #{key.class}!=#{value.class}"
         end

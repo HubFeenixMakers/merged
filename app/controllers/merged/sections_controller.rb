@@ -1,11 +1,12 @@
 module Merged
   class SectionsController < MergedController
-    before_action :set_section , except: :index
+    before_action :set_section , except: [:index ,:new]
     #, only: %i[ show edit update destroy set_image select_image]
 
     def index
       @page = Page.find(params[:page_id])
     end
+
     def select_image
       @images = Image.all
     end
@@ -14,6 +15,12 @@ module Merged
     end
     def select_card_template
       @cards = Style.cards
+    end
+
+    def new
+      page = Page.find(params[:page_id])
+      new_section = page.new_section
+      redirect_to section_select_template_url(new_section.id)
     end
 
     def set_image
@@ -49,9 +56,9 @@ module Merged
     end
 
     def update
-      @section.content.each do |key , value|
-        next if key == "id"
-        if(!params[key].nil?)
+      @section.allowed_fields.each do |key|
+        puts "Update #{key}"
+        if( params.has_key?(key) )
           @section.update(key, params[key])
           puts "updating:#{key}=#{params[key]}"
         end

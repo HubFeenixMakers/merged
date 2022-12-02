@@ -34,6 +34,15 @@ module Merged
       @@all[@name] = self
     end
 
+    def new_section
+      section_data = Section.build_data
+      index = sections.length
+      section = Section.new(self , index,  section_data)
+      @sections << section
+      @content << section_data
+      section
+    end
+
     def first_template
       @content[0]["template"]
     end
@@ -41,16 +50,16 @@ module Merged
     def move_section_up(section)
       return if sections.length == 1
       return if section.index == 0
-      swap( section , sections[section.index - 1])
+      swap_sections( section , sections[section.index - 1])
     end
 
     def move_section_down(section)
       return if sections.length == 1
       return if section.index == sections.last.index
-      swap( section , sections[section.index + 1])
+      swap_sections( section , sections[section.index + 1])
     end
 
-    def swap( this_section , that_section)
+    def swap_sections( this_section , that_section)
       # swap in the actual objects, index is cached in the objects
       this_old_index = this_section.index
       this_section.set_index( that_section.index )

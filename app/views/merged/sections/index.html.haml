@@ -13,7 +13,6 @@
       = blue_button( "Up" , section_move_url(section.id , dir: :up) )
       = blue_button( "Down" , section_move_url(section.id , dir: :down) )
       = yellow_button("Edit" , section_path(section.id) )
-      = green_button( "New" , "/index" )
       = red_button(  "Delete" , "/index" )
     .relative.block.border.border-gray-100.p-4
       %h3.mt-4.text-lg.font-bold Template
@@ -38,3 +37,5 @@
     .relative.block.border.border-gray-100.p-4
       %h3.mt-4.text-lg.font-bold Options
       %p To be done
+%p
+  = green_button( "New Section" , new_page_section_url(@page.name) )

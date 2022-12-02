@@ -10,7 +10,7 @@
         Page #{link_to @section.page.name, page_sections_url(@section.page.name), class: "underline"}
   .flex.items-center.justify-center.flex-1
     %h3.text-xl.font-bold.tracking-tight.text-gray-900
-      Section #{@section.id}
+      Section #{@section.index + 1}
 
 .grid.grid-cols-3.gap-2.m-8
   .relative.block.border.border-gray-100

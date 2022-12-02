@@ -1,5 +1,13 @@
+%p#notice= notice
+
+.flex.flex-col.bg-white
+  .flex.items-center.justify-center.flex-1
+    .max-w-xl.px-4.py-8.mx-auto.text-center
+      %h1.text-3xl.font-bold.tracking-tight.text-gray-900
+        Select Template for Section #{@section.index + 1}
+
 .grid.grid-cols-4.gap-2.m-8
-  - @sections.each do |style|
+  - @sections.each do |name , style|
     .relative.block.border.border-gray-100
       = link_to( section_set_template_path( template: style.template )) do
         =image_tag(style.section_preview , class: "h-56 w-full object-contain lg:h-72")
