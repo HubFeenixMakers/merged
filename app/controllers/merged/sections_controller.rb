@@ -19,8 +19,14 @@ module Merged
 
     def new
       page = Page.find(params[:page_id])
-      new_section = page.new_section
-      redirect_to section_select_template_url(new_section.id)
+      template = params[:template]
+      new_section = page.new_section(template)
+      page.save
+      if(template.blank?) # new
+        redirect_to section_select_template_url(new_section.id)
+      else # copy
+        redirect_to section_url(new_section.id)
+      end
     end
 
     def remove
@@ -39,7 +45,7 @@ module Merged
     def set_template
       template = params[:template]
       raise "no template given" if template.blank?
-      @section.content["template"] = template
+      @section.set_template( template )
       @section.save
       redirect_to section_url(@section.id)
     end

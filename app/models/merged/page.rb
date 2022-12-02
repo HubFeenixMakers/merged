@@ -34,8 +34,8 @@ module Merged
       @@all[@name] = self
     end
 
-    def new_section
-      section_template = params[:template] || "section_spacer"
+    def new_section(section_template)
+      section_template = "section_spacer" if section_template.blank?
       section_data = Section.build_data(section_template)
       index = sections.length
       section = Section.new(self , index,  section_data)

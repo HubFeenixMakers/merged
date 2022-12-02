@@ -2,7 +2,6 @@ module Merged
   class Style
     include ActiveModel::API
 
-    cattr_accessor :sections , :cards
     @@sections = {}
     @@cards = {}
 
@@ -29,16 +28,16 @@ module Merged
     end
 
     def self.cards
-      self.all
+      self.load
       @@cards
     end
 
     def self.sections
-      self.all
+      self.load
       @@sections
     end
 
-    def self.all
+    def self.load
       if @@sections.length == 0
         all = YAML.load_file(Engine.root.join("config/styles.yaml"))
         all["sections"].each do |content|

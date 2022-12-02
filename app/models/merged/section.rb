@@ -50,6 +50,22 @@ module Merged
       options[option] = value
     end
 
+    def set_template(new_template)
+      @content["template"] = new_template
+      new_style = template_style
+      if(new_style.cards?)
+        unless card_template
+          @content["card_template"] = Style.cards.keys.first
+          @content["cards"] = []
+          raise "Should not have cards" unless cards.empty?
+        end
+      else
+        @content.delete("cards")
+        @content.delete("card_template")
+        @cards.clear
+      end
+    end
+
     def template_style
       Style.sections[ template ]
     end
@@ -58,7 +74,7 @@ module Merged
     end
 
     def cards?
-      ! cards.empty?
+      ! card_template.blank?
     end
 
     def new_card
@@ -133,11 +149,15 @@ module Merged
 
     def self.build_data(template)
       data = { "template" => template , "id" => SecureRandom.hex(10) }
-      Style.sections[ template ].fields.each do |key|
+      style = Style.sections[ template ]
+      style.fields.each do |key|
         data[key] = key.upcase
+      end unless style.fields.blank?
+      if(style.cards?)
+        data["cards"] = []
+        data["card_template"] = Style.cards.keys.first
       end
       data
-
     end
 
     def self.find(section_id)
