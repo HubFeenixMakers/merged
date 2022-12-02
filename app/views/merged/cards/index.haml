@@ -7,31 +7,26 @@
   .flex.items-center.justify-center.flex-1
     .max-w-xl.px-4.py-8.mx-auto.text-center
       %h1.text-3xl.font-bold.tracking-tight.text-gray-900
-        Page #{link_to @section.page.name, page_sections_url(@section.page.name)}
+        Page #{link_to @section.page.name, page_sections_url(@section.page.name), class: "underline"}
   .flex.items-center.justify-center.flex-1
     %h3.text-xl.font-bold.tracking-tight.text-gray-900
       Cards for
-      = link_to "Section #{@section.index + 1}", section_url( @section.id)
+      = link_to "Section #{@section.index + 1}", section_url( @section.id) , class: "underline"
 
 .grid.grid-cols-4.gap-2.m-8
   - @section.cards.each_with_index do |card , index|
     .relative.block.border.border-gray-100
       .p-4
         %h3.mt-4.text-lg.font-bold Card #{index + 1}
-        %button.mt-4.rounded-lg.bg-yellow-500.p-4
-          =link_to( "Up" , card_move_url(card.id , dir: :up) )
-        %button.mt-4.rounded-lg.bg-yellow-500.p-4
-          =link_to( "Down" , card_move_url(card.id , dir: :down) )
-        %button.mt-4.rounded-lg.bg-cyan-400.p-4
-          =link_to "New" , "/index"
-        %button.mt-4.rounded-lg.bg-red-400.p-4
-          =link_to "Delete" , "/index"
+        = yellow_button( "Up" , card_move_url(card.id , dir: :up) )
+        = yellow_button( "Down" , card_move_url(card.id , dir: :down) )
+        = green_button( "New" , "/index" )
+        = red_button("Delete" , "/index")
       .p-4
         %h3.mt-4.text-lg.font-bold Image
-        %button.ml-3.inline-block.rounded-lg.bg-blue-500.px-5.py-3.text-md.font-medium.text-white
-          =link_to "Change Image" , card_select_image_url(card.id)
-        %button.ml-3.inline-block.rounded-lg.bg-red-500.px-5.py-3.text-md.font-medium.text-white
-          = link_to( "Remove image" , card_set_image_path( card.id  , image: ""))
+        = blue_button("Change Image" , card_select_image_url(card.id) )
+        = red_button("Remove image", card_set_image_path( card.id  , image: "") )
+
 
     .relative.block.border.border-gray-100
       %h3.mt-4.text-lg.font-bold Image
@@ -41,10 +36,12 @@
         = image_tag( "cms/" + card.image , class: "p-3")
     .relative.block.border.border-gray-100
       = form_tag( card_url(card.id) , {method: :patch  } ) do
-        %h3.mt-4.text-lg.font-bold Header
-        = text_field_tag( :header , card.content["header"], class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
-        %h3.mt-4.text-lg.font-bold Text
-        = text_area_tag( :text , card.content["text"], class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
+        %label.block
+          %h4.text-lg.font-bold Header
+          = text_field_tag( :header , card.header, class: "block w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
+        %label.block
+          %h4.mt-4.text-lg.font-bold Text
+          = text_area_tag( :text , card.text, rows: 5 , class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm" )
         %button.ml-3.inline-block.rounded-lg.bg-blue-500.px-5.py-3.text-sm.font-medium.text-white{:type => "submit"}
           Update
 

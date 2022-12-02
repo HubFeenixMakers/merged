@@ -10,16 +10,11 @@
   .grid.grid-cols-5.gap-2.m-8{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' }
     .relative.block.border.border-gray-100.p-4
       %h3.mt-4.text-lg.font-bold Section #{section.index + 1}
-      %button.mt-4.rounded-lg.bg-yellow-500.p-4
-        =link_to( "Up" , section_move_url(section.id , dir: :up) )
-      %button.mt-4.rounded-lg.bg-yellow-500.p-4
-        =link_to( "Down" , section_move_url(section.id , dir: :down) )
-      %button.mt-4.rounded-lg.bg-blue-400.p-4
-        =link_to "Edit" , section_path(section.id)
-      %button.mt-4.rounded-lg.bg-cyan-400.p-4
-        =link_to "New" , "/index"
-      %button.mt-4.rounded-lg.bg-red-400.p-4
-        =link_to "Delete" , "/index"
+      = yellow_button( "Up" , section_move_url(section.id , dir: :up) )
+      = yellow_button( "Down" , section_move_url(section.id , dir: :down) )
+      = blue_button("Edit" , section_path(section.id) )
+      = green_button( "New" , "/index" )
+      = red_button(  "Delete" , "/index" )
     .relative.block.border.border-gray-100.p-4
       %h3.mt-4.text-lg.font-bold Template
       %p= section.template
