@@ -16,7 +16,7 @@
   .relative.block.border.border-gray-100
     %h3.mt-4.text-lg.font-bold Template  #{@section.template}
     = section_preview(@section , class: "w-full object-contain p-3")
-    = blue_button( "Change Template" , section_select_template_url(@section.id))
+    = yellow_button( "Change Template" , section_select_template_url(@section.id))
 
   .relative.block.border.border-gray-100
     = section_form( class: "mx-auto mt-8 mb-0 max-w space-y-4") do
@@ -26,8 +26,7 @@
       %label.block
         %h4.mt-4.text-lg.font-bold Text
         = text_area_tag( :text , @section.text, rows: 5 ,class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
-      %button.ml-3.inline-block.rounded-lg.bg-blue-500.px-5.py-3.text-sm.font-medium.text-white{:type => "submit"}
-        Update
+      = submit_button("Update")
 
   .relative.block.border.border-gray-100
     %h3.mt-4.text-lg.font-bold Image
@@ -52,7 +51,7 @@
         .mt-4.text-md.font-bold= card.header
         .text-sm "#{card.text[0..70]} ....."
       %p.p-3
-        = blue_button( "View and Edit Cards" , section_cards_url(@section.id))
+        = yellow_button( "View and Edit Cards" , section_cards_url(@section.id))
   .relative.block.border.border-gray-100
     %h3.mt-4.text-lg.font-bold Options
     To be done

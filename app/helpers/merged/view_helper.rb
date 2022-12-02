@@ -1,5 +1,6 @@
 module Merged
   module ViewHelper
+    include MergedHelper
     # section should be hash with at least 'template' key
     def find_template(section)
       "merged/view/" + section.template
