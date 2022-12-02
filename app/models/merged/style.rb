@@ -3,23 +3,21 @@ module Merged
     include ActiveModel::API
 
     cattr_accessor :sections , :cards
-    @@sections = []
-    @@cards = []
+    @@sections = {}
+    @@cards = {}
 
     attr_reader :content
 
     def initialize content
       @content = content
     end
-    def template
-      @content["template"]
+
+    [:template , :text , :header, :fields].each do |meth|
+      define_method(meth) do
+        @content[meth.to_s]
+      end
     end
-    def header
-      @content["header"]
-    end
-    def text
-      @content["text"]
-    end
+
     def cards?
       @content["cards"] == true
     end
@@ -34,6 +32,7 @@ module Merged
       self.all
       @@cards
     end
+
     def self.sections
       self.all
       @@sections
@@ -42,10 +41,15 @@ module Merged
     def self.all
       if @@sections.length == 0
         all = YAML.load_file(Engine.root.join("config/styles.yaml"))
-        all["sections"].each { |content| @@sections << Style.new(content) }
-        all["cards"].each { |content| @@cards << Style.new(content) }
+        all["sections"].each do |content|
+          section = Style.new(content)
+          @@sections[section.template] = section
+        end
+        all["cards"].each do |content|
+          card = Style.new(content)
+          @@cards[card.template] = card
+        end
       end
-      [@@sections , @@cards]
     end
 
   end

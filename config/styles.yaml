@@ -5,9 +5,15 @@ sections:
   text: A header with text and two column layout. Columns have a little gap, so
     background color comes through.
   cards: true
+  fields:
+    - header
+      text
 - template: section_full_up
   header: Centered Header with text
   text: Full width header with centered headline and optional text
+  fields:
+    - header
+      text
 - template: section_half_right
   header: Split section image right
   text: Image right, header and text on the left. Optional button.
@@ -15,13 +21,23 @@ sections:
   header: Full image header, text left
   text: Large picture background with Header and text towards the left.
     Text is slightly shaded for readability
+  fields:
+    - header
+      text
 - template: section_half_left
   header: Split section image left
   text: Image left, header and text on the right. Optional button.
+  fields:
+    - header
+      text
 - template: section_spacer
   header: Spacer
   text: Just for extra padding
+  fields:
 cards:
 - template: card_full_image
   header: Full background
   text: With text in bottom right corner, offset with solid color
+  fields:
+    - header
+      text

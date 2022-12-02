@@ -2,7 +2,8 @@ module Merged
   class StylesController < MergedController
 
     def index
-      @sections , @cards = Style.all
+      @sections = Style.sections
+      @cards = Style.cards
     end
 
   end
