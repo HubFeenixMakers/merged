@@ -52,6 +52,8 @@
         .text-sm "#{card.text[0..70]} ....."
       %p.p-3
         = yellow_button( "View and Edit Cards" , section_cards_url(@section.id))
+        = green_button( "New Card" , new_section_card_url(@section.id) )
+
   .relative.block.border.border-gray-100
     %h3.mt-4.text-lg.font-bold Options
     To be done

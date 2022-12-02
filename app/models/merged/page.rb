@@ -35,7 +35,8 @@ module Merged
     end
 
     def new_section
-      section_data = Section.build_data
+      section_template = params[:template] || "section_spacer"
+      section_data = Section.build_data(section_template)
       index = sections.length
       section = Section.new(self , index,  section_data)
       @sections << section

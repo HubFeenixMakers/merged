@@ -25,12 +25,6 @@ module Merged
       end
     end
 
-    def self.build_data
-      data = { "template" => "spacer"}
-      data["id"] = SecureRandom.hex(10)
-      data
-    end
-
     [:template , :card_template , :id , :text , :header, :image].each do |meth|
       define_method(meth) do
         @content[meth.to_s]
@@ -65,6 +59,15 @@ module Merged
 
     def cards?
       ! cards.empty?
+    end
+
+    def new_card
+      card_data = Card.build_data(card_template)
+      index = cards.length
+      card = Card.new(self , index,  card_data)
+      @cards << card
+      @content["cards"] << card_data
+      card
     end
 
     def remove_card(card)
@@ -126,6 +129,15 @@ module Merged
 
     def set_index(index)
       @index = index
+    end
+
+    def self.build_data(template)
+      data = { "template" => template , "id" => SecureRandom.hex(10) }
+      Style.sections[ template ].fields.each do |key|
+        data[key] = key.upcase
+      end
+      data
+
     end
 
     def self.find(section_id)

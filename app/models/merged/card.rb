@@ -46,15 +46,30 @@ module Merged
       section.save
     end
 
+    def set_index(index)
+      @index = index
+    end
+
+    def template_style
+      Style.cards[ section.card_template ]
+    end
+    def allowed_fields
+      template_style.fields
+    end
+
+    def self.build_data(card_template)
+      data = { "id" => SecureRandom.hex(10) }
+      Style.cards[ card_template ].fields.each do |key|
+        data[key] = key.upcase
+      end
+      data
+    end
+
     def self.find_card(id)
       raise "nil given" if id.blank?
       card = @@all[id]
       raise "Section not found #{id}" unless card
       return card
-    end
-
-    def set_index(index)
-      @index = index
     end
   end
 end

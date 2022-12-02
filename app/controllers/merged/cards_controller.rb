@@ -1,6 +1,6 @@
 module Merged
   class CardsController < MergedController
-    before_action :set_card , except: :index
+    before_action :set_card , except: [:index , :new]
 
     def index
       @section = Section.find(params[:section_id])
@@ -26,6 +26,12 @@ module Merged
       redirect_to section_cards_url(@card.section.id)
     end
 
+    def new
+      @section = Section.find(params[:section_id])
+      new_card = @section.new_card
+      redirect_to section_cards_url(@section.id)
+    end
+
     def remove
       section = @card.section
       section.remove_card( @card )
@@ -34,9 +40,9 @@ module Merged
     end
 
     def update
-      @card.content.each do |key , value|
-        next if key == "id"
-        if(!params[key].nil?)
+      @card.allowed_fields.each do |key|
+        puts "Update Card #{key}"
+        if( params.has_key?(key) )
           @card.update(key, params[key])
           puts "updating:#{key}=#{params[key]}"
         end
