@@ -67,6 +67,15 @@ module Merged
       ! cards.empty?
     end
 
+    def remove_card(card)
+      from_index = card.index
+      @cards.delete_at(from_index)
+      @content["cards"].delete_at(from_index)
+      @cards.each_with_index do |card, index|
+        card.set_index(index)
+      end
+    end
+
     def move_up
       @page.move_section_up(self)
     end

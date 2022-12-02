@@ -26,6 +26,13 @@ module Merged
       redirect_to section_cards_url(@card.section.id)
     end
 
+    def remove
+      section = @card.section
+      section.remove_card( @card )
+      section.save
+      redirect_to section_cards_url(section.id)
+    end
+
     def update
       @card.content.each do |key , value|
         next if key == "id"
