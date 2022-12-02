@@ -1,5 +1,8 @@
 %p#notice= notice
 
+- template = find_template(@section)
+= render( template , section: @section)
+
 .flex.flex-col.bg-white
   .flex.items-center.justify-center.flex-1
     .max-w-xl.px-4.py-8.mx-auto.text-center

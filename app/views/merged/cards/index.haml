@@ -1,5 +1,8 @@
 %p#notice= notice
 
+- template = find_template(@section)
+= render( template , section: @section)
+
 .flex.flex-col.bg-white
   .flex.items-center.justify-center.flex-1
     .max-w-xl.px-4.py-8.mx-auto.text-center
@@ -8,7 +11,7 @@
   .flex.items-center.justify-center.flex-1
     %h3.text-xl.font-bold.tracking-tight.text-gray-900
       Cards for
-      = link_to "Section #{@section.index + 1}", page_sections_url(page_id: @section.page.name)
+      = link_to "Section #{@section.index + 1}", section_url( @section.id)
 
 .grid.grid-cols-4.gap-2.m-8
   - @section.cards.each_with_index do |card , index|
