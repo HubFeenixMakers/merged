@@ -43,6 +43,15 @@ module Merged
       section
     end
 
+    def remove_section(section)
+      from_index = section.index
+      @sections.delete_at(from_index)
+      @content.delete_at(from_index)
+      @sections.each_with_index do |section, index|
+        section.set_index(index)
+      end
+    end
+
     def first_template
       @content[0]["template"]
     end

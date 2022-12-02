@@ -23,6 +23,13 @@ module Merged
       redirect_to section_select_template_url(new_section.id)
     end
 
+    def remove
+      page = @section.page
+      page.remove_section( @section )
+      page.save
+      redirect_to page_sections_url(page.name)
+    end
+
     def set_image
       @section.content["image"] = params[:image]
       @section.save

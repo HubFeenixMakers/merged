@@ -12,8 +12,8 @@ module Merged
     def green_button( text, url)
       button( text , url , "bg-green-500" )
     end
-    def submit_button(text)
-      clazz = "bg-blue-500  " + button_classes
+    def submit_button(text , danger = false )
+      clazz = danger ? "bg-blue-500  " : "bg-blue-500  " + button_classes
       content_tag(:button , class: clazz , type: :submit) do
         text
       end
