@@ -7,13 +7,13 @@ sections:
   cards: true
   fields:
     - header
-      text
+    - text
 - template: section_full_up
   header: Centered Header with text
   text: Full width header with centered headline and optional text
   fields:
     - header
-      text
+    - text
 - template: section_half_right
   header: Split section image right
   text: Image right, header and text on the left. Optional button.
@@ -23,13 +23,13 @@ sections:
     Text is slightly shaded for readability
   fields:
     - header
-      text
+    - text
 - template: section_half_left
   header: Split section image left
   text: Image left, header and text on the right. Optional button.
   fields:
     - header
-      text
+    - text
 - template: section_spacer
   header: Spacer
   text: Just for extra padding
@@ -40,4 +40,4 @@ cards:
   text: With text in bottom right corner, offset with solid color
   fields:
     - header
-      text
+    - text
