@@ -49,7 +49,7 @@
       %h3.mt-4.text-lg.font-bold #{@section.cards.length} Cards
       -@section.cards.each do |card|
         .mt-4.text-md.font-bold= card.header
-        .text-sm "#{card.text[0..70]} ....."
+        .text-sm #{card.text[0..70]} .....
       %p.p-3
         = yellow_button( "View and Edit Cards" , section_cards_url(@section.id))
         = green_button( "New Card" , new_section_card_url(@section.id) )

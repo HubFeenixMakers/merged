@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Gateway
+    %title Merged CMS
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
@@ -32,7 +32,7 @@
                   %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => styles_index_path}
                     Styles
                 %li
-                  %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => "/changes"}
+                  %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => changes_index_path}
                     Changes
             .flex.items-center.gap-4
               .sm:flex.sm:gap-4

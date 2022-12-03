@@ -1,0 +1,13 @@
+%p= @git.workdir
+%p Lines Changed
+-@git.diff_workdir("HEAD").each_line do |line|
+  %p= line.content
+%h3 Patches
+%h3 Patches
+%h3 Patches
+-@git.diff_workdir("HEAD").each_patch do |patch|
+  %p= patch.additions
+  -patch.each_hunk do |hunk|
+    %p=hunk.header
+    -hunk.each_line do |line|
+      %p= line.content

@@ -1,6 +1,8 @@
 Merged::Engine.routes.draw do
 
-  get "/styles/index" , to: "styles#index"
+  get 'changes/index'
+  get "styles/index"
+
   resources :pages , except: [:show] , shallow: true  do
     resources :sections do
       get :select_image

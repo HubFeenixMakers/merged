@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     merged (0.1.0)
+      git
       haml-rails
       rails (>= 7.0.4)
 
@@ -73,11 +74,16 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     builder (3.2.4)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     diff-lcs (1.5.0)
     erubi (1.11.0)
+    git (1.12.0)
+      addressable (~> 2.8)
+      rchardet (~> 1.8)
     globalid (1.0.0)
       activesupport (>= 5.0)
     haml (6.0.12)
@@ -111,6 +117,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
+    public_suffix (5.0.0)
     racc (1.6.0)
     rack (2.2.4)
     rack-test (2.0.2)
@@ -142,6 +149,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    rchardet (1.8.0)
     rspec-core (3.12.0)
       rspec-support (~> 3.12.0)
     rspec-expectations (3.12.0)
