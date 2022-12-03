@@ -1,6 +1,7 @@
 Merged::Engine.routes.draw do
 
-  get 'changes/index'
+  get  'changes/index'
+  post 'changes/commit'
   get "styles/index"
 
   resources :pages , except: [:show] , shallow: true  do

@@ -1,13 +1,46 @@
-%p= @git.workdir
-%p Lines Changed
--@git.diff_workdir("HEAD").each_line do |line|
-  %p= line.content
-%h3 Patches
-%h3 Patches
-%h3 Patches
--@git.diff_workdir("HEAD").each_patch do |patch|
-  %p= patch.additions
-  -patch.each_hunk do |hunk|
-    %p=hunk.header
-    -hunk.each_line do |line|
-      %p= line.content
+.flex.flex-col.bg-white
+  .flex.items-center.justify-center.flex-1
+    .max-w-xl.px-4.py-8.mx-auto.text-center
+      %h1.text-2xl.font-bold.tracking-tight.text-gray-900.sm:text-4xl
+        Changes
+      %p.mt-4.text-gray-500
+        Branch
+        = @git.current_branch
+
+.grid.grid-cols-4.gap-2.m-8
+  .relative.block.border.border-gray-100
+    Changed Files
+    -@status.changed.each do |name , file|
+      -next unless name.include?("cms")
+      %p
+        = name
+
+  .relative.block.border.border-gray-100
+    Deletions
+    -@status.deleted.each do |name , file|
+      -next unless name.include?("cms")
+      %p= name
+  .relative.block.border.border-gray-100
+    Additions
+    -@status.added.each do |name , file|
+      -next unless name.include?("cms")
+      %p= name
+  .relative.block.border.border-gray-100
+    New
+    -@status.untracked.each do |name , file|
+      -next if name.starts_with?("merged")
+      -next unless name.include?("cms")
+      %p
+        = name
+
+.flex.flex-col.bg-white
+  .flex.items-center.justify-center.flex-1
+    .max-w-xl.px-4.py-8.mx-auto.text-center
+      = form_tag( changes_commit_url() , {method: :post  } ) do
+        %h1.text-2xl.font-bold.tracking-tight.text-gray-900.sm:text-4xl
+          Commit changes
+        %p.mt-4.text-gray-500
+          %label.block
+            %h4.text-lg.font-bold Message (short summary of changes)
+            = text_field_tag( :message , "", class: "block w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
+        =submit_button( "Commit")
