@@ -9,7 +9,6 @@ module Merged
 
     attr_reader :name , :content , :page , :index , :cards
 
-
     def initialize(page , index , section_data)
       @page = page
       raise "No number #{index}" unless index.is_a?(Integer)
@@ -25,7 +24,7 @@ module Merged
       end
     end
 
-    [:template , :card_template , :id , :text , :header, :image].each do |meth|
+    [:template , :card_template , :id , :text , :header, :image, :options].each do |meth|
       define_method(meth) do
         @content[meth.to_s]
       end
@@ -41,11 +40,20 @@ module Merged
       options.has_key?(option)
     end
 
+    def option_definitions
+      template_style.options
+    end
+
+    def option(name)
+      options[name]
+    end
+
     def options
       @content["options"] || {}
     end
 
     def set_option( option , value)
+      puts "#{template} setting option #{option}=#{value.class}"
       @content["options"] = {} if @content["options"].nil?
       options[option] = value
     end

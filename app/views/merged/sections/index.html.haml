@@ -37,6 +37,9 @@
           %p No image
     .relative.block.border.border-gray-100.p-4
       %h3.mt-4.text-lg.font-bold Options
-      %p To be done
+      - section.options.each do|name , value|
+        %p
+          = name
+          = value
 %p
   = green_button( "New Section" , new_page_section_url(@page.name) )

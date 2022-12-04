@@ -17,6 +17,12 @@ sections:
 - template: section_half_right
   header: Split section image right
   text: Image right, header and text on the left. Optional button.
+  fields:
+    - header
+    - text
+  options:
+    - button_link
+    - button_text
 - template: section_full_left2
   header: Full image header, text left
   text: Large picture background with Header and text towards the left.
@@ -24,6 +30,8 @@ sections:
   fields:
     - header
     - text
+  options:
+    - fixed
 - template: section_half_left
   header: Split section image left
   text: Image left, header and text on the right. Optional button.
@@ -41,3 +49,21 @@ cards:
   fields:
     - header
     - text
+options:
+  - name: fixed
+    desciption:
+      Paralax effect where background stays fixed
+      during scrolling
+    values: on off
+    default: off
+  - name: button_text
+    desciption:
+      Text for an optional button. Must also set button_link
+    values:
+    default:
+  - name: button_link
+    desciption:
+      Link for an option button. Must also set button_text.
+      Link must be a page name, ie only internal links allowed.
+    values:
+    default:

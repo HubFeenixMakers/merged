@@ -76,6 +76,10 @@ module Merged
           puts "updating:#{key}=#{params[key]}"
         end
       end
+      options = params[:option]
+      @section.option_definitions.each do |option|
+        @section.set_option(option.name,  options[option.name])
+      end
       @section.save
       redirect_to :section
     end

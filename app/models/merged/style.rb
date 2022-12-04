@@ -2,6 +2,7 @@ module Merged
   class Style
     include ActiveModel::API
 
+    @@options ={}
     @@sections = {}
     @@cards = {}
 
@@ -11,7 +12,7 @@ module Merged
       @content = content
     end
 
-    [:template , :text , :header, :fields].each do |meth|
+    [:template , :text , :header, :fields ].each do |meth|
       define_method(meth) do
         @content[meth.to_s]
       end
@@ -27,9 +28,24 @@ module Merged
       "merged/card_preview/" + template
     end
 
+    def options
+      option_defs = []
+      @content["options"].each do |name|
+        option = Style.options[name]
+        raise "no option for #{name}:name.class" if option.blank?
+        option_defs << option
+      end
+      option_defs
+    end
+
     def self.cards
       self.load
       @@cards
+    end
+
+    def self.options
+      self.load
+      @@options
     end
 
     def self.sections
@@ -47,6 +63,10 @@ module Merged
         all["cards"].each do |content|
           card = Style.new(content)
           @@cards[card.template] = card
+        end
+        all["options"].each do |content|
+          option = Option.new(content)
+          @@options[option.name] = option
         end
       end
     end
