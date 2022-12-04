@@ -59,4 +59,7 @@
     = section_form( class: "mx-auto mt-8 mb-0 max-w space-y-4") do
       - @section.option_definitions.each do |option|
         =render "option_form_#{option.type}" , section: @section , option: option
-      = submit_button("Update")
+      -if @section.option_definitions.empty?
+        %p No options
+      -else
+        = submit_button("Update")

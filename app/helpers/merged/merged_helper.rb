@@ -19,6 +19,13 @@ module Merged
       end
     end
 
+    def order_option(section)
+      return {} unless section.has_option?("order")
+      puts "Option #{section.option('order')}"
+      return {} if section.option("order") == "left"
+      {class: "order-first"}
+    end
+
     def button(text , url , color)
       link_to(url) do
         content_tag(:button , class: color + " " + button_classes ) do

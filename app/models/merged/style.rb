@@ -32,9 +32,9 @@ module Merged
       option_defs = []
       @content["options"].each do |name|
         option = Style.options[name]
-        raise "no option for #{name}:name.class" if option.blank?
+        raise "no option for #{name}:#{name.class}" if option.blank?
         option_defs << option
-      end
+      end if @content["options"]
       option_defs
     end
 

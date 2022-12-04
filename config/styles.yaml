@@ -14,16 +14,18 @@ sections:
   fields:
     - header
     - text
-- template: section_half_right
-  header: Split section image right
-  text: Image right, header and text on the left. Optional button.
+- template: section_half_image
+  header: Split section with image left or right
+  text: Image on one side, header and text on the other.
+    Order depends on order option. Optional button.
   fields:
     - header
     - text
   options:
     - button_link
     - button_text
-- template: section_full_left2
+    - order
+- template: section_full_left
   header: Full image header, text left
   text: Large picture background with Header and text towards the left.
     Text is slightly shaded for readability
@@ -32,12 +34,6 @@ sections:
     - text
   options:
     - fixed
-- template: section_half_left
-  header: Split section image left
-  text: Image left, header and text on the right. Optional button.
-  fields:
-    - header
-    - text
 - template: section_spacer
   header: Spacer
   text: Just for extra padding
@@ -56,6 +52,12 @@ options:
       during scrolling
     values: on off
     default: off
+  - name: order
+    desciption:
+      For two column layout determine order of sub-cards
+      Values of left and right usually refer to where the image is
+    values: left right
+    default: left
   - name: button_text
     desciption:
       Text for an optional button. Must also set button_link
