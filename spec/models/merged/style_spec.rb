@@ -22,7 +22,7 @@ module Merged
       expect(spacer.fields).to be nil
     end
     it "2 col has fields" do
-      spacer = Style.sections["section_2_col"]
+      spacer = Style.sections["section_cards"]
       expect(spacer.fields.class).to be Array
       expect(spacer.fields.length).to be 2
     end

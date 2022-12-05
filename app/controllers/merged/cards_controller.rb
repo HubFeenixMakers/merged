@@ -40,12 +40,15 @@ module Merged
 
     def update
       @card.allowed_fields.each do |key|
-        puts "Update Card #{key}"
         if( params.has_key?(key) )
           @card.update(key, params[key])
           puts "updating:#{key}=#{params[key]}"
         end
       end
+      options = params[:option]
+      @card.option_definitions.each do |option|
+        @card.set_option(option.name,  options[option.name])
+      end if options
       @card.save
       redirect_to section_cards_url(@card.section.id)
     end

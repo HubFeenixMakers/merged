@@ -1,9 +1,9 @@
 ---
 sections:
-- template: section_2_col
-  header: Two column  layout with header
+- template: section_cards
+  header: Two or more column layout with header
   text: A header with text and two column layout. Columns have a little gap, so
-    background color comes through.
+    background color comes through. 2,3 or 4 columns. Cards freely choosable
   cards: true
   fields:
     - header
@@ -51,6 +51,21 @@ cards:
   fields:
     - header
     - text
+- template: card_normal_square
+  header: Standard card with square image
+  text: Image, header, text, normal stuff
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - align
+- template: card_normal_round
+  header: Standard card with square image
+  text: Image, header, text, normal stuff
+  fields:
+    - header
+    - text
 options:
   - name: fixed
     desciption:
@@ -65,9 +80,15 @@ options:
     default: 3
   - name: background
     desciption:
-      Slight background color
-    values: white blue
+      Background colors. Light colors stay with black text.
+      Solid colors invert to white text.
+    values: white light_blue solid_blue solid_red solid_indigo
     default: white
+  - name: align
+    desciption:
+      Align text of children. Normal Word meaning
+    values: left center right
+    default: left
   - name: order
     desciption:
       For two column layout determine order of sub-cards

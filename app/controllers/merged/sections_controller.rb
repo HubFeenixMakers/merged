@@ -69,7 +69,6 @@ module Merged
 
     def update
       @section.allowed_fields.each do |key|
-        puts "Update Section #{key}"
         if( params.has_key?(key) )
           @section.update(key, params[key])
           puts "updating:#{key}=#{params[key]}"

@@ -1,2 +1,2 @@
-- unless section.button_text.blank? or section.button_link.blank?
+- unless section.has_option?("button_text") and section.has_option?("button_link")
   = blue_button( section.button_text , section.button_link)

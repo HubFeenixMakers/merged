@@ -3,6 +3,7 @@ module Merged
     include ActiveModel::API
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
+    include Optioned
 
     cattr_reader :all
     @@all = {}
@@ -24,39 +25,12 @@ module Merged
       end
     end
 
-    [:template , :card_template , :id , :text , :header, :image, :options].each do |meth|
+    [:template , :card_template , :id , :text , :header, :image].each do |meth|
       define_method(meth) do
         @content[meth.to_s]
       end
     end
 
-    [:button_link , :button_text ].each do |meth|
-      define_method(meth) do
-        @content["options"][meth.to_s]
-      end
-    end
-
-    def has_option?(option)
-      options.has_key?(option)
-    end
-
-    def option_definitions
-      template_style.options
-    end
-
-    def option(name)
-      options[name]
-    end
-
-    def options
-      @content["options"] || {}
-    end
-
-    def set_option( option , value)
-      puts "#{template} setting option #{option}=#{value.class}"
-      @content["options"] = {} if @content["options"].nil?
-      options[option] = value
-    end
 
     def set_template(new_template)
       @content["template"] = new_template
@@ -77,6 +51,7 @@ module Merged
     def template_style
       Style.sections[ template ]
     end
+
     def allowed_fields
       template_style.fields
     end

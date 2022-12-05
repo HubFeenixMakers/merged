@@ -4,6 +4,8 @@ module Merged
     include ActiveModel::Conversion
     extend  ActiveModel::Naming
 
+    include Optioned
+
     cattr_reader :all
     @@all = {}
 
@@ -22,6 +24,10 @@ module Merged
       @content = card_data
       raise "No id #{card_data}" unless id.is_a?(String)
       @@all[self.id] = self
+    end
+
+    def template_style
+      @section.card_template
     end
 
     def destroy

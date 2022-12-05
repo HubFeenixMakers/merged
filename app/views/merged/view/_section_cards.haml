@@ -7,5 +7,5 @@
         = section.text
   - template = "merged/view/cards/" + section.card_template
   .grid{ column_option(section)}
-    - section.cards.each do |element|
-      = render( template , element: element)
+    - section.cards.each do |card|
+      = render( template , card: card)

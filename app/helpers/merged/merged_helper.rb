@@ -29,14 +29,32 @@ module Merged
       {class: "order-last"}
     end
 
+    def align_option(section)
+      return {} unless section.has_option?("align")
+      option = section.option('align')
+      puts "align #{option}"
+      # text-center , text-left , text-right , leave comment for tailwind
+      {class: "text-#{option}"}
+    end
+
     def background_option(section)
       return {} unless section.has_option?("background")
       option = section.option('background')
       puts "Background #{option}"
       return {} if option == "white"
       case option
-      when "blue"
+      when "light_blue"
         background = "bg-cyan-100"
+      when "solid_blue"
+        background = "bg-cyan-700 text-white"
+      when "solid_red"
+        background = "bg-orange-800 text-white"
+      when "solid_green"
+        background = "bg-green-700 text-white"
+      when "solid_petrol"
+        background = "bg-teal-700 text-white"
+      when "solid_indigo"
+        background = "bg-indigo-800 text-white"
       else
         background = "white"
       end
@@ -55,7 +73,7 @@ module Merged
       else # two
         columns = "grid-cols-1 md:grid-cols-2"
       end
-      {class: columns}
+      {class: columns + " gap-6"}
 
     end
     def button(text , url , color)
