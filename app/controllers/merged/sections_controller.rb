@@ -29,11 +29,10 @@ module Merged
       end
     end
 
-    def remove
-      page = @section.page
-      page.remove_section( @section )
-      page.save
-      redirect_to page_sections_url(page.name)
+    def destroy
+      @section.destroy()
+      @section.page.save
+      redirect_to page_sections_url(@section.page.name) , notice: "Section #{@section.index + 1} removed"
     end
 
     def set_image

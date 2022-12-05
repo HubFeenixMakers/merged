@@ -19,7 +19,8 @@
         %h3.mt-4.text-lg.font-bold Card #{index + 1}
         = blue_button( "Up" , card_move_url(card.id , dir: :up) )
         = blue_button( "Down" , card_move_url(card.id , dir: :down) )
-        = red_button(  "Delete" , card_remove_path(card.id) )
+        = form_tag( card_url(card.id) , {method: :delete  } ) do
+          =submit_button( "Delete" , true)
       .p-4
         %h3.mt-4.text-lg.font-bold Image
         = yellow_button("Change Image" , card_select_image_url(card.id) )

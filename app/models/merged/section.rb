@@ -103,9 +103,14 @@ module Merged
       end
     end
 
+    def destroy
+      @page.remove_section(self)
+    end
+
     def move_up
       @page.move_section_up(self)
     end
+
     def move_down
       @page.move_section_down(self)
     end

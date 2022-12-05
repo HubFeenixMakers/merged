@@ -24,6 +24,9 @@ module Merged
       @@all[self.id] = self
     end
 
+    def destroy
+      @section.remove_card( self)
+    end
 
     def update(key , value)
       return if key == "id" #not updating that

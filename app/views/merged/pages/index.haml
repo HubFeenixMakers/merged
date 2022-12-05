@@ -21,7 +21,7 @@
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
             = merged_page.first_template
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            = merged_page.content.length
+            = merged_page.sections.length
           %td.whitespace-nowrap.px-4.py-2
             %strong.rounded.bg-green-100.px-3.text-xs.font-medium.text-green-700{:class => "py-1.5"}
               = link_to 'Sections', page_sections_path(merged_page.name)
