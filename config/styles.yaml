@@ -25,6 +25,7 @@ sections:
     - button_link
     - button_text
     - order
+    - background
 - template: section_full_left
   header: Full image header, text left
   text: Large picture background with Header and text towards the left.
@@ -52,6 +53,11 @@ options:
       during scrolling
     values: on off
     default: off
+  - name: background
+    desciption:
+      Slight background color
+    values: white blue
+    default: white
   - name: order
     desciption:
       For two column layout determine order of sub-cards

@@ -78,7 +78,7 @@ module Merged
       options = params[:option]
       @section.option_definitions.each do |option|
         @section.set_option(option.name,  options[option.name])
-      end
+      end if options
       @section.save
       redirect_to :section
     end

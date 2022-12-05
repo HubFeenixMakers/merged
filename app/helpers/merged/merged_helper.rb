@@ -23,9 +23,23 @@ module Merged
 
     def order_option(section)
       return {} unless section.has_option?("order")
-      puts "Option #{section.option('order')}"
-      return {} if section.option("order") == "left"
-      {class: "order-first"}
+      puts "Order #{section.option('order')}"
+      return {} if section.option("order") == "right"
+      {class: "order-last"}
+    end
+
+    def background_option(section)
+      return {} unless section.has_option?("background")
+      option = section.option('background')
+      puts "Background #{option}"
+      return {} if option == "white"
+      case option
+      when "blue"
+        background = "bg-cyan-100"
+      else
+        background = "white"
+      end
+      {class: background}
     end
 
     def button(text , url , color)
