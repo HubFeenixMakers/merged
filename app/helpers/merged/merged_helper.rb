@@ -23,8 +23,9 @@ module Merged
 
     def order_option(section)
       return {} unless section.has_option?("order")
-      puts "Order #{section.option('order')}"
-      return {} if section.option("order") == "right"
+      option = section.option('order')
+      puts "Order #{option}"
+      return {} if option == "right"
       {class: "order-last"}
     end
 
@@ -42,6 +43,21 @@ module Merged
       {class: background}
     end
 
+    def column_option(section)
+      option = section.option('columns')
+      option = 2 if option.blank?
+      puts "Columns #{option}"
+      case option
+      when "3"
+        columns = "grid-cols-1 md:grid-cols-3"
+      when "4"
+        columns = "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+      else # two
+        columns = "grid-cols-1 md:grid-cols-2"
+      end
+      {class: columns}
+
+    end
     def button(text , url , color)
       link_to(url) do
         content_tag(:button , class: color + " " + button_classes ) do

@@ -8,6 +8,11 @@ sections:
   fields:
     - header
     - text
+  options:
+    - background
+    - columns
+    - button_link
+    - button_text
 - template: section_full_up
   header: Centered Header with text
   text: Full width header with centered headline and optional text
@@ -53,6 +58,11 @@ options:
       during scrolling
     values: on off
     default: off
+  - name: columns
+    desciption:
+      Number of columns in a layout that supports cards
+    values: 2 3 4
+    default: 3
   - name: background
     desciption:
       Slight background color
