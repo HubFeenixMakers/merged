@@ -13,7 +13,9 @@ module Merged
       button( text , url , "bg-green-500" )
     end
     def submit_button(text , danger = false )
-      clazz = danger ? "bg-blue-500  " : "bg-blue-500  " + button_classes
+      clazz = "bg-blue-500 " #full names, no tricks for tailwind
+      clazz = "bg-red-500 " if danger
+      clazz += button_classes
       content_tag(:button , class: clazz , type: :submit) do
         text
       end

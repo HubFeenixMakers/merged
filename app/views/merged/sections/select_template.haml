@@ -1,6 +1,8 @@
-%p#notice= notice
-
 .flex.flex-col.bg-white
+  .flex.items-center.justify-center.flex-1
+    .max-w-xl.px-4.py-8.mx-auto.text-center
+      %h1.text-3xl.font-bold.tracking-tight.text-gray-900
+        Page #{link_to @section.page.name, page_sections_url(@section.page.name), class: "underline"}
   .flex.items-center.justify-center.flex-1
     .max-w-xl.px-4.py-8.mx-auto.text-center
       %h1.text-3xl.font-bold.tracking-tight.text-gray-900
