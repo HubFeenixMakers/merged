@@ -11,22 +11,21 @@ module Merged
     def show
     end
 
-    # GET /merged/pages/new
-    def new
-    end
-
     # GET /merged/pages/1/edit
     def edit
     end
 
     # POST /merged/pages
     def create
-      @page = Merged::Page.new(page_params)
-
-      if @page.save
-        redirect_to @page, notice: "Page was successfully created."
+      name = params[:name]
+      message = Page.check_name(name)
+      if( message.nil?)
+        @page = Page.build_new(name)
+        redirect_to new_page_section_url(@page.name) , notice: "Page was successfully created."
       else
-        render :new, status: :unprocessable_entity
+        @pages = Page.all.values
+        flash.now.alert = message
+        render :index
       end
     end
 
@@ -41,8 +40,8 @@ module Merged
 
     # DELETE /merged/pages/1
     def destroy
-      @page.destroy
-      redirect_to page_url, notice: "Page was successfully destroyed."
+      Page.destroy(@page)
+      redirect_to pages_url, notice: "Page #{@page.name} was removed."
     end
 
     private

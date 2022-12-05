@@ -34,6 +34,23 @@ module Merged
       @@all[@name] = self
     end
 
+    def self.check_name(name)
+      return "only alphanumeric, not #{name}" if name.match(/\A[a-zA-Z0-9]*\z/).nil?
+      nil
+    end
+    def self.build_new(name)
+      raise "only alphanumeric, not #{name}" unless check_name(name).nil?
+      name = name + ".yaml"
+      fullname = Rails.root.join(Page.cms_root , name )
+      File.write(fullname , "--- []\n")
+      Page.new(name)
+    end
+
+    def self.destroy( page )
+      @@all.delete(page.name)
+      File.delete(Rails.root.join(Page.cms_root , page.name + ".yaml"))
+    end
+
     def new_section(section_template)
       section_template = "section_spacer" if section_template.blank?
       section_data = Section.build_data(section_template)
@@ -54,6 +71,7 @@ module Merged
     end
 
     def first_template
+      return "none" unless @content[0]
       @content[0]["template"]
     end
 
