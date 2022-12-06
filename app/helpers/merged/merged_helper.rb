@@ -67,13 +67,13 @@ module Merged
       puts "Columns #{option}"
       case option
       when "3"
-        columns = "grid-cols-1 md:grid-cols-3"
+        columns = "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
       when "4"
         columns = "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
       else # two
         columns = "grid-cols-1 md:grid-cols-2"
       end
-      {class: columns + " gap-6"}
+      {class: columns }
 
     end
     def button(text , url , color)
