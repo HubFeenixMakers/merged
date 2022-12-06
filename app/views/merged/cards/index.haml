@@ -16,7 +16,7 @@
   - @section.cards.each_with_index do |card , index|
     .relative.block.border.border-gray-100
       .p-4
-        %h3.mt-4.text-lg.font-bold Card #{index + 1}
+        %h3.mt-4.text-lg.font-bold Card #{index + 1}:#{card.header}
         = blue_button( "Up" , card_move_url(card.id , dir: :up) )
         = blue_button( "Down" , card_move_url(card.id , dir: :down) )
         = form_tag( card_url(card.id) , {method: :delete  } ) do

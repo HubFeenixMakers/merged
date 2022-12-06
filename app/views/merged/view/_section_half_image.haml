@@ -2,11 +2,17 @@
   %div{ order_option(section)}
     = image_for( section , "h-56 w-full object-cover sm:h-full")
   .p-8.md:p-12.lg:px-16.lg:py-24{ background_option(section)}
-    .mx-auto.max-w-xl.text-center.sm:text-left
-      %h2.text-2xl.font-bold.text-gray-900.md:text-3xl
+    .mx-auto.max-w-xl{options(section , :align , :color)}
+      %h2.mt-12.text-2xl.font-bold.md:text-4xl
         = section.header
-      %p.text-gray-500.mt-4.md:block
+      -if section.has_option?("subheader")
+        %h4.text-xl.mt-10.md:text-2xl
+          = section.option("subheader")
+      %p.mt-8.md:block
         = section.text
-      .mt-4.md:mt-8
+      -if section.has_option?("text")
+        %p.mt-8.md:block
+          = section.option("text")
+      .mt-8.md:mt-8
         -if section.has_option?("button_text")
           = render 'merged/view/elements/button' , section: section

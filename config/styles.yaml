@@ -11,6 +11,8 @@ sections:
   options:
     - background
     - columns
+    - color
+    - align
     - button_link
     - button_text
 - template: section_full_up
@@ -27,10 +29,14 @@ sections:
     - header
     - text
   options:
-    - button_link
-    - button_text
     - order
     - background
+    - color
+    - subheader
+    - text
+    - align
+    - button_link
+    - button_text
 - template: section_full_left
   header: Full image header, text left
   text: Large picture background with Header and text towards the left.
@@ -59,7 +65,9 @@ cards:
     - text
   options:
     - background
+    - color
     - align
+    - subheader
 - template: card_normal_round
   header: Standard card with square image
   text: Image, header, text, normal stuff
@@ -82,8 +90,14 @@ options:
     desciption:
       Background colors. Light colors stay with black text.
       Solid colors invert to white text.
-    values: white light_blue solid_blue solid_red solid_indigo
-    default: white
+    values: white none light_blue light_grey light_orange solid_blue solid_red solid_indigo
+    default: none
+  - name: color
+    desciption:
+      Text colors. Don't use with solid background colors.
+      Same colors as background available. Default none, meas as parent.
+    values: none white light_blue light_grey solid_black solid_blue solid_red solid_indigo
+    default: none
   - name: align
     desciption:
       Align text of children. Normal Word meaning
@@ -93,11 +107,22 @@ options:
     desciption:
       For two column layout determine order of sub-cards
       Values of left and right usually refer to where the image is
+      For cards it can also mean up and down
     values: left right
     default: left
   - name: button_text
     desciption:
       Text for an optional button. Must also set button_link
+    values:
+    default:
+  - name: subheader
+    desciption:
+      Smaller header between Header and text
+    values:
+    default:
+  - name: text
+    desciption:
+      Second text. Just a second paragraph
     values:
     default:
   - name: button_link

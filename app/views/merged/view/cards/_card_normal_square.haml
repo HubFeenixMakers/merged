@@ -1,5 +1,7 @@
 %div.m-10{background_option(card)}
   = image_for( card , "h-96 w-full object-cover")
-  %div.m-4{align_option(card)}
-    %h3.mt-4.p-4.text-xl.font-bold= card.header
+  %div.m-6{options(card , :align , :color)}
+    %h3.p-4.text-2xl.font-bold= card.header
+    -if card.has_option?("subheader")
+      %h4.p-4.text-xl= card.option("subheader")
     %p.mt-2.p-4= card.text
