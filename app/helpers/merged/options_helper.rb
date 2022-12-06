@@ -43,6 +43,13 @@ module Merged
       {class: color_for(option) }
     end
 
+    def shade_option(section)
+      return {} unless section.has_option?("shade_color")
+      option = section.option('shade_color')
+      puts "Shade color #{option} , #{shade_for(option)}"
+      {class: shade_for(option) }
+    end
+
     def column_option(section)
       option = section.option('columns')
       option = 2 if option.blank?
@@ -85,6 +92,18 @@ module Merged
         "solid_petrol" => "text-teal-700" ,
         "solid_indigo" => "text-indigo-800" ,
         "solid_black" => "text-slate-900" ,
+      }[option] || ""
+    end
+    # need full color names for tailwind to pick it up
+
+    def shade_for( option )
+      { "white_25" => "bg-white/25",
+        "none" => "",
+        "black_25" => "bg-black/25" ,
+        "light_blue_25" => "bg-cyan-100/25" ,
+        "light_red_25" => "bg-orange-300/25" ,
+        "solid_blue_25" => "bg-cyan-700/25" ,
+        "solid_red_25" => "bg-orange-800/25" ,
       }[option] || ""
     end
   end

@@ -12,15 +12,17 @@ sections:
     - background
     - columns
     - color
-    - align
-    - button_link
-    - button_text
 - template: section_full_up
   header: Centered Header with text
   text: Full width header with centered headline and optional text
   fields:
     - header
     - text
+  options:
+    - background
+    - color
+    - button_link
+    - button_text
 - template: section_half_image
   header: Split section with image left or right
   text: Image on one side, header and text on the other.
@@ -37,15 +39,20 @@ sections:
     - align
     - button_link
     - button_text
-- template: section_full_left
-  header: Full image header, text left
-  text: Large picture background with Header and text towards the left.
-    Text is slightly shaded for readability
+- template: section_full_image
+  header: Full image header with adjustable text
+  text: Large picture background with Header and text towards
+    adjustable alignment (left, center, right).
+    Text may be slightly shaded for readability,
+    text color can be changed too
   fields:
     - header
     - text
   options:
     - fixed
+    - color
+    - align
+    - shade_color
 - template: section_spacer
   header: Spacer
   text: Just for extra padding
@@ -97,6 +104,12 @@ options:
       Text colors. Don't use with solid background colors.
       Same colors as background available. Default none, meas as parent.
     values: none white light_blue light_grey solid_black solid_blue solid_red solid_indigo
+    default: none
+  - name: shade_color
+    desciption:
+      Color of transparent shaded area.
+      The number means transparency.
+    values: none black_25 white_25 light_red_25 light_blue_25 solid_blue_25 solid_red_25
     default: none
   - name: align
     desciption:

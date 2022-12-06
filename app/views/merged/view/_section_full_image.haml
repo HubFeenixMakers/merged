@@ -1,0 +1,22 @@
+%section.overflow-hidden.bg-cover.bg-center.bg-no-repeat{bg(section)}
+  .px-4.py-8.sm:px-6.lg:px-8
+    .grid.grid-cols-1.md:grid-cols-3
+      -if(section.option("align") == "center")
+        %div
+      -if(section.option("align") == "right")
+        %div
+        %div
+      .p-8.md:p-12.lg:px-16.lg:py-24{shade_option(section)}
+        .mx-auto.max-w-xl{ options(section , :color)}
+          %h2.text-2xl.font-bold.md:text-5xl
+            = section.header
+          %p.hidden.sm:mt-4.sm:block.text-2xl
+            = section.text
+          .mt-4.md:mt-8
+            -if section.has_option?("button_text")
+              = render 'merged/view/elements/button' , section: section
+      -if(section.option("align") == "center")
+        %div
+      -if(section.option("align") == "left")
+        %div
+        %div

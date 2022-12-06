@@ -1,7 +1,7 @@
-.flex.flex-col.m-20.bg-white
+.flex.flex-col.m-20{ options(section , :background , :color)}
   .flex.items-center.justify-center.flex-1
-    .max-w-xl.px-4.py-8.mx-auto.text-center
-      %h1.text-2xl.font-bold.tracking-tight.text-gray-900.sm:text-4xl
+    .max-w-prose.px-4.py-16.mx-auto.text-center
+      %h1.text-2xl.font-bold.tracking-tight.sm:text-4xl
         = section.header
-      %p.mt-4.text-gray-500
+      %p.mt-4.text-lg.pt-10
         = section.text

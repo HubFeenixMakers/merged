@@ -54,7 +54,7 @@ module Merged
     end
 
     def self.load
-      if @@sections.length == 0
+      if @@sections.length == 0 or Rails.env.development?
         all = YAML.load_file(Engine.root.join("config/styles.yaml"))
         all["sections"].each do |content|
           section = Style.new(content)

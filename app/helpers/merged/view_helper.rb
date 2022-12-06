@@ -8,7 +8,7 @@ module Merged
 
     # background image as inline style
     def bg(section)
-      return "" if section.image.blank?
+      return {class: ""} if section.image.blank?
       #puts "--#{Image.image_root}/#{section.image}--"
       img = asset_url( "#{Image.image_root}/#{section.image}" )
       style = {"style" => "background-image: url('#{img}');" }
