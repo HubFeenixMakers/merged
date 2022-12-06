@@ -7,16 +7,17 @@ module Merged
     end
 
     # background image as inline style
-    def bg(section)
-      return {class: ""} if section.image.blank?
+    def bg(section , clazz = "")
+      attributes = {class: clazz}
+      return attributes if section.image.blank?
       #puts "--#{Image.image_root}/#{section.image}--"
       img = asset_url( "#{Image.image_root}/#{section.image}" )
-      style = {"style" => "background-image: url('#{img}');" }
+      attributes["style"] = "background-image: url('#{img}');"
       if(section.option("fixed") == "on")
-        style[:class] = "bg-fixed"
+        attributes[:class] = attributes[:class] + " bg-fixed"
         puts "Adding fixed"
       end
-      style
+      attributes
     end
 
     # works for with sections and cards that respond to .image

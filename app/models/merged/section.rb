@@ -90,6 +90,16 @@ module Merged
       @page.move_section_down(self)
     end
 
+    def previous_section
+      return nil if index == 0
+      page.sections[index - 1]
+    end
+
+    def next_section
+      return nil if index == (page.sections.length - 1)
+      page.sections[index + 1]
+    end
+
     def move_card_up(card)
       return if cards.length == 1
       return if card.index == 0

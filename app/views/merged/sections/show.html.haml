@@ -8,13 +8,17 @@
         Page #{link_to @section.page.name, page_sections_url(@section.page.name), class: "underline"}
   .flex.items-center.justify-center.flex-1
     %h3.text-xl.font-bold.tracking-tight.text-gray-900
-      Section #{@section.index + 1}
-
+      Section #{@section.index + 1} / #{@section.page.sections.length}
+      - unless @section.index == 0
+        =link_to "(prev)" , section_url(@section.previous_section.id) 
+      - unless @section.index == (@section.page.sections.length - 1)
+        =link_to "(next)" , section_url(@section.next_section.id)
 .grid.grid-cols-3.gap-2.m-8
   .relative.block.border.border-gray-100
     %h3.mt-4.text-lg.font-bold Template  #{@section.template}
     = section_preview(@section , class: "w-full object-contain p-3")
     = yellow_button( "Change Template" , section_select_template_url(@section.id))
+    = green_button( "New Section" , new_page_section_url(@section.page.name) )
 
   .relative.block.border.border-gray-100
     = section_form( class: "mx-auto mt-8 mb-0 max-w space-y-4") do

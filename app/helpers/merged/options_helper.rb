@@ -11,12 +11,13 @@ module Merged
       all
     end
 
-    def order_option(section)
-      return {} unless section.has_option?("order")
-      option = section.option('order')
-      puts "Order #{option}"
-      return {} if option == "left"
-      {class: "order-last"}
+    def order_option(section , clazz = "")
+      if section.has_option?("order")
+        option = section.option('order')
+        puts "Order #{option}"
+        clazz += " order-last" if option == "right"
+      end
+      {class: clazz}
     end
 
     def align_option(section)
@@ -34,6 +35,13 @@ module Merged
       background = bg_for(option)
       background += " text-white" if option.include?("solid")
       {class: background}
+    end
+
+    def margin_option(section)
+      return {} unless section.has_option?("margin")
+      option = section.option('margin')
+      puts "Margin #{option}"
+      {class: margin_for(option)}
     end
 
     def color_option(section)
@@ -71,7 +79,7 @@ module Merged
       { "white" =>  "bg-white" ,
         "none" =>  "" ,
         "light_blue" => "bg-cyan-100" ,
-        "light_grey" => "bg-grey-100" ,
+        "light_gray" => "bg-gray-100" ,
         "light_orange" => "bg-orange-50" ,
         "solid_blue" => "bg-cyan-700" ,
         "solid_red" => "bg-orange-800" ,
@@ -79,6 +87,13 @@ module Merged
         "solid_petrol" => "bg-teal-700" ,
         "solid_indigo" => "bg-indigo-800" ,
         "solid_black" => "bg-slate-900" ,
+      }[option] || ""
+    end
+    # need full margin names for tailwind to pick it up
+    def margin_for( option )
+      { "0" =>  "m-0" ,
+        "none" =>  "" ,
+        "20" => "m-20" ,
       }[option] || ""
     end
     # need full color names for tailwind to pick it up

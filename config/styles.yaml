@@ -21,6 +21,7 @@ sections:
   options:
     - background
     - color
+    - margin
     - button_link
     - button_text
 - template: section_half_image
@@ -41,10 +42,10 @@ sections:
     - button_text
 - template: section_full_image
   header: Full image header with adjustable text
-  text: Large picture background with Header and text towards
-    adjustable alignment (left, center, right).
+  text: Large picture background with Header and text on top.
+    Adjustable alignment (left, center, right).
     Text may be slightly shaded for readability,
-    text color can be changed too
+    text color can be changed too.
   fields:
     - header
     - text
@@ -53,6 +54,19 @@ sections:
     - color
     - align
     - shade_color
+- template: section_large_image
+  header: Two third image header with adjustable text
+  text: Large picture background with Header and text offset.
+    Adjustable alignment (left, center, right).
+    Text section may have background color.
+    Text color can be changed too
+  fields:
+    - header
+    - text
+  options:
+    - order
+    - color
+    - background
 - template: section_spacer
   header: Spacer
   text: Just for extra padding
@@ -97,13 +111,13 @@ options:
     desciption:
       Background colors. Light colors stay with black text.
       Solid colors invert to white text.
-    values: white none light_blue light_grey light_orange solid_blue solid_red solid_indigo
+    values: white none light_blue light_gray light_orange solid_blue solid_red solid_indigo
     default: none
   - name: color
     desciption:
       Text colors. Don't use with solid background colors.
       Same colors as background available. Default none, meas as parent.
-    values: none white light_blue light_grey solid_black solid_blue solid_red solid_indigo
+    values: none white light_blue light_gray solid_black solid_blue solid_red solid_indigo
     default: none
   - name: shade_color
     desciption:
@@ -123,6 +137,12 @@ options:
       For cards it can also mean up and down
     values: left right
     default: left
+  - name: margin
+    desciption:
+      Most sections have standard margin of 20.
+      This option makes it possible to remove that
+    values: 0 20
+    default: 20
   - name: button_text
     desciption:
       Text for an optional button. Must also set button_link
