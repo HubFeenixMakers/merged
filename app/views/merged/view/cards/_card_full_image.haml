@@ -1,7 +1,9 @@
-.group.m-8.overflow-hidden.relative.flex.h-96.items-end.bg-black
+.group.m-8.overflow-hidden.relative.flex.h-96.items-end
   = image_for( card , "absolute inset-0 h-full w-full object-cover hover:scale-110 ease-in duration-700")
-  .relative.w-full.bg-cyan-600.m-2.p-4.text-center.tracking-widest.text-white.transition-colors.group-hover:bg-cyan-700{:class => "sm:w-1/2"}
-    %h3.text-lg.uppercase
-      = card.header
-    %p.mt-1.text-xs.font-medium
-      = card.text
+  .relative.w-full.m-2.p-4.tracking-widest{align_option(card ,"sm:w-1/2")}
+    %div.transition-colors.group-hover:bg-black.group-hover:text-white{options(card , :align , :color , :background)}
+      .relative.w-full.m-2.p-4
+        %h3.text-lg
+          = card.header
+        %p.mt-1.text-xs.font-medium
+          = card.text

@@ -13,3 +13,4 @@
     .relative.block.border.border-gray-100
       = link_to( card_set_image_path( image: name)) do
         =image_tag("#{image_root}/#{name}" , class: "h-56 w-full object-contain lg:h-72")
+        = image.name

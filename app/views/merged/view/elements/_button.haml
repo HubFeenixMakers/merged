@@ -1,2 +1,2 @@
-- unless section.has_option?("button_text") and section.has_option?("button_link")
-  = blue_button( section.button_text , section.button_link)
+- if section.has_option?("button_text") and section.has_option?("button_link")
+  = blue_button( section.option("button_text") , section.option("button_link"))
