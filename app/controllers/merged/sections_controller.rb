@@ -23,9 +23,9 @@ module Merged
       new_section = page.new_section(template)
       page.save
       if(template.blank?) # new
-        redirect_to section_select_template_url(new_section.id)
+        redirect_to section_select_template_url(new_section.id), notice: "New section created"
       else # copy
-        redirect_to section_url(new_section.id)
+        redirect_to section_url(new_section.id), notice: "Section copied"
       end
     end
 
@@ -79,7 +79,7 @@ module Merged
         @section.set_option(option.name,  options[option.name])
       end if options
       @section.save
-      redirect_to :section
+      redirect_to :section , notice: "Update ok"
     end
 
     private

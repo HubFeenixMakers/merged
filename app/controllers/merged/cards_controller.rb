@@ -23,13 +23,13 @@ module Merged
         @card.move_down
       end
       @card.save
-      redirect_to section_cards_url(@card.section.id)
+      redirect_to section_cards_url(@card.section.id),notice: "Card moved"
     end
 
     def new
       @section = Section.find(params[:section_id])
       new_card = @section.new_card
-      redirect_to section_cards_url(@section.id)
+      redirect_to section_cards_url(@section.id) , notice: "Card created"
     end
 
     def destroy
@@ -50,7 +50,7 @@ module Merged
         @card.set_option(option.name,  options[option.name])
       end if options
       @card.save
-      redirect_to section_cards_url(@card.section.id)
+      redirect_to section_cards_url(@card.section.id) , notice: "Update ok"
     end
 
     private
