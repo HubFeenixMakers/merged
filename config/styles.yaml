@@ -22,6 +22,7 @@ sections:
     - background
     - color
     - margin
+    - subheader
     - button_link
     - button_text
 - template: section_half_image
@@ -64,6 +65,8 @@ sections:
     - header
     - text
   options:
+    - subheader
+    - margin
     - order
     - color
     - background

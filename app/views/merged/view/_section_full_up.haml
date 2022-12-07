@@ -1,7 +1,10 @@
 .flex.flex-col{ options(section , :background , :color , :margin)}
   .flex.items-center.justify-center.flex-1
-    .max-w-prose.px-4.py-16.mx-auto.text-center
+    .max-w-prose.px-4.py-16.mx-auto.text-center{options(section , :align , :color)}
       %h1.text-2xl.font-bold.tracking-tight.sm:text-4xl
         = section.header
+      -if section.has_option?("subheader")
+        %h4.text-xl.mt-10.md:text-2xl
+          = section.option("subheader")
       %p.mt-4.text-lg.pt-10
-        = section.text
+        = section.text.html_safe
