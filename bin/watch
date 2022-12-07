@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+# Since tailwind does not install into the engine, this will
+# watch and recompile during development
+# Note: i have merged in a dir next to the app i develop. and run this in a seperate window
+# PS, not minified as appicaltion will do that
+# tailwindcss executable must exist (by bundling tailwindcss-rails eg)
+
+tailwindcss -i app/assets/stylesheets/merged.tailwind.css \
+            -o app/assets/stylesheets/merged/merged.css \
+            -c config/tailwind.config.js \
+            -w

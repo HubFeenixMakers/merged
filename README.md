@@ -106,6 +106,11 @@ If Merged served the root:
 root "merged/view#view" , id: 'index'
 ```
 
+Add to your stylesheet to the asset pipeline, last. Merged switches tailwind preflight off and assumes you use tailwind in your app or otherwise reset.
+```application.css
+  *= require merged/merged.css
+```
+
 ## Contributing
 Ask first.
 
