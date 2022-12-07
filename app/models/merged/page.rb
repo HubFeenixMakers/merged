@@ -19,19 +19,28 @@ module Merged
       end
     end
 
-    attr_reader :name , :content , :sections
+    attr_reader :name , :content , :sections , :size , :updated_at
 
     alias :id  :name
 
-    def initialize( file_name )
-      @name = file_name.split(".").first
-      @content = YAML.load_file(Rails.root.join(Page.cms_root , file_name))
+    def initialize( f_name )
+      @name = f_name.split(".").first
+      @content = YAML.load_file( filename )
       @sections = []
       @content.each_with_index do |section_data, index|
         section = Section.new(self , index,  section_data)
         @sections << section
       end
       @@all[@name] = self
+      update_size
+    end
+
+    def filename
+      Rails.root.join(Page.cms_root , @name + ".yaml")
+    end
+    def update_size
+      @size = File.size(filename)
+      @updated_at = File.ctime(filename)
     end
 
     def self.check_name(name)

@@ -3,7 +3,7 @@ module Merged
   #and a method template_style
   module Optioned
     def has_option?(option)
-      options.has_key?(option)
+      options.has_key?(option) and !options[option].blank?
     end
 
     def option_definitions

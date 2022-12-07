@@ -7,21 +7,27 @@
             Name
         %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
           .flex.items-center.gap-2
-            First Template
+            Sections
         %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
           .flex.items-center.gap-2
-            Size (Sections)
+            Bytes
         %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-          Status
+          .flex.items-center.gap-2
+            Updated
+        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
+          .flex.items-center.gap-2
+          Actions
     %tbody.divide-y.divide-gray-200
       - @pages.each do |merged_page|
         %tr
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
             = link_to merged_page.name , page_sections_path(merged_page.name)
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            = merged_page.first_template
-          %td.whitespace-nowrap.px-4.py-2.text-gray-700
             = merged_page.sections.length
+          %td.whitespace-nowrap.px-4.py-2.text-gray-700
+            = merged_page.size
+          %td.whitespace-nowrap.px-4.py-2.text-gray-700
+            = distance_of_time_in_words_to_now(merged_page.updated_at)
           %td.whitespace-nowrap.px-4.py-2
             %strong.rounded.bg-green-100.px-3.text-xs.font-medium.text-green-700{:class => "py-1.5"}
               = link_to 'Sections', page_sections_path(merged_page.name)
