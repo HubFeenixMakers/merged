@@ -313,6 +313,10 @@ select {
   margin: 0.5rem;
 }
 
+.m-16 {
+  margin: 4rem;
+}
+
 .m-10 {
   margin: 2.5rem;
 }
@@ -406,12 +410,8 @@ select {
   height: 4rem;
 }
 
-.h-8 {
-  height: 2rem;
-}
-
-.h-20 {
-  height: 5rem;
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-5 {
@@ -548,6 +548,10 @@ select {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-16 {
+  gap: 4rem;
 }
 
 .gap-1 {

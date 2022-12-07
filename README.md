@@ -106,10 +106,24 @@ If Merged served the root:
 root "merged/view#view" , id: 'index'
 ```
 
-Add to your stylesheet to the asset pipeline, last. Merged switches tailwind preflight off and assumes you use tailwind in your app or otherwise reset.
-```application.css
-  *= require merged/merged.css
+Include merged stylesheet to your asset
+pipeline. Merged switches tailwind preflight off and assumes you
+use tailwind in your app or otherwise reset.
+
 ```
+*= require merged/merged
+```
+
+This also means means you should have the tailwind include 
+tag before the  application in your layout.
+
+```
+= stylesheet_link_tag "tailwind" , "inter-font", "data-turbo-track": "reload"
+= stylesheet_link_tag "application"
+```
+
+If you use tailwind with the basic install, you must change the
+order of stylesheet loaded in your application layout
 
 ## Contributing
 Ask first.
