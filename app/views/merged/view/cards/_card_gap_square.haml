@@ -1,0 +1,8 @@
+.grid.grid-cols-1.gap-16.m-16
+  %div{ order_option(card)}
+    = image_for( card , "h-70 w-full object-cover grid")
+  %div.grid.h-70{options(card , :align , :color , :background )}
+    %h3.p-4.mt-10.text-3xl.font-bold= card.header
+    -if card.has_option?("subheader")
+      %h4.p-4.text-xl= card.option("subheader")
+    %p.m-10= card.text

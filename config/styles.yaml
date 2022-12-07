@@ -85,6 +85,19 @@ cards:
     - background
     - color
     - align
+- template: card_gap_square
+  header: Narrow card with up down section
+  text: Smaller image, large margins, possible subheader
+    Order turns it upside down, image bottom
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - color
+    - order
+    - align
+    - subheader
 - template: card_normal_square
   header: Standard card with square image
   text: Image, header, text, normal stuff

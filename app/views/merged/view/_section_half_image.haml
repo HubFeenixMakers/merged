@@ -13,6 +13,6 @@
       -if section.has_option?("text")
         %p.mt-8.md:block
           = section.option("text")
-      .mt-8.md:mt-8
-        -if section.has_option?("button_text")
+      -if section.has_option?("button_text")
+        .mt-8.md:mt-8
           = render 'merged/view/elements/button' , section: section
