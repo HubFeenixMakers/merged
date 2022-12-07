@@ -27,7 +27,7 @@
       %h3.mt-4.text-lg.font-bold Header
       %p= section.header
       %h3.mt-4.text-lg.font-bold Text
-      %p= section.text
+      %p= section.text[0..100] + " ..."
     .relative.block.border.border-gray-100.p-4
       - if section.cards?
         %h3.mt-4.text-lg.font-bold #{section.content['cards'].length} Cards
