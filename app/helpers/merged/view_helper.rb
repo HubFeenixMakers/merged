@@ -1,6 +1,7 @@
 module Merged
   module ViewHelper
     include OptionsHelper
+    include MergedHelper
     # section should be hash with at least 'template' key
     def find_template(section)
       "merged/view/" + section.template
@@ -32,9 +33,6 @@ module Merged
           text
         end
       end
-    end
-    def button_classes
-      "ml-3 inline-block rounded-lg px-4 py-3 text-md font-medium text-white"
     end
 
   end

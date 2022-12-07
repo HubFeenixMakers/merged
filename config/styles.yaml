@@ -78,6 +78,10 @@ cards:
   fields:
     - header
     - text
+  options:
+    - background
+    - color
+    - align
 - template: card_normal_square
   header: Standard card with square image
   text: Image, header, text, normal stuff
@@ -117,7 +121,7 @@ options:
     desciption:
       Text colors. Don't use with solid background colors.
       Same colors as background available. Default none, meas as parent.
-    values: none white light_blue light_gray solid_black solid_blue solid_red solid_indigo
+    values: none white black light_blue light_gray solid_black solid_blue solid_red solid_indigo
     default: none
   - name: shade_color
     desciption:
