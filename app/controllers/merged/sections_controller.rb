@@ -11,7 +11,7 @@ module Merged
       @images = Image.all
     end
     def select_template
-      @sections = Style.sections
+      @sections = SectionStyle.sections
     end
     def select_card_template
       @cards = Style.cards

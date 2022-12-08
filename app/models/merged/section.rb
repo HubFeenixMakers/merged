@@ -147,7 +147,7 @@ module Merged
 
     def self.build_data(template)
       data = { "template" => template , "id" => SecureRandom.hex(10) }
-      style = Style.sections[ template ]
+      style = SectionStyle.sections[ template ]
       style.fields.each do |key|
         data[key] = key.upcase
       end unless style.fields.blank?

@@ -11,7 +11,7 @@
           %h2.text-2xl.font-bold.md:text-5xl
             = section.header
           %p.hidden.sm:mt-4.sm:block.text-2xl
-            = section.text
+            = markdown(section)
           .mt-4.md:mt-8
             -if section.has_option?("button_text")
               = render 'merged/view/elements/button' , section: section

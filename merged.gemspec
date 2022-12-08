@@ -21,4 +21,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", ">= 7.0.4"
   spec.add_dependency "haml-rails"
   spec.add_dependency "git"
+  spec.add_dependency "redcarpet"
 end

@@ -8,4 +8,4 @@
         -if section.has_option?("subheader")
           %h4.text-xl.mt-10.md:text-2xl
             = section.option("subheader")
-        %p.mt-3= section.text
+        %p.mt-3= markdown(section)
