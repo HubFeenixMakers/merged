@@ -1,1 +1,1 @@
-//= link ../stylesheets/merged .css
+//= link_directory ../stylesheets/merged .css

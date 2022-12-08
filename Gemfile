@@ -8,8 +8,12 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'rspec-rails' , require: "rspec-rails"
 gem 'haml-rails' , require: "haml-rails"
 gem "tailwindcss-rails"
+gem "importmap-rails"
+gem "sprockets-rails"
 
 group :development, :test do
+  gem "capybara"
+  gem 'guard-rspec', require: false
 end
 
 # Start debugger with binding.b [https://github.com/ruby/debug]

@@ -60,7 +60,7 @@ module Merged
     end
 
     def template_style
-      Style.cards[ section.card_template ]
+      CardStyle.cards[ section.card_template ]
     end
     def allowed_fields
       template_style.fields
@@ -68,7 +68,7 @@ module Merged
 
     def self.build_data(card_template)
       data = { "id" => SecureRandom.hex(10) }
-      Style.cards[ card_template ].fields.each do |key|
+      CardStyle.cards[ card_template ].fields.each do |key|
         data[key] = key.upcase
       end
       data

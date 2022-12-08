@@ -27,9 +27,9 @@
       %h3.mt-4.text-lg.font-bold Header
       %p= section.header
       %h3.mt-4.text-lg.font-bold Text
-      %p= section.text[0..100] + " ..."
+      %p= section.text[0..100] + " ..." if section.text
     .relative.block.border.border-gray-100.p-4
-      - if section.cards?
+      - if section.has_cards?
         %h3.mt-4.text-lg.font-bold #{section.content['cards'].length} Cards
         =link_to section_cards_url(section.id) do
           =card_preview(section , class: "w-full object-contain")
@@ -37,7 +37,7 @@
         = link_to(section_select_image_url(section.id)) do
           %h3.mt-4.text-lg.font-bold Image
           -if section.image
-            = image_tag "cms/" + section.image
+            = image_tag( "cms/" + section.image , class: "h-40")
           -else
             %p No image
     .relative.block.border.border-gray-100.p-4

@@ -40,7 +40,7 @@
     = red_button( "Remove image", section_set_image_path( @section.id  , image: ""))
 
 .grid.grid-cols-3.gap-2.m-8
-  - if( @section.cards? )
+  - if( @section.has_cards? )
     .relative.block.border.border-gray-100
       %h3.mt-4.text-lg.font-bold Card Template #{@section.card_template}
       =card_preview(@section , class: "w-full object-contain")

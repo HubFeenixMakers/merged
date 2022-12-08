@@ -1,6 +1,8 @@
 module Merged
   class Option
 
+    @@options = {}
+
     attr_reader :name , :default , :description
 
     def initialize(options)
@@ -28,6 +30,10 @@ module Merged
     def values
       return [] unless has_values?
       @values.split(" ")
+    end
+
+    def self.options
+      @@options
     end
 
     def self.load(yaml)

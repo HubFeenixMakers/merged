@@ -49,7 +49,7 @@ module Merged
     end
 
     def template_style
-      Style.sections[ template ]
+      SectionStyle.sections[ template ]
     end
 
     def allowed_fields
