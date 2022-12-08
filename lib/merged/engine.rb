@@ -9,8 +9,7 @@ module Merged
 
     initializer "after_initialize" do |app|
       ActiveSupport::Reloader.to_prepare do
-        Merged::Page.load_pages()
-        Image.load_images()
+        Merged.load_data
       end
     end
 

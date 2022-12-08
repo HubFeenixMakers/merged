@@ -1,0 +1,75 @@
+---
+- template: section_cards
+  header: Two or more column layout with header
+  text: A header with text and two column layout. Columns have a little gap, so
+    background color comes through. 2,3 or 4 columns. Cards freely choosable
+  cards: true
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - columns
+    - color
+- template: section_full_up
+  header: Centered Header with text
+  text: Full width header with centered headline and optional text
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - color
+    - margin
+    - subheader
+    - button_link
+    - button_text
+- template: section_half_image
+  header: Split section with image left or right
+  text: Image on one side, header and text on the other.
+    Order depends on order option. Optional button.
+  fields:
+    - header
+    - text
+  options:
+    - order
+    - background
+    - color
+    - subheader
+    - text
+    - align
+    - button_link
+    - button_text
+- template: section_full_image
+  header: Full image header with adjustable text
+  text: Large picture background with Header and text on top.
+    Adjustable alignment (left, center, right).
+    Text may be slightly shaded for readability,
+    text color can be changed too.
+  fields:
+    - header
+    - text
+  options:
+    - fixed
+    - color
+    - align
+    - shade_color
+- template: section_large_image
+  header: Two third image header with adjustable text
+  text: Large picture background with Header and text offset.
+    Adjustable alignment (left, center, right).
+    Text section may have background color.
+    Text color can be changed too
+  fields:
+    - header
+    - text
+  options:
+    - subheader
+    - margin
+    - order
+    - color
+    - background
+- template: section_spacer
+  header: Spacer
+  text: Just for extra padding
+  fields:

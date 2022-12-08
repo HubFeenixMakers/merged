@@ -35,7 +35,7 @@ module Merged
     def set_template(new_template)
       @content["template"] = new_template
       new_style = template_style
-      if(new_style.cards?)
+      if(new_style.has_cards?)
         unless card_template
           @content["card_template"] = Style.cards.keys.first
           @content["cards"] = []
@@ -56,7 +56,7 @@ module Merged
       template_style.fields
     end
 
-    def cards?
+    def has_cards?
       ! card_template.blank?
     end
 
@@ -151,7 +151,7 @@ module Merged
       style.fields.each do |key|
         data[key] = key.upcase
       end unless style.fields.blank?
-      if(style.cards?)
+      if(style.has_cards?)
         data["cards"] = []
         data["card_template"] = Style.cards.keys.first
       end

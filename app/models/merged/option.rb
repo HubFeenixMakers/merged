@@ -8,9 +8,11 @@ module Merged
       @default = options["default"]
       @description = options["description"]
       @values = options["values"]
+      @type = options["type"]
     end
 
     def type
+      return @type unless @type.blank?
       if has_values?
         "select"
       else
@@ -27,5 +29,13 @@ module Merged
       return [] unless has_values?
       @values.split(" ")
     end
+
+    def self.load(yaml)
+      yaml.each do |content|
+        option = Option.new(content)
+        @@options[option.name] = option
+      end
+    end
+
   end
 end

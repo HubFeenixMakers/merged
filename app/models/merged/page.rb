@@ -111,8 +111,8 @@ module Merged
     end
 
     def save
-      file_name = Rails.root.join(Page.cms_root , name + ".yaml")
-      File.write( file_name , @content.to_yaml)
+      File.write( filename , @content.to_yaml)
+      update_size
     end
 
     def self.find(name)
