@@ -111,11 +111,19 @@ pipeline).
 
 ```
 = stylesheet_link_tag "application"
-= stylesheet_link_tag "tailwind" , "inter-font", "data-turbo-track": "reload"
 = stylesheet_link_tag "merged/merged"
+= stylesheet_link_tag "tailwind" , "inter-font", "data-turbo-track": "reload"
 ```
 
-If you use tailwind with the basic install, add it after tailwind
+If you use tailwind with the basic install, add it _before_ tailwind,
+and switch preflight off in the apps tailwind config file (config/tailwind.config.js). Otherwise tailwind will reset the styles from merged
+or the other way around.
+
+```
+corePlugins: {
+  preflight: false,
+}
+```
 
 ## Contributing
 Ask first.

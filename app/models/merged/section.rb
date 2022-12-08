@@ -37,7 +37,7 @@ module Merged
       new_style = template_style
       if(new_style.has_cards?)
         unless card_template
-          @content["card_template"] = Style.cards.keys.first
+          @content["card_template"] = CardStyle.cards.keys.first
           @content["cards"] = []
           raise "Should not have cards" unless cards.empty?
         end
@@ -153,7 +153,7 @@ module Merged
       end unless style.fields.blank?
       if(style.has_cards?)
         data["cards"] = []
-        data["card_template"] = Style.cards.keys.first
+        data["card_template"] = CardStyle.cards.keys.first
       end
       data
     end

@@ -73,3 +73,14 @@
   header: Spacer
   text: Just for extra padding
   fields:
+- template: form_section
+  header: Contact or other form
+  text: Flexible form, with input fields as "cards". Only choose form_field
+        as contained in the form.
+  cards: true
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - color

@@ -14,7 +14,7 @@ module Merged
       @sections = SectionStyle.sections
     end
     def select_card_template
-      @cards = Style.cards
+      @cards = CardStyle.cards
     end
 
     def new

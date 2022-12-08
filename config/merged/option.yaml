@@ -67,3 +67,14 @@
     Link must be a page name, ie only internal links allowed.
   values:
   default:
+- name: compulsory
+  desciption:
+    Form fields may be compulsory or not. By default they are.
+  values: on off
+  default: off
+- name: form_type
+  desciption:
+    Form fields may have a type for special handling. The default is text
+    but message would be a longer text, and email checked to be a name.
+  values: text message email phone date
+  default: text
