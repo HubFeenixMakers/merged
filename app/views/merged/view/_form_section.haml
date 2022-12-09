@@ -1,10 +1,10 @@
 .flex.flex-col.m-20{ options(section , :background , :color)}
   .flex.items-center.justify-center.flex-1
-    .max-w-prose.px-4.py-16.mx-auto.text-center
+    .max-w-prose.px-4.mt-16.mx-auto.text-center
       %h1.text-4xl.font-medium= section.header
       %p.mt-4.text-lg.pt-10
         = markdown(section)
-  .flex.items-center.justify-start.bg-white
+  .flex.items-center.justify-start.m-20
     .mx-auto.w-full.max-w-4xl{class: "max-w-[50%]"}
       = form_tag( form_sendit_path , {class: "mt-10" }) do
         - challenge = rand(8)

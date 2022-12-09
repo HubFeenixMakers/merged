@@ -18,6 +18,11 @@ module Merged
       return "" if text.blank?
       renderer.render(text).html_safe
     end
+    def field_name(card)
+      name = card.header
+      name += "*" unless card.option("compulsory") == "no"
+      name
+    end
     def blue_button( text, url)
       button( text , url , "bg-blue-500" )
     end

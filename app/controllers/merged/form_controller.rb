@@ -37,10 +37,12 @@ module Merged
     def check_option(card , value)
       return unless value.blank?
       puts "Checking #{card.header} #{value}"
-      compulsory = card.option("compulsory") == "yes"
+      compulsory = card.option("compulsory") != "no"
       return unless compulsory
       # check different types
-      @errors[card.header] = "May not be blank"
+      message = card.text
+      message = "May not be empty" if message.blank?
+      @errors[card.header] = message
     end
 
     def check_maths

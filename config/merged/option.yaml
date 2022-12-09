@@ -71,7 +71,7 @@
   desciption:
     Form fields may be compulsory or not. By default they are.
   values: yes no
-  default: yes
+  default: no
 - name: form_type
   desciption:
     Form fields may have a type for special handling. The default is text
