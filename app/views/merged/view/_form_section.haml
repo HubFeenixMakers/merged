@@ -6,9 +6,16 @@
         = markdown(section)
   .flex.items-center.justify-start.bg-white
     .mx-auto.w-full.max-w-4xl{class: "max-w-[50%]"}
-      %form.mt-10{:action => "https://api.web3forms.com/submit"}
+      = form_tag( form_sendit_path , {class: "mt-10" }) do
+        - challenge = rand(8)
+        = hidden_field_tag :section_id , section.id
+        = hidden_field_tag :bot_fudder , "#{challenge*2}"
         .grid.gap-6.md:grid-cols-2
           - template = "merged/view/cards/" + section.card_template
           - section.cards.each do |card|
             = render( template , card: card)
-        %button.mt-5.rounded-md.bg-cyan-700.px-10.py-2.text-white{:type => "submit"} Send
+        .grid.gap-6.md:grid-cols-2
+          .relative.z-0.mt-10
+            %input.peer.block.w-full.appearance-none.border-0.border-b.border-gray-500.bg-transparent.px-0.text-sm.text-gray-900.focus:border-blue-600.focus:outline-none.focus:ring-0{:class => "py-2.5", :name => "challenge", :placeholder => " ", :type => "text"}
+            %label.absolute.top-3.-z-10.-translate-y-6.scale-75.transform.text-sm.text-gray-500.duration-300.peer-placeholder-shown:translate-y-0.peer-placeholder-shown:scale-100.peer-focus:left-0.peer-focus:-translate-y-6.peer-focus:scale-75.peer-focus:text-blue-600.peer-focus:dark:text-blue-500{:class => "origin-[0]"}Anti bot question: #{challenge} + #{challenge + 1} is
+          %button.mt-10.rounded-md.bg-cyan-700.px-20.py-2.text-white{:type => "submit"} Send

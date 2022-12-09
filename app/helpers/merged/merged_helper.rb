@@ -3,7 +3,7 @@ require "redcarpet"
 module Merged
   module MergedHelper
     @@renderer = nil
-    
+
     def renderer
       return @@renderer unless @@renderer.nil?
       options = {hard_wrap: true , autolink: true, no_intra_emphasis: true ,

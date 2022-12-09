@@ -82,5 +82,7 @@
     - header
     - text
   options:
+    - ok_message
+    - handler
     - background
     - color

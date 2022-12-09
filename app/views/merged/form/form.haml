@@ -1,0 +1,9 @@
+.flex.flex-col.m-20
+  .flex.items-center.justify-center.flex-1
+  - @errors.each do |name , message|
+    .m-5.rounded.border-l-4.border-green-500.bg-red-50.p-4
+      %strong.font-medium.text-red-700= name.capitalize
+      .mt-2.text-sm.text-red-700= message
+
+- template = find_template(@section)
+= render( template , section: @section)

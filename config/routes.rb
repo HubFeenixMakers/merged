@@ -4,6 +4,8 @@ Merged::Engine.routes.draw do
   post 'changes/commit'
   get "styles/index"
 
+  post 'form/sendit'
+
   resources :pages , except: [:show , :new] , shallow: true  do
     resources :sections do
       get :select_image
