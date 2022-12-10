@@ -1,30 +1,13 @@
 module Merged
-  class Card
-    include ActiveModel::API
-    include ActiveModel::Conversion
-    extend  ActiveModel::Naming
+  class Card < ActiveYaml::Base
+    set_root_path Rails.root #ouside engines not necessary
+
+    include ActiveHash::Associations
+    belongs_to :section , class_name: "Merged::Section"
 
     include Optioned
 
-    cattr_reader :all
-    @@all = {}
-
-    attr_reader  :content  , :index , :section
-
-    [ :id , :text , :header, :image ].each do |meth|
-      define_method(meth) do
-        @content[meth.to_s]
-      end
-    end
-
-    def initialize(section , index , card_data)
-      @section = section
-      @index = index
-      raise "No data #{card_data}" unless card_data.is_a?(Hash)
-      @content = card_data
-      raise "No id #{card_data}" unless id.is_a?(String)
-      @@all[self.id] = self
-    end
+    fields  :index , :section_id,  :id , :text , :header, :image
 
     def template_style
       @section.card_template
@@ -52,11 +35,8 @@ module Merged
     end
 
     def save
-      section.save
-    end
-    def save_soon
       super
-      data = Option.all.collect {|obj| obj.attributes}
+      data = Card.all.collect {|obj| obj.attributes}
       File.write( Option.full_path , data.to_yaml)
     end
 

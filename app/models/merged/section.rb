@@ -1,50 +1,25 @@
 module Merged
-  class Section
-    include ActiveModel::API
-    include ActiveModel::Conversion
-    extend  ActiveModel::Naming
+  class Section < ActiveYaml::Base
+    set_root_path Rails.root #ouside engines not necessary
+
+    include ActiveHash::Associations
+    belongs_to :page , class_name: "Merged::Page"
+    has_many :cards , class_name: "Merged::Card"
+
     include Optioned
 
-    cattr_reader :all
-    @@all = {}
-
-    attr_reader :name , :content , :page , :index , :cards
-
-    def initialize(page , index , section_data)
-      @page = page
-      raise "No number #{index}" unless index.is_a?(Integer)
-      raise "No hash #{section_data}" unless section_data.is_a?(Hash)
-      @index = index
-      @content = section_data
-      @@all[self.id] = self
-      @cards = []
-      element = @content["cards"]
-      return if element.nil?
-      element.each_with_index do|card_content , index|
-        @cards << Card.new(self , index , card_content)
-      end
-    end
-
-    [:template , :card_template , :id , :text , :header, :image].each do |meth|
-      define_method(meth) do
-        @content[meth.to_s]
-      end
-    end
-
+    fields :name , :page_id , :index , :cards
+    fields :template , :card_template , :id , :text , :header, :image
 
     def set_template(new_template)
-      @content["template"] = new_template
+      self.template = new_template
       new_style = template_style
       if(new_style.has_cards?)
         unless card_template
-          @content["card_template"] = CardStyle.first.name
-          @content["cards"] = []
-          raise "Should not have cards" unless cards.empty?
+          self.card_template = CardStyle.first.name
         end
       else
-        @content.delete("cards")
-        @content.delete("card_template")
-        @cards.clear
+        cards.delete_all
       end
     end
 
@@ -138,7 +113,9 @@ module Merged
     end
 
     def save
-      page.save
+      super
+      data = Section.all.collect {|obj| obj.attributes}
+      File.write( Section.full_path , data.to_yaml)
     end
 
     def set_index(index)

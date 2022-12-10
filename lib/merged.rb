@@ -8,7 +8,7 @@ module Merged
     Option.all
     CardStyle.all
     SectionStyle.all
-    Page.load_pages
+    Page.all
     Image.load_images
   end
 

@@ -1,47 +1,17 @@
 module Merged
-  class Page
-    include ActiveModel::API
-    include ActiveModel::Conversion
-    extend  ActiveModel::Naming
+  class Page < ActiveYaml::Base
+    set_root_path Rails.root #ouside engines not necessary
+    include ActiveHash::Associations
+    has_many :sections , class_name: "Merged::Section"
 
     # could be config options
     def self.cms_root
       "cms"
     end
 
-    cattr_reader :all
-    @@all = {}
-
-    def self.load_pages()
-      files = Set.new Dir.new(Rails.root.join(Page.cms_root)).children
-      files.each do |file|
-        page = Page.new(file)
-      end
-    end
-
-    attr_reader :name , :content , :sections , :size , :updated_at
+    fields :name , :content , :size , :updated_at
 
     alias :id  :name
-
-    def initialize( f_name )
-      @name = f_name.split(".").first
-      @content = YAML.load_file( filename )
-      @sections = []
-      @content.each_with_index do |section_data, index|
-        section = Section.new(self , index,  section_data)
-        @sections << section
-      end
-      @@all[@name] = self
-      update_size
-    end
-
-    def filename
-      Rails.root.join(Page.cms_root , @name + ".yaml")
-    end
-    def update_size
-      @size = File.size(filename)
-      @updated_at = File.ctime(filename)
-    end
 
     def self.check_name(name)
       return "only alphanumeric, not #{name}" if name.match(/\A[a-zA-Z0-9]*\z/).nil?
@@ -111,15 +81,9 @@ module Merged
     end
 
     def save
-      File.write( filename , @content.to_yaml)
-      update_size
-    end
-
-    def self.find(name)
-      raise "nil given" if name.blank?
-      page = @@all[name]
-      raise "Page not found #{name}" unless page
-      return page
+      super
+      data = Page.all.collect {|obj| obj.attributes}
+      File.write( Page.full_path , data.to_yaml)
     end
 
   end

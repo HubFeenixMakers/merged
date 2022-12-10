@@ -2,19 +2,19 @@ require 'rails_helper'
 
 module Merged
   RSpec.describe Page, type: :model do
-    let(:index) {Page.find('index')}
+    let(:index) {Page.find_by_name('index')}
 
     it "has Pages.all" do
-      expect(Page.all.class).to be Hash
+      expect(Page.all.length).to be 6
     end
     it "has index page" do
       expect(index.class).to be Page
     end
     it "has sections" do
-      expect(index.sections.length).to be 1
+      expect(index.sections.length).to be 10
     end
     it "has section array" do
-      expect(index.sections.class).to be Array
+      expect(index.sections.first.class).to be Section
     end
   end
 end
