@@ -8,7 +8,7 @@ module Merged
       expect(Option.options.class).to be Hash
     end
     it "there are options" do
-      expect(Option.options.length).to be 12
+      expect(Option.options.length).to be 16
     end
     it "has option objects" do
       expect(first.class).to be Option

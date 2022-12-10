@@ -1,11 +1,11 @@
 module Merged
-  class Option
+  class Option < ActiveYaml::Base
 
     @@options = {}
 
-    attr_reader :name , :default , :description
+    fields :name , :default , :description , :values , :type
 
-    def initialize(options)
+    def initialize_old(options)
       @name = options["name"]
       @default = options["default"]
       @description = options["description"]
