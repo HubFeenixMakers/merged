@@ -10,11 +10,13 @@ module Merged
     def select_image
       @images = Image.all
     end
+
     def select_template
-      @sections = SectionStyle.sections
+      @sections = SectionStyle.all
     end
+
     def select_card_template
-      @cards = CardStyle.cards
+      @cards = CardStyle.all
     end
 
     def new

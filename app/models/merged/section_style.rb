@@ -1,25 +1,25 @@
 module Merged
-  class SectionStyle < CardStyle
+  class SectionStyle < ActiveYaml::Base
+    set_root_path Engine.root + "config"
 
-    @@sections = {}
+    fields  :template , :text , :header, :fields , :cards
 
     def has_cards?
-      @content["cards"] == true
+      cards == true
     end
 
     def section_preview
       "merged/section_preview/" + template
     end
 
-    def self.sections
-      @@sections
-    end
-
-    def self.load(yaml)
-      yaml.each do |content|
-        section = SectionStyle.new(content)
-        @@sections[section.template] = section
-      end
+    def options_definitions
+      option_defs = []
+      options.each do |name|
+        option = Option.find_by_name(name)
+        raise "no option for #{name}:#{name.class}" if option.blank?
+        option_defs << option
+      end if options
+      option_defs
     end
 
   end

@@ -1,42 +1,22 @@
 module Merged
-  class CardStyle
-    @@cards = {}
+  class CardStyle < ActiveYaml::Base
+    set_root_path Engine.root + "config"
 
-    attr_reader :content
-
-    def initialize content
-      @content = content
-    end
-
-    [:template , :text , :header, :fields ].each do |meth|
-      define_method(meth) do
-        @content[meth.to_s]
-      end
-    end
+    fields  :template , :text , :header, :fields
 
     def card_preview
       "merged/card_preview/" + template
     end
 
-    def options
+    def options_definitions
       option_defs = []
-      @content["options"].each do |name|
+      options.each do |name|
         option = Option.find_by_name(name)
         raise "no option for #{name}:#{name.class}" if option.blank?
         option_defs << option
-      end if @content["options"]
+      end if options
       option_defs
     end
 
-    def self.cards
-      @@cards
-    end
-
-    def self.load( yaml )
-      yaml.each do |content|
-        card = CardStyle.new(content)
-        @@cards[card.template] = card
-      end
-    end
   end
 end

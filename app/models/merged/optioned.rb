@@ -7,7 +7,7 @@ module Merged
     end
 
     def option_definitions
-      template_style.options
+      template_style.options_definitions
     end
 
     def option(name)

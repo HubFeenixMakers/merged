@@ -2,7 +2,7 @@
   %h1.text-4xl.font-bold
     Section styles
 .grid.grid-cols-3.gap-4.m-8
-  -@sections.each do |name , style|
+  -@section_styles.each do | style|
     %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
       =image_tag(style.section_preview , class: "h-56 w-full object-contain lg:h-72")
       %p.mt-2.text-sm.text-gray-500
@@ -31,7 +31,7 @@
   %h1.text-4xl.font-bold
     Card styles
 .grid.grid-cols-3.gap-4.m-8
-  -@cards.each do |name , style|
+  -@cards_styles.each do |style|
     %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
       =image_tag(style.card_preview , class: "h-56 w-full object-contain lg:h-72")
       %p.mt-2.text-sm.text-gray-500

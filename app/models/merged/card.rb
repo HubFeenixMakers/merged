@@ -65,15 +65,16 @@ module Merged
     end
 
     def template_style
-      CardStyle.cards[ section.card_template ]
+      CardStyle.find_by_template( section.card_template)
     end
+
     def allowed_fields
       template_style.fields
     end
 
     def self.build_data(card_template)
       data = { "id" => SecureRandom.hex(10) }
-      CardStyle.cards[ card_template ].fields.each do |key|
+      CardStyle.find_by_template( card_template ).fields.each do |key|
         data[key] = key.upcase
       end
       data

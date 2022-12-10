@@ -23,9 +23,5 @@ module Merged
       attributes[:values].split(" ")
     end
 
-    def self.load()
-      self.all
-    end
-
   end
 end
