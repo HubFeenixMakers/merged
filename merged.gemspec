@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "haml-rails"
   spec.add_dependency "git"
   spec.add_dependency "redcarpet"
+  spec.add_dependency "active_hash"
 end

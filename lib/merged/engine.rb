@@ -1,3 +1,5 @@
+require "active_hash"
+
 module Merged
   class Engine < ::Rails::Engine
     isolate_namespace Merged
