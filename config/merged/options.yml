@@ -1,90 +1,89 @@
 ---
-- name: fixed
-  description:
-    Paralax effect where background stays fixed
-    during scrolling
-  values: on off
-  default: off
-- name: columns
-  description:
-    Number of columns in a layout that supports cards
-  values: 2 3 4
-  default: 3
-- name: background
-  description:
-    Background colors. Light colors stay with black text.
-    Solid colors invert to white text.
-  values: white none light_blue light_gray light_orange solid_blue solid_red solid_indigo
-  default: none
-- name: color
-  description:
-    Text colors. Don't use with solid background colors.
-    Same colors as background available. Default none, meas as parent.
-  values: none white black light_blue light_gray solid_black solid_blue solid_red solid_indigo
-  default: none
-- name: shade_color
-  description:
-    Color of transparent shaded area.
-    The number means transparency.
-  values: none black_25 white_25 light_red_25 light_blue_25 solid_blue_25 solid_red_25
-  default: none
-- name: align
-  description:
-    Align text of children. Normal Word meaning
-  values: left center right
-  default: left
-- name: order
-  description:
-    For two column layout determine order of sub-cards
-    Values of left and right usually refer to where the image is
-    For cards it can also mean up and down
-  values: left right
-  default: left
-- name: margin
-  description:
-    Most sections have standard margin of 20.
-    This option makes it possible to remove that
-  values: 0 20
-  default: 20
-- name: button_text
-  description:
-    Text for an optional button. Must also set button_link
-  values:
-  default:
-- name: subheader
-  description:
-    Smaller header between Header and text
-  values:
-  default:
-- name: text
-  description:
-    Second text. Just a second paragraph
-  values:
-  default:
-- name: button_link
-  description:
-    Link for an option button. Must also set button_text.
-    Link must be a page name, ie only internal links allowed.
-  values:
-  default:
-- name: compulsory
-  description:
-    Form fields may be compulsory or not. By default they are.
-  values: yes no
-  default: no
-- name: form_type
-  description:
-    Form fields may have a type for special handling. The default is text
+- :name: fixed
+  :description: Paralax effect where background stays fixed during scrolling
+  :values: on off
+  :default: false
+  :id: 1
+- :name: columns
+  :description: Number of columns in a layout that supports cards
+  :values: 2 3 4
+  :default: 3
+  :id: 2
+- :name: background
+  :description: Background colors. Light colors stay with black text. Solid colors
+    invert to white text.
+  :values: white none light_blue light_gray light_orange solid_blue solid_red solid_indigo
+  :default: none
+  :id: 3
+- :name: color
+  :description: Text colors. Don't use with solid background colors. Same colors as
+    background available. Default none, meas as parent.
+  :values: none white black light_blue light_gray solid_black solid_blue solid_red
+    solid_indigo
+  :default: none
+  :id: 4
+- :name: shade_color
+  :description: Color of transparent shaded area. The number means transparency.
+  :values: none black_25 white_25 light_red_25 light_blue_25 solid_blue_25 solid_red_25
+  :default: none
+  :id: 5
+- :name: align
+  :description: Align text of children. Normal Word meaning
+  :values: left center right
+  :default: left
+  :id: 6
+- :name: order
+  :description: For two column layout determine order of sub-cards Values of left
+    and right usually refer to where the image is For cards it can also mean up and
+    down
+  :values: left right
+  :default: left
+  :id: 7
+- :name: margin
+  :description: Most sections have standard margin of 20. This option makes it possible
+    to remove that
+  :values: 0 20
+  :default: 20
+  :id: 8
+- :name: button_text
+  :description: Text for an optional button. Must also set button_link
+  :values:
+  :default:
+  :id: 9
+- :name: subheader
+  :description: Smaller header between Header and text
+  :values:
+  :default:
+  :id: 10
+- :name: text
+  :description: Second text. Just a second paragraph
+  :values:
+  :default:
+  :id: 11
+- :name: button_link
+  :description: Link for an option button. Must also set button_text. Link must be
+    a page name, ie only internal links allowed.
+  :values:
+  :default:
+  :id: 12
+- :name: compulsory
+  :description: Form fields may be compulsory or not. By default they are.
+  :values: yes no
+  :default: false
+  :id: 13
+- :name: form_type
+  :description: Form fields may have a type for special handling. The default is text
     but message would be a longer text, and email checked to be a name.
-  values: text message email phone date
-  default: text
-- name: ok_message
-  description:
-    Message shown to the user when a form was submitted
-  values:
-  default:
-- name: handler
-  description:
-    Form handler
-  values: FormHandler
-  default: FormHandler
+  :values: text message email phone date
+  :default: text
+  :id: 14
+- :name: ok_message
+  :description: Message shown to the user when a form was submitted
+  :values:
+  :default:
+  :id: 15
+- :name: handler
+  :description: Form handler
+  :values: FormHandler
+  :default: FormHandler
+  :id: 16

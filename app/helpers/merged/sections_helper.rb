@@ -1,6 +1,7 @@
 module Merged
   module SectionsHelper
-
+    include ViewHelper #for previews
+    
     def section_form(options)
       url = section_url( @section.id)
       form_tag( url , {method: :patch}) do

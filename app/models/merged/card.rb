@@ -54,6 +54,11 @@ module Merged
     def save
       section.save
     end
+    def save_soon
+      super
+      data = Option.all.collect {|obj| obj.attributes}
+      File.write( Option.full_path , data.to_yaml)
+    end
 
     def set_index(index)
       @index = index

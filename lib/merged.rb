@@ -4,10 +4,11 @@ require "merged/engine"
 module Merged
 
   def self.load_data
-    ["card_style" , "section_style" , "option"].each do |kind|
+    ["card_style" , "section_style"].each do |kind|
       # loading egine definitions first, can be overriden
       load_from kind , Engine.root.join("config/merged/#{kind}.yaml")
     end
+    Option.load
     Page.load_pages
     Image.load_images
   end

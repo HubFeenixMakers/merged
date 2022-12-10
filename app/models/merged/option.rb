@@ -1,20 +1,11 @@
 module Merged
   class Option < ActiveYaml::Base
-
-    @@options = {}
+    set_root_path Engine.root + "config"
 
     fields :name , :default , :description , :values , :type
 
-    def initialize_old(options)
-      @name = options["name"]
-      @default = options["default"]
-      @description = options["description"]
-      @values = options["values"]
-      @type = options["type"]
-    end
-
     def type
-      return @type unless @type.blank?
+      return attributes[:type] unless attributes[:type].blank?
       if has_values?
         "select"
       else
@@ -23,24 +14,17 @@ module Merged
     end
 
     def has_values?
-      return false if @values.nil?
-      ! @values.empty?
+      return false if attributes[:values].nil?
+      ! attributes[:values].empty?
     end
 
     def values
       return [] unless has_values?
-      @values.split(" ")
+      attributes[:values].split(" ")
     end
 
-    def self.options
-      @@options
-    end
-
-    def self.load(yaml)
-      yaml.each do |content|
-        option = Option.new(content)
-        @@options[option.name] = option
-      end
+    def self.load()
+      self.all
     end
 
   end

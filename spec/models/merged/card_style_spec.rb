@@ -6,7 +6,7 @@ module Merged
 
     it "has Style.cards" do
       expect(CardStyle.cards.class).to be Hash
-      expect(CardStyle.cards.length).to be 4
+      expect(CardStyle.cards.length).to be 5
     end
 
   end

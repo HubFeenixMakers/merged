@@ -2,6 +2,7 @@ require "redcarpet"
 
 module Merged
   module MergedHelper
+    include OptionsHelper
     @@renderer = nil
 
     def renderer

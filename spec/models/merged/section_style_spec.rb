@@ -6,7 +6,7 @@ module Merged
 
     it "has Style.sections" do
       expect(SectionStyle.sections.class).to be Hash
-      expect(SectionStyle.sections.length).to be 6
+      expect(SectionStyle.sections.length).to be 7
     end
     it "Finds section by template" do
       spacer = SectionStyle.sections["section_spacer"]

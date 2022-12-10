@@ -21,7 +21,7 @@ module Merged
     def options
       option_defs = []
       @content["options"].each do |name|
-        option = Option.options[name]
+        option = Option.find_by_name(name)
         raise "no option for #{name}:#{name.class}" if option.blank?
         option_defs << option
       end if @content["options"]
