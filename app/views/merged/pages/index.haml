@@ -21,7 +21,7 @@
       - @pages.each do |merged_page|
         %tr
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            = link_to merged_page.name , page_sections_path(merged_page.name)
+            = link_to merged_page.name , page_sections_path(merged_page.id)
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
             = merged_page.sections.length
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
@@ -30,9 +30,9 @@
             = distance_of_time_in_words_to_now(merged_page.updated_at)
           %td.whitespace-nowrap.px-4.py-2
             %strong.rounded.bg-green-100.px-3.text-xs.font-medium.text-green-700{:class => "py-1.5"}
-              = link_to 'Sections', page_sections_path(merged_page.name)
+              = link_to 'Sections', page_sections_path(merged_page.id)
             %strong.rounded.bg-amber-100.px-3.text-xs.font-medium.text-amber-700{:class => "py-1.5"}
-              = link_to 'Edit', edit_page_path(merged_page.name)
+              = link_to 'Edit', edit_page_path(merged_page.id)
 
 .grid.grid-cols-3.gap-2.m-8
   .relative.block.border.border-gray-100

@@ -18,7 +18,7 @@
     %h3.mt-4.text-lg.font-bold Template  #{@section.template}
     = section_preview(@section , class: "w-full object-contain p-3")
     = yellow_button( "Change Template" , section_select_template_url(@section.id))
-    = green_button( "New Section" , new_page_section_url(@section.page.name , template: @section.template) )
+    = green_button( "New Section" , new_page_section_url(@section.page.id , template: @section.template) )
 
   .relative.block.border.border-gray-100
     = section_form( class: "mx-auto mt-8 mb-0 max-w space-y-4") do

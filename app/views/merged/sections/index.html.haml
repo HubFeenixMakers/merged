@@ -15,7 +15,7 @@
       = blue_button( "Up" , section_move_url(section.id , dir: :up) )
       = blue_button( "Down" , section_move_url(section.id , dir: :down) )
       = yellow_button("Edit" , section_path(section.id) )
-      = green_button( "Copy" , new_page_section_url(@page.name, template: section.template) )
+      = green_button( "Copy" , new_page_section_url(@page.id, template: section.template) )
       = form_tag( section_url(section.id) , {method: :delete  } ) do
         =submit_button( "Delete" , true)
     .relative.block.border.border-gray-100.p-4
@@ -49,8 +49,8 @@
 .grid.grid-cols-2.gap-2.m-8
   .relative.block
     %p
-      = green_button( "New Section" , new_page_section_url(@page.name) )
+      = green_button( "New Section" , new_page_section_url(@page.id) )
   .relative.block
     %p
-      = form_tag( page_url(@page.name) , {method: :delete  } ) do
+      = form_tag( page_url(@page.id) , {method: :delete  } ) do
         =submit_button( "Delete Page" , true)

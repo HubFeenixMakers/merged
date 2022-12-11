@@ -10,7 +10,7 @@ module Merged
     fields :name , :content , :size , :updated_at
 
     def sections
-      Section.where(page_id: name).order(index: :asc)
+      Section.where(page_id: id).order(index: :asc)
     end
 
     def self.check_name(name)

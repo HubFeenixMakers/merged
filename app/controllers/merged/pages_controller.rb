@@ -12,7 +12,7 @@ module Merged
       message = "Must enter name" if name.blank?
       if( message.nil?)
         @page = Page.build_new(name)
-        redirect_to new_page_section_url(@page.name) , notice: "Page was successfully created."
+        redirect_to new_page_section_url(@page.id) , notice: "Page was successfully created."
       else
         @pages = Page.all.values
         flash.now.alert = message
