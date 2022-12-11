@@ -25,11 +25,6 @@ module Merged
       Page.new(name)
     end
 
-    def self.destroy( page )
-      @@all.delete(page.name)
-      File.delete(Rails.root.join(Page.cms_root , page.name + ".yaml"))
-    end
-
     def new_section(section_template)
       section_template = "section_spacer" if section_template.blank?
       section_data = Section.build_data(section_template)
@@ -54,11 +49,36 @@ module Merged
       @content[0]["template"]
     end
 
-    def save
-      super
-      data = Page.all.collect {|obj| obj.attributes}
-      File.write( Page.full_path , data.to_yaml)
+    def reset_index
+      sections.each_with_index{|section, index| section.index = index + 1}
     end
 
+    def destroy
+      has_sections , has_cards = delete()
+      Page.save_all
+      if has_sections > 0
+        Section.save_all
+        Card.save_all if has_cards > 0
+      end
+    end
+
+    def delete
+      has_sections = sections.length
+      has_cards = 0
+      sections.each {|section| has_cards += section.delete(false) }
+      Page.delete( self.id )
+      [has_sections , has_cards]
+    end
+
+    def save
+      super
+      Page.save_all
+    end
+
+    def self.save_all
+      data = Page.the_private_records.collect {|obj| obj.attributes}
+      File.write( Page.full_path , data.to_yaml)
+      Page.reload
+    end
   end
 end

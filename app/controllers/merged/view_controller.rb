@@ -3,7 +3,7 @@ module Merged
     include MergedHelper
 
     def view
-      @page = Page.find(params[:id])
+      @page = Page.find_by_name(params[:id])
     end
 
   end

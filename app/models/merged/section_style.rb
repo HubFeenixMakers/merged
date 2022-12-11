@@ -5,7 +5,7 @@ module Merged
     fields  :template , :text , :header, :fields , :cards
 
     def has_cards?
-      cards == true
+      cards
     end
 
     def section_preview

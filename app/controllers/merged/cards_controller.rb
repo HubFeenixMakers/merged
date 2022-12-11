@@ -23,7 +23,7 @@ module Merged
         @card.move_down
       end
       @card.save
-      redirect_to section_cards_url(@card.section.id),notice: "Card moved"
+      redirect_to section_cards_url(@card.section.id),notice: "#{@card.header} moved"
     end
 
     def new
@@ -34,8 +34,7 @@ module Merged
 
     def destroy
       @card.destroy
-      @card.section.save
-      redirect_to section_cards_url(@card.section.id) , notice: "Card #{@card.index} removed"
+      redirect_to section_cards_url(@card.section.id) , notice: "#{@card.header} removed"
     end
 
     def update
@@ -50,7 +49,7 @@ module Merged
         @card.set_option(option.name,  options[option.name])
       end if options
       @card.save
-      redirect_to section_cards_url(@card.section.id) , notice: "Update ok"
+      redirect_to section_cards_url(@card.section.id) , notice: "Updated #{@card.header}"
     end
 
     private

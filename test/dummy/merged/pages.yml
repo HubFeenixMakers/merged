@@ -1,13 +1,19 @@
 ---
 - :name: makerspace
   :updated_at: 2022-12-09 17:56:51.141334688 +02:00
+  :id: 1
 - :name: studios
   :updated_at: 2022-12-09 17:50:02.733622073 +02:00
+  :id: 2
 - :name: retreats
   :updated_at: 2022-12-09 17:32:41.538163009 +02:00
+  :id: 3
 - :name: coworking
   :updated_at: 2022-12-09 18:00:01.444815664 +02:00
+  :id: 4
 - :name: about
   :updated_at: 2022-12-08 19:11:48.243621696 +02:00
+  :id: 5
 - :name: index
   :updated_at: 2022-12-10 20:28:17.967357225 +02:00
+  :id: 6

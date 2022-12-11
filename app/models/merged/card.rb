@@ -10,11 +10,7 @@ module Merged
     fields  :index , :section_id,  :id , :text , :header, :image
 
     def template_style
-      @section.card_template
-    end
-
-    def destroy
-      @section.remove_card( self)
+      section.card_template
     end
 
     def move_up
@@ -33,18 +29,33 @@ module Merged
       section.cards.where(index: index + 1).first
     end
 
-    def save
-      super
-      data = Card.all.collect {|obj| obj.attributes}
-      File.write( Card.full_path , data.to_yaml)
-    end
-
     def set_index(index)
       @index = index
     end
 
     def template_style
       CardStyle.find_by_template( section.card_template)
+    end
+
+    def destroy
+      delete
+      Card.save_all
+    end
+
+    def delete(reindex = true)
+      Card.delete( self.id )
+      section.reset_index if reindex
+    end
+
+    def save
+      super
+      Card.save_all
+    end
+
+    def self.save_all
+      data = Card.the_private_records.collect {|obj| obj.attributes}
+      File.write( Card.full_path , data.to_yaml)
+      Card.reload
     end
 
     def self.new_card(card_template , section_id , index)

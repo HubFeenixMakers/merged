@@ -1,7 +1,7 @@
 ---
-- template: section_half_image
-  header: Makerspace
-  text: "Makerspace\r\n\r\nThe makers movement is transforming consumers into creaters.
+- :template: section_half_image
+  :header: Makerspace
+  :text: "Makerspace\r\n\r\nThe makers movement is transforming consumers into creaters.
     By sharing otherwise expensive tools, it allows everyone to start exploring and
     producing through otherwise inaccessible means.\r\nIn Finland this builds on the
     traditional adult education and expands it into new technologies like electronics
@@ -9,135 +9,136 @@
     woodworking, sowing, and metalworking. And we will expand into electronics and
     3d technologies as funding starts coming. (See wish-list below if you want to
     help)"
-  image: makerspace
-  id: 1
-  updated_at: &1 2022-12-09 17:56:51.141334688 +02:00
-  page_id: makerspace
-  index: 1
-- template: section_full_up
-  id: 2
-  header: Different workshops
-  text: "Some of the machines, but all of the spaces described here exists. Also courses
-    for all the activities will be part of a shared future, and if you have something
-    to contribute (or teach) contact us.\r\nIf you want to use any of the facilities,
-    see below."
-  options:
+  :image: makerspace
+  :id: 1
+  :updated_at: &1 2022-12-09 17:56:51.141334688 +02:00
+  :page_id: 1
+  :index: 1
+  :options: {}
+- :template: section_full_up
+  :id: 2
+  :header: Different workshops
+  :text: "Some of the machines, but all of the spaces described here exists. Also
+    courses for all the activities will be part of a shared future, and if you have
+    something to contribute (or teach) contact us.\r\nIf you want to use any of the
+    facilities, see below."
+  :options:
     background: light_gray
     color: black
     margin: '0'
     subheader: Sharing machines and experiences
     button_link: ''
     button_text: ''
-  updated_at: *1
-  page_id: makerspace
-  index: 2
-- template: section_large_image
-  id: 3
-  header: 3D
-  text: "We have 2 3d printers, one small, on large, to allow everyone to try to bring
-    their imagination to the physical world.\r\nAdditionally to hard and soft plastics,
-    3d printers can be used to print aluminium and carbon fibre to produce usable
-    machine parts.\r\nComputers and software for designing are available."
-  options:
+  :updated_at: *1
+  :page_id: 1
+  :index: 2
+- :template: section_large_image
+  :id: 3
+  :header: 3D
+  :text: "We have 2 3d printers, one small, on large, to allow everyone to try to
+    bring their imagination to the physical world.\r\nAdditionally to hard and soft
+    plastics, 3d printers can be used to print aluminium and carbon fibre to produce
+    usable machine parts.\r\nComputers and software for designing are available."
+  :options:
     subheader: Printing, scanning and planning
     order: left
     color: black
     background: light_gray
     margin: '0'
-  image: 3dprinter_wide
-  updated_at: *1
-  page_id: makerspace
-  index: 3
-- template: section_large_image
-  id: 4
-  header: Clothes
-  text: "The thrid floor makerspace already has some sowing machines and will get
+  :image: 3dprinter_wide
+  :updated_at: *1
+  :page_id: 1
+  :index: 3
+- :template: section_large_image
+  :id: 4
+  :header: Clothes
+  :text: "The thrid floor makerspace already has some sowing machines and will get
     more. We are sourcing industrial sawing and embroidering machines so no project
     is too big (or small). The large rooms is set up for a shared working environment,
     enabling knowledge to be shared easily.\r\nPrivate lockers make it easy to interrupt
     and return to your project in your own time."
-  image: sowing_wide
-  options:
+  :image: sowing_wide
+  :options:
     subheader: Express your style
     order: right
     color: none
     background: light_gray
     margin: '0'
-  updated_at: *1
-  page_id: makerspace
-  index: 4
-- template: section_large_image
-  id: 5
-  header: Metal workshop and garage
-  text: "The building has a garage workshop and we will move our metal workshop there.
+  :updated_at: *1
+  :page_id: 1
+  :index: 4
+- :template: section_large_image
+  :id: 5
+  :header: Metal workshop and garage
+  :text: "The building has a garage workshop and we will move our metal workshop there.
     There is a saw, drills, different welders (gas, stick, mig) and wrenches to allow
     members to build the robot of their dreams, or fix their car.\r\nSmaller side
     rooms allow for private and more detailed work, and we are looking to get a  lathe,
     possibly also a cnc machine."
-  image: metal_wide
-  options:
+  :image: metal_wide
+  :options:
     subheader: Useful and practical
     margin: '0'
     order: left
     color: none
     background: light_gray
-  updated_at: *1
-  page_id: makerspace
-  index: 5
-- template: section_large_image
-  id: 6
-  header: Electronics
-  text: "This is in the third floor, set up as a basic electronics workshop.\r\nCurrently
+  :updated_at: *1
+  :page_id: 1
+  :index: 5
+- :template: section_large_image
+  :id: 6
+  :header: Electronics
+  :text: "This is in the third floor, set up as a basic electronics workshop.\r\nCurrently
     we only have a soldering iron and a lab power source, but we are hoping to buy
     oscilloscopes and other measuring equipment that will allow members to do everything
     from a small LED project to arduino or raspberry pi based robots."
-  image: electronics_wide
-  options:
+  :image: electronics_wide
+  :options:
     subheader: Wizz wizz wizz
     margin: '0'
     order: right
     color: none
     background: light_gray
-  updated_at: *1
-  page_id: makerspace
-  index: 6
-- template: section_large_image
-  id: 7
-  header: Clay
-  text: Hub Feenix is looking to buy a clay oven, and set aside one or two wet spaces
+  :updated_at: *1
+  :page_id: 1
+  :index: 6
+- :template: section_large_image
+  :id: 7
+  :header: Clay
+  :text: Hub Feenix is looking to buy a clay oven, and set aside one or two wet spaces
     for clay work. Both free form sculpturing and table turning facilities will be
     available for hobbyists to try their hand at clay.
-  image: clay_wide
-  options:
+  :image: clay_wide
+  :options:
     subheader: Sculptured or turned
     margin: '0'
     order: left
     color: none
     background: light_gray
-  updated_at: *1
-  page_id: makerspace
-  index: 7
-- template: section_large_image
-  id: 8
-  header: Woodworking
-  text: "We have a full woodworking workshop, we just need to move the machines to
+  :updated_at: *1
+  :page_id: 1
+  :index: 7
+- :template: section_large_image
+  :id: 8
+  :header: Woodworking
+  :text: "We have a full woodworking workshop, we just need to move the machines to
     Hub Feenix.\r\n\r\nWe will make this available to trained members on an hourly
     basis much like nikkariverstas in Espoo.\r\n\r\nThe workshop will have all large
     machines (as in the picture) and a separate hand tool for smaller projects."
-  image: woodworking_wide
-  options:
+  :image: woodworking_wide
+  :options:
     subheader: ''
     margin: '0'
     order: right
     color: none
     background: light_gray
-  updated_at: *1
-  page_id: makerspace
-  index: 8
-- template: form_section
-  id: 9
-  card_template: form_field
-  cards:
+  :updated_at: *1
+  :page_id: 1
+  :index: 8
+- :template: form_section
+  :id: 9
+  :card_template: form_field
+  :cards:
   - id: 1
     header: Name
     text: ''
@@ -180,8 +181,8 @@
     updated_at: *1
     section_id: 9
     index: 5
-  header: Participate
-  text: "If you want to use any of the facilities or machines listed above, you need
+  :header: Participate
+  :text: "If you want to use any of the facilities or machines listed above, you need
     to be a member of the coop. This requires a small fee and a certain amount of
     participation in general tasks.\r\n\r\nAdditionally some machines will require
     skill to operate, and you need to prove that you are able, possibly participate
@@ -191,41 +192,41 @@
     already, or be notified when a certain facility is ready, fill the form below.\r\n\r\nIf
     you want to stay informed about planned meetings, courses and happening, join
     the Makers forum here.\r\n"
-  options:
+  :options:
     ok_message: ''
     handler: FormHandler
     background: light_orange
     color: solid_black
-  updated_at: *1
-  page_id: makerspace
-  index: 9
-- template: section_half_image
-  id: 10
-  header: Studios
-  text: Hub Feenix is a place to create together. A community of artists and makers.
+  :updated_at: *1
+  :page_id: 1
+  :index: 9
+- :template: section_half_image
+  :id: 10
+  :header: Studios
+  :text: Hub Feenix is a place to create together. A community of artists and makers.
     Several floors of the building are reserved for artist studios. Some creative
     activities that require large equipment (presses, ovens) overlap strongly with
     the Makers idea. Have a look at the rooms available and tell us what you need.
-  image: studios
-  options:
+  :image: studios
+  :options:
     button_link: ''
     button_text: ''
     order: left
     background: white
-  updated_at: &2 2022-12-09 17:50:02.733622073 +02:00
-  page_id: studios
-  index: 1
-- template: section_cards
-  header: Sizes and kinds
-  text: We offer different sizes and different types of studios for artists. There
+  :updated_at: &2 2022-12-09 17:50:02.733622073 +02:00
+  :page_id: 2
+  :index: 1
+- :template: section_cards
+  :header: Sizes and kinds
+  :text: We offer different sizes and different types of studios for artists. There
     large and small rooms, with more or less light, also rooms with tiles for wet-work.
     The rooms are in the old hospital wings, so most are old patient rooms, but there
     are plenty of others too. Prices do not include electricity or vat, but do include
     the use of common spaces, see below.
-  image:
-  id: 11
-  card_template: card_full_image
-  cards:
+  :image:
+  :id: 11
+  :card_template: card_full_image
+  :cards:
   - header: Standard
     text: This is the standard two patient room. They are mostly towards the south,
       so may have great, or too much light, depending on how you see it. The size
@@ -278,18 +279,18 @@
     updated_at: *2
     section_id: 11
     index: 4
-  options:
+  :options:
     button_link: ''
     button_text: ''
     background: light_blue
     columns: '2'
-  updated_at: *2
-  page_id: studios
-  index: 2
-- template: section_cards
-  id: 12
-  card_template: card_normal_square
-  cards:
+  :updated_at: *2
+  :page_id: 2
+  :index: 2
+- :template: section_cards
+  :id: 12
+  :card_template: card_normal_square
+  :cards:
   - id: 10
     header: Common spaces
     text: Each floor has it's own large common space. Also, Hub Feenix offers great
@@ -324,21 +325,21 @@
     updated_at: *2
     section_id: 12
     index: 3
-  header: Included
-  text: The studios offer a unique environment both in terms of fellow beings, and
+  :header: Included
+  :text: The studios offer a unique environment both in terms of fellow beings, and
     the spaces around.
-  options:
+  :options:
     background: white
     columns: '3'
     button_link: ''
     button_text: ''
-  updated_at: *2
-  page_id: studios
-  index: 3
-- template: form_section
-  id: 13
-  card_template: form_field
-  cards:
+  :updated_at: *2
+  :page_id: 2
+  :index: 3
+- :template: form_section
+  :id: 13
+  :card_template: form_field
+  :cards:
   - id: 13
     header: Name
     text: ''
@@ -381,25 +382,25 @@
     updated_at: *2
     section_id: 13
     index: 5
-  options:
+  :options:
     ok_message: Ok
     handler: FormHandler
     background: light_orange
     color: none
-  header: The deal
-  text: "Hub Feenix is not just renting space, we are looking to build a community
+  :header: The deal
+  :text: "Hub Feenix is not just renting space, we are looking to build a community
     of active, participating creatives.\r\n\r\nCheck out the MakerSpace facilities
     as well"
-  updated_at: *2
-  page_id: studios
-  index: 4
-- template: section_half_image
-  id: 14
-  header: Retreats
-  text: "Hub Feenix is a beautiful place, ideally situated in the country, but close
+  :updated_at: *2
+  :page_id: 2
+  :index: 4
+- :template: section_half_image
+  :id: 14
+  :header: Retreats
+  :text: "Hub Feenix is a beautiful place, ideally situated in the country, but close
     to Helsinki. We have different sized studios and spaces, to organise retreats
     for groups from 10, up to 100 people.\r\n"
-  options:
+  :options:
     button_link: ''
     button_text: ''
     order: left
@@ -409,14 +410,14 @@
       your stay enjoyable also outside the course program."
     align: center
     color: solid_blue
-  image: retreats
-  updated_at: &3 2022-12-09 17:32:41.538163009 +02:00
-  page_id: retreats
-  index: 1
-- template: section_cards
-  id: 15
-  card_template: card_normal_square
-  cards:
+  :image: retreats
+  :updated_at: &3 2022-12-09 17:32:41.538163009 +02:00
+  :page_id: 3
+  :index: 1
+- :template: section_cards
+  :id: 15
+  :card_template: card_normal_square
+  :cards:
   - id: 18
     header: The Hall
     text: Our beautiful hall, one of the largest in the area, is 8 x 20m and can accommodate
@@ -503,127 +504,127 @@
     updated_at: *3
     section_id: 15
     index: 6
-  header: Spaces
-  text: For different size groups and needs
-  options:
+  :header: Spaces
+  :text: For different size groups and needs
+  :options:
     background: light_orange
     columns: '3'
     button_link: ''
     button_text: ''
     color: solid_blue
     align: center
-  updated_at: *3
-  page_id: retreats
-  index: 2
-- template: section_full_up
-  id: 16
-  header: Accommodation
-  text: We have three wings set aside to accommodate retreat participants. Each wing
+  :updated_at: *3
+  :page_id: 3
+  :index: 2
+- :template: section_full_up
+  :id: 16
+  :header: Accommodation
+  :text: We have three wings set aside to accommodate retreat participants. Each wing
     can accommodate up to 32 people, and spare beds (and rooms) are available.
-  updated_at: *3
-  page_id: retreats
-  index: 3
-- template: section_full_image
-  id: 17
-  image: suites_wide
-  header: Suites
-  text: Suites are single occupancy and have en-suite toilet and shower.
-  options:
+  :updated_at: *3
+  :page_id: 3
+  :index: 3
+- :template: section_full_image
+  :id: 17
+  :image: suites_wide
+  :header: Suites
+  :text: Suites are single occupancy and have en-suite toilet and shower.
+  :options:
     fixed: 'off'
     shade_color: solid_blue_25
     color: white
     align: right
-  updated_at: *3
-  page_id: retreats
-  index: 4
-- template: section_full_image
-  id: 18
-  header: Shared room
-  text: "Shared rooms have double occupancy but their own bathroom with toilet and
+  :updated_at: *3
+  :page_id: 3
+  :index: 4
+- :template: section_full_image
+  :id: 18
+  :header: Shared room
+  :text: "Shared rooms have double occupancy but their own bathroom with toilet and
     shower.\r\n"
-  image: shared_wide
-  options:
+  :image: shared_wide
+  :options:
     fixed: 'off'
     color: white
     align: left
     shade_color: solid_red_25
-  updated_at: *3
-  page_id: retreats
-  index: 5
-- template: section_full_image
-  id: 19
-  header: Common room
-  text: Common rooms have either two or four beds and shared facilities. Rooms with
+  :updated_at: *3
+  :page_id: 3
+  :index: 5
+- :template: section_full_image
+  :id: 19
+  :header: Common room
+  :text: Common rooms have either two or four beds and shared facilities. Rooms with
     two beds will often share the bathroom with another room. Some rooms have shared
     facilities on the corridor.
-  image: common_wide
-  options:
+  :image: common_wide
+  :options:
     fixed: 'off'
     color: white
     align: center
     shade_color: black_25
-  updated_at: *3
-  page_id: retreats
-  index: 6
-- template: section_full_up
-  id: 20
-  header: Common services for retreats
-  text: Relax outside the course program
-  options:
+  :updated_at: *3
+  :page_id: 3
+  :index: 6
+- :template: section_full_up
+  :id: 20
+  :header: Common services for retreats
+  :text: Relax outside the course program
+  :options:
     background: light_orange
     color: solid_blue
     button_link: ''
     button_text: ''
     margin: '0'
-  updated_at: *3
-  page_id: retreats
-  index: 7
-- template: section_large_image
-  id: 21
-  image: common_spaces_wide
-  options:
+  :updated_at: *3
+  :page_id: 3
+  :index: 7
+- :template: section_large_image
+  :id: 21
+  :image: common_spaces_wide
+  :options:
     fixed: 'on'
     color: solid_blue
     align: left
     background: light_orange
-  header: Common spaces
-  text: Enjoy the free time in between learning. Several common spaces, like in the
+  :header: Common spaces
+  :text: Enjoy the free time in between learning. Several common spaces, like in the
     picture, terraces and the cafe make a relaxed atmosphere.
-  updated_at: *3
-  page_id: retreats
-  index: 8
-- template: section_large_image
-  id: 22
-  image: food_area
-  header: Great Food
-  text: Healthy plant-based food keeps you going between session. The dining hall
+  :updated_at: *3
+  :page_id: 3
+  :index: 8
+- :template: section_large_image
+  :id: 22
+  :image: food_area
+  :header: Great Food
+  :text: Healthy plant-based food keeps you going between session. The dining hall
     is conveniently situated next to the hall, so smaller breaks don't stop your flow.
-  options:
+  :options:
     fixed: 'on'
     color: solid_blue
     align: left
     background: light_orange
     order: right
-  updated_at: *3
-  page_id: retreats
-  index: 9
-- template: section_large_image
-  id: 23
-  image: nature_around
-  header: Nature around
-  text: Enjoy your spare time by walking around in the surrounding forest. Or (in
+  :updated_at: *3
+  :page_id: 3
+  :index: 9
+- :template: section_large_image
+  :id: 23
+  :image: nature_around
+  :header: Nature around
+  :text: Enjoy your spare time by walking around in the surrounding forest. Or (in
     the summer) go swimming in the nearby lake.
-  options:
+  :options:
     order: left
     color: solid_blue
     background: light_orange
-  updated_at: *3
-  page_id: retreats
-  index: 10
-- template: form_section
-  id: 24
-  card_template: form_field
-  cards:
+  :updated_at: *3
+  :page_id: 3
+  :index: 10
+- :template: form_section
+  :id: 24
+  :card_template: form_field
+  :cards:
   - id: 24
     header: Name
     text: ''
@@ -675,25 +676,25 @@
     updated_at: *3
     section_id: 24
     index: 7
-  header: Start planning now
-  text: We create custom packages for your specific needs. Just tell us what you are
-    planning, for how many people and we will create a solution for you.
-  options:
+  :header: Start planning now
+  :text: We create custom packages for your specific needs. Just tell us what you
+    are planning, for how many people and we will create a solution for you.
+  :options:
     ok_message: ''
     handler: FormHandler
     background: light_gray
     color: solid_blue
-  updated_at: *3
-  page_id: retreats
-  index: 11
-- template: section_half_image
-  id: 25
-  header: Coworking and offices
-  text: "We have various spaces for co-working and offices. You  can just come for
+  :updated_at: *3
+  :page_id: 3
+  :index: 11
+- :template: section_half_image
+  :id: 25
+  :header: Coworking and offices
+  :text: "We have various spaces for co-working and offices. You  can just come for
     the odd afternoon and work in a shared environment. Or rent your own office, single
     or double.\r\n"
-  image: coworking_office
-  options:
+  :image: coworking_office
+  :options:
     order: left
     background: white
     color: solid_blue
@@ -702,13 +703,13 @@
     align: center
     button_link: ''
     button_text: ''
-  updated_at: &4 2022-12-09 18:00:01.444815664 +02:00
-  page_id: coworking
-  index: 1
-- template: section_cards
-  id: 26
-  card_template: card_gap_square
-  cards:
+  :updated_at: &4 2022-12-09 18:00:01.444815664 +02:00
+  :page_id: 4
+  :index: 1
+- :template: section_cards
+  :id: 26
+  :card_template: card_gap_square
+  :cards:
   - id: 31
     header: Floating desk
     text: "Come anytime and work on any of the available desk. We have 30 places in
@@ -752,21 +753,21 @@
     updated_at: *4
     section_id: 26
     index: 3
-  header: Relax, connect and work
-  text: "Relaxed work environments have been shown to be more productive. Working
+  :header: Relax, connect and work
+  :text: "Relaxed work environments have been shown to be more productive. Working
     in different places and positions, even a bit of background noise, helps creativity
     and thus work.\r\nAnd then enjoy a good coffee in our nice cafe."
-  options:
+  :options:
     background: light_orange
     columns: '3'
     color: solid_blue
-  updated_at: *4
-  page_id: coworking
-  index: 2
-- template: form_section
-  id: 27
-  card_template: form_field
-  cards:
+  :updated_at: *4
+  :page_id: 4
+  :index: 2
+- :template: form_section
+  :id: 27
+  :card_template: form_field
+  :cards:
   - id: 34
     header: Name
     text: ''
@@ -812,36 +813,36 @@
     updated_at: *4
     section_id: 27
     index: 5
-  header: Join the working tribe
-  text: ''
-  options:
+  :header: Join the working tribe
+  :text: ''
+  :options:
     ok_message: ''
     handler: FormHandler
     background: light_orange
     color: solid_blue
-  updated_at: *4
-  page_id: coworking
-  index: 3
-- template: section_full_image
-  id: 28
-  header: Hub Feenix
-  text: "Our Vision:\r\n\r\nArt, craft, music, yoga, dance, meditation, nature, and
+  :updated_at: *4
+  :page_id: 4
+  :index: 3
+- :template: section_full_image
+  :id: 28
+  :header: Hub Feenix
+  :text: "Our Vision:\r\n\r\nArt, craft, music, yoga, dance, meditation, nature, and
     creatives of every kind come together under our roof in an atmosphere of openness
     and learning. \r\n\r\n \r\n\r\nWe are very much just starting, so make contact,
     check later, or follow us on facebook."
-  options:
+  :options:
     fixed: 'off'
     color: white
     align: left
     shade_color: solid_blue_25
-  image: cafe_about
-  updated_at: &5 2022-12-08 19:11:48.243621696 +02:00
-  page_id: about
-  index: 1
-- template: section_full_up
-  id: 29
-  header: About Us
-  text: "Hub Feenix is a community space that fosters creativity, healing, and connection.
+  :image: cafe_about
+  :updated_at: &5 2022-12-08 19:11:48.243621696 +02:00
+  :page_id: 5
+  :index: 1
+- :template: section_full_up
+  :id: 29
+  :header: About Us
+  :text: "Hub Feenix is a community space that fosters creativity, healing, and connection.
     \r\nArt, craft, music, yoga, dance, meditation, nature, and creative people of
     all kinds come together under our roof in an atmosphere of openness and learning.
     \r\n\r\nHub Feenix provides opportunities for creative people to live, work, learn,
@@ -849,101 +850,101 @@
     Finland forest. \r\n\r\nAs part of our commitment to ongoing connection and learning,
     Hub Feenix provides space for retreats, workshops, conferences, short- and long-term
     residencies, and other gatherings."
-  options:
+  :options:
     background: light_orange
     color: solid_blue
     margin: '0'
     subheader: ''
     button_link: ''
     button_text: ''
-  updated_at: *5
-  page_id: about
-  index: 2
-- template: section_full_image
-  id: 30
-  header: ''
-  text: "[Click here to open](https://duckduckgo.com/?t=ffab&q=H%C3%B6gbenintie+30%2C+10350+Meltola%2C+Raasepori&atb=v283-1&ia=web&iaxm=directions&end=what%3AH%25C3%25B6gbensv%25C3%25A4gen%252030%252C%252010350%2520Meltola%252C%2520Finland&transport=drive)"
-  image: map_wide
-  options:
+  :updated_at: *5
+  :page_id: 5
+  :index: 2
+- :template: section_full_image
+  :id: 30
+  :header: ''
+  :text: "[Click here to open](https://duckduckgo.com/?t=ffab&q=H%C3%B6gbenintie+30%2C+10350+Meltola%2C+Raasepori&atb=v283-1&ia=web&iaxm=directions&end=what%3AH%25C3%25B6gbensv%25C3%25A4gen%252030%252C%252010350%2520Meltola%252C%2520Finland&transport=drive)"
+  :image: map_wide
+  :options:
     fixed: 'on'
     color: black
     align: center
     shade_color: none
-  updated_at: *5
-  page_id: about
-  index: 3
-- template: section_full_image
-  header: HUB FEENIX
-  text: Only an hour west of Helsinki, the Feenix rises from an old sanatorium. The
+  :updated_at: *5
+  :page_id: 5
+  :index: 3
+- :template: section_full_image
+  :header: HUB FEENIX
+  :text: Only an hour west of Helsinki, the Feenix rises from an old sanatorium. The
     Hub is a place to create, learn and regenerate.
-  image: house
-  id: 31
-  options:
+  :image: house
+  :id: 31
+  :options:
     fixed: 'on'
     shade_color: black_25
     color: solid_blue
     align: left
-  updated_at: &6 2022-12-10 20:28:17.967357225 +02:00
-  page_id: index
-  index: 1
-- template: section_spacer
-  id: 32
-  updated_at: *6
-  page_id: index
-  index: 2
-- template: section_half_image
-  header: Retreats
-  text: Hub Feenix is a beautiful place, ideally situated in the country, but close
+  :updated_at: &6 2022-12-10 20:28:17.967357225 +02:00
+  :page_id: 6
+  :index: 2
+- :template: section_spacer
+  :id: 32
+  :updated_at: *6
+  :page_id: 6
+  :index: 1
+- :template: section_half_image
+  :header: Retreats
+  :text: Hub Feenix is a beautiful place, ideally situated in the country, but close
     to Helsinki. We have different sized studios and spaces, to organise retreats
     for up to 100 people.
-  options:
+  :options:
     button_text: Retreats
     button_link: retreats
     order: left
     background: solid_blue
-  image: retreats
-  id: 33
-  updated_at: *6
-  page_id: index
-  index: 3
-- template: section_half_image
-  header: Studios
-  text: We offer different size and different type of studios for artists. There are
-    large and small rooms, with more or less light, also rooms with tiles for wetwork,
-    small dance studios etc.
-  options:
+  :image: retreats
+  :id: 33
+  :updated_at: *6
+  :page_id: 6
+  :index: 3
+- :template: section_half_image
+  :header: Studios
+  :text: We offer different size and different type of studios for artists. There
+    are large and small rooms, with more or less light, also rooms with tiles for
+    wetwork, small dance studios etc.
+  :options:
     order: right
     button_link: ''
     button_text: ''
     background: solid_blue
-  image: studios
-  id: 34
-  updated_at: *6
-  page_id: index
-  index: 4
-- template: section_half_image
-  header: Makerspace
-  text: The hub encourages all people to be creative in any way they choose. We provide
+  :image: studios
+  :id: 34
+  :updated_at: *6
+  :page_id: 6
+  :index: 4
+- :template: section_half_image
+  :header: Makerspace
+  :text: The hub encourages all people to be creative in any way they choose. We provide
     facilities from more traditional sowing and woodworking, to modern 3d printers
     and electronics lab.
-  options:
+  :options:
     button_text: Makerspace
     button_link: makerspace
     order: left
     background: solid_blue
-  image: makerspace
-  id: 35
-  updated_at: *6
-  page_id: index
-  index: 5
-- template: section_half_image
-  id: 36
-  header: Coworking and offices
-  text: We have various spaces for co-working and office rent. You can just come for
-    the odd afternoon and work in a shared environment. Or rent your own office or
-    even wing, from 15 to 500 m2.
-  image: coworking_office
-  options:
+  :image: makerspace
+  :id: 35
+  :updated_at: *6
+  :page_id: 6
+  :index: 5
+- :template: section_half_image
+  :id: 36
+  :header: Coworking and offices
+  :text: We have various spaces for co-working and office rent. You can just come
+    for the odd afternoon and work in a shared environment. Or rent your own office
+    or even wing, from 15 to 500 m2.
+  :image: coworking_office
+  :options:
     order: right
     background: solid_blue
     color: none
@@ -952,17 +953,17 @@
     align: left
     button_link: coworking
     button_text: Coworking
-  updated_at: *6
-  page_id: index
-  index: 6
-- template: section_half_image
-  id: 37
-  header: Conferences and buisness events
-  text: We offer meeting rooms from 20-80 people, with breakout rooms for work-group
+  :updated_at: *6
+  :page_id: 6
+  :index: 6
+- :template: section_half_image
+  :id: 37
+  :header: Conferences and buisness events
+  :text: We offer meeting rooms from 20-80 people, with breakout rooms for work-group
     discussions. High-speed internet, video projectors, break-out rooms, all you need
     to organise your event. The cafe and surrounding nature make for ideal breaks.
-  image: conferences
-  options:
+  :image: conferences
+  :options:
     order: left
     background: solid_blue
     color: none
@@ -971,18 +972,18 @@
     align: left
     button_link: ''
     button_text: ''
-  updated_at: *6
-  page_id: index
-  index: 7
-- template: section_half_image
-  id: 38
-  header: Residency and Accommodation
-  text: We offer short to medium term accommodation for several target groups. The
+  :updated_at: *6
+  :page_id: 6
+  :index: 7
+- :template: section_half_image
+  :id: 38
+  :header: Residency and Accommodation
+  :text: We offer short to medium term accommodation for several target groups. The
     rooms are generally of a corridor, either with or without own toilet and shower.
     This can suit artists who either rent a studio or use co-working facilities. But
     we also accept applications from people who are just between things.
-  image: residency_accomodation
-  options:
+  :image: residency_accomodation
+  :options:
     order: right
     background: solid_blue
     color: none
@@ -991,13 +992,13 @@
     align: left
     button_link: ''
     button_text: ''
-  updated_at: *6
-  page_id: index
-  index: 8
-- template: section_cards
-  id: 39
-  card_template: card_normal_square
-  cards:
+  :updated_at: *6
+  :page_id: 6
+  :index: 8
+- :template: section_cards
+  :id: 39
+  :card_template: card_normal_square
+  :cards:
   - id: 39
     header: Cafe
     text: Our cafe serves vegan and vegetarian light food and great tea and coffee.
@@ -1036,19 +1037,19 @@
     updated_at: *6
     section_id: 39
     index: 3
-  header: Services
-  text: ''
-  options:
+  :header: Services
+  :text: ''
+  :options:
     background: solid_blue
     columns: '3'
     color: none
-  updated_at: *6
-  page_id: index
-  index: 9
-- template: form_section
-  id: 40
-  card_template: form_field
-  cards:
+  :updated_at: *6
+  :page_id: 6
+  :index: 9
+- :template: form_section
+  :id: 40
+  :card_template: form_field
+  :cards:
   - id: 42
     header: Name
     text: ''
@@ -1094,12 +1095,12 @@
     updated_at: *6
     section_id: 40
     index: 5
-  header: Contact
-  text: "Högbenintie 30, 10350 Meltola, Raasepori\r\n\r\ninfo@hubfeenix.fi\r\n\r\n0505337881\r\n"
-  options:
+  :header: Contact
+  :text: "Högbenintie 30, 10350 Meltola, Raasepori\r\n\r\ninfo@hubfeenix.fi\r\n\r\n0505337881\r\n"
+  :options:
     background: white
     color: solid_blue
     ok_message: We'll get back to you
-  updated_at: *6
-  page_id: index
-  index: 10
+  :updated_at: *6
+  :page_id: 6
+  :index: 10

@@ -33,8 +33,7 @@ module Merged
 
     def destroy
       @section.destroy()
-      @section.page.save
-      redirect_to page_sections_url(@section.page.id) , notice: "Section #{@section.index} removed"
+      redirect_to page_sections_url(@section.page.id) , notice: "Section #{@section.header} removed"
     end
 
     def set_image

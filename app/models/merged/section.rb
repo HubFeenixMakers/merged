@@ -66,13 +66,6 @@ module Merged
       page.sections.where(index: index + 1).first
     end
 
-
-    def save
-      super
-      data = Section.all.collect {|obj| obj.attributes}
-      File.write( Section.full_path , data.to_yaml)
-    end
-
     def self.build_data(template)
       data = { "template" => template , "id" => SecureRandom.hex(10) }
       style = SectionStyle.sections[ template ]
@@ -84,6 +77,35 @@ module Merged
         data["card_template"] = CardStyle.first.name
       end
       data
+    end
+
+    def reset_index
+      cards.each_with_index{|card, index| card.index = index + 1}
+    end
+
+    def destroy
+      has_cards = delete()
+      Section.save_all
+      Card.save_all if has_cards > 0
+    end
+
+    def delete( reindex = true )
+      has_cards = cards.length
+      cards.each {|card| card.delete(false) }
+      Section.delete( self.id )
+      page.reset_index if reindex
+      has_cards
+    end
+
+    def save
+      super
+      Section.save_all
+    end
+
+    def self.save_all
+      data = Section.the_private_records.collect {|obj| obj.attributes}
+      File.write( Section.full_path , data.to_yaml)
+      Section.reload
     end
 
   end
