@@ -1,4 +1,5 @@
 require 'rails_helper'
+require "git"
 
 module Merged
   RSpec.describe Card, type: :model do
@@ -33,7 +34,6 @@ module Merged
       Card.find(20).destroy
       Card.reload
       expect{Card.find(20) }.to raise_error(ActiveHash::RecordNotFound)
-      git = Git.open(Engine.root)
     end
 
   end

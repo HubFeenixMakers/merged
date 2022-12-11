@@ -21,5 +21,25 @@ module Merged
         expect(section.index).to be index + 1 # because we have human index
       end
     end
+
+    it "deletes " do
+      id = index.id
+      index.delete
+      expect{Page.find(id) }.to raise_error(ActiveHash::RecordNotFound)
+    end
+
+    it "destroys " do
+      id = index.id
+      index.destroy
+      Section.reload
+      expect{Page.find(id) }.to raise_error(ActiveHash::RecordNotFound)
+    end
+
+    it "destroys sections" do
+      id = index.sections.first.id
+      index.destroy
+      Section.reload
+      expect{Page.find(id) }.to raise_error(ActiveHash::RecordNotFound)
+    end
   end
 end

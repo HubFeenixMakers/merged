@@ -44,5 +44,25 @@ module Merged
     it "last has no next" do
       expect(last.next_section).to be nil
     end
+
+    it "deletes " do
+      last_id = last.id
+      last.delete
+      expect{Section.find(last_id) }.to raise_error(ActiveHash::RecordNotFound)
+    end
+
+    it "destroys " do
+      last_id = last.id
+      last.destroy
+      Section.reload
+      expect{Section.find(last_id) }.to raise_error(ActiveHash::RecordNotFound)
+    end
+    it "destroys cards" do
+      card_id = last.cards.first.id
+      last.destroy
+      Section.reload
+      expect{Card.find(card_id) }.to raise_error(ActiveHash::RecordNotFound)
+    end
+
   end
 end

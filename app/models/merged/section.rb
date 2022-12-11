@@ -7,7 +7,7 @@ module Merged
 
     include Optioned
 
-    fields :name , :page_id , :index , :cards , :options
+    fields :name , :page_id , :index , :options
     fields :template , :card_template , :id , :text , :header, :image
 
     def cards
