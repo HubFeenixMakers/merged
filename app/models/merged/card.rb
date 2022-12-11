@@ -17,16 +17,6 @@ module Merged
       @section.remove_card( self)
     end
 
-    def update(key , value)
-      return if key == "id" #not updating that
-      if(! @content[key].nil? )
-        if( @content[key].class != value.class )
-          raise "Type mismatch #{key} #{key.class}!=#{value.class}"
-        end
-      end
-      @content[key] = value
-    end
-
     def move_up
       swap_index_with(next_card)
     end
@@ -57,10 +47,6 @@ module Merged
       CardStyle.find_by_template( section.card_template)
     end
 
-    def allowed_fields
-      template_style.fields
-    end
-
     def self.build_data(card_template)
       data = { "id" => SecureRandom.hex(10) }
       CardStyle.find_by_template( card_template ).fields.each do |key|
@@ -69,11 +55,5 @@ module Merged
       data
     end
 
-    def self.find_card(id)
-      raise "nil given" if id.blank?
-      card = @@all[id]
-      raise "Section not found #{id}" unless card
-      return card
-    end
   end
 end

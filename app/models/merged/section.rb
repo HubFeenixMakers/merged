@@ -30,10 +30,6 @@ module Merged
       SectionStyle.find_by_template( template )
     end
 
-    def allowed_fields
-      template_style.fields
-    end
-
     def has_cards?
       ! card_template.blank?
     end
@@ -73,24 +69,11 @@ module Merged
       page.sections.where(index: index + 1).first
     end
 
-    def update(key , value)
-      raise "unsuported field #{key} for #{template}" unless allowed_fields.include?(key)
-      if(! @content[key].nil? ) # first setting ok, types not (yet?) specified
-        if( @content[key].class != value.class )
-          raise "Type mismatch #{key} #{key.class}!=#{value.class}"
-        end
-      end
-      @content[key] = value
-    end
 
     def save
       super
       data = Section.all.collect {|obj| obj.attributes}
       File.write( Section.full_path , data.to_yaml)
-    end
-
-    def set_index(index)
-      @index = index
     end
 
     def self.build_data(template)

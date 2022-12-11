@@ -56,7 +56,7 @@ module Merged
     private
     def set_card
       card_id = params[:id] || params[:card_id]
-      @card = Card.find_card( card_id )
+      @card = Card.find( card_id )
     end
 
   end

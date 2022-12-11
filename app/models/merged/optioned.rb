@@ -1,6 +1,9 @@
 module Merged
   #relies only on @content["options"]
   #and a method template_style
+  # and index
+  # and is due for a rename
+
   module Optioned
     def has_option?(option)
       options.has_key?(option) and !options[option].blank?
@@ -15,13 +18,23 @@ module Merged
     end
 
     def options
-      attributes[:options] || {}
+      return attributes[:options] unless attributes[:options].blank?
+      attributes[:options] = {}
     end
 
     def set_option( option , value)
       puts "#{template_style} setting option #{option}=#{value.class}"
-      @content["options"] = {} if @content["options"].nil?
       options[option] = value
+    end
+
+    def update(key , value)
+      raise "unsuported field #{key} for #{template}" unless allowed_fields.include?(key)
+      if(! attributes[key].nil? ) # first setting ok, types not (yet?) specified
+        if( @attributes[key].class != value.class )
+          raise "Type mismatch #{key} #{key.class}!=#{value.class}"
+        end
+      end
+      attributes[key] = value
     end
 
     #other may be nil
@@ -30,6 +43,10 @@ module Merged
       old_index = self.index
       self.index = other.index
       other.index = old_index
+    end
+
+    def allowed_fields
+      template_style.fields.collect{|f| f.to_sym}
     end
 
   end
