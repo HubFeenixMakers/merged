@@ -35,11 +35,8 @@ module Merged
     end
 
     def new_card
-      card_data = Card.build_data(card_template)
-      index = cards.length
-      card = Card.new(self , index,  card_data)
-      @cards << card
-      @content["cards"] << card_data
+      card = Card.new_card( card_template , self.id , cards.length)
+      card.save
       card
     end
 

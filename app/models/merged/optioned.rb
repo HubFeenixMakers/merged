@@ -27,6 +27,13 @@ module Merged
       options[option] = value
     end
 
+    def add_default_options
+      option_definitions.each do |option|
+        next unless option.default
+        set_option( option.name , option.default)
+      end
+    end
+
     def update(key , value)
       raise "unsuported field #{key} for #{template}" unless allowed_fields.include?(key)
       if(! attributes[key].nil? ) # first setting ok, types not (yet?) specified

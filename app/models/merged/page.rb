@@ -9,8 +9,6 @@ module Merged
 
     fields :name , :content , :size , :updated_at
 
-    alias :id  :name
-
     def sections
       Section.where(page_id: name).order(index: :asc)
     end

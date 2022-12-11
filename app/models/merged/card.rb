@@ -36,7 +36,7 @@ module Merged
     def save
       super
       data = Card.all.collect {|obj| obj.attributes}
-      File.write( OptionDefinition.full_path , data.to_yaml)
+      File.write( Card.full_path , data.to_yaml)
     end
 
     def set_index(index)
@@ -47,12 +47,14 @@ module Merged
       CardStyle.find_by_template( section.card_template)
     end
 
-    def self.build_data(card_template)
-      data = { "id" => SecureRandom.hex(10) }
+    def self.new_card(card_template , section_id , index)
+      data = { section_id: section_id , index: index}
       CardStyle.find_by_template( card_template ).fields.each do |key|
-        data[key] = key.upcase
+        data[key] = "NEW"
       end
-      data
+      card = Card.new(data)
+      card.add_default_options
+      card
     end
 
   end
