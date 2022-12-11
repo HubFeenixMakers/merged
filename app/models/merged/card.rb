@@ -36,7 +36,7 @@ module Merged
     def save
       super
       data = Card.all.collect {|obj| obj.attributes}
-      File.write( Option.full_path , data.to_yaml)
+      File.write( OptionDefinition.full_path , data.to_yaml)
     end
 
     def set_index(index)

@@ -28,7 +28,7 @@ module Merged
     it "has option_definitions" do
       expect(last.option_definitions.class).to be Array
       expect(last.option_definitions.length).to be 4
-      expect(last.option_definitions.second.class).to be Option
+      expect(last.option_definitions.second.class).to be OptionDefinition
       expect(last.option_definitions.second.name).to eq "handler"
     end
     it "last has previous" do

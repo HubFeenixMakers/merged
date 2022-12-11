@@ -5,7 +5,7 @@ module Merged
 
   def self.load_data
     # pre-load data
-    Option.all
+    OptionDefinition.all
     CardStyle.all
     SectionStyle.all
     Page.all
