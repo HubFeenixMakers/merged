@@ -1,8 +1,7 @@
 module Merged
   class Page < ActiveYaml::Base
     set_root_path Rails.root #ouside engines not necessary
-    include ActiveHash::Associations
-    has_many :sections , class_name: "Merged::Section" ,  scope:  -> { order(index: :desc) }
+
     # could be config options
     def self.cms_root
       "cms"
@@ -11,6 +10,10 @@ module Merged
     fields :name , :content , :size , :updated_at
 
     alias :id  :name
+
+    def sections
+      Section.where(page_id: name).order(index: :asc)
+    end
 
     def self.check_name(name)
       return "only alphanumeric, not #{name}" if name.match(/\A[a-zA-Z0-9]*\z/).nil?
@@ -51,32 +54,6 @@ module Merged
     def first_template
       return "none" unless @content[0]
       @content[0]["template"]
-    end
-
-    def move_section_up(section)
-      return if sections.length == 1
-      return if section.index == 0
-      swap_sections( section , sections[section.index - 1])
-    end
-
-    def move_section_down(section)
-      return if sections.length == 1
-      return if section.index == sections.last.index
-      swap_sections( section , sections[section.index + 1])
-    end
-
-    def swap_sections( this_section , that_section)
-      # swap in the actual objects, index is cached in the objects
-      this_old_index = this_section.index
-      this_section.set_index( that_section.index )
-      that_section.set_index( this_old_index )
-
-      # swap in the sections cache
-      sections[ this_section.index ] = this_section
-      sections[ that_section.index ] = that_section
-      # swap in the yaml
-      content[this_section.index] = this_section.content
-      content[that_section.index] = that_section.content
     end
 
     def save

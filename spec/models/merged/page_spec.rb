@@ -18,7 +18,7 @@ module Merged
     end
     it "has section indexes" do
       index.sections.each_with_index do |section, index|
-        expect(section.index).to be index + 1
+        expect(section.index).to be index + 1 # because we have human index
       end
     end
   end

@@ -28,10 +28,19 @@ module Merged
     end
 
     def move_up
-      @section.move_card_up(self)
+      swap_index_with(next_card)
     end
+
     def move_down
-      @section.move_card_down(self)
+      swap_index_with(previous_card)
+    end
+
+    def previous_card
+      section.cards.where(index: index - 1).first
+    end
+
+    def next_card
+      section.cards.where(index: index + 1).first
     end
 
     def save

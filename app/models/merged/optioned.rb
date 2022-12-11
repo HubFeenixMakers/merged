@@ -24,5 +24,13 @@ module Merged
       options[option] = value
     end
 
+    #other may be nil
+    def swap_index_with(other)
+      return unless other
+      old_index = self.index
+      self.index = other.index
+      other.index = old_index
+    end
+
   end
 end

@@ -35,7 +35,7 @@ module Merged
     def destroy
       @card.destroy
       @card.section.save
-      redirect_to section_cards_url(@card.section.id) , notice: "Card #{@card.index + 1} removed"
+      redirect_to section_cards_url(@card.section.id) , notice: "Card #{@card.index} removed"
     end
 
     def update

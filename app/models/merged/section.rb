@@ -4,13 +4,15 @@ module Merged
 
     include ActiveHash::Associations
     belongs_to :page , class_name: "Merged::Page"
-    has_many :cards , class_name: "Merged::Card" , scope:  -> { order(index: :desc) }
-
 
     include Optioned
 
     fields :name , :page_id , :index , :cards , :options
     fields :template , :card_template , :id , :text , :header, :image
+
+    def cards
+      Card.where(section_id: id).order(index: :asc)
+    end
 
     def set_template(new_template)
       self.template = new_template
@@ -54,16 +56,13 @@ module Merged
       end
     end
 
-    def destroy
-      @page.remove_section(self)
-    end
 
     def move_up
-      @page.move_section_up(self)
+      swap_index_with(next_section)
     end
 
     def move_down
-      @page.move_section_down(self)
+      swap_index_with(previous_section)
     end
 
     def previous_section
@@ -72,33 +71,6 @@ module Merged
 
     def next_section
       page.sections.where(index: index + 1).first
-    end
-
-    def move_card_up(card)
-      return if cards.length == 1
-      return if card.index == 0
-      swap( card , cards[card.index - 1])
-    end
-
-    def move_card_down(card)
-      return if cards.length == 1
-      return if card.index == cards.last.index
-      swap( card , cards[card.index + 1])
-    end
-
-    def swap( this_card , that_card)
-      # swap in the actual objects, index is cached in the objects
-      this_old_index = this_card.index
-      this_card.set_index( that_card.index )
-      that_card.set_index( this_old_index )
-
-      # swap in the cards cache
-      cards[ this_card.index ] = this_card
-      cards[ that_card.index ] = that_card
-      # swap in the yaml
-      card_content = content["cards"]
-      card_content[this_card.index] = this_card.content
-      card_content[that_card.index] = that_card.content
     end
 
     def update(key , value)
