@@ -9,7 +9,7 @@
       =link_to "View live" , "/#{@page.name}" , target: @page.name
 
 -@page.sections.each do |section |
-  .grid.grid-cols-5.gap-2.m-8{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' }
+  .grid.grid-cols-5.gap-2.m-8{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "section_#{section.id}"}
     .relative.block.border.border-gray-100.p-4
       %h3.mt-4.text-lg.font-bold Section #{section.index + 1} : #{section.header}
       = blue_button( "Up" , section_move_url(section.id , dir: :up) )
@@ -30,7 +30,7 @@
       %p= section.text[0..100] + " ..." if section.text
     .relative.block.border.border-gray-100.p-4
       - if section.has_cards?
-        %h3.mt-4.text-lg.font-bold #{section.content['cards'].length} Cards
+        %h3.mt-4.text-lg.font-bold #{section.cards.length} Cards
         =link_to section_cards_url(section.id) do
           =card_preview(section , class: "w-full object-contain")
       - else

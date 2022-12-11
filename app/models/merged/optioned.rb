@@ -15,7 +15,7 @@ module Merged
     end
 
     def options
-      @content["options"] || {}
+      attributes[:options] || {}
     end
 
     def set_option( option , value)

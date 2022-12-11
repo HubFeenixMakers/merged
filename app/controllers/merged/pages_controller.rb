@@ -3,7 +3,7 @@ module Merged
     before_action :set_page, only: %i[ update destroy ]
 
     def index
-      @pages = Page.all.values
+      @pages = Page.all
     end
 
     def create

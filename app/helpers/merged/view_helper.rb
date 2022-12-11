@@ -12,7 +12,6 @@ module Merged
       attributes["style"] = "background-image: url('#{img}');"
       if(section.option("fixed") == "on")
         attributes[:class] = attributes[:class] + " bg-fixed"
-        puts "Adding fixed"
       end
       attributes
     end

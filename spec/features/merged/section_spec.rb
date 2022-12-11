@@ -13,7 +13,9 @@ RSpec.feature "Sections", type: :feature do
     it "returns http success" do
       visit "/merged/pages"
       click_on ("index")
-      find_link("Edit").click
+      within("#section_31") do
+        find_link("Edit").click
+      end
     end
   end
 end

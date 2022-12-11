@@ -9,9 +9,9 @@
   .flex.items-center.justify-center.flex-1
     %h3.text-xl.font-bold.tracking-tight.text-gray-900
       Section #{@section.index + 1} / #{@section.page.sections.length}
-      - unless @section.index == 0
+      - if @section.previous_section
         =link_to "(prev)" , section_url(@section.previous_section.id)
-      - unless @section.index == (@section.page.sections.length - 1)
+      - if @section.next_section
         =link_to "(next)" , section_url(@section.next_section.id)
 .grid.grid-cols-3.gap-2.m-8
   .relative.block.border.border-gray-100

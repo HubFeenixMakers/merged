@@ -16,5 +16,10 @@ module Merged
     it "has section array" do
       expect(index.sections.first.class).to be Section
     end
+    it "has section indexes" do
+      index.sections.each_with_index do |section, index|
+        expect(section.index).to be index + 1
+      end
+    end
   end
 end

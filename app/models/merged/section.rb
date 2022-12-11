@@ -4,11 +4,12 @@ module Merged
 
     include ActiveHash::Associations
     belongs_to :page , class_name: "Merged::Page"
-    has_many :cards , class_name: "Merged::Card"
+    has_many :cards , class_name: "Merged::Card" , scope:  -> { order(index: :desc) }
+
 
     include Optioned
 
-    fields :name , :page_id , :index , :cards
+    fields :name , :page_id , :index , :cards , :options
     fields :template , :card_template , :id , :text , :header, :image
 
     def set_template(new_template)
@@ -66,13 +67,11 @@ module Merged
     end
 
     def previous_section
-      return nil if index == 0
-      page.sections[index - 1]
+      page.sections.where(index: index - 1).first
     end
 
     def next_section
-      return nil if index == (page.sections.length - 1)
-      page.sections[index + 1]
+      page.sections.where(index: index + 1).first
     end
 
     def move_card_up(card)
@@ -133,13 +132,6 @@ module Merged
         data["card_template"] = CardStyle.first.name
       end
       data
-    end
-
-    def self.find(section_id)
-      raise "nil given" if section_id.blank?
-      section = @@all[section_id]
-      raise "Section not found #{section_id}" unless section
-      return section
     end
 
   end

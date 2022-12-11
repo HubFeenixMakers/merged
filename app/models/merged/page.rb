@@ -2,8 +2,7 @@ module Merged
   class Page < ActiveYaml::Base
     set_root_path Rails.root #ouside engines not necessary
     include ActiveHash::Associations
-    has_many :sections , class_name: "Merged::Section"
-
+    has_many :sections , class_name: "Merged::Section" ,  scope:  -> { order(index: :desc) }
     # could be config options
     def self.cms_root
       "cms"

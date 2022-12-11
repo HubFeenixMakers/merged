@@ -11,7 +11,7 @@ module Merged
       expect(first.class).to be Image
     end
     it "image has name" do
-      expect(first.name).to eq "large"
+      expect(first.name).to eq "3dprinter_wide"
     end
   end
 end
