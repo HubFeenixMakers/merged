@@ -22,5 +22,19 @@ module Merged
       expect(first.next_card.index).to be 2
     end
 
+    it "deletes " do
+      card = Card.find(20)
+      expect(card).not_to be nil
+      card.delete
+      expect{Card.find(20) }.to raise_error(ActiveHash::RecordNotFound)
+    end
+
+    it "destroys " do
+      Card.find(20).destroy
+      Card.reload
+      expect{Card.find(20) }.to raise_error(ActiveHash::RecordNotFound)
+      git = Git.open(Engine.root)
+    end
+
   end
 end

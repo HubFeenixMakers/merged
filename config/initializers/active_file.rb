@@ -9,7 +9,7 @@ module ActiveHash
       true
     end
 
-    def the_private_records
+    def self.the_private_records
       @records
     end
   end
