@@ -23,6 +23,11 @@ module Merged
       expect(first.next_card.index).to be 2
     end
 
+    it "create a new" do
+      card = Card.new_card("card_normal_square" , 1 , 1)
+      expect(card.index).to eq 1
+    end
+
     it "deletes " do
       card = Card.find(20)
       expect(card).not_to be nil

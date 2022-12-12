@@ -50,6 +50,13 @@ module Merged
       expect(s.template).to eq "section_spacer"
     end
 
+    it "creates card with right index" do
+      s = Section.find_by_template("section_cards")
+      length = s.cards.length
+      c = s.new_card
+      expect(c.index).to eq length + 1
+    end
+
     it "deletes " do
       last_id = last.id
       last.delete

@@ -15,7 +15,7 @@ module Merged
 
     def new_section(section_template)
       section_template = "section_spacer" if section_template.blank?
-      section = Section.new_section(section_template, self.id , sections.length)
+      section = Section.new_section(section_template, self.id , sections.length + 1)
       section
     end
 

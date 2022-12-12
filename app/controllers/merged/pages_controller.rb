@@ -11,7 +11,8 @@ module Merged
       message = Page.check_name(name)
       message = "Must enter name" if name.blank?
       if( message.nil?)
-        @page = Page.build_new(name)
+        @page = Page.new_page(name)
+        @page.save
         redirect_to new_page_section_url(@page.id) , notice: "Page was successfully created."
       else
         @pages = Page.all.values

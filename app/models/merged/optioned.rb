@@ -23,12 +23,12 @@ module Merged
     end
 
     def set_option( option , value)
-      puts "#{template_style} setting option #{option}=#{value.class}"
       options[option] = value
     end
 
-    def add_default_options
-      option_definitions.each do |option|
+    def add_default_options( definitions = nil )
+      definitions = option_definitions if definitions.nil?
+      definitions.each do |option|
         next unless option.default
         set_option( option.name , option.default)
       end

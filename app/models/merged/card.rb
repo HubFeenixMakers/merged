@@ -9,10 +9,6 @@ module Merged
 
     fields  :index , :section_id,  :id , :text , :header, :image
 
-    def template_style
-      section.card_template
-    end
-
     def move_up
       swap_index_with(next_card)
     end
@@ -60,11 +56,12 @@ module Merged
 
     def self.new_card(card_template , section_id , index)
       data = { section_id: section_id , index: index}
-      CardStyle.find_by_template( card_template ).fields.each do |key|
+      template = CardStyle.find_by_template( card_template )
+      template.fields.each do |key|
         data[key] = "NEW"
       end
       card = Card.new(data)
-      card.add_default_options
+      card.add_default_options(template.options_definitions)
       card
     end
 

@@ -19,10 +19,8 @@ module Merged
       new_style = template_style
       if(new_style.has_cards?)
         unless card_template
-          self.card_template = CardStyle.first.name
+          self.card_template = CardStyle.first.template
         end
-      else
-        cards.delete_all
       end
     end
 
@@ -43,7 +41,6 @@ module Merged
       end
     end
 
-
     def move_up
       swap_index_with(next_section)
     end
@@ -60,19 +57,9 @@ module Merged
       page.sections.where(index: index + 1).first
     end
 
-    def self.new_section(template , page_id , index)
-      data = { template: template , index: index , page_id: page_id}
-      style = SectionStyle.find_by_template( template)
-      style.fields.each do |key|
-        data[key] = key.upcase
-      end unless style.fields.blank?
-      if(style.has_cards?)
-        data["cards"] = []
-        data["card_template"] = CardStyle.first.name
-      end
-      s = Section.new(data)
-      s.add_default_options
-      s
+    def new_card
+      card = Card.new_card(card_template, self.id , cards.length + 1)
+      card
     end
 
     def reset_index
@@ -96,6 +83,21 @@ module Merged
     def save
       super
       Section.save_all
+    end
+
+    def self.new_section(template , page_id , index)
+      data = { template: template , index: index , page_id: page_id}
+      style = SectionStyle.find_by_template( template)
+      style.fields.each do |key|
+        data[key] = key.upcase
+      end unless style.fields.blank?
+      if(style.has_cards?)
+        data["cards"] = []
+        data["card_template"] = CardStyle.first.name
+      end
+      s = Section.new(data)
+      s.add_default_options
+      s
     end
 
     def self.save_all
