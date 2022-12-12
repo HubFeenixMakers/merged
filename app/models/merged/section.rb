@@ -34,12 +34,6 @@ module Merged
       ! card_template.blank?
     end
 
-    def new_card
-      card = Card.new_card( card_template , self.id , cards.length)
-      card.save
-      card
-    end
-
     def remove_card(card)
       from_index = card.index
       @cards.delete_at(from_index)
@@ -66,9 +60,9 @@ module Merged
       page.sections.where(index: index + 1).first
     end
 
-    def self.build_data(template)
-      data = { "template" => template , "id" => SecureRandom.hex(10) }
-      style = SectionStyle.sections[ template ]
+    def self.new_section(template , page_id , index)
+      data = { template: template , index: index , page_id: page_id}
+      style = SectionStyle.find_by_template( template)
       style.fields.each do |key|
         data[key] = key.upcase
       end unless style.fields.blank?
@@ -76,7 +70,9 @@ module Merged
         data["cards"] = []
         data["card_template"] = CardStyle.first.name
       end
-      data
+      s = Section.new(data)
+      s.add_default_options
+      s
     end
 
     def reset_index

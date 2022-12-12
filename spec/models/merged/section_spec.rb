@@ -45,6 +45,11 @@ module Merged
       expect(last.next_section).to be nil
     end
 
+    it "creates new spacer section" do
+      s = Section.new_section("section_spacer" , 1  , 1)
+      expect(s.template).to eq "section_spacer"
+    end
+
     it "deletes " do
       last_id = last.id
       last.delete

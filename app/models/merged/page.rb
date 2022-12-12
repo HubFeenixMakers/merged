@@ -7,31 +7,15 @@ module Merged
       "cms"
     end
 
-    fields :name , :content , :size , :updated_at
+    fields :name , :size , :updated_at
 
     def sections
       Section.where(page_id: id).order(index: :asc)
     end
 
-    def self.check_name(name)
-      return "only alphanumeric, not #{name}" if name.match(/\A[a-zA-Z0-9]*\z/).nil?
-      nil
-    end
-    def self.build_new(name)
-      raise "only alphanumeric, not #{name}" unless check_name(name).nil?
-      name = name + ".yaml"
-      fullname = Rails.root.join(Page.cms_root , name )
-      File.write(fullname , "--- []\n")
-      Page.new(name)
-    end
-
     def new_section(section_template)
       section_template = "section_spacer" if section_template.blank?
-      section_data = Section.build_data(section_template)
-      index = sections.length
-      section = Section.new(self , index,  section_data)
-      @sections << section
-      @content << section_data
+      section = Section.new_section(section_template, self.id , sections.length)
       section
     end
 
@@ -73,6 +57,17 @@ module Merged
     def save
       super
       Page.save_all
+    end
+
+    def self.new_page(name )
+      raise "only alphanumeric, not #{name}" unless check_name(name).nil?
+      data = { name: name.dup  }
+      Page.new(data)
+    end
+
+    def self.check_name(name)
+      return "only alphanumeric, not #{name}" if name.match(/\A[a-zA-Z0-9]*\z/).nil?
+      nil
     end
 
     def self.save_all

@@ -41,5 +41,16 @@ module Merged
       Section.reload
       expect{Page.find(id) }.to raise_error(ActiveHash::RecordNotFound)
     end
+
+    it "creates simple section" do
+      s = index.new_section("section_spacer")
+      expect(s).not_to be nil
+      expect(s.template).to eq "section_spacer"
+    end
+    it "creates page" do
+      name = "randomname"
+      page = Page.new_page( name)
+      expect(page.name).to eq name
+    end
   end
 end
