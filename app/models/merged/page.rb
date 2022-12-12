@@ -55,13 +55,14 @@ module Merged
     end
 
     def save
+      updated_at = Time.now
       super
       Page.save_all
     end
 
     def self.new_page(name )
       raise "only alphanumeric, not #{name}" unless check_name(name).nil?
-      data = { name: name.dup  }
+      data = { name: name.dup , updated_at: Time.now }
       Page.new(data)
     end
 

@@ -11,9 +11,9 @@ module Merged
     end
 
     def set_image
-      @card.content["image"] = params[:image]
+      @card.image = params[:image]
       @card.save
-      redirect_to section_cards_url(@card.section.id)
+      redirect_to section_cards_url(@card.section.id) , notice: "Image selected: #{@card.image}"
     end
 
     def move

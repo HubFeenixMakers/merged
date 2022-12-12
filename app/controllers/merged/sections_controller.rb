@@ -37,9 +37,9 @@ module Merged
     end
 
     def set_image
-      @section.content["image"] = params[:image]
+      @section.image = params[:image]
       @section.save
-      redirect_to section_url(@section.id)
+      redirect_to section_url(@section.id) , notice: "Image selected: #{@section.image}"
     end
 
     def set_template

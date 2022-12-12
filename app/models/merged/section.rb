@@ -7,8 +7,9 @@ module Merged
 
     include Optioned
 
-    fields :name , :page_id , :index , :options
-    fields :template , :card_template , :id , :text , :header, :image
+    fields :id , :name , :page_id , :index
+    fields :template , :card_template
+    fields :header, :text , :image , :options
 
     def cards
       Card.where(section_id: id).order(index: :asc)

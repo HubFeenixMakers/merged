@@ -7,7 +7,8 @@ module Merged
 
     include Optioned
 
-    fields  :index , :section_id,  :id , :text , :header, :image
+    fields  :id , :index , :section_id
+    fields  :text , :header, :image , :options
 
     def move_up
       swap_index_with(next_card)
