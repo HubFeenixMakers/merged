@@ -9,47 +9,6 @@
     = stylesheet_link_tag "merged/merged"
     = javascript_importmap_tags
   %body
-    %header.bg-white{"aria-label" => "Site Header"}
-      .mx-auto.max-w-screen-xl.px-4.sm:px-6.lg:px-8
-        .flex.h-16.items-center.justify-between
-          .flex-1.md:flex.md:items-center.md:gap-12
-            %a.block.text-teal-600{:href => "/"}
-              %span.sr-only Home
-              %svg.h-10{:space => "preserve", :style => "fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2", :viewbox => "0 0 64 64", :xmlns => "http://www.w3.org/2000/svg"}
-                %path{:d => "M55.579 31.579a2 2 0 0 1 .208 2.583l-1.284 1.781a1.996 1.996 0 0 1-3.036.245A462554.14 462554.14 0 0 1 32 16.722L12.533 36.188a1.996 1.996 0 0 1-3.036-.245l-1.284-1.781a2 2 0 0 1 .208-2.583L32 8l23.579 23.579z", :style => "fill:none;stroke:#222a33;stroke-width:2px"}
-                %path{:d => "M13.977 34.745 32 16.722l18.023 18.023v20.002a2.25 2.25 0 0 1-.66 1.593 2.25 2.25 0 0 1-1.593.66H16.23a2.25 2.25 0 0 1-1.593-.66 2.25 2.25 0 0 1-.66-1.593V34.745zM20.736 19.264l-7.885 7.885V15.322h7.885v3.942z", :style => "fill:none;stroke:#222a33;stroke-width:2px"}
-                %path{:d => "M37 44.5a1.503 1.503 0 0 0-1.5-1.5h-7a1.503 1.503 0 0 0-1.5 1.5V57h10V44.5z", :style => "fill:none;stroke:#222a33;stroke-width:2px"}
-          .flex-1.md:flex.md:items-center.md:gap-12
-            %a.block.text-teal-600{:href => "/merged/pages"}
-              %span.sr-only Home
-              =image_tag("merged/merged_logo" , class: "h-10")
-
-          .md:flex.md:items-center.md:gap-12
-            %nav.hidden.md:block{"aria-label" => "Site Nav"}
-              %ul.flex.items-center.gap-6.text-sm
-                %li
-                  %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => pages_path}
-                    Pages
-                %li
-                  %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => images_path}
-                    Images
-                %li
-                  %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => styles_index_path}
-                    Styles
-                %li
-                  %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => changes_index_path}
-                    Changes
-            .flex.items-center.gap-4
-              .sm:flex.sm:gap-4
-                %a.rounded-md.bg-teal-600.px-5.text-sm.font-medium.text-white.shadow{:class => "py-2.5", :href => "/"}
-                  Login
-                .hidden.sm:flex
-                  %a.rounded-md.bg-gray-100.px-5.text-sm.font-medium.text-teal-600{:class => "py-2.5", :href => "/"}
-                    Register
-              .block.md:hidden
-                %button.rounded.bg-gray-100.p-2.text-gray-600.transition{:class => "hover:text-gray-600/75"}
-                  %svg.h-5.w-5{:fill => "none", :stroke => "currentColor", "stroke-width" => "2", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
-                    %path{:d => "M4 6h16M4 12h16M4 18h16", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
-
+    = render "layouts/merged_header"
     = render "layouts/merged_messages"
     = yield

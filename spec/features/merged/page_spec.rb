@@ -4,7 +4,7 @@ RSpec.feature "Pages", type: :feature do
   describe "GET /pages" do
     it "returns http success" do
       visit "/merged/pages"
-      expect(page).to have_title("Merged")
+      expect(page).to have_title("Dummy")
       expect(page).to have_text("Pages")
     end
   end

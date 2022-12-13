@@ -1,12 +1,10 @@
-.flex.flex-col.bg-white
-  .flex.items-center.justify-center.flex-1
-    .max-w-xl.px-4.py-8.mx-auto.text-center
-      %h1.text-3xl.font-bold.tracking-tight.text-gray-900
-        Page #{link_to @section.page.name, page_sections_url(@section.page.id), class: "underline"}
-  .flex.items-center.justify-center.flex-1
-    .max-w-xl.px-4.py-8.mx-auto.text-center
-      %h1.text-3xl.font-bold.tracking-tight.text-gray-900
-        Select Template for Section #{@section.index}
+- content_for( :merged_menu ) do
+  .text-xl.font-bold.text-gray-900
+    Page #{link_to @section.page.name, page_sections_url(@section.page.id), class: "underline"}
+  .text-xl.text-gray-900
+    Select Template for Section #{@section.index}
+
+= render "layouts/merged_header"
 
 .grid.grid-cols-4.gap-2.m-8
   - @sections.each do |style|

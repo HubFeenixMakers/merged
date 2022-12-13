@@ -1,16 +1,15 @@
-.flex.flex-col.bg-white
-  .flex.items-center.justify-center.flex-1
-    .max-w-xl.px-4.py-8.mx-auto.text-center
-      %h1.text-2xl.font-bold.tracking-tight.text-gray-900.sm:text-4xl
-        Page
-        = @page.name
-  .flex.items-center.justify-center.flex-1
-    %h3.text-xl.font-bold.tracking-tight.text-gray-900
-      =link_to "View live" , "/#{@page.name}" , target: @page.name
+- content_for( :merged_menu ) do
+  .text-xl.font-bold.text-gray-900
+    Page
+    = @page.name
+  .text-xl.text-gray-900
+    =link_to "View live" , "/#{@page.name}" , target: @page.name
+
+= render "layouts/merged_header"
 
 -@page.sections.each do |section |
-  .grid.grid-cols-5.gap-2.m-8{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "section_#{section.id}"}
-    .relative.block.border.border-gray-100.p-4
+  .flex.gap-10.m-8{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "section_#{section.id}"}
+    .basis-52
       %h3.mt-4.text-lg.font-bold Section #{section.index} : #{section.header}
       = blue_button( "Up" , section_move_url(section.id , dir: :up) )
       = blue_button( "Down" , section_move_url(section.id , dir: :down) )
@@ -18,21 +17,21 @@
       = green_button( "Copy" , new_page_section_url(@page.id, template: section.template) )
       = form_tag( section_url(section.id) , {method: :delete  } ) do
         =submit_button( "Delete" , true)
-    .relative.block.border.border-gray-100.p-4
+    .basis-52.grow-0
       %h3.mt-4.text-lg.font-bold Template
       = link_to(section_select_template_url(section.id)) do
         %p= section.template
-        = section_preview(section , class: "w-full object-contain")
-    .relative.block.border.border-gray-100.p-4
+        = section_preview(section , class: "object-contain")
+    .basis-52
       %h3.mt-4.text-lg.font-bold Header
       %p= section.header
       %h3.mt-4.text-lg.font-bold Text
       %p= section.text[0..100] + " ..." if section.text
-    .relative.block.border.border-gray-100.p-4
+    .basis-52
       - if section.has_cards?
         %h3.mt-4.text-lg.font-bold #{section.cards.length} Cards
         =link_to section_cards_url(section.id) do
-          =card_preview(section , class: "w-full object-contain")
+          =card_preview(section , class: "object-contain")
       - else
         = link_to(section_select_image_url(section.id)) do
           %h3.mt-4.text-lg.font-bold Image
@@ -40,7 +39,7 @@
             = image_tag( "cms/" + section.image , class: "h-40")
           -else
             %p No image
-    .relative.block.border.border-gray-100.p-4
+    .basis-52
       %h3.mt-4.text-lg.font-bold Options
       - section.options.each do|name , value|
         %p

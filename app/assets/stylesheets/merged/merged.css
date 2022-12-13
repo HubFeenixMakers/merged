@@ -943,6 +943,14 @@ select {
   flex: 1 1 0%;
 }
 
+.grow-0 {
+  flex-grow: 0;
+}
+
+.basis-52 {
+  flex-basis: 13rem;
+}
+
 .origin-\[0\] {
   transform-origin: 0;
 }
@@ -982,10 +990,6 @@ select {
 
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-cols-5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .grid-cols-2 {
@@ -1032,6 +1036,10 @@ select {
   gap: 0.5rem;
 }
 
+.gap-5 {
+  gap: 1.25rem;
+}
+
 .gap-8 {
   gap: 2rem;
 }
@@ -1042,6 +1050,10 @@ select {
 
 .gap-1 {
   gap: 0.25rem;
+}
+
+.gap-10 {
+  gap: 2.5rem;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {

@@ -1,3 +1,8 @@
+- content_for( :merged_menu ) do
+  .text-xl.text-gray-900
+    Select Card Template for Section #{section.index}
+
+= render "layouts/merged_header"
 .grid.grid-cols-4.gap-2.m-8
   - @cards.each do |style|
     .relative.block.border.border-gray-100

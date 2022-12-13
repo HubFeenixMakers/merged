@@ -1,3 +1,12 @@
+- content_for( :merged_menu ) do
+  .text-xl.font-bold.text-gray-900
+    Changes
+  .text-xl.text-gray-900
+    Branch
+    = @git.current_branch
+
+= render "layouts/merged_header"
+
 %h1 New merged_section
 
 = render 'form'
