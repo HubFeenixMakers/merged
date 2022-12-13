@@ -1,9 +1,9 @@
 - content_for( :merged_menu ) do
-  .text-xl.font-bold.text-gray-900
-    Page #{link_to @section.page.name, page_sections_url(@section.page.id), class: "underline"}
+  = render "merged/sections/sections_pagination" , section: @section
   .text-xl.text-gray-900
-    Cards for
-    = link_to "Section #{@section.index}", section_url( @section.id) , class: "underline"
+    Cards for Section #{@section.index} -
+    = link_to @section.header , section_url( @section.id) , class: "underline"
+  = link_to( "New Card" , new_section_card_url(@section.id) , class: "p-2 border border-gray-200 font-bold rounded-lg hover:bg-sky-100")
 
 = render "layouts/merged_header"
 
@@ -51,5 +51,3 @@
           %p No options
         -else
           = submit_button("Update")
-%p
-  = green_button( "New Card" , new_section_card_url(@section.id) )

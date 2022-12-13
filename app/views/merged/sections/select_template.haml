@@ -6,9 +6,9 @@
 
 = render "layouts/merged_header"
 
-.grid.grid-cols-4.gap-2.m-8
+.grid.grid-cols-4.gap-6.m-8
   - @sections.each do |style|
-    .relative.block.border.border-gray-100
+    .border.border-gray-300.rounded-lg.p-2
       = link_to( section_set_template_path( template: style.template )) do
-        =image_tag(style.section_preview , class: "h-56 w-full object-contain lg:h-72")
-        = style.header
+        .font-bold.text-lg.text-center.pb-4= style.header
+        =image_tag(style.section_preview , class: "w-full object-contain")

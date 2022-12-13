@@ -1,11 +1,13 @@
 - content_for( :merged_menu ) do
+  .text-xl.font-bold.text-gray-900
+    Page #{link_to @section.page.name, page_sections_url(@section.page.id), class: "underline"}
   .text-xl.text-gray-900
-    Select Card Template for Section #{section.index}
+    Select Card Template for Section #{@section.index} - #{@section.header}
 
 = render "layouts/merged_header"
-.grid.grid-cols-4.gap-2.m-8
+.grid.grid-cols-4.gap-6.m-8
   - @cards.each do |style|
-    .relative.block.border.border-gray-100
+    .border.border-gray-300.rounded-lg.p-2
       = link_to( section_set_card_template_path( card_template: style.template )) do
-        =image_tag(style.card_preview , class: "h-56 w-full object-contain lg:h-72")
-        = style.header
+        .font-bold.text-lg.text-center.pb-4= style.header
+        =image_tag(style.card_preview , class: "w-full object-contain")
