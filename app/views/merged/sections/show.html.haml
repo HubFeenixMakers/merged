@@ -2,7 +2,7 @@
   .text-xl.font-bold.text-gray-900
     Page #{link_to @section.page.name, page_sections_url(@section.page.id), class: "underline"}
   .text-xl.text-gray-900
-    Section #{@section.index} / #{@section.page.sections.length}
+    Section #{@section.index} / #{@section.page.sections.length} : #{@section.header}
     - if @section.previous_section
       =link_to "(prev)" , section_url(@section.previous_section.id)
     - if @section.next_section

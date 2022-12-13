@@ -2,8 +2,8 @@
   .text-xl.font-bold.text-gray-900
     Page #{link_to @section.page.name, page_sections_url(@section.page.id), class: "underline"}
   .text-xl.text-gray-900
-      Cards for
-      = link_to "Section #{@section.index}", section_url( @section.id) , class: "underline"
+    Cards for
+    = link_to "Section #{@section.index}", section_url( @section.id) , class: "underline"
 
 = render "layouts/merged_header"
 

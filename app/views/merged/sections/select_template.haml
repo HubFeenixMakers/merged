@@ -2,7 +2,7 @@
   .text-xl.font-bold.text-gray-900
     Page #{link_to @section.page.name, page_sections_url(@section.page.id), class: "underline"}
   .text-xl.text-gray-900
-    Select Template for Section #{@section.index}
+    Select Template for Section #{@section.index} - #{@section.header}
 
 = render "layouts/merged_header"
 

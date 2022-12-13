@@ -1,8 +1,9 @@
+- content_for( :merged_menu ) do
+  .text-xl.font-bold.text-gray-900
+    Section styles
+
 = render "layouts/merged_header"
 
-.px-4.py-8.mx-auto.text-center
-  %h1.text-4xl.font-bold
-    Section styles
 .grid.grid-cols-3.gap-4.m-8
   -@section_styles.each do | style|
     %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
