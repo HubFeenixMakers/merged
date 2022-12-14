@@ -53,7 +53,7 @@ module Merged
     def set_card_template
       card_template = params[:card_template]
       raise "no card template given" if card_template.blank?
-      @section.content["card_template"] = card_template
+      @section.card_template = card_template
       @section.save
       redirect_to section_url(@section.id)
     end

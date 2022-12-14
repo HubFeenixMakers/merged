@@ -1,53 +1,67 @@
 - content_for( :merged_menu ) do
-  .text-xl.font-bold.text-gray-900
+  .text-xl.font-bold
     Section styles
 
 = render "layouts/merged_header"
 
 .grid.grid-cols-3.gap-4.m-8
   -@section_styles.each do | style|
-    %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
-      =image_tag(style.section_preview , class: "h-56 w-full object-contain lg:h-72")
-      %p.mt-2.text-sm.text-gray-500
-        =style.template
-    %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+    .overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
       .p-6
-        %h3.text-lg.font-medium.text-gray-900
+        %h3.text-lg.font-medium
           =style.header
-        %p.mt-2.text-sm.leading-relaxed.text-gray-500.line-clamp-3
+        %p.mt-2.text-sm.leading-relaxed.line-clamp-3
           = style.text
-    %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
-      .p-6
-        %h3.text-lg.font-medium.text-gray-900
-          Option
-        %p.mt-2.text-sm.leading-relaxed.text-gray-500.line-clamp-3
-          Following options: none (wip)
-        %h3.text-lg.font-medium.text-gray-900
+        %p.mt-2.text-sm
+          Shorthand:
+          =style.template
+        %h3.text-lg.font-medium.mt-4
           Cards
-        %p.mt-2.text-sm.leading-relaxed.text-gray-500.line-clamp-3
+        %p.mt-2.text-sm.leading-relaxed.line-clamp-3
           -if(style.has_cards?)
             Section may include cards. See card styles below
           -else
             Section may not include cards
+    .overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+      .p-6
+        .w-full.object-contain.h-72
+          =image_tag(style.section_preview )
 
-.px-4.py-8.mx-auto.text-center
-  %h1.text-4xl.font-bold
-    Card styles
+    .overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+      .p-6
+        %h3.text-lg.font-medium
+          Options
+        %p.mt-2.text-sm.leading-relaxed.line-clamp-3
+          -style.options_definitions.each do | style |
+            %label.block
+              .text-lg.font-bold=style.name
+              =style.description
+
+.flex.bg-cyan-100
+  .px-4.py-8.mx-auto.text-center
+    %h1.text-4xl.font-bold
+      Card styles
 .grid.grid-cols-3.gap-4.m-8
   -@cards_styles.each do |style|
     %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
-      =image_tag(style.card_preview , class: "h-56 w-full object-contain lg:h-72")
-      %p.mt-2.text-sm.text-gray-500
-        =style.template
-    %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
       .p-6
-        %h3.text-lg.font-medium.text-gray-900
+        %h3.text-lg.font-medium
           =style.header
-        %p.mt-2.text-sm.leading-relaxed.text-gray-500.line-clamp-3
+        %p.mt-2.text-sm.leading-relaxed.line-clamp-3
           = style.text
-    %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+        %p.mt-2.text-sm
+          Shorthand:
+          =style.template
+    .overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
       .p-6
-        %h3.text-lg.font-medium.text-gray-900
-          Option
-        %p.mt-2.text-sm.leading-relaxed.text-gray-500.line-clamp-3
-          Following options: none (wip)
+        .w-full.object-contain.h-72
+          =image_tag(style.card_preview )
+    .overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+      .p-6
+        %h3.text-lg.font-medium
+          Options
+        %p.mt-2.text-sm.leading-relaxed.line-clamp-3
+          -style.options_definitions.each do | style |
+            %label.block
+              .text-lg.font-bold=style.name
+              =style.description

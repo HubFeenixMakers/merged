@@ -17,7 +17,7 @@ module Merged
     end
 
     # works for with sections and cards that respond to .image
-    def image_for(element , classes)
+    def image_for(element , classes = "")
       return "" if element.image.blank?
       image_tag("#{Image.image_root}/#{element.image}" , class: classes)
     end

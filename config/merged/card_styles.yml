@@ -39,6 +39,10 @@
   fields:
     - header
     - text
+  options:
+    - background
+    - color
+    - align
 - template: form_field
   header: A single field in a form
   text: The header is the Name of the field, the description

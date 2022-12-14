@@ -15,10 +15,10 @@
             Sections
         %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
           .flex.items-center.gap-2
-            Bytes
+            Updated
         %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
           .flex.items-center.gap-2
-            Updated
+            Edited by
         %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
           .flex.items-center.gap-2
           Actions
@@ -30,9 +30,9 @@
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
             = merged_page.sections.length
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            = merged_page.size
-          %td.whitespace-nowrap.px-4.py-2.text-gray-700
             = distance_of_time_in_words_to_now(merged_page.updated_at)
+          %td.whitespace-nowrap.px-4.py-2.text-gray-700
+            ME
           %td.whitespace-nowrap.px-4.py-2
             %strong.rounded.bg-green-100.px-3.text-xs.font-medium.text-green-700{:class => "py-1.5"}
               = link_to 'Sections', page_sections_path(merged_page.id)

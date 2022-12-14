@@ -1,11 +1,12 @@
-#flash
-  -if flash.alert
+-if flash.alert
+  #flash
     .m-20.rounded.border-l-4.border-red-500.bg-red-50.p-4{:role => "alert"}
       %strong.block.font-medium.text-red-700 Oops
       %p.mt-2.text-sm.text-red-700
         =flash.alert
 
-  -if flash.notice
+-if flash.notice
+  #flash
     .m-20.rounded-xl.border.border-gray-100.p-4.shadow-xl{:role => "alert"}
       .flex.items-start.gap-4
         %span.text-green-600
@@ -21,7 +22,7 @@
     const notification = document.querySelector('#flash')
     if (notification) {
       setInterval(function() {
-        notification.classList.add('collapse');
+        notification.classList.add('hidden');
       }, 5000);
     }
   }
