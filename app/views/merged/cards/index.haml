@@ -15,10 +15,11 @@
     .basis-96
       .p-4
         %h3.mt-4.text-lg.font-bold Card #{index + 1}:#{card.header}
-        = blue_button( "Up" , card_move_url(card.id , dir: :up) )
-        = blue_button( "Down" , card_move_url(card.id , dir: :down) )
-        = form_tag( card_url(card.id) , {method: :delete  } ) do
-          =submit_button( "Delete" , true)
+        .flex.flex-wrap
+          = blue_button( "Up" , card_move_url(card.id , dir: :up) )
+          = blue_button( "Down" , card_move_url(card.id , dir: :down) )
+          = form_tag( card_url(card.id) , {method: :delete  } ) do
+            =submit_button( "Delete" , true)
       .p-4
         %h3.mt-4.text-lg.font-bold Image
         = yellow_button("Change Image" , card_select_image_url(card.id) )
@@ -33,7 +34,7 @@
         = image_tag( "cms/" + card.image , class: "p-3")
     .basis-72.grow
       %h3.mt-4.text-lg.font-bold Fields
-      = form_tag( card_url(card.id) , {method: :patch  } ) do
+      = form_tag( card_url(card.id) , {method: :patch  , class: "mx-auto mt-8 mb-0 max-w space-y-4" } ) do
         %label.block
           .text-lg.font-bold Header
           = text_field_tag( :header , card.header, class: "block w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")

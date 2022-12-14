@@ -9,14 +9,22 @@
 
 -@page.sections.each do |section |
   .flex.gap-10.p-4{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "section_#{section.id}"}
-    .basis-80
+    .basis-60
       %h3.mt-4.text-lg.font-bold Section #{section.index} : #{section.header}
-      = blue_button( "Up" , section_move_url(section.id , dir: :up) )
-      = blue_button( "Down" , section_move_url(section.id , dir: :down) )
-      = yellow_button("Edit" , section_path(section.id) )
-      = green_button( "Copy" , new_page_section_url(@page.id, template: section.template) )
-      = form_tag( section_url(section.id) , {method: :delete  } ) do
-        =submit_button( "Delete" , true)
+      .flex.flex-wrap
+        = yellow_button("Edit" , section_path(section.id) )
+        = green_button( "Copy" , new_page_section_url(@page.id, template: section.template) )
+        .p-2
+          =link_to(section_move_url(section.id , dir: :up)) do
+            %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{:d => "M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+        .p-2
+          =link_to(section_move_url(section.id , dir: :down)) do
+            %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{:d => "M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+        .basis-full.mb-3
+        = form_tag( section_url(section.id) , {method: :delete  } ) do
+          =submit_button( "Delete" , true)
     .basis-72
       %h3.mt-4.text-lg.font-bold Template
       = link_to(section_select_template_url(section.id)) do
