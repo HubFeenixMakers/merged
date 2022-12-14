@@ -1,16 +1,12 @@
 module Merged
   module SectionsHelper
     include ViewHelper #for previews
-    
+
     def section_form(options)
       url = section_url( @section.id)
       form_tag( url , {method: :patch}) do
         yield
       end
-    end
-
-    def image_root
-      Image.image_root
     end
 
     #image tag for the preview, passing options through

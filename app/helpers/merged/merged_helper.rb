@@ -14,6 +14,15 @@ module Merged
       @@renderer = Redcarpet::Markdown.new(html, options)
     end
 
+    def aspect_ratio image
+      x , y = image.aspect_ratio
+      "#{x} / #{y}"
+    end
+
+    def image_root
+      Image.image_root
+    end
+
     def markdown(text)
       text = text.text unless text.is_a?(String)
       return "" if text.blank?
@@ -40,7 +49,7 @@ module Merged
       clazz = "bg-blue-500 " #full names, no tricks for tailwind
       clazz = "bg-red-500 " if danger
       clazz += button_classes
-      content_tag(:button , class: clazz , type: :submit) do
+      content_tag(:button , class: clazz  , type: :submit) do
         text
       end
     end

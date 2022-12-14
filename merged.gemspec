@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "git"
   spec.add_dependency "redcarpet"
   spec.add_dependency "active_hash"
+  spec.add_dependency "mini_magick"
 end
