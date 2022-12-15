@@ -19,11 +19,25 @@ module Merged
     end
 
     def text_align_option(section , clazz = "")
-      if section.has_option?("align")
+      if section.has_option?("text_align")
         # text-center , text-left , text-right , leave comment for tailwind
-        clazz += " text-#{section.option('align')}"
+        clazz += " text-#{section.option('text_align')}"
       end
       {class: clazz}
+    end
+
+    def item_align_option(section , clazz = "")
+      if section.has_option?("item_align")
+        case section.option("item_align")
+        when "left"
+          clazz += " justify-start"
+        when "right"
+          clazz += " justify-end"
+        else
+          clazz += " justify-center"
+        end
+      end
+      {class: clazz }
     end
 
     def background_option(section , clazz = "")

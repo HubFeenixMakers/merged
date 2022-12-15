@@ -11,6 +11,8 @@
     - background
     - columns
     - color
+    - text_align
+    - item_align
 - template: section_full_up
   header: Centered Header with text
   text: Full width header with centered headline and optional text
@@ -22,6 +24,8 @@
     - color
     - margin
     - subheader
+    - text_align
+    - item_align
     - button_link
     - button_text
 - template: section_half_image
@@ -53,6 +57,7 @@
     - fixed
     - color
     - text_align
+    - item_align
     - shade_color
 - template: section_large_image
   header: Two third image header with adjustable text

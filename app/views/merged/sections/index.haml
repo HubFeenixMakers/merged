@@ -15,11 +15,11 @@
         = yellow_button("Edit" , section_path(section.id) )
         = green_button( "Copy" , new_page_section_url(@page.id, template: section.template) )
         .p-2
-          =link_to(section_move_url(section.id , dir: :up)) do
+          =link_to(section_move_url(section.id , dir: :down)) do
             %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
               %path{:d => "M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
         .p-2
-          =link_to(section_move_url(section.id , dir: :down)) do
+          =link_to(section_move_url(section.id , dir: :up)) do
             %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
               %path{:d => "M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
         .basis-full.mb-3
