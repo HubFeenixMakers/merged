@@ -1,7 +1,7 @@
 .group.m-8.overflow-hidden.relative.flex.h-96.items-end
   = image_for( card , "absolute inset-0 h-full w-full object-cover hover:scale-110 ease-in duration-700")
-  .relative.w-full.m-2.p-4.tracking-widest{align_option(card ,"sm:w-1/2")}
-    %div.transition-colors.group-hover:bg-black.group-hover:text-white{options(card , :align , :color , :background)}
+  .relative.w-full.m-2.p-4.tracking-widest{text_align_option(card ,"sm:w-1/2")}
+    %div.transition-colors.group-hover:bg-black.group-hover:text-white{options(card , :text_align , :color , :background)}
       .relative.w-full.m-2.p-4
         %h3.text-lg
           = card.header

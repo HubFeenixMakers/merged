@@ -37,13 +37,13 @@
     - color
     - subheader
     - text
-    - align
+    - text_align
     - button_link
     - button_text
 - template: section_full_image
   header: Full image header with adjustable text
   text: Large picture background with Header and text on top.
-    Adjustable alignment (left, center, right).
+    Adjustable text text alignment (left, center, right).
     Text may be slightly shaded for readability,
     text color can be changed too.
   fields:
@@ -52,12 +52,12 @@
   options:
     - fixed
     - color
-    - align
+    - text_align
     - shade_color
 - template: section_large_image
   header: Two third image header with adjustable text
   text: Large picture background with Header and text offset.
-    Adjustable alignment (left, center, right).
+    Adjustable text alignment (left, center, right).
     Text section may have background color.
     Text color can be changed too
   fields:

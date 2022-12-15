@@ -8,7 +8,7 @@
   options:
     - background
     - color
-    - align
+    - text_align
 - template: card_gap_square
   header: Narrow card with up down section
   text: Smaller image, large margins, possible subheader
@@ -20,7 +20,7 @@
     - background
     - color
     - order
-    - align
+    - text_align
     - subheader
 - template: card_normal_square
   header: Standard card with square image
@@ -31,7 +31,7 @@
   options:
     - background
     - color
-    - align
+    - text_align
     - subheader
 - template: card_normal_round
   header: Standard card with square image
@@ -42,7 +42,7 @@
   options:
     - background
     - color
-    - align
+    - text_align
 - template: form_field
   header: A single field in a form
   text: The header is the Name of the field, the description

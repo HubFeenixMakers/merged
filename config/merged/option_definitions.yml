@@ -27,7 +27,7 @@
   :values: none black_25 white_25 light_red_25 light_blue_25 solid_blue_25 solid_red_25
   :default: none
   :id: 5
-- :name: align
+- :name: text_align
   :description: Align text of children. Normal Word meaning
   :values: left center right
   :default: left
@@ -87,3 +87,9 @@
   :values: FormHandler
   :default: FormHandler
   :id: 16
+- :name: item_align
+  :description: Alignment of actual children. Usually some kind of boxes.
+          Does not affect text, see text_align
+  :values: left center right
+  :default: left
+  :id: 17

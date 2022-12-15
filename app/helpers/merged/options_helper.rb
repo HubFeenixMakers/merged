@@ -18,7 +18,7 @@ module Merged
       {class: clazz}
     end
 
-    def align_option(section , clazz = "")
+    def text_align_option(section , clazz = "")
       if section.has_option?("align")
         # text-center , text-left , text-right , leave comment for tailwind
         clazz += " text-#{section.option('align')}"

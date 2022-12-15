@@ -8,7 +8,7 @@ module Merged
       expect(OptionDefinition.first.class).to be OptionDefinition
     end
     it "there are options" do
-      expect(OptionDefinition.all.length).to be 16
+      expect(OptionDefinition.all.length).to be 17
     end
     it "has option objects" do
       expect(first.class).to be OptionDefinition
