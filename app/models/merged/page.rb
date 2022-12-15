@@ -1,7 +1,6 @@
 module Merged
-  class Page < ActiveYaml::Base
-    set_root_path Rails.root #ouside engines not necessary
-
+  class Page < ViewBase
+    
     # could be config options
     def self.cms_root
       "cms"

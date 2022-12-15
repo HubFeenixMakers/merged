@@ -1,10 +1,13 @@
 module Merged
-  #relies only on @content["options"]
-  #and a method template_style
-  # and index
-  # and is due for a rename
 
-  module Optioned
+  # base class for viewable elements: ie page, section and casrd
+  # they share the name and options , and the fact that
+  # they persist in ActiveYaml
+
+  class ViewBase < ActiveYaml::Base
+    set_root_path Rails.root #ouside engines not necessary
+    include ActiveHash::Associations
+
     def has_option?(option)
       options.has_key?(option) and !options[option].blank?
     end

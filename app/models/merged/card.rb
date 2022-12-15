@@ -1,11 +1,8 @@
 module Merged
-  class Card < ActiveYaml::Base
-    set_root_path Rails.root #ouside engines not necessary
 
-    include ActiveHash::Associations
+  class Card < ViewBase
+
     belongs_to :section , class_name: "Merged::Section"
-
-    include Optioned
 
     fields  :id , :index , :section_id
     fields  :text , :header, :image , :options

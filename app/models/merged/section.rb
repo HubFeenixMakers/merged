@@ -1,11 +1,7 @@
 module Merged
-  class Section < ActiveYaml::Base
-    set_root_path Rails.root #ouside engines not necessary
+  class Section < ViewBase
 
-    include ActiveHash::Associations
     belongs_to :page , class_name: "Merged::Page"
-
-    include Optioned
 
     fields :id , :name , :page_id , :index
     fields :template , :card_template
