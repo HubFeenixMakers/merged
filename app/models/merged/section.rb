@@ -3,9 +3,9 @@ module Merged
 
     belongs_to :page , class_name: "Merged::Page"
 
-    fields :id , :name , :page_id , :index
+    fields :id , :page_id , :index
     fields :template , :card_template
-    fields :header, :text , :image , :options
+    fields :header, :text , :image
 
     def cards
       Card.where(section_id: id).order(index: :asc)
@@ -19,10 +19,6 @@ module Merged
           self.card_template = CardStyle.first.template
         end
       end
-    end
-
-    def template_style
-      SectionStyle.find_by_template( template )
     end
 
     def has_cards?

@@ -1,12 +1,8 @@
 module Merged
   class Page < ViewBase
-    
-    # could be config options
-    def self.cms_root
-      "cms"
-    end
 
-    fields :name , :size , :updated_at
+
+    fields :name , :tempate
 
     def sections
       Section.where(page_id: id).order(index: :asc)

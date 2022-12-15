@@ -5,7 +5,7 @@ module Merged
     belongs_to :section , class_name: "Merged::Section"
 
     fields  :id , :index , :section_id
-    fields  :text , :header, :image , :options
+    fields  :text , :header, :image
 
     def move_up
       swap_index_with(next_card)
@@ -23,12 +23,14 @@ module Merged
       section.cards.where(index: index + 1).first
     end
 
-    def set_index(index)
-      @index = index
+    # card templates are stored in the section so the all cards
+    # have the same
+    def template
+      section.card_template
     end
 
     def template_style
-      CardStyle.find_by_template( section.card_template)
+      CardStyle.find_by_template( self.template )
     end
 
     def destroy

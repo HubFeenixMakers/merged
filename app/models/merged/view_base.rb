@@ -1,12 +1,18 @@
 module Merged
 
   # base class for viewable elements: ie page, section and casrd
-  # they share the name and options , and the fact that
-  # they persist in ActiveYaml
+  # they share the template idea, options , change tracking,
+  # and the fact that they persist in ActiveYaml
 
   class ViewBase < ActiveYaml::Base
     set_root_path Rails.root #ouside engines not necessary
     include ActiveHash::Associations
+
+    fields :options , :updated_at , :updated_by
+
+    def template_style
+      SectionStyle.find_by_template( template )
+    end
 
     def has_option?(option)
       options.has_key?(option) and !options[option].blank?
