@@ -1,0 +1,4 @@
+---
+- type: page
+  description: A general page, may contain anykind of section.
+        No restrictions of any kind. No options either.
