@@ -1,7 +1,5 @@
 module Merged
-  class PageStyle < ActiveYaml::Base
-    set_root_path Engine.root + "config"
-
+  class PageStyle < Style
     fields  :type , :description
 
   end

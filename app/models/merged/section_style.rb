@@ -1,7 +1,6 @@
 module Merged
-  class SectionStyle < ActiveYaml::Base
-    set_root_path Engine.root + "config"
-
+  class SectionStyle < Style
+    
     fields  :template , :text , :header, :fields , :cards
 
     def has_cards?
@@ -10,16 +9,6 @@ module Merged
 
     def section_preview
       "merged/section_preview/" + template
-    end
-
-    def options_definitions
-      option_defs = []
-      options.each do |name|
-        option = OptionDefinition.find_by_name(name)
-        raise "no option for #{name}:#{name.class}" if option.blank?
-        option_defs << option
-      end if options
-      option_defs
     end
 
   end
