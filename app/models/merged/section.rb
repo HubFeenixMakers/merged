@@ -11,6 +11,10 @@ module Merged
       Card.where(section_id: id).order(index: :asc)
     end
 
+    def template_style
+      SectionStyle.find_by_template( template )
+    end
+
     def set_template(new_template)
       self.template = new_template
       new_style = template_style

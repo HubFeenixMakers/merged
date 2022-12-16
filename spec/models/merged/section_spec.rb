@@ -2,12 +2,11 @@ require 'rails_helper'
 
 module Merged
   RSpec.describe Section, type: :model do
-    let(:first) {Section.find_by_id(1)}
-    let(:second) {Section.find_by_id(2)}
+    let(:first) {Section.first}
     let(:last) {Section.last}
 
     it "has Sections.all" do
-      expect(Section.all.length).to be 40
+      expect(Section.all.length).to be 14
     end
     it "has index page" do
       expect(last.class).to be Section
@@ -22,8 +21,8 @@ module Merged
       expect(last.cards.class).to be ActiveHash::Relation
     end
     it "has options" do
-      expect(second.options.class).to be Hash
-      expect(second.options.length).to be 6
+      expect(last.options.class).to be Hash
+      expect(first.options.length).to be 4
     end
     it "has option_definitions" do
       expect(last.option_definitions.class).to be Array

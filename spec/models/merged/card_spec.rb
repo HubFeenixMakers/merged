@@ -6,7 +6,7 @@ module Merged
     let(:first) {Card.first}
 
     it "has Card.all" do
-      expect(Card.all.length).to be 46
+      expect(Card.all.length).to be 20
     end
     it "has cards" do
       expect(first.class).to be Card
@@ -29,16 +29,16 @@ module Merged
     end
 
     it "deletes " do
-      card = Card.find(20)
-      expect(card).not_to be nil
-      card.delete
-      expect{Card.find(20) }.to raise_error(ActiveHash::RecordNotFound)
+      id = first.id
+      first.delete
+      expect{Card.find(id) }.to raise_error(ActiveHash::RecordNotFound)
     end
 
     it "destroys " do
-      Card.find(20).destroy
+      id = first.id
+      first.delete
       Card.reload
-      expect{Card.find(20) }.to raise_error(ActiveHash::RecordNotFound)
+      expect{Card.find(id) }.to raise_error(ActiveHash::RecordNotFound)
     end
 
   end

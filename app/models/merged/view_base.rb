@@ -10,10 +10,6 @@ module Merged
 
     fields :options , :updated_at , :updated_by
 
-    def template_style
-      SectionStyle.find_by_template( template )
-    end
-
     def has_option?(option)
       options.has_key?(option) and !options[option].blank?
     end

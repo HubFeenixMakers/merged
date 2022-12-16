@@ -5,7 +5,7 @@ module Merged
     let(:index) {Page.find_by_name('index')}
 
     it "has Pages.all" do
-      expect(Page.all.length).to be 6
+      expect(Page.all.length).to be 2
     end
     it "has index page" do
       expect(index.class).to be Page
@@ -52,6 +52,10 @@ module Merged
       name = "randomname"
       page = Page.new_page( name)
       expect(page.name).to eq name
+    end
+
+    it "has type" do
+      expect(index.type).to eq "page"
     end
   end
 end

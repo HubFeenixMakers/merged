@@ -6,7 +6,7 @@ Merged::Engine.routes.draw do
 
   post 'form/sendit'
 
-  resources :pages , except: [:show , :new] , shallow: true  do
+  resources :pages , except: [:edit , :new] , shallow: true  do
     resources :sections do
       get :select_image
       get :set_image

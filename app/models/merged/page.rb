@@ -1,11 +1,16 @@
 module Merged
   class Page < ViewBase
 
+    fields :name , :type , :options
 
-    fields :name , :tempate
+    alias :template :type
 
     def sections
       Section.where(page_id: id).order(index: :asc)
+    end
+
+    def template_style
+      PageStyle.find_by_type( type )
     end
 
     def new_section(section_template)
