@@ -1,46 +1,4 @@
 ---
-- :id: 1
-  :header: Name
-  :text: ''
-  :options:
-    compulsory: 'yes'
-    form_type: text
-  :updated_at: &1 2022-12-09 17:56:51.141334688 +02:00
-  :section_id: 9
-  :index: 1
-- :id: 2
-  :header: Email
-  :text: ''
-  :options:
-    compulsory: 'yes'
-    form_type: email
-  :updated_at: *1
-  :section_id: 9
-  :index: 2
-- :id: 3
-  :header: Phone
-  :text: ''
-  :options:
-    compulsory: 'yes'
-    form_type: phone
-  :updated_at: *1
-  :section_id: 9
-  :index: 3
-- :id: 4
-  :header: Interest
-  :text: ''
-  :updated_at: *1
-  :section_id: 9
-  :index: 4
-- :id: 5
-  :header: Message
-  :text: ''
-  :options:
-    compulsory: 'no'
-    form_type: message
-  :updated_at: *1
-  :section_id: 9
-  :index: 5
 - :header: Standard
   :text: This is the standard two patient room. They are mostly towards the south,
     so may have great, or too much light, depending on how you see it. The size is
@@ -51,7 +9,7 @@
     background: solid_blue
     color: white
     align: left
-  :updated_at: &2 2022-12-09 17:50:02.733622073 +02:00
+  :updated_at: &1 2022-12-09 17:50:02.733622073 +02:00
   :section_id: 11
   :index: 1
 - :header: Large
@@ -64,7 +22,7 @@
     background: solid_blue
     color: white
     align: left
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 11
   :index: 2
 - :id: 8
@@ -77,7 +35,7 @@
     background: solid_blue
     color: white
     align: left
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 11
   :index: 3
 - :id: 9
@@ -90,7 +48,7 @@
     color: white
     align: left
   :image: wet_space_room
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 11
   :index: 4
 - :id: 10
@@ -101,7 +59,7 @@
   :options:
     background: solid_red
     align: center
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 12
   :index: 1
 - :id: 11
@@ -112,7 +70,7 @@
   :options:
     background: solid_blue
     align: center
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 12
   :index: 2
 - :id: 12
@@ -124,7 +82,7 @@
     background: solid_indigo
     align: center
   :image: studio_kitchen
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 12
   :index: 3
 - :id: 13
@@ -133,7 +91,7 @@
   :options:
     compulsory: 'yes'
     form_type: text
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 13
   :index: 1
 - :id: 14
@@ -142,7 +100,7 @@
   :options:
     compulsory: 'yes'
     form_type: email
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 13
   :index: 2
 - :id: 15
@@ -151,13 +109,13 @@
   :options:
     compulsory: 'no'
     form_type: phone
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 13
   :index: 3
 - :id: 16
   :header: Space requirements
   :text: ''
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 13
   :index: 4
 - :id: 17
@@ -166,232 +124,8 @@
   :options:
     compulsory: 'no'
     form_type: message
-  :updated_at: *2
+  :updated_at: *1
   :section_id: 13
-  :index: 5
-- :id: 18
-  :header: The Hall
-  :text: Our beautiful hall, one of the largest in the area, is 8 x 20m and can accommodate
-    50 yogi, 80 dancers, or 120 listeners. We have a professional audio system for
-    dancing and of course chairs for meetings.
-  :options:
-    background: none
-    align: center
-    subheader: 40 - 120
-    color: none
-  :image: the_hall
-  :updated_at: &3 2022-12-09 17:32:41.538163009 +02:00
-  :section_id: 15
-  :index: 1
-- :id: 19
-  :header: Mandala room
-  :text: The Mandala room, in the fifth floor, is a slightly asymmetrical 100m2. With
-    it's great views and light atmosphere it is especially suited for yoga (30) and
-    mediation (60). It also has a private eating area and staircase.
-  :options:
-    background: none
-    align: center
-    subheader: 30 - 60
-    color: none
-  :image: mandala_room
-  :updated_at: *3
-  :section_id: 15
-  :index: 2
-- :id: 20
-  :header: Sky Conference
-  :text: "Also in the fifth floor with great views is the sky conference room. It
-    sits 35 people as shown and up to 80 in a theatre arrangement.\r\n\r\nThere is
-    a smaller semi attached break room and two more break-out rooms next to it.\r\n\r\nGreat
-    for meetings of any sort."
-  :image: sky_conference
-  :options:
-    background: light_orange
-    align: center
-    color: none
-    subheader: 35 - 80
-  :updated_at: *3
-  :section_id: 15
-  :index: 3
-- :id: 21
-  :header: Lootus room
-  :text: "Downstairs, next to the café, the spacious lotus room is especially good
-    for day events. 20 Yogi or dancers fit easily into the 70m2 and for group work
-    30 is still good.\r\n\r\nCan be rented on hourly basis."
-  :image: lotus_room
-  :options:
-    background: light_orange
-    align: center
-    color: none
-    subheader: 15 - 30
-  :updated_at: *3
-  :section_id: 15
-  :index: 4
-- :id: 22
-  :header: Earth room
-  :text: "On the ground floor (with a clay plastered wall)\r\n\r\nthe earth room is
-    great for groups wanting privacy. It's 50m2, with accommodation on the same floor,
-    sits up to 25 people either with or without tables."
-  :image: earth_room
-  :options:
-    background: none
-    align: center
-    color: none
-    subheader: 10 - 25
-  :updated_at: *3
-  :section_id: 15
-  :index: 5
-- :id: 23
-  :header: The Loft
-  :text: "For smaller groups, we have many 40 m2 rooms, depending on the needs. Dancing,
-    yoga, theatre practise, group work.\r\nThe room shown is especially cosy (a roof
-    extension), and accommodates about 12 yogi or 15 sitting. Also available per hour."
-  :image: loft_room
-  :options:
-    background: light_grey
-    align: center
-    color: none
-    subheader: 8-15
-  :updated_at: *3
-  :section_id: 15
-  :index: 6
-- :id: 24
-  :header: Name
-  :text: ''
-  :updated_at: *3
-  :section_id: 24
-  :index: 1
-- :id: 25
-  :header: Email
-  :text: ''
-  :options:
-    compulsory: 'yes'
-    form_type: email
-  :updated_at: *3
-  :section_id: 24
-  :index: 2
-- :id: 26
-  :header: Phone
-  :text: ''
-  :updated_at: *3
-  :section_id: 24
-  :index: 3
-- :id: 27
-  :header: Event Type
-  :text: ''
-  :updated_at: *3
-  :section_id: 24
-  :index: 4
-- :id: 28
-  :header: Number of participants
-  :text: ''
-  :updated_at: *3
-  :section_id: 24
-  :index: 5
-- :id: 29
-  :header: Date
-  :text: ''
-  :options:
-    compulsory: 'yes'
-    form_type: date
-  :updated_at: *3
-  :section_id: 24
-  :index: 6
-- :id: 30
-  :header: Message
-  :text: ''
-  :options:
-    compulsory: 'no'
-    form_type: message
-  :updated_at: *3
-  :section_id: 24
-  :index: 7
-- :id: 31
-  :header: Floating desk
-  :text: "Come anytime and work on any of the available desk. We have 30 places in
-    two rooms, with mixed normal desks, high desks, standing places and bean bags.\r\nAlso
-    possible per day, 10e."
-  :options:
-    background: solid_blue
-    color: white
-    order: left
-    align: center
-    subheader: 120 / month
-  :image: floating_office_small
-  :updated_at: &4 2022-12-09 18:00:01.444815664 +02:00
-  :section_id: 26
-  :index: 1
-- :id: 32
-  :header: Single office
-  :text: If you need the quiet, or require safe shelf space, rent your own private
-    office. We provide desk, chair, shelves and wifi
-  :options:
-    background: solid_blue
-    color: white
-    order: right
-    align: center
-    subheader: 200 / month
-  :image: single_office_small
-  :updated_at: *4
-  :section_id: 26
-  :index: 2
-- :id: 33
-  :header: Double office
-  :text: "Double offices are slightly larger than the singles, but also come furnished
-    to your needs.\r\n"
-  :options:
-    background: solid_blue
-    color: white
-    order: left
-    align: center
-    subheader: 350 / month
-  :image: double_office_small
-  :updated_at: *4
-  :section_id: 26
-  :index: 3
-- :id: 34
-  :header: Name
-  :text: ''
-  :options:
-    compulsory: 'yes'
-    form_type: text
-  :updated_at: *4
-  :section_id: 27
-  :index: 1
-- :id: 35
-  :header: Email
-  :text: ''
-  :options:
-    compulsory: 'yes'
-    form_type: email
-  :updated_at: *4
-  :section_id: 27
-  :index: 2
-- :id: 36
-  :header: Phone
-  :text: ''
-  :options:
-    compulsory: 'no'
-    form_type: phone
-  :updated_at: *4
-  :section_id: 27
-  :index: 3
-- :id: 37
-  :header: Space
-  :text: ''
-  :options:
-    compulsory: 'yes'
-    form_type: text
-  :updated_at: *4
-  :section_id: 27
-  :index: 4
-- :id: 38
-  :header: Message
-  :text: ''
-  :options:
-    compulsory: 'no'
-    form_type: message
-  :updated_at: *4
-  :section_id: 27
   :index: 5
 - :id: 39
   :header: Cafe
@@ -402,7 +136,7 @@
     color: solid_blue
     align: center
     subheader: ''
-  :updated_at: &5 2022-12-10 20:28:17.967357225 +02:00
+  :updated_at: &2 2022-12-10 20:28:17.967357225 +02:00
   :section_id: 39
   :index: 1
 - :id: 40
@@ -415,7 +149,7 @@
     color: solid_blue
     align: center
     subheader: ''
-  :updated_at: *5
+  :updated_at: *2
   :section_id: 39
   :index: 2
 - :id: 41
@@ -428,7 +162,7 @@
     color: solid_blue
     align: center
     subheader: ''
-  :updated_at: *5
+  :updated_at: *2
   :section_id: 39
   :index: 3
 - :id: 42
@@ -437,7 +171,7 @@
   :options:
     compulsory: 'yes'
     form_type: text
-  :updated_at: *5
+  :updated_at: *2
   :section_id: 40
   :index: 1
 - :id: 43
@@ -446,7 +180,7 @@
   :options:
     compulsory: 'yes'
     form_type: text
-  :updated_at: *5
+  :updated_at: *2
   :section_id: 40
   :index: 2
 - :id: 44
@@ -455,7 +189,7 @@
   :options:
     compulsory: 'no'
     form_type: text
-  :updated_at: *5
+  :updated_at: *2
   :section_id: 40
   :index: 3
 - :id: 45
@@ -464,7 +198,7 @@
   :options:
     compulsory: 'yes'
     form_type: text
-  :updated_at: *5
+  :updated_at: *2
   :section_id: 40
   :index: 4
 - :id: 46
@@ -473,6 +207,6 @@
   :options:
     compulsory: 'yes'
     form_type: message
-  :updated_at: *5
+  :updated_at: *2
   :section_id: 40
   :index: 5
