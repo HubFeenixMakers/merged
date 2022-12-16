@@ -1,7 +1,9 @@
 ---
 - :name: studios
   :updated_at: 2022-12-09 17:50:02.733622073 +02:00
+  :type: page
   :id: 2
 - :name: index
   :updated_at: 2022-12-10 20:28:17.967357225 +02:00
   :id: 6
+  :type: page
