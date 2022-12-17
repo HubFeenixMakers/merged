@@ -7,15 +7,15 @@
 .grid.grid-cols-6.gap-4.m-8
   = form_tag({action: :create}, multipart: true) do
     = render "new_image"
-  -@images.each do |name , image|
-    .flex.flex-col.border.border-gray-100.rounded
+  -@images.each do |image|
+    .flex.flex-col.border.border-gray-100.rounded.image_box
       .flex.align-center.justify-between.mb-4
         .text-lg.font-bold.mt-2.mx-2
           = image.name
         %strong.inline-block.rounded.bg-yellow-200.px-3.py-1.text-md.font-medium
           = aspect_ratio(image)
       .w-full.object-contain.h-72
-        =image_tag("cms/#{name}")
+        =image_tag(image.assert_name)
       .flex.justify-between.mb-8
         %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
           = "#{image.size}k"

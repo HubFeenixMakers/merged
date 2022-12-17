@@ -61,5 +61,8 @@ module Merged
       template_style.fields.collect{|f| f.to_sym}
     end
 
+    def image
+      Image.find_by_name(@attributes[:image])
+    end
   end
 end

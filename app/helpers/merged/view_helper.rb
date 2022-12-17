@@ -7,8 +7,7 @@ module Merged
     def bg(section , clazz = "")
       attributes = {class: clazz}
       return attributes if section.image.blank?
-      #puts "--#{Image.image_root}/#{section.image}--"
-      img = asset_url( "#{Image.image_root}/#{section.image}" )
+      img = asset_url( section.image.assert_name )
       attributes["style"] = "background-image: url('#{img}');"
       if(section.option("fixed") == "on")
         attributes[:class] = attributes[:class] + " bg-fixed"
@@ -19,7 +18,7 @@ module Merged
     # works for with sections and cards that respond to .image
     def image_for(element , classes = "")
       return "" if element.image.blank?
-      image_tag("#{Image.image_root}/#{element.image}" , class: classes)
+      image_tag(element.image.assert_name , class: classes)
     end
 
   end

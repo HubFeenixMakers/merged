@@ -18,7 +18,7 @@
     -if( @section.image.blank? )
       %p No image
     -else
-      = image_tag( "cms/" + @section.image , class: "my-3")
+      = image_tag( @section.image.assert_name , class: "my-3")
     = yellow_button("Change Image", section_select_image_url(@section.id))
     = red_button( "Remove image", section_set_image_path( @section.id  , image: ""))
 

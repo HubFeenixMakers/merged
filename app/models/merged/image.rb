@@ -21,7 +21,7 @@ module Merged
       name , type = filename.split(".")
       self.name = name
       self.type = type
-      fullname = Rails.root.join(Image.asset_root,filename)
+      fullname = Rails.root.join(asset_root,filename)
       file = File.new(fullname)
       image = MiniMagick::Image.new(fullname)
       self.width = image.width
@@ -31,18 +31,19 @@ module Merged
     end
 
     def aspect_ratio
-      ratio = @width.to_f / @height
+      ratio = self.width.to_f / self.height
       ratios = (1..9).collect{ |i|  ((ratio * i) - (ratio * i).round(0)).abs }
       min , min_index = ratios.each_with_index.min
       [(ratio *  (min_index + 1) ).to_i , (min_index + 1) ]
     end
 
     #save an io with given name (without ending, that is taken from io)
+    #Should save to tmp first
     def self.create_new(filename , io)
       original , ending = io.original_filename.split("/").last.split(".")
       filename = original if( filename.blank? )
       full_filename = filename + "." + ending
-      File.open(Rails.root.join(Image.asset_root, full_filename), "wb") do |f|
+      File.open(Rails.root.join("app/assets/images/cms/", full_filename), "wb") do |f|
         f.write( io.read )
       end
       Image.new( full_filename )
@@ -69,11 +70,17 @@ module Merged
       Image.reload
     end
 
-    def self.asset_root
+    def assert_name
+      image_root + "/" + self.name
+    end
+
+    private
+
+    def asset_root
       "app/assets/images/" + image_root
     end
 
-    def self.image_root
+    def image_root
       "cms"
     end
 

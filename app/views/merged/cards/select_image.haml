@@ -6,12 +6,12 @@
   = form_tag(merged.images_path, multipart: true) do
     = render "merged/images/new_image"
 
-  -@images.each do |name , image|
+  -@images.each do |image|
     .flex.flex-col.justify-start.border.rounded.border-gray-100.drop-shadow-lg
       .flex.justify-between
         .text-xl.m-2= image.name
         %strong.inline-block.rounded.bg-yellow-50.px-2.py-3.text-md.font-medium
           = aspect_ratio(image)
       .p-2.object-contain
-        = link_to( card_set_image_path( image: name)) do
-          =image_tag("#{image_root}/#{name}" )
+        = link_to( card_set_image_path( image: image.name)) do
+          =image_tag( image.asset_name )

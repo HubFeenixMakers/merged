@@ -19,10 +19,6 @@ module Merged
       "#{x} / #{y}"
     end
 
-    def image_root
-      Image.image_root
-    end
-
     def markdown(text)
       text = text.text unless text.is_a?(String)
       return "" if text.blank?
