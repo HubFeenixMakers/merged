@@ -1,34 +1,33 @@
 require "mini_magick"
 
 module Merged
-  class Image
-    include ActiveModel::API
-    include ActiveModel::Conversion
-    extend  ActiveModel::Naming
+  class Image < ActiveYaml::Base
 
-    cattr_reader :all
-    @@all = {}
+    set_root_path Rails.root
 
-    def self.load_images()
-      glob = Rails.root.join Image.asset_root + "/*.*"
-      Dir[glob].each do |f|
-        file = f.split("/").last
-        Image.new( file )
+    fields  :name , :type , :size , :created_at , :height , :width
+
+    def initialize(filename)
+      if filename.is_a? Hash
+        super(filename)
+      else
+        super({name: "newname"})
+        init_from_file(filename)
       end
     end
 
-    attr_reader :name , :type , :size , :created_at , :height , :width
-
-    def initialize(filename)
-      @name , @type = filename.split(".")
+    def init_from_file(filename)
+      puts filename
+      name , type = filename.split(".")
+      self.name = name
+      self.type = type
       fullname = Rails.root.join(Image.asset_root,filename)
       file = File.new(fullname)
       image = MiniMagick::Image.new(fullname)
-      @width = image.width
-      @height = image.height
-      @created_at = file.birthtime
-      @size = (file.size/1024).to_i
-      @@all[@name] = self
+      self.width = image.width
+      self.height = image.height
+      self.created_at = file.birthtime
+      self.size = (file.size/1024).to_i
     end
 
     def aspect_ratio
@@ -47,6 +46,27 @@ module Merged
         f.write( io.read )
       end
       Image.new( full_filename )
+    end
+
+    def destroy
+      delete
+      Image.save_all
+    end
+
+    def delete(reindex = true)
+      Image.delete( self.id )
+      section.reset_index if reindex
+    end
+
+    def save
+      super
+      Image.save_all
+    end
+
+    def self.save_all
+      data = Image.the_private_records.collect {|obj| obj.attributes}
+      File.write( Image.full_path , data.to_yaml)
+      Image.reload
     end
 
     def self.asset_root

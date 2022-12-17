@@ -5,11 +5,8 @@ module Merged
 
   def self.load_data
     # pre-load data
-    OptionDefinition.all
-    CardStyle.all
-    SectionStyle.all
-    Page.all
-    Image.load_images
+    [OptionDefinition,  CardStyle, SectionStyle , PageStyle,
+      Card , Section , Page ,  Image].each {|clazz| clazz.all }
   end
 
   def self.load_from( kind , path )
