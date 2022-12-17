@@ -84,7 +84,10 @@ module Merged
 
     def self.transform
       Image.all.each do |image|
-        File.rename image.filename_old , image.filename_new
+        image.name = image.name.gsub("_" , " ")
+        image.name = image.name.capitalize
+        image.save
+#        image.created_at = image.created_at.to_date
       end
     end
 
