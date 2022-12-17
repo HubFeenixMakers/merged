@@ -31,12 +31,15 @@ module Merged
     end
 
     def aspect_ratio
-      ratio = self.width.to_f / self.height
+      ratio = self.ratio
       ratios = (1..9).collect{ |i|  ((ratio * i) - (ratio * i).round(0)).abs }
       min , min_index = ratios.each_with_index.min
       [(ratio *  (min_index + 1) ).to_i , (min_index + 1) ]
     end
 
+    def ratio
+      self.width.to_f / self.height
+    end
     #save an io with given name (without ending, that is taken from io)
     #Should save to tmp first
     def self.create_new(filename , io)

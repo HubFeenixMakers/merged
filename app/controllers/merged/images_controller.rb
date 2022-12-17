@@ -9,6 +9,7 @@ module Merged
         data[:url] = view_context.asset_path(i.asset_name)
         data[:created_at] = i.created_at.to_date
         data[:aspect_ratio] = i.aspect_ratio.join("/")
+        data[:ratio] = i.aspect_ratio
         data
       }
     end

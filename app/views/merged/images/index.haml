@@ -4,22 +4,28 @@
 
 = render "layouts/merged_header"
 
-.grid.grid-cols-6.gap-4.m-8.images
-  .flex.flex-col.border.border-gray-100.rounded.image_box{"v-for": "image in filter_and_sort"}
-    .flex.align-center.justify-between.mb-4
-      .text-lg.font-bold.mt-2.mx-2
-        {{image.name}}
-      %strong.inline-block.rounded.bg-yellow-200.px-3.py-1.text-md.font-medium
-        {{image.aspect_ratio}}
-    .w-full.object-contain.h-72
-      %img{ ":src": "image.url" , ":alt": "image.name" }
-    .flex.justify-between.mb-8
-      %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
-        {{image.size}}
-      %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
-        {{image.created_at}}
-      %strong.rounded.h-10.bg-orange-50.px-5.py-2.font-medium
-        {{image.type}}
+.images
+  .flex.justify-center
+    %label.block
+      .mt-1.mx-4.text-lg.font-bold Search
+    %input.border.rounded{:category => "query", placeholder:"by name", "v-model" => "search_name" }
+
+  .grid.grid-cols-6.gap-4.m-8
+    .flex.flex-col.border.border-gray-100.rounded.image_box{"v-for": "image in filter_and_sort"}
+      .flex.align-center.justify-between.mb-4
+        .text-lg.font-bold.mt-2.mx-2
+          {{image.name}}
+        %strong.inline-block.rounded.bg-yellow-200.px-3.py-1.text-md.font-medium
+          {{image.aspect_ratio}}
+      .w-full.object-contain.h-72
+        %img{ ":src": "image.url" , ":alt": "image.name" }
+      .flex.justify-between.mb-8
+        %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
+          {{image.size}}
+        %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
+          {{image.created_at}}
+        %strong.rounded.h-10.bg-orange-50.px-5.py-2.font-medium
+          {{image.type}}
 
 %script{:src => "https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"}
 
@@ -28,22 +34,14 @@
     options el: '.images'
     def initialize
       @image_data = #{@image_data.to_json.html_safe}
+      @search_name = ""
     end
     def filter_and_sort
-      this.image_data
-    end
-
-    def attribute_for(id , attribute)
-      product = this.products.find { |product| return product.id == id }
-      return id unless product
-      num = product[attribute]
-      num = 100 * num / (100 + product.tax) if( self.alv == "false")
-      return num.toFixed(2)
-    end
-    def cost_for(id)
-      return this.attribute_for(id , "cost")
-    end
-    def price_for(id)
-      return this.attribute_for(id , "price")
+      dat = @image_data
+      return dat unless @search_name.length > 0
+      dat = dat.filter do |item|
+        return item["name"].toLowerCase().indexOf(@search_name) > -1
+      end
+      dat
     end
   end
