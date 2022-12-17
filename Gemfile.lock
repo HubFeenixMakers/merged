@@ -1,4 +1,11 @@
 PATH
+  remote: ../ruby2js
+  specs:
+    ruby2js (5.0.1)
+      parser
+      regexp_parser (~> 2.1.1)
+
+PATH
   remote: .
   specs:
     merged (0.1.0)
@@ -8,6 +15,7 @@ PATH
       mini_magick
       rails (>= 7.0.4)
       redcarpet
+      ruby2js (~> 5.0, >= 5.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -81,6 +89,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
+    ast (2.4.2)
     builder (3.2.4)
     capybara (3.38.0)
       addressable
@@ -161,10 +170,14 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    parser (3.1.3.0)
+      ast (~> 2.4.1)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.0)
+    puma (6.0.0)
+      nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
     rack-test (2.0.2)
@@ -201,7 +214,8 @@ GEM
       ffi (~> 1.0)
     rchardet (1.8.0)
     redcarpet (3.5.1)
-    regexp_parser (2.6.1)
+    regexp_parser (2.1.1)
+    rexml (3.2.5)
     rspec (3.12.0)
       rspec-core (~> 3.12.0)
       rspec-expectations (~> 3.12.0)
@@ -223,6 +237,11 @@ GEM
       rspec-mocks (~> 3.11)
       rspec-support (~> 3.11)
     rspec-support (3.12.0)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.7.1)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     shellany (0.0.1)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -239,6 +258,11 @@ GEM
     timeout (0.3.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    webdrivers (5.2.0)
+      nokogiri (~> 1.6)
+      rubyzip (>= 1.3.0)
+      selenium-webdriver (~> 4.0)
+    websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -255,9 +279,13 @@ DEPENDENCIES
   haml-rails
   importmap-rails
   merged!
+  puma
   rspec-rails
+  ruby2js!
+  selenium-webdriver
   sprockets-rails
   tailwindcss-rails
+  webdrivers
 
 BUNDLED WITH
    2.3.26

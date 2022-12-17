@@ -4,22 +4,46 @@
 
 = render "layouts/merged_header"
 
-.grid.grid-cols-6.gap-4.m-8
-  = form_tag({action: :create}, multipart: true) do
-    = render "new_image"
-  -@images.each do |image|
-    .flex.flex-col.border.border-gray-100.rounded.image_box
-      .flex.align-center.justify-between.mb-4
-        .text-lg.font-bold.mt-2.mx-2
-          = image.name
-        %strong.inline-block.rounded.bg-yellow-200.px-3.py-1.text-md.font-medium
-          = aspect_ratio(image)
-      .w-full.object-contain.h-72
-        =image_tag(image.asset_name)
-      .flex.justify-between.mb-8
-        %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
-          = "#{image.size}k"
-        %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
-          = image.created_at.to_date
-        %strong.rounded.h-10.bg-orange-50.px-5.py-2.font-medium
-          =image.type
+.grid.grid-cols-6.gap-4.m-8.images
+  .flex.flex-col.border.border-gray-100.rounded.image_box{"v-for": "image in filter_and_sort"}
+    .flex.align-center.justify-between.mb-4
+      .text-lg.font-bold.mt-2.mx-2
+        {{image.name}}
+      %strong.inline-block.rounded.bg-yellow-200.px-3.py-1.text-md.font-medium
+        {{image.aspect_ratio}}
+    .w-full.object-contain.h-72
+      %img{ ":src": "image.url" , ":alt": "image.name" }
+    .flex.justify-between.mb-8
+      %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
+        {{image.size}}
+      %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
+        {{image.created_at}}
+      %strong.rounded.h-10.bg-orange-50.px-5.py-2.font-medium
+        {{image.type}}
+
+%script{:src => "https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"}
+
+:ruby2js
+  class Images < Vue
+    options el: '.images'
+    def initialize
+      @image_data = #{@image_data.to_json.html_safe}
+    end
+    def filter_and_sort
+      this.image_data
+    end
+
+    def attribute_for(id , attribute)
+      product = this.products.find { |product| return product.id == id }
+      return id unless product
+      num = product[attribute]
+      num = 100 * num / (100 + product.tax) if( self.alv == "false")
+      return num.toFixed(2)
+    end
+    def cost_for(id)
+      return this.attribute_for(id , "cost")
+    end
+    def price_for(id)
+      return this.attribute_for(id , "price")
+    end
+  end

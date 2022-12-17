@@ -11,9 +11,14 @@ gem "tailwindcss-rails"
 gem "importmap-rails"
 gem "sprockets-rails"
 
+gem "ruby2js" , path: "../ruby2js"
+
 group :development, :test do
   gem "capybara"
   gem 'guard-rspec', require: false
+  gem "selenium-webdriver"
+  gem "webdrivers"
+  gem "puma"
 end
 
 # Start debugger with binding.b [https://github.com/ruby/debug]

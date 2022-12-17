@@ -7,7 +7,7 @@ RSpec.feature "Images", type: :feature do
       expect(page).to have_title("Dummy")
       expect(page).to have_text("Pages")
     end
-    it "has picures" do
+    it "has picures" , js: true do
       expexted_num = Merged::Image.count
       visit "/merged/images"
       found= find_all(".image_box").count

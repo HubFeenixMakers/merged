@@ -71,7 +71,7 @@ module Merged
     end
 
     def asset_name
-      image_root + "/" + self.id.to_s
+      image_root + "/" + self.id.to_s + "." + self.type
     end
 
     def full_filename
