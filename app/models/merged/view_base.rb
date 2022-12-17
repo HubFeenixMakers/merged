@@ -8,6 +8,8 @@ module Merged
     set_root_path Rails.root #ouside engines not necessary
     include ActiveHash::Associations
 
+    belongs_to :image , class_name: "Merged::Image"
+
     fields :options , :updated_at , :updated_by
 
     def has_option?(option)
@@ -61,7 +63,7 @@ module Merged
       template_style.fields.collect{|f| f.to_sym}
     end
 
-    def image
+    def image_old
       Image.find_by_name(self.image_name)
     end
   end

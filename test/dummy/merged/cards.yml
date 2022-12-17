@@ -12,6 +12,7 @@
   :updated_at: &1 2022-12-09 17:50:02.733622073 +02:00
   :section_id: 11
   :index: 1
+  :image_id: 35
 - :header: Large
   :text: The old four  patient rooms are basically twice the size as the small. They
     are large enough to be shared. The size is about 30m2 and the cost 240e. Like
@@ -25,6 +26,7 @@
   :updated_at: *1
   :section_id: 11
   :index: 2
+  :image_id: 17
 - :id: 8
   :header: Non standard
   :text: There are smaller, rooms, and some connected rooms. If your needs are small,
@@ -38,6 +40,7 @@
   :updated_at: *1
   :section_id: 11
   :index: 3
+  :image_id: 25
 - :id: 9
   :header: Wet spaces
   :text: If your work requires you to get dirty, we have different size wet rooms.
@@ -51,6 +54,7 @@
   :updated_at: *1
   :section_id: 11
   :index: 4
+  :image_id: 40
 - :id: 10
   :header: Common spaces
   :text: Each floor has it's own large common space. Also, Hub Feenix offers great
@@ -62,6 +66,7 @@
   :updated_at: *1
   :section_id: 12
   :index: 1
+  :image_id: 4
 - :id: 11
   :header: En suite and fold out
   :text: "Some rooms have attached (or shared) bathrooms. Also, you have the option
@@ -73,6 +78,7 @@
   :updated_at: *1
   :section_id: 12
   :index: 2
+  :image_id: 12
 - :id: 12
   :header: Shared kitchen, own sink
   :text: Each floor has it's own common kitchen. This is especially useful if you
@@ -85,6 +91,7 @@
   :updated_at: *1
   :section_id: 12
   :index: 3
+  :image_id: 36
 - :id: 13
   :header: Name
   :text: ''
@@ -94,6 +101,7 @@
   :updated_at: *1
   :section_id: 13
   :index: 1
+  :image_id:
 - :id: 14
   :header: Email
   :text: ''
@@ -103,6 +111,7 @@
   :updated_at: *1
   :section_id: 13
   :index: 2
+  :image_id:
 - :id: 15
   :header: Phone
   :text: ''
@@ -112,12 +121,14 @@
   :updated_at: *1
   :section_id: 13
   :index: 3
+  :image_id:
 - :id: 16
   :header: Space requirements
   :text: ''
   :updated_at: *1
   :section_id: 13
   :index: 4
+  :image_id:
 - :id: 17
   :header: Message
   :text: ''
@@ -127,6 +138,7 @@
   :updated_at: *1
   :section_id: 13
   :index: 5
+  :image_id:
 - :id: 39
   :header: Cafe
   :text: Our cafe serves vegan and vegetarian light food and great tea and coffee.
@@ -139,6 +151,7 @@
   :updated_at: &2 2022-12-10 20:28:17.967357225 +02:00
   :section_id: 39
   :index: 1
+  :image_id: 29
 - :id: 40
   :header: Treatments
   :text: In our healery you can get professional help from osteopathy, shiatsu, acupuncture
@@ -152,6 +165,7 @@
   :updated_at: *2
   :section_id: 39
   :index: 2
+  :image_id: 30
 - :id: 41
   :header: Boutique and Gallery
   :text: In our Boutique, you can find organic cosmetics, buy our great hub feenix
@@ -165,6 +179,7 @@
   :updated_at: *2
   :section_id: 39
   :index: 3
+  :image_id: 28
 - :id: 42
   :header: Name
   :text: ''
@@ -174,6 +189,7 @@
   :updated_at: *2
   :section_id: 40
   :index: 1
+  :image_id:
 - :id: 43
   :header: Email
   :text: ''
@@ -183,6 +199,7 @@
   :updated_at: *2
   :section_id: 40
   :index: 2
+  :image_id:
 - :id: 44
   :header: Phone
   :text: ''
@@ -192,6 +209,7 @@
   :updated_at: *2
   :section_id: 40
   :index: 3
+  :image_id:
 - :id: 45
   :header: Subject
   :text: TEXT
@@ -201,6 +219,7 @@
   :updated_at: *2
   :section_id: 40
   :index: 4
+  :image_id:
 - :id: 46
   :header: Message
   :text: ''
@@ -210,3 +229,4 @@
   :updated_at: *2
   :section_id: 40
   :index: 5
+  :image_id:
