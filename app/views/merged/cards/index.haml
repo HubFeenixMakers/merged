@@ -31,7 +31,7 @@
       -if( card.image.blank? )
         %p No image
       -else
-        = image_tag( card.image.assert_name , class: "p-3")
+        = image_for( card, "p-3")
     .basis-72.grow
       %h3.mt-4.text-lg.font-bold Fields
       = form_tag( card_url(card.id) , {method: :patch  , class: "mx-auto mt-8 mb-0 max-w space-y-4" } ) do

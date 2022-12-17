@@ -70,15 +70,11 @@ module Merged
       Image.reload
     end
 
-    def assert_name
-      image_root + "/" + self.name
+    def asset_name
+      image_root + "/" + self.id.to_s
     end
 
-    def filename_old
-      full_filename = self.name + "." + self.type
-      Rails.root.join(asset_root, full_filename)
-    end
-    def filename_new
+    def full_filename
       full_filename = self.id.to_s + "." + self.type
       Rails.root.join(asset_root, full_filename)
     end

@@ -44,7 +44,7 @@
         = link_to(section_select_image_url(section.id)) do
           %h3.mt-4.text-lg.font-bold Image
           -if section.image
-            = image_tag( section.image.assert_name , class: "h-40")
+            = image_for( section , "h-40")
           -else
             %p No image
     .basis-52.grow

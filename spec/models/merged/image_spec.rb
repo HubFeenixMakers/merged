@@ -5,20 +5,20 @@ module Merged
     let(:first) {Image.first}
 
     it "has Image.all" do
-      expect(Image.all.length).to be 41
+      expect(Image.all.length).to be 17
     end
     it "has image" do
       expect(first.class).to be Image
     end
     it "has name" do
-      expect(first.name).to eq "3dprinter_wide"
+      expect(first.name).to eq "common_spaces"
     end
     it "has height and width" do
-      expect(first.height).to eq 457
-      expect(first.width).to eq 1279
+      expect(first.height).to eq 300
+      expect(first.width).to eq 560
     end
     it "has height and width" do
-#      expect(first.aspect_ratio).to eq [13,5]
+      expect(first.aspect_ratio).to eq [13,7]
     end
 
   end
