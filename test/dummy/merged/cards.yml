@@ -3,7 +3,7 @@
   :text: This is the standard two patient room. They are mostly towards the south,
     so may have great, or too much light, depending on how you see it. The size is
     about 3x5, cost 120e.
-  :image: standard
+  :image_name: standard
   :id: 6
   :options:
     background: solid_blue
@@ -16,7 +16,7 @@
   :text: The old four  patient rooms are basically twice the size as the small. They
     are large enough to be shared. The size is about 30m2 and the cost 240e. Like
     the small rooms these are south facing, very light.
-  :image: large
+  :image_name: large
   :id: 7
   :options:
     background: solid_blue
@@ -30,7 +30,7 @@
   :text: There are smaller, rooms, and some connected rooms. If your needs are small,
     of you rather have 2 small rooms than one, talk to us. These are mostly old admin
     rooms facing north, starting at 100e.
-  :image: non_standard_room
+  :image_name: non_standard_room
   :options:
     background: solid_blue
     color: white
@@ -47,7 +47,7 @@
     background: solid_blue
     color: white
     align: left
-  :image: wet_space_room
+  :image_name: wet_space_room
   :updated_at: *1
   :section_id: 11
   :index: 4
@@ -55,7 +55,7 @@
   :header: Common spaces
   :text: Each floor has it's own large common space. Also, Hub Feenix offers great
     public spaces, terraces, a cafe, co-working and maker spaces.
-  :image: common_spaces
+  :image_name: common_spaces
   :options:
     background: solid_red
     align: center
@@ -66,7 +66,7 @@
   :header: En suite and fold out
   :text: "Some rooms have attached (or shared) bathrooms. Also, you have the option
     of a fold-out bed to stay overnight.\r\nIt's like a home away from home."
-  :image: en_suite_studio
+  :image_name: en_suite_studio
   :options:
     background: solid_blue
     align: center
@@ -81,7 +81,7 @@
   :options:
     background: solid_indigo
     align: center
-  :image: studio_kitchen
+  :image_name: studio_kitchen
   :updated_at: *1
   :section_id: 12
   :index: 3
@@ -130,7 +130,7 @@
 - :id: 39
   :header: Cafe
   :text: Our cafe serves vegan and vegetarian light food and great tea and coffee.
-  :image: service_cafe
+  :image_name: service_cafe
   :options:
     background: light_gray
     color: solid_blue
@@ -143,7 +143,7 @@
   :header: Treatments
   :text: In our healery you can get professional help from osteopathy, shiatsu, acupuncture
     and more.
-  :image: service_treatments
+  :image_name: service_treatments
   :options:
     background: light_gray
     color: solid_blue
@@ -156,7 +156,7 @@
   :header: Boutique and Gallery
   :text: In our Boutique, you can find organic cosmetics, buy our great hub feenix
     teas to take home and find inspirational art from our artists.
-  :image: service_boutique
+  :image_name: service_boutique
   :options:
     background: light_gray
     color: solid_blue

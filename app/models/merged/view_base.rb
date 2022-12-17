@@ -62,7 +62,7 @@ module Merged
     end
 
     def image
-      Image.find_by_name(@attributes[:image])
+      Image.find_by_name(self.image_name)
     end
   end
 end

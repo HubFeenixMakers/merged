@@ -5,7 +5,7 @@ module Merged
     belongs_to :section , class_name: "Merged::Section"
 
     fields  :id , :index , :section_id
-    fields  :text , :header, :image
+    fields  :text , :header, :image_name
 
     def move_up
       swap_index_with(next_card)

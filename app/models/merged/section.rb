@@ -5,7 +5,7 @@ module Merged
 
     fields :id , :page_id , :index
     fields :template , :card_template
-    fields :header, :text , :image
+    fields :header, :text , :image_name
 
     def cards
       Card.where(section_id: id).order(index: :asc)

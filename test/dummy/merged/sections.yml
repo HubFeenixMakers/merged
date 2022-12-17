@@ -6,7 +6,7 @@
     Several floors of the building are reserved for artist studios. Some creative
     activities that require large equipment (presses, ovens) overlap strongly with
     the Makers idea. Have a look at the rooms available and tell us what you need.
-  :image: studios
+  :image_name: studios
   :options:
     button_link: ''
     button_text: ''
@@ -22,7 +22,7 @@
     The rooms are in the old hospital wings, so most are old patient rooms, but there
     are plenty of others too. Prices do not include electricity or vat, but do include
     the use of common spaces, see below.
-  :image:
+  :image_name:
   :id: 11
   :card_template: card_full_image
   :options:
@@ -66,7 +66,7 @@
   :header: HUB FEENIX
   :text: Only an hour west of Helsinki, the Feenix rises from an old sanatorium. The
     Hub is a place to create, learn and regenerate.
-  :image: house
+  :image_name: house
   :id: 31
   :options:
     fixed: 'on'
@@ -91,7 +91,7 @@
     button_link: retreats
     order: left
     background: solid_blue
-  :image: retreats
+  :image_name: retreats
   :id: 33
   :updated_at: *2
   :page_id: 6
@@ -106,7 +106,7 @@
     button_link: ''
     button_text: ''
     background: solid_blue
-  :image: studios
+  :image_name: studios
   :id: 34
   :updated_at: *2
   :page_id: 6
@@ -121,7 +121,7 @@
     button_link: makerspace
     order: left
     background: solid_blue
-  :image: makerspace
+  :image_name: makerspace
   :id: 35
   :updated_at: *2
   :page_id: 6
@@ -132,7 +132,7 @@
   :text: We have various spaces for co-working and office rent. You can just come
     for the odd afternoon and work in a shared environment. Or rent your own office
     or even wing, from 15 to 500 m2.
-  :image: coworking_office
+  :image_name: coworking_office
   :options:
     order: right
     background: solid_blue
@@ -151,7 +151,7 @@
   :text: We offer meeting rooms from 20-80 people, with breakout rooms for work-group
     discussions. High-speed internet, video projectors, break-out rooms, all you need
     to organise your event. The cafe and surrounding nature make for ideal breaks.
-  :image: conferences
+  :image_name: conferences
   :options:
     order: left
     background: solid_blue
@@ -171,7 +171,7 @@
     rooms are generally of a corridor, either with or without own toilet and shower.
     This can suit artists who either rent a studio or use co-working facilities. But
     we also accept applications from people who are just between things.
-  :image: residency_accomodation
+  :image_name: residency_accomodation
   :options:
     order: right
     background: solid_blue
