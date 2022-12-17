@@ -1,25 +1,4 @@
 ---
-- :name: 3dprinter_wide
-  :type: webp
-  :width: 1279
-  :height: 457
-  :created_at: 2022-12-11 16:44:40.742136342 +02:00
-  :size: 63
-  :id: 1
-- :name: cafe_about
-  :type: webp
-  :width: 2698
-  :height: 839
-  :created_at: 2022-12-11 16:44:40.750136271 +02:00
-  :size: 216
-  :id: 2
-- :name: clay_wide
-  :type: webp
-  :width: 1279
-  :height: 401
-  :created_at: 2022-12-11 16:44:40.751136262 +02:00
-  :size: 95
-  :id: 3
 - :name: common_spaces
   :type: webp
   :width: 560
@@ -27,20 +6,6 @@
   :created_at: 2022-12-11 16:44:40.753136245 +02:00
   :size: 21
   :id: 4
-- :name: common_spaces_wide
-  :type: webp
-  :width: 2558
-  :height: 880
-  :created_at: 2022-12-11 16:44:40.753136245 +02:00
-  :size: 200
-  :id: 5
-- :name: common_wide
-  :type: webp
-  :width: 3840
-  :height: 1040
-  :created_at: 2022-12-11 16:44:40.754136236 +02:00
-  :size: 322
-  :id: 6
 - :name: conferences
   :type: webp
   :width: 1740
@@ -55,27 +20,6 @@
   :created_at: 2022-12-11 16:44:40.755136227 +02:00
   :size: 135
   :id: 8
-- :name: double_office_small
-  :type: webp
-  :width: 602
-  :height: 480
-  :created_at: 2022-12-11 16:44:40.756136218 +02:00
-  :size: 25
-  :id: 9
-- :name: earth_room
-  :type: webp
-  :width: 560
-  :height: 300
-  :created_at: 2022-12-11 16:44:40.756136218 +02:00
-  :size: 14
-  :id: 10
-- :name: electronics_wide
-  :type: webp
-  :width: 1279
-  :height: 401
-  :created_at: 2022-12-11 16:44:40.756136218 +02:00
-  :size: 96
-  :id: 11
 - :name: en_suite_studio
   :type: webp
   :width: 560
@@ -83,27 +27,6 @@
   :created_at: 2022-12-11 16:44:40.756136218 +02:00
   :size: 13
   :id: 12
-- :name: feenix_logo_big
-  :type: png
-  :width: 780
-  :height: 940
-  :created_at: 2022-12-11 16:44:40.757136209 +02:00
-  :size: 206
-  :id: 13
-- :name: floating_office_small
-  :type: webp
-  :width: 602
-  :height: 480
-  :created_at: 2022-12-11 16:44:40.758136200 +02:00
-  :size: 28
-  :id: 14
-- :name: food_area
-  :type: webp
-  :width: 2558
-  :height: 880
-  :created_at: 2022-12-11 16:44:40.758136200 +02:00
-  :size: 169
-  :id: 15
 - :name: house
   :type: jpg
   :width: 1314
@@ -118,20 +41,6 @@
   :created_at: 2022-12-07 16:04:22.141547518 +02:00
   :size: 211
   :id: 17
-- :name: loft_room
-  :type: webp
-  :width: 560
-  :height: 300
-  :created_at: 2022-12-11 16:44:40.760136182 +02:00
-  :size: 24
-  :id: 18
-- :name: lotus_room
-  :type: webp
-  :width: 560
-  :height: 300
-  :created_at: 2022-12-11 16:44:40.760136182 +02:00
-  :size: 13
-  :id: 19
 - :name: makerspace
   :type: webp
   :width: 1059
@@ -139,34 +48,6 @@
   :created_at: 2022-12-11 16:44:40.760136182 +02:00
   :size: 98
   :id: 20
-- :name: mandala_room
-  :type: webp
-  :width: 560
-  :height: 300
-  :created_at: 2022-12-11 16:44:40.761136174 +02:00
-  :size: 24
-  :id: 21
-- :name: map_wide
-  :type: png
-  :width: 2169
-  :height: 1149
-  :created_at: 2022-12-11 16:44:40.761136174 +02:00
-  :size: 1020
-  :id: 22
-- :name: metal_wide
-  :type: webp
-  :width: 782
-  :height: 308
-  :created_at: 2022-12-11 16:44:40.765136138 +02:00
-  :size: 43
-  :id: 23
-- :name: nature_around
-  :type: webp
-  :width: 2558
-  :height: 880
-  :created_at: 2022-12-11 16:44:40.765136138 +02:00
-  :size: 362
-  :id: 24
 - :name: non_standard_room
   :type: webp
   :width: 865
@@ -209,34 +90,6 @@
   :created_at: 2022-12-11 16:44:40.769136102 +02:00
   :size: 31
   :id: 30
-- :name: shared_wide
-  :type: webp
-  :width: 3840
-  :height: 1020
-  :created_at: 2022-12-11 16:44:40.769136102 +02:00
-  :size: 245
-  :id: 31
-- :name: single_office_small
-  :type: webp
-  :width: 602
-  :height: 580
-  :created_at: 2022-12-11 16:44:40.770136094 +02:00
-  :size: 57
-  :id: 32
-- :name: sky_conference
-  :type: webp
-  :width: 560
-  :height: 300
-  :created_at: 2022-12-11 16:44:40.770136094 +02:00
-  :size: 146
-  :id: 33
-- :name: sowing_wide
-  :type: webp
-  :width: 780
-  :height: 262
-  :created_at: 2022-12-11 16:44:40.771136085 +02:00
-  :size: 28
-  :id: 34
 - :name: standard
   :type: webp
   :width: 1730
@@ -258,20 +111,6 @@
   :created_at: 2022-12-11 16:44:40.771136085 +02:00
   :size: 372
   :id: 37
-- :name: suites_wide
-  :type: webp
-  :width: 3840
-  :height: 1064
-  :created_at: 2022-12-11 16:44:40.772136076 +02:00
-  :size: 403
-  :id: 38
-- :name: the_hall
-  :type: webp
-  :width: 560
-  :height: 300
-  :created_at: 2022-12-11 16:44:40.773136067 +02:00
-  :size: 19
-  :id: 39
 - :name: wet_space_room
   :type: webp
   :width: 865
@@ -279,10 +118,3 @@
   :created_at: 2022-12-11 16:44:40.773136067 +02:00
   :size: 29
   :id: 40
-- :name: woodworking_wide
-  :type: webp
-  :width: 1279
-  :height: 415
-  :created_at: 2022-12-11 16:44:40.773136067 +02:00
-  :size: 102
-  :id: 41

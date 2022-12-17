@@ -103,12 +103,5 @@ module Merged
       Section.reload
     end
 
-    def self.transform
-      Section.all.each do |card|
-        card.image = card.image_old
-        card.save
-      end
-    end
-
   end
 end

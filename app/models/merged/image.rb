@@ -51,12 +51,12 @@ module Merged
 
     def destroy
       delete
+      File.delete self.filename_old
       Image.save_all
     end
 
-    def delete(reindex = true)
+    def delete
       Image.delete( self.id )
-      section.reset_index if reindex
     end
 
     def save
@@ -72,6 +72,21 @@ module Merged
 
     def assert_name
       image_root + "/" + self.name
+    end
+
+    def filename_old
+      full_filename = self.name + "." + self.type
+      Rails.root.join(asset_root, full_filename)
+    end
+    def filename_new
+      full_filename = self.id.to_s + "." + self.type
+      Rails.root.join(asset_root, full_filename)
+    end
+
+    def self.transform
+      Image.all.each do |image|
+        File.rename image.filename_old , image.filename_new
+      end
     end
 
     private
