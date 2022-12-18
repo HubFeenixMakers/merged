@@ -3,6 +3,10 @@
     All Images
 
 = render "layouts/merged_header"
+- if Rails.env.development?
+  = javascript_include_tag "merged/vue.js"
+-else
+  = javascript_include_tag "merged/vue.min.js"
 
 .images
   .flex.justify-center

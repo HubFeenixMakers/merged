@@ -9,7 +9,7 @@ module Merged
   class Engine < ::Rails::Engine
     isolate_namespace Merged
     initializer "merged.assets.precompile" do |app|
-      app.config.assets.precompile += %w( merged/merged.css merged/merged_logo)
+      app.config.assets.precompile += %w( merged/merged.css merged/vue.js merged/vue.min.js merged/merged_logo)
       add_image_assets(app.config , "section_preview")
       add_image_assets(app.config , "card_preview")
     end
