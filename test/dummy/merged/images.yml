@@ -6,6 +6,7 @@
   :created_at: 2022-12-11 16:44:40.753136245 +02:00
   :size: 21
   :id: 4
+  :tags: ''
 - :name: Conferences
   :type: webp
   :width: 1740
@@ -13,6 +14,7 @@
   :created_at: 2022-12-11 16:44:40.754136236 +02:00
   :size: 125
   :id: 7
+  :tags: ''
 - :name: Coworking office
   :type: webp
   :width: 1740
@@ -20,6 +22,7 @@
   :created_at: 2022-12-11 16:44:40.755136227 +02:00
   :size: 135
   :id: 8
+  :tags: ''
 - :name: En suite studio
   :type: webp
   :width: 560
@@ -27,6 +30,7 @@
   :created_at: 2022-12-11 16:44:40.756136218 +02:00
   :size: 13
   :id: 12
+  :tags: ''
 - :name: House
   :type: jpg
   :width: 1314
@@ -34,6 +38,7 @@
   :created_at: 2022-12-11 16:44:40.759136191 +02:00
   :size: 260
   :id: 16
+  :tags: ''
 - :name: Large
   :type: webp
   :width: 1730
@@ -41,6 +46,7 @@
   :created_at: 2022-12-07 16:04:22.141547518 +02:00
   :size: 211
   :id: 17
+  :tags: ''
 - :name: Makerspace
   :type: webp
   :width: 1059
@@ -48,13 +54,15 @@
   :created_at: 2022-12-11 16:44:40.760136182 +02:00
   :size: 98
   :id: 20
-- :name: Non standard room
+  :tags: ''
+- :name: Non standard
   :type: webp
   :width: 865
   :height: 501
   :created_at: 2022-12-11 16:44:40.766136129 +02:00
   :size: 40
   :id: 25
+  :tags: room
 - :name: Residency accomodation
   :type: webp
   :width: 1740
@@ -62,6 +70,7 @@
   :created_at: 2022-12-11 16:44:40.767136120 +02:00
   :size: 129
   :id: 26
+  :tags: ''
 - :name: Retreats
   :type: jpg
   :width: 1044
@@ -69,6 +78,7 @@
   :created_at: 2022-12-11 16:44:40.767136120 +02:00
   :size: 245
   :id: 27
+  :tags: ''
 - :name: Service boutique
   :type: webp
   :width: 1000
@@ -76,6 +86,7 @@
   :created_at: 2022-12-11 16:44:40.769136102 +02:00
   :size: 137
   :id: 28
+  :tags: ''
 - :name: Service cafe
   :type: webp
   :width: 1120
@@ -83,6 +94,7 @@
   :created_at: 2022-12-11 16:44:40.769136102 +02:00
   :size: 81
   :id: 29
+  :tags: ''
 - :name: Service treatments
   :type: webp
   :width: 592
@@ -90,6 +102,7 @@
   :created_at: 2022-12-11 16:44:40.769136102 +02:00
   :size: 31
   :id: 30
+  :tags: ''
 - :name: Standard
   :type: webp
   :width: 1730
@@ -97,6 +110,7 @@
   :created_at: 2022-12-07 16:04:22.142547509 +02:00
   :size: 136
   :id: 35
+  :tags: ''
 - :name: Studio kitchen
   :type: webp
   :width: 560
@@ -104,6 +118,7 @@
   :created_at: 2022-12-11 16:44:40.771136085 +02:00
   :size: 19
   :id: 36
+  :tags: ''
 - :name: Studios
   :type: jpg
   :width: 1740
@@ -111,10 +126,12 @@
   :created_at: 2022-12-11 16:44:40.771136085 +02:00
   :size: 372
   :id: 37
-- :name: Wet space room
+  :tags: ''
+- :name: Wet space
   :type: webp
   :width: 865
   :height: 501
   :created_at: 2022-12-11 16:44:40.773136067 +02:00
   :size: 29
   :id: 40
+  :tags: room

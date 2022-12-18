@@ -13,6 +13,7 @@
     %label.block
       .mt-1.text-lg.font-bold Search:
     %input.border.rounded{:category => "query", placeholder:"by name", "v-model" => "search_name" }
+    %input.border.rounded{:category => "query", placeholder:"by tag", "v-model" => "search_tag" }
 
     - ["name" , "created" , "size" , "ratio"].each do |ruby_sort_key|
       .rounded{":class" => "{'border': sort_by == '#{ruby_sort_key}'}"}
@@ -33,7 +34,7 @@
           {{image.name}}
         %strong.inline-block.rounded.bg-yellow-200.px-3.py-1.text-md.font-medium
           {{image.aspect_ratio}}
-      .w-full.object-contain.h-72
+      %a.w-full.object-contain.h-72{":href" => "image.link" }
         %img{ ":src": "image.url" , ":alt": "image.name" }
       .flex.justify-between.mb-8
         %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
@@ -41,7 +42,7 @@
         %strong.inline-block.rounded.bg-orange-50.px-3.py-1.text-md.font-medium
           {{image.created_at}}
         %strong.rounded.h-10.bg-orange-50.px-5.py-2.font-medium
-          {{image.type}}
+          {{image.tags}}
 
 %script{:src => "https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"}
 
@@ -51,15 +52,20 @@
     def initialize
       @image_data = #{@image_data.to_json.html_safe}
       @search_name = ""
-      @sort_by = "name"
-      @sort_dir = 1 # up -1 down
+      @search_tag = ""
+      @sort_by = "created"
+      @sort_dir = -1 # 1 up
     end
     def filter_and_sort
-      puts "sorting " + @sort_by + " : " + @sort_dir
       dat = @image_data
-      if @search_name.length > 0
+      if(@search_name.length > 0)
         dat = dat.filter do |item|
           return item["name"].toLowerCase().indexOf(@search_name) > -1
+        end
+      end
+      if(@search_tag.length > 0)
+        dat = dat.filter do |item|
+          return (item.tags.toLowerCase().indexOf(@search_tag) > -1)
         end
       end
       dat = dat.slice().sort do |a, b| #a, b image data hashes

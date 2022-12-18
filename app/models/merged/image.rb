@@ -5,7 +5,7 @@ module Merged
 
     set_root_path Rails.root
 
-    fields  :name , :type , :size , :created_at , :height , :width
+    fields  :name , :tags , :type , :size , :created_at , :height , :width
 
     def initialize(filename)
       if filename.is_a? Hash
@@ -84,10 +84,15 @@ module Merged
 
     def self.transform
       Image.all.each do |image|
-        image.name = image.name.gsub("_" , " ")
-        image.name = image.name.capitalize
+        last = image.name.split.last
+        image.tags = ""
+        ["wide", "small" , "big" , "room"].each do |tag|
+          if(last == tag)
+            image.name = image.name.gsub(last,"").strip
+            image.tags = last
+          end
+        end
         image.save
-#        image.created_at = image.created_at.to_date
       end
     end
 
