@@ -9,10 +9,30 @@
   = javascript_include_tag "merged/vue.min.js"
 
 .images
-  .flex.justify-center
+  .flex.justify-center.gap-4
     %label.block
-      .mt-1.mx-4.text-lg.font-bold Search
+      .mt-1.text-lg.font-bold Search:
     %input.border.rounded{:category => "query", placeholder:"by name", "v-model" => "search_name" }
+    .rounded{":class" => "{'border': sort_by == 'name'}"}
+      .mx-4.text-lg.font-bold Name
+    %a{ "@click" => "sort_by = 'name';sort_dir = 1" , href: "#" ,
+        ":class" => "{'bg-cyan-100': sort_dir == 1 && sort_by == 'name'}"}
+      %svg.w-6.h-6.mt-1{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+    %a{ "@click" => "sort_by = 'name';sort_dir = -1" , href: "#" ,
+        ":class" => "{'bg-cyan-100': sort_dir == -1 && sort_by == 'name'}"}
+      %svg.w-6.h-6.mt-1{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+    .rounded{":class" => "{'border': sort_by == 'created'}"}
+      .mx-4.text-lg.font-bold Created
+    %a{ "@click" => "sort_by = 'created';sort_dir = 1" , href: "#" ,
+        ":class" => "{'bg-cyan-100': sort_dir == 1 && sort_by == 'created'}"}
+      %svg.w-6.h-6.mt-1{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+    %a{ "@click" => "sort_by = 'created';sort_dir = -1" , href: "#" ,
+        ":class" => "{'bg-cyan-100': sort_dir == -1 && sort_by == 'created'}"}
+      %svg.w-6.h-6.mt-1{:fill => "created", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
 
   .grid.grid-cols-6.gap-4.m-8
     .flex.flex-col.border.border-gray-100.rounded.image_box{"v-for": "image in filter_and_sort"}
@@ -39,12 +59,21 @@
     def initialize
       @image_data = #{@image_data.to_json.html_safe}
       @search_name = ""
+      @sort_by = "name"
+      @sort_dir = 1 # up -1 down
     end
     def filter_and_sort
+      puts "sorting " + @sort_by + " : " + @sort_dir
       dat = @image_data
-      return dat unless @search_name.length > 0
-      dat = dat.filter do |item|
-        return item["name"].toLowerCase().indexOf(@search_name) > -1
+      if @search_name.length > 0
+        dat = dat.filter do |item|
+          return item["name"].toLowerCase().indexOf(@search_name) > -1
+        end
+      end
+      dat = dat.slice().sort do |a, b| #a, b image data hashes
+        aa = a[@sort_by]
+        bb = b[@sort_by]
+        return (aa === bb ? 0 : (aa > bb ? 1 : -1) ) * @sort_dir
       end
       dat
     end
