@@ -21,16 +21,23 @@ module Merged
     end
 
     def create
-      new_image = Image.create_new(params['filename'] , params['image_file'])
-      redirect = :images
-      if(params[:redirect])
-        redirect = params[:redirect].gsub("NEW" ,new_image.name)
-        puts "image redirect #{redirect}"
-      end
-      redirect_to redirect
+      image = Image.create_new!(params['filename'] ,params['tags'], params['image_file'])
+      where_to  = determine_redirect(image)
+      redirect_to where_to , notice: "New image created: #{image.name}"
     end
 
     private
+
+    def determine_redirect(image)
+      if(params[:section_id])
+        view_context.section_set_image_url(params[:section_id],image_id: image.id )
+      elsif(params[:card_id])
+        view_context.card_set_image_url(params[:card_id],image_id: image.id )
+      else
+         :images
+      end
+    end
+
     def build_link_for(image)
       if(params[:section_id])
         return view_context.section_set_image_url(params[:section_id] , image_id: image.id)

@@ -10,6 +10,9 @@
 
 .images
   .flex.justify-center.gap-4
+    .rounded.border.mr-20{"@click" => "toggle_new" , ":class" => "{'bg-orange-200': show_new }"}
+      .mx-4.text-lg.font-bold Add new
+
     %label.block
       .mt-1.text-lg.font-bold Search:
     %input.border.rounded{:category => "query", placeholder:"by name", "v-model" => "search_name" }
@@ -27,7 +30,21 @@
         %svg.w-6.h-6.mt-1{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
           %path{:d => "M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
 
-  .grid.grid-cols-6.gap-4.m-8
+  .grid.grid-cols-3.gap-4.m-8{":class" => "{'hidden': !show_new }"}
+    %div
+    = form_tag(merged.images_path, multipart: true) do
+      .flex.flex-col.border.border-gray-100.rounded.p-4
+        %h3.my-4.text-xl.font-bold= text_for_new
+        = text_field_tag 'filename' ,nil, placeholder: "Optional name", class: "rounded mt-4"
+        %p.my-4 Name will be taken from uploaded file if not given
+        = text_field_tag 'tags' ,nil, placeholder: "Optional tags", class: "rounded mt-4"
+        %p.my-4 Tags describe the size or format
+        = hidden_for_select
+        = file_field_tag 'image_file' , class: "mb-8 w-full px-2 text-xl bg-clip-padding border border-solid border-gray-300  rounded"
+        = submit_button 'Submit'
+    %div
+
+  .grid.grid-cols-6.gap-4.m-8{":class" => "{'hidden': show_new }"}
     .flex.flex-col.border.border-gray-100.rounded.image_box{"v-for": "image in filter_and_sort"}
       .flex.align-center.justify-between.mb-4
         .text-lg.font-bold.mt-2.mx-2
@@ -44,8 +61,6 @@
         %strong.rounded.h-10.bg-orange-50.px-5.py-2.font-medium
           {{image.tags}}
 
-%script{:src => "https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"}
-
 :ruby2js
   class Images < Vue
     options el: '.images'
@@ -55,6 +70,7 @@
       @search_tag = ""
       @sort_by = "created"
       @sort_dir = -1 # 1 up
+      @show_new = true
     end
     def filter_and_sort
       dat = @image_data
@@ -74,5 +90,12 @@
         return (aa === bb ? 0 : (aa > bb ? 1 : -1) ) * @sort_dir
       end
       dat
+    end
+    def toggle_new()
+      if @show_new == true
+        @show_new = false
+      else
+        @show_new = true
+      end
     end
   end

@@ -7,29 +7,6 @@ module Merged
 
     fields  :name , :tags , :type , :size , :created_at , :height , :width
 
-    def initialize(filename)
-      if filename.is_a? Hash
-        super(filename)
-      else
-        super({name: "newname"})
-        init_from_file(filename)
-      end
-    end
-
-    def init_from_file(filename)
-      puts filename
-      name , type = filename.split(".")
-      self.name = name
-      self.type = type
-      fullname = Rails.root.join(asset_root,filename)
-      file = File.new(fullname)
-      image = MiniMagick::Image.new(fullname)
-      self.width = image.width
-      self.height = image.height
-      self.created_at = file.birthtime
-      self.size = (file.size/1024).to_i
-    end
-
     def aspect_ratio
       ratio = self.ratio
       ratios = (1..9).collect{ |i|  ((ratio * i) - (ratio * i).round(0)).abs }
@@ -40,21 +17,34 @@ module Merged
     def ratio
       self.width.to_f / self.height
     end
-    #save an io with given name (without ending, that is taken from io)
-    #Should save to tmp first
-    def self.create_new(filename , io)
+
+    #save an io as new image. The filename is the id, type taken from io
+    def self.create_new!(name , tags,  io)
       original , ending = io.original_filename.split("/").last.split(".")
-      filename = original if( filename.blank? )
-      full_filename = filename + "." + ending
-      File.open(Rails.root.join("app/assets/images/cms/", full_filename), "wb") do |f|
-        f.write( io.read )
+      name = original if( name.blank? )
+      image = Image.new name: name , type: ending , tags: (tags || "")
+      self.insert(image) # assigns next id
+      full_filename = image.id.to_s + "." + ending
+      File.open(Rails.root.join("app/assets/images/cms/", full_filename), "wb") do |file|
+        file.write( io.read )
       end
-      Image.new( full_filename )
+      image.init_file_data
+      image.save
+      image
+    end
+
+    def init_file_data
+      image = MiniMagick::Image.new(full_filename)
+      self.width = image.width
+      self.height = image.height
+      file =  File.open( full_filename )
+      self.created_at = file.birthtime
+      self.size = (file.size/1024).to_i
     end
 
     def destroy
       delete
-      File.delete self.filename_old
+      File.delete self.full_filename
       Image.save_all
     end
 

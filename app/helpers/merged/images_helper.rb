@@ -3,11 +3,38 @@ module Merged
   module ImagesHelper
 
     def text_for_index
-      return section_text if(section_id)
-      return card_text if(card_id)
-      "All Images"
+      if(section_id)
+        section = Section.find(section_id)
+        "Select image for Section #{section.index} : #{section.header}"
+      elsif(card_id)
+        card = Card.find(card_id)
+        "Select image for Card #{card.index} : #{card.header}"
+      else
+        "All Images"
+      end
     end
 
+    def text_for_new
+      if(section_id)
+        section = Section.find(section_id)
+        "Add image for Section"
+      elsif(card_id)
+        card = Card.find(card_id)
+        "Select image for Card"
+      else
+        "New Image"
+      end
+    end
+
+    def hidden_for_select
+      if(section_id)
+        hidden_field_tag :section_id , section_id
+      elsif(card_id)
+        hidden_field_tag :card_id , card_id
+      else
+        ""
+      end
+    end
 
     private
     def section_id
@@ -16,15 +43,6 @@ module Merged
     def card_id
       params[:card_id]
     end
-    def section_text
-      section = Section.find(section_id)
-      "Select image for Section #{section.index} : #{section.header}"
-    end
-    def card_text
-      card = Card.find(card_id)
-      "Select image for Card #{card.index} : #{card.header}"
-    end
-
 
   end
 end
