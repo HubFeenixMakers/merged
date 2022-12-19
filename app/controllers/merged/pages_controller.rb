@@ -10,6 +10,13 @@ module Merged
 
     end
 
+    def update
+      @page.add_redirect
+      @page.name = params[:name]
+      @page.save
+      redirect_to page_path(@page) , notice: "Page renamed"
+    end
+
     def create
       name = params[:name]
       message = Page.check_name(name)

@@ -93,3 +93,8 @@
   :values: left center right
   :default: left
   :id: 17
+- :name: meta
+  :description: Meta tag for page
+  :values:
+  :default:
+  :id: 18

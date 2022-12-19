@@ -1,9 +1,15 @@
 module Merged
   class Page < ViewBase
 
-    fields :name , :type , :options
+    fields :name , :type , :options, :redirects
 
     alias :template :type
+
+    def add_redirect
+      olds = self.redirects.to_s.split(" ")
+      olds << self.name unless olds.include?(self.name)
+      self.redirects = olds.join(" ")
+    end
 
     def sections
       Section.where(page_id: id).order(index: :asc)
@@ -55,6 +61,9 @@ module Merged
     end
 
     def save
+      olds = self.redirects.to_s.split(" ")
+      olds.delete( self.name.to_s )
+      self.redirects = olds.join(" ")
       updated_at = Time.now
       super
       Page.save_all

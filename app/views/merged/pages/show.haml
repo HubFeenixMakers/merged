@@ -23,13 +23,16 @@
         %h4.text-lg.font-bold Name
         = text_field_tag( :name , @page.name, class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
       .mt-4= submit_button("Update")
-      (renaming not implemented)
+      -unless @page.redirects.blank?
+        .mt-4
+          Page redirects from
+          = @page.redirects
 
   .basis-80.grow
     %h3.mt-4.text-lg.font-bold Options
     = form_tag( page_url(@page.id) , {method: :patch  , class: "mx-auto mt-8 mb-0 max-w space-y-4" } ) do
       - @page.option_definitions.each do |option|
-        =render "option_form_#{option.type}" , section: @page , option: option
+        =render "/merged/sections/option_form_#{option.type}" , section: @page , option: option
       -if @page.option_definitions.empty?
         %p No options
       -else
