@@ -11,7 +11,7 @@ module Merged
       expect(first.class).to be Image
     end
     it "has name" do
-      expect(first.name).to eq "common_spaces"
+      expect(first.name).to eq "Common spaces"
     end
     it "has height and width" do
       expect(first.height).to eq 300

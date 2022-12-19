@@ -35,6 +35,9 @@ module Merged
       if(params[:section_id])
         return view_context.section_set_image_url(params[:section_id] , image_id: image.id)
       end
+      if(params[:card_id])
+        return view_context.card_set_image_url(params[:card_id] , image_id: image.id)
+      end
       view_context.image_url(image.id)
     end
   end

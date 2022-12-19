@@ -6,14 +6,10 @@ module Merged
       @section = Section.find(params[:section_id])
     end
 
-    def select_image
-      @images = Image.all
-    end
-
     def set_image
-      @card.image = params[:image]
+      @card.image_id = params[:image_id]
       @card.save
-      redirect_to section_cards_url(@card.section.id) , notice: "Image selected: #{@card.image}"
+      redirect_to section_cards_url(@card.section.id) , notice: "Image selected: #{@card.image.name}"
     end
 
     def move

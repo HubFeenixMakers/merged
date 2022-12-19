@@ -22,9 +22,8 @@
             =submit_button( "Delete" , true)
       .p-4
         %h3.mt-4.text-lg.font-bold Image
-        = yellow_button("Change Image" , card_select_image_url(card.id) )
+        = yellow_button("Change Image" , images_url(card_id: card.id) )
         = red_button("Remove image", card_set_image_path( card.id  , image: "") )
-
 
     .basis-96
       %h3.mt-4.text-lg.font-bold Image

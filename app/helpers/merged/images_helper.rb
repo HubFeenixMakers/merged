@@ -20,6 +20,10 @@ module Merged
       section = Section.find(section_id)
       "Select image for Section #{section.index} : #{section.header}"
     end
+    def card_text
+      card = Card.find(card_id)
+      "Select image for Card #{card.index} : #{card.header}"
+    end
 
 
   end
