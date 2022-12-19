@@ -19,7 +19,7 @@
       %p No image
     -else
       = image_for( @section , "my-3")
-    = yellow_button("Change Image", section_select_image_url(@section.id))
+    = yellow_button("Change Image", images_url(section_id: @section.id))
     = red_button( "Remove image", section_set_image_path( @section.id  , image: ""))
 
   .basis-80.grow

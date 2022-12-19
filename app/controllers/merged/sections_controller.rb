@@ -7,10 +7,6 @@ module Merged
       @page = Page.find(params[:page_id])
     end
 
-    def select_image
-      @images = Image.all
-    end
-
     def select_template
       @sections = SectionStyle.all
     end
@@ -37,9 +33,9 @@ module Merged
     end
 
     def set_image
-      @section.image = params[:image]
+      @section.image_id = params[:image_id]
       @section.save
-      redirect_to section_url(@section.id) , notice: "Image selected: #{@section.image}"
+      redirect_to section_url(@section.id) , notice: "Image selected: #{@section.image.name}"
     end
 
     def set_template

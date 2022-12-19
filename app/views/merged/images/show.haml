@@ -1,0 +1,7 @@
+- content_for( :merged_menu ) do
+  .text-xl.font-bold.text-gray-900
+    Image #{@image.name}
+
+= render "layouts/merged_header"
+
+= image_tag(@image.asset_name)
