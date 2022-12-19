@@ -18,6 +18,9 @@ module Merged
 
     def show
       @image = Image.find(params[:id])
+      @sections = Section.where(image_id: params[:id].to_i)
+      @cards = Card.where(image_id: params[:id].to_i)
+      @used = ((@cards.length > 0) || (@sections.length > 0))
     end
 
     def create

@@ -1,7 +1,52 @@
 - content_for( :merged_menu ) do
   .text-xl.font-bold.text-gray-900
-    Image #{@image.name}
+    Image: #{@image.name}
 
 = render "layouts/merged_header"
 
-= image_tag(@image.asset_name)
+.flex.justify-center.gap-2
+  %p
+    .font-bold.mr-2 Name
+    = @image.name
+  %p
+    .mr-2.font-bold Type
+    = @image.type
+  %p
+    .font-bold Size
+    = @image.size
+  %p
+    .font-bold Tags
+    = @image.tags
+  %p
+    .font-bold Ratio
+    = @image.ratio.round(2)
+    = @image.aspect_ratio
+-if @used
+  .grid.grid-cols-2.m-20
+    %p
+      Sections
+      =@sections.length
+    %p
+      Cards
+      =@cards.length
+    %div
+      -@sections.each do |section|
+        %p
+          = section.header
+          on Page
+          = section.page.name
+    %div
+      -@cards.each do |card|
+        %p
+          = card.header
+          on Page
+          = card.section.page.name
+
+-else
+  .grid.grid-cols-2.m-20
+    %p Not used, you may delete
+    %p
+      Delete button
+
+.m-20
+  = image_tag(@image.asset_name)

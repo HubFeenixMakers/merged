@@ -33,7 +33,7 @@ module Merged
     end
 
     def set_image
-      @section.image_id = params[:image_id]
+      @section.image_id = params[:image_id].to_i
       @section.save
       redirect_to section_url(@section.id) , notice: "Image selected: #{@section.image.name}"
     end
