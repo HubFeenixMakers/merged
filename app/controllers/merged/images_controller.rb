@@ -16,6 +16,12 @@ module Merged
       }
     end
 
+    def destroy
+      @image = Image.find(params[:id])
+      @image.destroy
+      redirect_to :images , nootice: "Image #{@image.name} deleted"
+    end
+
     def show
       @image = Image.find(params[:id])
       @sections = Section.where(image_id: params[:id].to_i)

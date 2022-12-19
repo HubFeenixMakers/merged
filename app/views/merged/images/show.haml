@@ -32,21 +32,24 @@
     %div
       -@sections.each do |section|
         %p
-          = section.header
+          = link_to section.header , section_url(section)
           on Page
-          = section.page.name
+          = link_to section.page.name , page_sections_url(section.page)
     %div
       -@cards.each do |card|
         %p
-          = card.header
+          = link_to card.header , section_cards_url(card.section)
           on Page
-          = card.section.page.name
+          = link_to card.section.page.name , page_sections_url(card.section.page)
 
 -else
   .grid.grid-cols-2.m-20
-    %p Not used, you may delete
-    %p
-      Delete button
+    %div
+      %p Not used, you may delete
+    %div
+      %p
+        = form_tag( image_url(@image.id) , {method: :delete  } ) do
+          =submit_button( "Delete" , true)
 
 .m-20
   = image_tag(@image.asset_name)

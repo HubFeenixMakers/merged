@@ -1,7 +1,7 @@
 - content_for( :merged_menu ) do
   .text-xl.font-bold.text-gray-900
     Page
-    = @page.name
+    = link_to @page.name , page_url(@page)
   .text-xl.text-gray-900
     =link_to "View live" , "/#{@page.name}" , target: @page.name
 
