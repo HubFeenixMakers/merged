@@ -1,5 +1,6 @@
 module Merged
   class PagesController < MergedController
+
     before_action :set_page, only: %i[ update destroy show ]
 
     def index

@@ -1,6 +1,5 @@
 module Merged
   module ViewHelper
-    include OptionsHelper
     include MergedHelper
 
     # background image as inline style
