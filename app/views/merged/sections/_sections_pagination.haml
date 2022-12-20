@@ -1,10 +1,10 @@
 .text-xl.font-bold.text-gray-900
-  Page #{link_to section.page.name, page_sections_url(section.page.id), class: "underline"}
+  Page #{link_to section.page.name, merged.page_sections_path(section.page.id), class: "underline"}
 .inline-flex.items-center.justify-center.gap-3
   .text-xl.font-bold.text-gray-900
     Section #{section.header}
   - if section.previous_section
-    =link_to section_url(section.previous_section.id) , class: "inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 hover:bg-sky-100" do
+    =link_to merged.section_path(section.previous_section.id) , class: "inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 hover:bg-sky-100" do
       %span.sr-only Next Section
       %svg.h-3.w-3{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
         %path{"clip-rule" => "evenodd", :d => "M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z", "fill-rule" => "evenodd"}
@@ -15,7 +15,7 @@
     %span{:class => "mx-0.25"} /
     = section.page.sections.length
   - if section.next_section
-    =link_to section_url(section.next_section.id), class: "inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 hover:bg-sky-100" do
+    =link_to merged.section_path(section.next_section.id), class: "inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 hover:bg-sky-100" do
       %span.sr-only Next Section
       %svg.h-3.w-3{:fill => "currentColor", :viewbox => "0 0 20 20", :xmlns => "http://www.w3.org/2000/svg"}
         %path{"clip-rule" => "evenodd", :d => "M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z", "fill-rule" => "evenodd"}

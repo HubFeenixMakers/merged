@@ -14,7 +14,7 @@ module Merged
       @page.add_redirect
       @page.name = params[:name]
       @page.save
-      redirect_to page_path(@page) , notice: "Page renamed"
+      redirect_to page_url(@page) , notice: "Page renamed"
     end
 
     def create

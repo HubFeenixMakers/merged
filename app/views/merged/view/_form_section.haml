@@ -6,7 +6,7 @@
         = markdown(section)
   .flex.items-center.justify-start.m-20
     .mx-auto.w-full.max-w-4xl{class: "max-w-[50%]"}
-      = form_tag( form_sendit_path , {class: "mt-10" }) do
+      = form_tag( merged.form_sendit_path , {class: "mt-10" }) do
         - challenge = rand(8)
         = hidden_field_tag :section_id , section.id
         = hidden_field_tag :bot_fudder , "#{challenge*2}"

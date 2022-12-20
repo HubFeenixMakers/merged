@@ -4,7 +4,7 @@
   .text-xl.font-bold.text-gray-900
     =@page.name
   %strong.rounded.bg-green-100.px-3.text-xs.font-medium.text-green-700{:class => "py-1.5"}
-    = link_to 'Sections', page_sections_path(@page.id)
+    = link_to 'Sections', merged.page_sections_path(@page.id)
 
   .text-xl= distance_of_time_in_words_to_now(@page.updated_at)
 = render "layouts/merged_header"
@@ -13,12 +13,12 @@
   .flex.flex-col
     -@page.sections.each do |section |
       .flex.pb-2.px-2{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50'}
-        =link_to( section_path(section.id)) do
+        =link_to( merged.section_path(section.id)) do
           .mt-4.text-lg.font-bold Section #{section.index} : #{section.header}
         - if section.has_cards?
           %h3.mt-4.text-lg.font-bold #{section.cards.length} Cards
   .basis-80
-    = form_tag( page_url(@page.id) , {method: :patch  , class: "mx-auto mt-8 mb-0 max-w space-y-4" } ) do
+    = form_tag( merged.page_path(@page.id) , {method: :patch  , class: "mx-auto mt-8 mb-0 max-w space-y-4" } ) do
       %label.block
         %h4.text-lg.font-bold Name
         = text_field_tag( :name , @page.name, class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
@@ -30,7 +30,7 @@
 
   .basis-80.grow
     %h3.mt-4.text-lg.font-bold Options
-    = form_tag( page_url(@page.id) , {method: :patch  , class: "mx-auto mt-8 mb-0 max-w space-y-4" } ) do
+    = form_tag( merged.page_path(@page.id) , {method: :patch  , class: "mx-auto mt-8 mb-0 max-w space-y-4" } ) do
       - @page.option_definitions.each do |option|
         =render "/merged/sections/option_form_#{option.type}" , section: @page , option: option
       -if @page.option_definitions.empty?

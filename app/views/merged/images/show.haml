@@ -32,15 +32,15 @@
     %div
       -@sections.each do |section|
         %p
-          = link_to section.header , section_url(section)
+          = link_to section.header , merged.section_path(section)
           on Page
-          = link_to section.page.name , page_sections_url(section.page)
+          = link_to section.page.name , merged.page_sections_path(section.page)
     %div
       -@cards.each do |card|
         %p
-          = link_to card.header , section_cards_url(card.section)
+          = link_to card.header , merged.section_cards_path(card.section)
           on Page
-          = link_to card.section.page.name , page_sections_url(card.section.page)
+          = link_to card.section.page.name , merged.page_sections_path(card.section.page)
 
 -else
   .grid.grid-cols-2.m-20
@@ -48,7 +48,7 @@
       %p Not used, you may delete
     %div
       %p
-        = form_tag( image_url(@image.id) , {method: :delete  } ) do
+        = form_tag( merged.image_path(@image.id) , {method: :delete  } ) do
           =submit_button( "Delete" , true)
 
 .m-20

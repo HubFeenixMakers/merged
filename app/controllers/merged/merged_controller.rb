@@ -1,6 +1,5 @@
 module Merged
-  class MergedController < ApplicationController
-#    layout 'merged_layout'
-
+  class MergedController < ::ApplicationController
+    before_action :authenticate_member!
   end
 end

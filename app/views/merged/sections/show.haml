@@ -10,8 +10,8 @@
   .basis-96
     %h3.mt-4.text-lg.font-bold Template  #{@section.template}
     = section_preview(@section , class: "w-full object-contain my-4")
-    = yellow_button( "Change Template" , section_select_template_url(@section.id))
-    = green_button( "New Section" , new_page_section_url(@section.page.id , template: @section.template) )
+    = yellow_button( "Change Template" , merged.section_select_template_path(@section.id))
+    = green_button( "New Section" , merged.new_page_section_path(@section.page.id , template: @section.template) )
 
   .basis-96
     %h3.mt-4.text-lg.font-bold Image
@@ -19,8 +19,8 @@
       %p No image
     -else
       = image_for( @section , "my-3")
-    = yellow_button("Change Image", images_url(section_id: @section.id))
-    = red_button( "Remove image", section_set_image_path( @section.id  , image: ""))
+    = yellow_button("Change Image", merged.images_path(section_id: @section.id))
+    = red_button( "Remove image", merged.section_set_image_path( @section.id  , image: ""))
 
   .basis-80.grow
     = section_form( class: "mx-auto mt-8 mb-0 max-w space-y-4") do
@@ -38,7 +38,7 @@
       .mx-3.text-lg.font-bold Card Template #{@section.card_template}
       =card_preview(@section , class: "my-3")
       %p.py-3
-        =yellow_button("Change Card Template", section_select_card_template_url(@section.id))
+        =yellow_button("Change Card Template", merged.section_select_card_template_path(@section.id))
 
     .basis-96.grow
       %h3.mt-4.text-lg.font-bold #{@section.cards.length} Cards
@@ -46,8 +46,8 @@
         .mt-4.text-md.font-bold= card.header
         .text-sm #{card.text[0..70]} .....
       %p.p-3
-        = yellow_button( "View and Edit Cards" , section_cards_url(@section.id))
-        = green_button( "New Card" , new_section_card_url(@section.id) )
+        = yellow_button( "View and Edit Cards" , merged.section_cards_path(@section.id))
+        = green_button( "New Card" , merged.new_section_card_path(@section.id) )
 
   .basis-80.grow
     %h3.mt-4.text-lg.font-bold Options
