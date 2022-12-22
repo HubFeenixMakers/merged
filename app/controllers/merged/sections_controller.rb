@@ -75,7 +75,7 @@ module Merged
       @section.option_definitions.each do |option|
         @section.set_option(option.name,  options[option.name])
       end if options
-      @section.save
+      @section.save(current_member.email)
       redirect_to :section , notice: "Update ok"
     end
 

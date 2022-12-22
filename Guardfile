@@ -24,6 +24,14 @@
 #  * zeus: 'zeus rspec' (requires the server to be started separately)
 #  * 'just' rspec: 'rspec'
 
+
+guard :minitest do
+  # with Minitest::Unit
+  watch(%r{^test/(.*)\/?(.*)_test\.rb$})
+  watch(%r{^lib/(.*/)?([^/]+)\.rb$})     { |m| "test/#{m[1]}#{m[2]}_test.rb" }
+  watch(%r{^test/test_helper\.rb$})      { 'test' }
+end
+
 guard :rspec, cmd: "bundle exec rspec" do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)

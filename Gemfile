@@ -5,11 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
 gem 'sprockets-rails', require: 'sprockets/railtie'
-gem 'rspec-rails' , require: "rspec-rails"
 gem 'haml-rails' , require: "haml-rails"
 gem "tailwindcss-rails"
 gem "importmap-rails"
 gem "sprockets-rails"
+gem "devise"
 
 gem "ruby2js" , path: "../ruby2js"
 
@@ -19,6 +19,8 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "puma"
+  gem 'rspec-rails' , require: "rspec-rails"
+  gem 'guard-minitest'
 end
 
 # Start debugger with binding.b [https://github.com/ruby/debug]

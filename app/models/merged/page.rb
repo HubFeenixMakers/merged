@@ -60,11 +60,10 @@ module Merged
       [has_sections , has_cards]
     end
 
-    def save
+    def save(editor)
       olds = self.redirects.to_s.split(" ")
       olds.delete( self.name.to_s )
       self.redirects = olds.join(" ")
-      updated_at = Time.now
       super
     end
 
