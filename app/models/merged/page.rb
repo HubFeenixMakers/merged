@@ -56,7 +56,7 @@ module Merged
       has_sections = sections.length
       has_cards = 0
       sections.each {|section| has_cards += section.delete(false) }
-      Page.delete( self.id )
+      super
       [has_sections , has_cards]
     end
 

@@ -43,13 +43,8 @@ module Merged
     end
 
     def destroy
-      delete
       File.delete self.full_filename
-      Image.save_all
-    end
-
-    def delete
-      Image.delete( self.id )
+      super
     end
 
     def asset_name

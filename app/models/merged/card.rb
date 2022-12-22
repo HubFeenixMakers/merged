@@ -33,13 +33,8 @@ module Merged
       CardStyle.find_by_template( self.template )
     end
 
-    def destroy
-      delete
-      Card.save_all
-    end
-
     def delete(reindex = true)
-      Card.delete( self.id )
+      super()
       section.reset_index if reindex
     end
 

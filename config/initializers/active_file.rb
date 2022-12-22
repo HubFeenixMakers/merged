@@ -8,6 +8,15 @@ module ActiveYaml
       self.class.save_all
     end
 
+    def delete
+      self.class.delete(self.id)
+    end
+
+    def destroy
+      delete
+      self.class.save_all
+    end
+
     def self.save_all
       data = @records.collect {|obj| obj.attributes}
       File.write( self.full_path , data.to_yaml)
@@ -20,8 +29,5 @@ module ActiveYaml
       true
     end
 
-    def self.the_private_records
-      @records
-    end
   end
 end
