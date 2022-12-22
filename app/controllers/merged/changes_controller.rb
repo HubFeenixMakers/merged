@@ -11,8 +11,8 @@ module Merged
     def commit
       raise "must have message" if params[:message].blank?
       git = Git.open(Rails.root)
-      git.add("cms")
-      git.add("app/assets/images/cms")
+      git.add("merged")
+      git.add( Image.root )
       begin
         git.commit(params[:message])
       rescue

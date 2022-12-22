@@ -70,6 +70,10 @@ module Merged
       end
     end
 
+    def self.root
+      "app/assets/images/cms"
+    end
+
     private
 
     def asset_root

@@ -11,25 +11,24 @@
   .relative.block.border.border-gray-100
     Changed Files
     -@status.changed.each do |name , file|
-      -next unless name.include?("cms")
+      -next unless cms_part?(name)
       %p
         = name
 
   .relative.block.border.border-gray-100
     Deletions
     -@status.deleted.each do |name , file|
-      -next unless name.include?("cms")
+      -next unless cms_part?(name)
       %p= name
   .relative.block.border.border-gray-100
     Additions
     -@status.added.each do |name , file|
-      -next unless name.include?("cms")
+      -next unless cms_part?(name)
       %p= name
   .relative.block.border.border-gray-100
     New
     -@status.untracked.each do |name , file|
-      -next if name.starts_with?("merged")
-      -next unless name.include?("cms")
+      -next unless cms_part?(name)
       %p
         = name
 

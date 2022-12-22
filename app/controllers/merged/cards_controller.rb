@@ -18,7 +18,7 @@ module Merged
       else
         @card.move_down
       end
-      @card.save
+      @card.save(current_member)
       redirect_to section_cards_url(@card.section.id),notice: "#{@card.header} moved"
     end
 
