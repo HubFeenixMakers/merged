@@ -66,7 +66,6 @@ module Merged
       self.redirects = olds.join(" ")
       updated_at = Time.now
       super
-      Page.save_all
     end
 
     def self.new_page(name )
@@ -80,10 +79,5 @@ module Merged
       nil
     end
 
-    def self.save_all
-      data = Page.the_private_records.collect {|obj| obj.attributes}
-      File.write( Page.full_path , data.to_yaml)
-      Page.reload
-    end
   end
 end

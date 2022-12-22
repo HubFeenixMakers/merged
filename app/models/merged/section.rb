@@ -77,11 +77,6 @@ module Merged
       has_cards
     end
 
-    def save
-      super
-      Section.save_all
-    end
-
     def self.new_section(template , page_id , index)
       data = { template: template , index: index , page_id: page_id}
       style = SectionStyle.find_by_template( template)
@@ -95,12 +90,6 @@ module Merged
       s = Section.new(data)
       s.add_default_options
       s
-    end
-
-    def self.save_all
-      data = Section.the_private_records.collect {|obj| obj.attributes}
-      File.write( Section.full_path , data.to_yaml)
-      Section.reload
     end
 
   end

@@ -52,17 +52,6 @@ module Merged
       Image.delete( self.id )
     end
 
-    def save
-      super
-      Image.save_all
-    end
-
-    def self.save_all
-      data = Image.the_private_records.collect {|obj| obj.attributes}
-      File.write( Image.full_path , data.to_yaml)
-      Image.reload
-    end
-
     def asset_name
       image_root + "/" + self.id.to_s + "." + self.type
     end
