@@ -19,7 +19,7 @@ module Merged
       page = Page.find(params[:page_id])
       template = params[:template]
       new_section = page.new_section(template)
-      new_section.save
+      new_section.save(current_member.email)
       if(template.blank?) # new
         redirect_to section_select_template_url(new_section.id), notice: "New section created"
       else # copy

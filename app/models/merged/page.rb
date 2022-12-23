@@ -80,14 +80,8 @@ module Merged
     end
 
     def self.new_page(name )
-      raise "only alphanumeric, not #{name}" unless check_name(name).nil?
       data = { name: name.dup , updated_at: Time.now }
       Page.new(data)
-    end
-
-    def self.check_name(name)
-      return "only alphanumeric, not #{name}" if name.match(/\A[a-zA-Z0-9]*\z/).nil?
-      nil
     end
 
   end

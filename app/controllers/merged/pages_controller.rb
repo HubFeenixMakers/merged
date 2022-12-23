@@ -14,20 +14,19 @@ module Merged
     def update
       @page.add_redirect
       @page.name = params[:name]
-      @page.save
+      @page.save(current_member.email)
       redirect_to page_url(@page) , notice: "Page renamed"
     end
 
     def create
       name = params[:name]
-      message = Page.check_name(name)
       message = "Must enter name" if name.blank?
-      if( message.nil?)
+      if( ! message.nil?)
         @page = Page.new_page(name)
-        @page.save
+        @page.save(current_member.email)
         redirect_to new_page_section_url(@page.id) , notice: "Page was successfully created."
       else
-        @pages = Page.all.values
+        @pages = Page.all
         flash.now.alert = message
         render :index
       end
