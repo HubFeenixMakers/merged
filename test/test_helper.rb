@@ -8,6 +8,8 @@ require 'capybara/minitest'
 require "devise"
 require "devise/test/integration_helpers"
 
+Dir[Merged::Engine.root.join("test/helpers/**/*.rb")].each { |f| require f }
+
 class ActionDispatch::IntegrationTest
   #include Devise::Test::IntegrationHelpers
   #include FactoryBot::Syntax::Methods
