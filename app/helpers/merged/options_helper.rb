@@ -93,10 +93,10 @@ module Merged
         "light_gray" => " bg-gray-100" ,
         "light_orange" => " bg-orange-50" ,
         "solid_blue" => " bg-cyan-700" ,
-        "solid_red" => " bg-orange-800" ,
+        "solid_red" => " bg-amber-600" ,
         "solid_green" => " bg-green-700" ,
         "solid_petrol" => " bg-teal-700" ,
-        "solid_indigo" => " bg-indigo-800" ,
+        "solid_indigo" => " bg-cyan-900" ,
         "solid_black" => " bg-slate-900" ,
       }[section.option('background')] || ""
     end

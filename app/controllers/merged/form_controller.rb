@@ -48,7 +48,7 @@ module Merged
     def check_maths
       key = params[:bot_fudder].to_i / 2
       if( (2*key + 1).to_s != params[:challenge])
-        @errors[:challenge] = "Check the maths #{key.to_i} #{params[:challenge]}"
+        @errors[:challenge] = "Check the maths #{params[:challenge]}"
       end
     end
 

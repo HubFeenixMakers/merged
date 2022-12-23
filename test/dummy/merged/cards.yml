@@ -212,7 +212,7 @@
   :image_id:
 - :id: 45
   :header: Subject
-  :text: TEXT
+  :text: ''
   :options:
     compulsory: 'yes'
     form_type: text
