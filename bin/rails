@@ -22,4 +22,3 @@ require "action_view/railtie"
 # require "action_cable/engine"
 
 require "rails/engine/commands"
-require "rspec-rails"

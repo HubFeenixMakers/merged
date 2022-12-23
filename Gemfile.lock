@@ -110,7 +110,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    diff-lcs (1.5.0)
     erubi (1.11.0)
     ffi (1.15.5)
     formatador (1.1.0)
@@ -132,10 +131,6 @@ GEM
     guard-minitest (2.4.6)
       guard-compat (~> 1.2)
       minitest (>= 3.0)
-    guard-rspec (4.7.3)
-      guard (~> 2.1)
-      guard-compat (~> 1.1)
-      rspec (>= 2.99.0, < 4.0)
     haml (6.0.12)
       temple (>= 0.8.2)
       thor
@@ -230,27 +225,6 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
-    rspec (3.12.0)
-      rspec-core (~> 3.12.0)
-      rspec-expectations (~> 3.12.0)
-      rspec-mocks (~> 3.12.0)
-    rspec-core (3.12.0)
-      rspec-support (~> 3.12.0)
-    rspec-expectations (3.12.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.0)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.12.0)
-    rspec-rails (6.0.1)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      railties (>= 6.1)
-      rspec-core (~> 3.11)
-      rspec-expectations (~> 3.11)
-      rspec-mocks (~> 3.11)
-      rspec-support (~> 3.11)
-    rspec-support (3.12.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.7.1)
       rexml (~> 3.2, >= 3.2.5)
@@ -292,13 +266,12 @@ PLATFORMS
 DEPENDENCIES
   capybara
   devise
+  guard
   guard-minitest
-  guard-rspec
   haml-rails
   importmap-rails
   merged!
   puma
-  rspec-rails
   ruby2js!
   selenium-webdriver
   sprockets-rails

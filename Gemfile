@@ -15,13 +15,12 @@ gem "ruby2js" , path: "../ruby2js"
 
 group :development, :test do
   gem "capybara"
-  gem 'guard-rspec', require: false
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "puma"
-  gem 'rspec-rails' , require: "rspec-rails"
   gem 'guard-minitest'
-end
+  gem 'guard' # NOTE: this is necessary in newer versions
+ end
 
 # Start debugger with binding.b [https://github.com/ruby/debug]
 # gem "debug", ">= 1.0.0"
