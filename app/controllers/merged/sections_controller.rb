@@ -68,7 +68,6 @@ module Merged
       @section.allowed_fields.each do |key|
         if( params.has_key?(key) )
           @section.update(key, params[key])
-          puts "updating:#{key}=#{params[key]}"
         end
       end
       options = params[:option]
