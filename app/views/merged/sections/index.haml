@@ -22,6 +22,12 @@
           =link_to(merged.section_move_path(section.id , dir: :up)) do
             %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
               %path{:d => "M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+        .basis-full.mt-3
+          Updated at:
+          = section.updated_at.to_date
+        .basis-full.mb-3
+          Updated by:
+          = section.updated_by
         .basis-full.mb-3
         = form_tag( merged.section_path(section.id) , {method: :delete  } ) do
           =submit_button( "Delete" , true)

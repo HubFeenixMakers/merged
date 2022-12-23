@@ -24,25 +24,36 @@
             Edited by
         %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
           .flex.items-center.gap-2
+            Sections at
+        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
+          .flex.items-center.gap-2
+            Sections by
+        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
+          .flex.items-center.gap-2
           Actions
     %tbody.divide-y.divide-gray-200
-      - @pages.each do |merged_page|
-        %tr{id: merged_page.name}
+      - @pages.each do |page|
+        %tr{id: page.name}
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            = link_to merged_page.id , merged.page_path(merged_page.id)
+            = link_to page.id , merged.page_path(page.id)
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            = link_to merged_page.name , merged.page_sections_path(merged_page.id)
+            = link_to page.name , merged.page_sections_path(page.id)
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            = merged_page.sections.length
+            = page.sections.length
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            = distance_of_time_in_words_to_now(merged_page.updated_at)
+            = distance_of_time_in_words_to_now(page.updated_at)
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            ME
+            =page.updated_by
+            - s = page.section_update
+          %td.whitespace-nowrap.px-4.py-2.text-gray-700
+            =s.updated_at.to_date
+          %td.whitespace-nowrap.px-4.py-2.text-gray-700
+            =s.updated_by
           %td.whitespace-nowrap.px-4.py-2
             %strong.rounded.bg-green-100.px-3.text-xs.font-medium.text-green-700{:class => "py-1.5"}
-              = link_to 'Sections', merged.page_sections_path(merged_page.id)
+              = link_to 'Sections', merged.page_sections_path(page.id)
             %strong.rounded.bg-amber-100.px-3.text-xs.font-medium.text-amber-700{:class => "py-1.5"}
-              = link_to 'Edit', merged.page_path(merged_page.id)
+              = link_to 'Edit', merged.page_path(page.id)
 
 .grid.grid-cols-3.gap-2.m-8
   .relative.block.border.border-gray-100

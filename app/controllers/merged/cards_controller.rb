@@ -38,14 +38,13 @@ module Merged
       @card.allowed_fields.each do |key|
         if( params.has_key?(key) )
           @card.update(key, params[key])
-          puts "updating:#{key}=#{params[key]}"
         end
       end
       options = params[:option]
       @card.option_definitions.each do |option|
         @card.set_option(option.name,  options[option.name])
       end if options
-      @card.save(current_member)
+      @card.save(current_member.email)
       redirect_to section_cards_url(@card.section.id) , notice: "Updated #{@card.header}"
     end
 
