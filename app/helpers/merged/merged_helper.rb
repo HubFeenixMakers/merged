@@ -3,15 +3,19 @@ require "redcarpet"
 module Merged
   module MergedHelper
     include OptionsHelper
-    @@renderer = nil
 
     def renderer
-      return @@renderer unless @@renderer.nil?
       options = {hard_wrap: true , autolink: true, no_intra_emphasis: true ,
           safe_links_only: true, no_styles: true ,
           link_attributes: { target: '_blank' }}
       html = Redcarpet::Render::HTML.new(options)
-      @@renderer = Redcarpet::Markdown.new(html, options)
+      Redcarpet::Markdown.new(html, options)
+    end
+
+    def markdown(text)
+      text = text.text unless text.is_a?(String)
+      return "" if text.blank?
+      self.renderer.render(text).html_safe
     end
 
     def aspect_ratio image
@@ -19,11 +23,6 @@ module Merged
       "#{x} / #{y}"
     end
 
-    def markdown(text)
-      text = text.text unless text.is_a?(String)
-      return "" if text.blank?
-      renderer.render(text).html_safe
-    end
     def field_name(card)
       name = card.header
       name += "*" unless card.option("compulsory") == "no"

@@ -1,5 +1,5 @@
 module Merged
-  class OptionDefinition < ActiveYaml::Base
+  class OptionDefinition < ActiveBase
     set_root_path Engine.root + "config"
 
     fields :name , :default , :description , :values , :type

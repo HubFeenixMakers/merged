@@ -1,7 +1,7 @@
   require "mini_magick"
 
 module Merged
-  class Image < ActiveYaml::Base
+  class Image < ActiveBase
 
     set_root_path Rails.root
 

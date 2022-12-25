@@ -1,7 +1,5 @@
-require "active_hash"
-
-module ActiveYaml
-  Base.class_eval do
+module Merged
+  class ActiveBase < ActiveYaml::Base
 
     def save
       super

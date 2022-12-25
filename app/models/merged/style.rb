@@ -1,5 +1,5 @@
 module Merged
-  class Style < ActiveYaml::Base
+  class Style < ActiveBase
 
     set_root_path Engine.root + "config"
 

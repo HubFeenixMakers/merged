@@ -4,7 +4,7 @@ module Merged
   # they share the template idea, options , change tracking,
   # and the fact that they persist in ActiveYaml
 
-  class ViewBase < ActiveYaml::Base
+  class ViewBase < ActiveBase
     set_root_path Rails.root #ouside engines not necessary
     include ActiveHash::Associations
 
