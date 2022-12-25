@@ -11,6 +11,11 @@ module Merged
       swap_index_with(next_card)
     end
 
+    def change_name
+      pagename = section ? section.page.name : section_id.to_s
+      "#{pagename}:#{header}"
+    end
+
     def move_down
       swap_index_with(previous_card)
     end

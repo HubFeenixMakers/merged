@@ -7,6 +7,10 @@ module Merged
     fields :template , :card_template
     fields :header, :text , :image_name
 
+    def change_name
+      "#{page.name}:#{header}"
+    end
+
     def cards
       Card.where(section_id: id).order(index: :asc)
     end
@@ -72,7 +76,7 @@ module Merged
     def delete( reindex = true )
       has_cards = cards.length
       cards.each {|card| card.delete(false) }
-      Section.delete( self.id )
+      super()
       page.reset_index if reindex
       has_cards
     end

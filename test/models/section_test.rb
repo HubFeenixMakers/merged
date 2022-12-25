@@ -42,5 +42,8 @@ module Merged
     def test_last_has_no_next
       assert_nil last.next_section
     end
+    def test_change_name
+      assert_equal "studios:Studios" , first.change_name
+    end
   end
 end

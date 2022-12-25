@@ -34,5 +34,9 @@ module Merged
         assert_equal section.index ,  index + 1 # because we have human index
       end
     end
+    def test_change_name
+      assert_equal "index" , index.change_name
+    end
+
   end
 end

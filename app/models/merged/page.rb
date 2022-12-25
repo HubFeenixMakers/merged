@@ -5,6 +5,10 @@ module Merged
 
     alias :template :type
 
+    def change_name
+      self.name
+    end
+
     def add_redirect
       olds = self.redirects.to_s.split(" ")
       olds << self.name unless olds.include?(self.name)

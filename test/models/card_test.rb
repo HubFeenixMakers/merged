@@ -28,6 +28,9 @@ module Merged
       assert_equal card.index ,  1
     end
 
+    def test_change_name
+      assert_equal "studios:Standard" , first.change_name
+    end
 
   end
 end
