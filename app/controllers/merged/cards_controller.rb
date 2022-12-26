@@ -25,7 +25,7 @@ module Merged
     def new
       @section = Section.find(params[:section_id])
       new_card =  @section.new_card
-      new_card.save
+      new_card.save(current_member.email)
       redirect_to section_cards_url(@section.id) , notice: "Card created"
     end
 

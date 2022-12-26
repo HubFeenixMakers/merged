@@ -3,7 +3,7 @@
   .text-xl.text-gray-900
     Cards for Section #{@section.index} -
     = link_to @section.header , merged.section_path( @section.id) , class: "underline"
-  = link_to( "New Card" , merged.new_section_card_path(@section.id) , class: "p-2 border border-gray-200 font-bold rounded-lg hover:bg-sky-100")
+  = link_to( "New Card" , merged.new_section_card_path(@section.id) , class: "p-2 border border-gray-200 bg-cyan-100 font-bold rounded-lg hover:bg-sky-100")
 
 = render "layouts/merged_header"
 

@@ -2,20 +2,20 @@ module Merged
   class ActiveBase < ActiveYaml::Base
 
     def save
-      ChangeSet.edit(self.class.name , self.change_name)
+      ChangeSet.current.edit(self.class.name , self.change_name)
       super
       self.class.save_all
     end
 
     def add_save
-      ChangeSet.add(self.class.name , self.change_name)
+      ChangeSet.current.add(self.class.name , self.change_name)
       super.save()
       self.class.save_all
     end
 
 
     def delete
-      ChangeSet.delete(self.class.name , self.change_name)
+      ChangeSet.current.delete(self.class.name , self.change_name)
       self.class.delete(self.id)
     end
 

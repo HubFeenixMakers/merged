@@ -1,36 +1,43 @@
 module Merged
-  module ChangeSet
-    @@adds = []
-    @@edits = []
-    @@deletes = []
+  class ChangeSet
 
-    mattr_accessor :adds , :edits , :deletes
 
-    def self.add( type , text)
-      @@adds << [typed(type) , text ]
+    def self.current
+      @@current ||= ChangeSet.new
+    end
+    attr_reader :adds , :edits , :deletes
+
+    def initialize
+      @adds = []
+      @edits = []
+      @deletes = []
     end
 
-    def self.edit( type , text)
-      @@edits << [typed(type) , text ]
-    end
-    def self.delete( type , text)
-      @@deletes << [typed(type) , text ]
+    def add( type , text)
+      @adds << [typed(type) , text ]
     end
 
-    def self.added( type )
+    def edit( type , text)
+      @edits << [typed(type) , text ]
+    end
+    def delete( type , text)
+      @deletes << [typed(type) , text ]
+    end
+
+    def added( type )
       type = type.to_sym
-      @@adds.select { |a| a.first == type }
+      @adds.select { |a| a.first == type }
     end
-    def self.edited( type )
+    def edited( type )
       type = type.to_sym
-      @@edits.select { |a| a.first == type }
+      @edits.select { |a| a.first == type }
     end
-    def self.deleted( type )
+    def deleted( type )
       type = type.to_sym
-      @@deletes.select { |a| a.first == type }
+      @deletes.select { |a| a.first == type }
     end
 
-    def self.typed(class_name)
+    def typed(class_name)
       class_name.split("::").last.to_sym
     end
   end

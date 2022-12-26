@@ -7,30 +7,26 @@
 
 = render "layouts/merged_header"
 
-.grid.grid-cols-4.gap-2.m-8
-  .relative.block.border.border-gray-100
-    Changed Files
-    -@status.changed.each do |name , file|
-      -next unless cms_part?(name)
-      %p
-        = name
-
-  .relative.block.border.border-gray-100
-    Deletions
-    -@status.deleted.each do |name , file|
-      -next unless cms_part?(name)
-      %p= name
-  .relative.block.border.border-gray-100
-    Additions
-    -@status.added.each do |name , file|
-      -next unless cms_part?(name)
-      %p= name
-  .relative.block.border.border-gray-100
-    New
-    -@status.untracked.each do |name , file|
-      -next unless cms_part?(name)
-      %p
-        = name
+.overflow-hidden.overflow-x-auto.rounded-lg.border.border-gray-200.m-20
+  %table.min-w-full.divide-y.divide-gray-200.text-sm
+    %thead.bg-gray-100
+      %tr
+        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
+          .flex.items-center.gap-2
+            Change
+        -[:Page , :Section , :Card , :Image].each do |element|
+          %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
+            .flex.items-center.gap-2
+              =element
+    %tbody.divide-y.divide-gray-200
+      -[:add , :edit , :delete].each do |type|
+        %tr
+          %td.whitespace-nowrap.px-4.py-2.text-gray-700
+            = type.to_s.capitalize
+          -[:Page , :Section , :Card , :Image].each do |element|
+            %td.whitespace-nowrap.px-4.py-2.text-gray-700
+              - changeset(type , element).each do |name|
+                %span=name.last
 
 .flex.flex-col.bg-white
   .flex.items-center.justify-center.flex-1
