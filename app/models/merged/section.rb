@@ -67,18 +67,9 @@ module Merged
       cards.each_with_index{|card, index| card.index = index + 1}
     end
 
-    def destroy
-      has_cards = delete()
-      Section.save_all
-      Card.save_all if has_cards > 0
-    end
-
-    def delete( reindex = true )
-      has_cards = cards.length
-      cards.each {|card| card.delete(false) }
-      super()
-      page.reset_index if reindex
-      has_cards
+    def delete
+      cards.each {|card| card.delete_save! }
+      delete_save!()
     end
 
     def self.new_section(template , page_id , index)

@@ -8,6 +8,10 @@ module Merged
     attr_reader :adds , :edits , :deletes
 
     def initialize
+      zero
+    end
+
+    def zero
       @adds = []
       @edits = []
       @deletes = []

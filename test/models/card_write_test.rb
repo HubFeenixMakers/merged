@@ -8,16 +8,16 @@ module Merged
 
     def test_deletes
       id = first.id
-      first.delete
+      first.delete_save!
       assert_raises(ActiveHash::RecordNotFound) {Card.find(id) }
     end
 
-    def test_destroys
-      id = first.id
-      first.delete
-      Card.reload
-      assert_raises(ActiveHash::RecordNotFound) {Card.find(id) }
+    def test_adds
+      card = Card.first.section.new_card
+      card.add_save!
+      assert_equal "NEW" , card.header
     end
+
 
   end
 end

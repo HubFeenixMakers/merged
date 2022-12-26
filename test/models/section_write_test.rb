@@ -25,13 +25,13 @@ module Merged
 
     def test_destroys
       last_id = last.id
-      last.destroy
+      last.delete
       Section.reload
       assert_raises(ActiveHash::RecordNotFound){Section.find(last_id) }
     end
     def test_destroys_cards
       card_id = last.cards.first.id
-      last.destroy
+      last.delete
       Section.reload
       assert_raises(ActiveHash::RecordNotFound){Card.find(card_id) }
     end

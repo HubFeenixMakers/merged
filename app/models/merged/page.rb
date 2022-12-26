@@ -35,7 +35,7 @@ module Merged
       PageStyle.find_by_type( type )
     end
 
-    def new_section(section_template)
+    def new_section(section_template = nil)
       section_template = "section_spacer" if section_template.blank?
       section = Section.new_section(section_template, self.id , sections.length + 1)
       section
@@ -59,21 +59,9 @@ module Merged
       sections.each_with_index{|section, index| section.index = index + 1}
     end
 
-    def destroy
-      has_sections , has_cards = delete()
-      Page.save_all
-      if has_sections > 0
-        Section.save_all
-        Card.save_all if has_cards > 0
-      end
-    end
-
     def delete
-      has_sections = sections.length
-      has_cards = 0
-      sections.each {|section| has_cards += section.delete(false) }
-      super
-      [has_sections , has_cards]
+      sections.each {|section| section.delete }
+      delete_save!
     end
 
     def save(editor)

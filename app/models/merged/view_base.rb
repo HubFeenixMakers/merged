@@ -12,10 +12,16 @@ module Merged
 
     fields :options , :updated_at , :updated_by
 
-    def save( editor )
+    def edit_save( editor )
       self.updated_at = Time.now
       self.updated_by = editor
-      super()
+      edit_save!
+    end
+
+    def add_save( editor )
+      self.updated_at = Time.now
+      self.updated_by = editor
+      add_save!
     end
 
     def has_option?(option)
