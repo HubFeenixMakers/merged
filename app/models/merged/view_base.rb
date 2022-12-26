@@ -12,6 +12,18 @@ module Merged
 
     fields :options , :updated_at , :updated_by
 
+    def last_update_for(elements)
+      last = Time.now
+      last_section = nil
+      elements.each do |section|
+        if( section.updated_at < last )
+          last = section.updated_at
+          last_section = section
+        end
+      end
+      last_section
+    end
+
     def edit_save( editor )
       self.updated_at = Time.now
       self.updated_by = editor

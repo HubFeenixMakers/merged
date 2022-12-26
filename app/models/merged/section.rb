@@ -15,6 +15,10 @@ module Merged
       Card.where(section_id: id).order(index: :asc)
     end
 
+    def cards_update
+      last_update_for( cards )
+    end
+
     def template_style
       SectionStyle.find_by_template( template )
     end

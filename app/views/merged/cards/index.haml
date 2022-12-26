@@ -24,6 +24,12 @@
         %h3.mt-4.text-lg.font-bold Image
         = yellow_button("Change Image" , merged.images_path(card_id: card.id) )
         = red_button("Remove image", merged.card_set_image_path( card.id  , image: "") )
+        .basis-full.mt-3
+          Updated at:
+          = distance_of_time_in_words_to_now(card.updated_at)
+        .basis-full.mb-3
+          Updated by:
+          = card.updated_by
 
     .basis-96
       %h3.mt-4.text-lg.font-bold Image

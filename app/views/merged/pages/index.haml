@@ -7,30 +7,11 @@
   %table.min-w-full.divide-y.divide-gray-200.text-sm
     %thead.bg-gray-100
       %tr
-        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-          .flex.items-center.gap-2
-            Index
-        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-          .flex.items-center.gap-2
-            Name
-        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-          .flex.items-center.gap-2
-            Sections
-        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-          .flex.items-center.gap-2
-            Updated
-        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-          .flex.items-center.gap-2
-            Edited by
-        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-          .flex.items-center.gap-2
-            Sections at
-        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-          .flex.items-center.gap-2
-            Sections by
-        %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-          .flex.items-center.gap-2
-          Actions
+        -["Index", "Name","Sections" ,"Updated" ,"Edited by" ,
+          "Sections at", "Sections by","Actions"].each do |header|
+          %th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
+            .flex.items-center.gap-2
+              = header
     %tbody.divide-y.divide-gray-200
       - @pages.each do |page|
         %tr{id: page.name}
@@ -44,9 +25,9 @@
             = distance_of_time_in_words_to_now(page.updated_at)
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
             =page.updated_by
-            - s = page.section_update
+            - s = page.sections_update
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            =s.updated_at.to_date
+            =distance_of_time_in_words_to_now(s.updated_at)
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
             =s.updated_by
           %td.whitespace-nowrap.px-4.py-2

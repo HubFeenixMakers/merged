@@ -9,7 +9,7 @@
 
 -@page.sections.each do |section |
   .flex.gap-10.p-4{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "section_#{section.id}"}
-    .basis-60
+    .basis-72
       %h3.mt-4.text-lg.font-bold Section #{section.index} : #{section.header}
       .flex.flex-wrap
         = yellow_button("Edit" , merged.section_path(section.id) )
@@ -24,13 +24,22 @@
               %path{:d => "M15.75 17.25L12 21m0 0l-3.75-3.75M12 21V3", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
         .basis-full.mt-3
           Updated at:
-          = section.updated_at.to_date
+          = distance_of_time_in_words_to_now(section.updated_at)
         .basis-full.mb-3
           Updated by:
           = section.updated_by
+        - if section.has_cards?
+          - card = section.cards_update
+          .basis-full
+            Cards updated at:
+            = distance_of_time_in_words_to_now(card.updated_at)
+          .basis-full.mb-3
+            Cards updated by:
+            = card.updated_by
         .basis-full.mb-3
         = form_tag( merged.section_path(section.id) , {method: :delete  } ) do
           =submit_button( "Delete" , true)
+
     .basis-72
       %h3.mt-4.text-lg.font-bold Template
       = link_to(merged.section_select_template_path(section.id)) do
@@ -53,12 +62,12 @@
             = image_for( section , "h-40")
           -else
             %p No image
-    .basis-52.grow
+    .basis-96
       %h3.mt-4.text-lg.font-bold Options
-      - section.options.each do|name , value|
-        %p
-          = name
-          = value
+      .grid.grid-cols-2.gap-3.mx-10
+        - section.options.each do|name , value|
+          .font-bold.mt-1= name.camelcase
+          .font-xl= value
 .grid.grid-cols-2.gap-2.m-8
   .relative.block
     %p

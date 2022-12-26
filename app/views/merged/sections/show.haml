@@ -12,6 +12,12 @@
     = section_preview(@section , class: "w-full object-contain my-4")
     = yellow_button( "Change Template" , merged.section_select_template_path(@section.id))
     = green_button( "New Section" , merged.new_page_section_path(@section.page.id , template: @section.template) )
+    .basis-full.mt-3
+      Updated at:
+      = distance_of_time_in_words_to_now(@section.updated_at)
+    .basis-full.mb-3
+      Updated by:
+      = @section.updated_by
 
   .basis-96
     %h3.mt-4.text-lg.font-bold Image

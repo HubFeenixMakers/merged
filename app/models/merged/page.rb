@@ -19,16 +19,8 @@ module Merged
       Section.where(page_id: id).order(index: :asc)
     end
 
-    def section_update
-      last = Time.now
-      last_section = nil
-      sections.each do |section|
-        if( section.updated_at < last )
-          last = section.updated_at
-          last_section = section
-        end
-      end
-      last_section
+    def sections_update
+      last_update_for( sections )
     end
 
     def template_style
