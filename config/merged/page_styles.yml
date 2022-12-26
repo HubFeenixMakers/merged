@@ -4,3 +4,8 @@
         No restrictions of any kind. No options either.
   options:
     - meta
+- type: blog
+  description: An news or similar article.
+  section_template: section_half_image
+  options:
+    - published

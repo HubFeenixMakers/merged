@@ -5,6 +5,7 @@ module Merged
 
     def index
       @pages = Page.all
+      @page_styles = PageStyle.all
     end
 
     def show
@@ -28,7 +29,7 @@ module Merged
         flash.now.alert = "Must enter name"
         render :index
       else
-        @page = Page.new_page(name)
+        @page = Page.new_page(name , params[:type])
         @page.add_save(current_member.email)
         redirect_to new_page_section_url(@page.id) , notice: "Page was successfully created."
       end

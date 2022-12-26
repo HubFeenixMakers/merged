@@ -1,0 +1,9 @@
+.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+  .p-6
+    %h3.text-lg.font-medium
+      Options
+    %p.mt-2.text-sm.leading-relaxed.line-clamp-3
+      -style.options_definitions.each do | style |
+        %label.block
+          .text-lg.font-bold=style.name
+          =style.description

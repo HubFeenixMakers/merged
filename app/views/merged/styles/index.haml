@@ -1,8 +1,42 @@
 - content_for( :merged_menu ) do
   .text-xl.font-bold
-    Section styles
+    Page styles
+  .text-xl.font-bold
+    =link_to "Section styles" , "#section_styles"
+  .text-xl.font-bold
+    =link_to "Card styles" , "#cards_styles"
 
 = render "layouts/merged_header"
+
+.flex.bg-cyan-100
+  .px-4.py-8.mx-auto.text-center
+    %h1.text-4xl.font-bold
+      Page styles
+
+.grid.grid-cols-3.gap-4.m-8
+  -@page_styles.each do |style|
+    %article.overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+      .p-6
+        %h3.text-lg.font-medium
+          =style.type
+        %p.mt-2.text-sm
+          Shorthand:
+          =style.section_template
+    .overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
+      .p-6
+        -if style.section_template
+          = style.section_template
+          .w-full.object-contain
+            =image_tag(style.section_preview )
+        -else style.section_template
+          .w-full
+            Any Section allowed
+    =render "options" , style: style
+
+#section_styles.flex.bg-cyan-100
+  .px-4.py-8.mx-auto.text-center
+    %h1.text-4xl.font-bold
+      Section styles
 
 .grid.grid-cols-3.gap-4.m-8
   -@section_styles.each do | style|
@@ -27,17 +61,9 @@
         .w-full.object-contain.h-72
           =image_tag(style.section_preview )
 
-    .overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
-      .p-6
-        %h3.text-lg.font-medium
-          Options
-        %p.mt-2.text-sm.leading-relaxed.line-clamp-3
-          -style.options_definitions.each do | style |
-            %label.block
-              .text-lg.font-bold=style.name
-              =style.description
+    =render "options" , style: style
 
-.flex.bg-cyan-100
+#cards_styles.flex.bg-cyan-100
   .px-4.py-8.mx-auto.text-center
     %h1.text-4xl.font-bold
       Card styles
@@ -56,12 +82,5 @@
       .p-6
         .w-full.object-contain.h-72
           =image_tag(style.card_preview )
-    .overflow-hidden.rounded-lg.border.border-gray-100.shadow-sm
-      .p-6
-        %h3.text-lg.font-medium
-          Options
-        %p.mt-2.text-sm.leading-relaxed.line-clamp-3
-          -style.options_definitions.each do | style |
-            %label.block
-              .text-lg.font-bold=style.name
-              =style.description
+
+    =render "options" , style: style

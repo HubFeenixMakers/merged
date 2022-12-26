@@ -42,4 +42,5 @@
       %label.block
         %h4.text-lg.font-bold Name
         = text_field_tag( :name , params[:name], class: "block w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
-      =submit_button( "New Page")
+      - @page_styles.each do |page|
+        %button.mt-3.bg-cyan-200{class: button_classes , name: :type , value: page.type}= "New #{page.type.capitalize}"

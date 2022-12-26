@@ -98,3 +98,8 @@
   :values:
   :default:
   :id: 18
+- :name: published
+  :description: Date when the blog is published
+  :values:
+  :default:
+  :id: 19
