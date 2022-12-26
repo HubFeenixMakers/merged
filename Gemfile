@@ -11,7 +11,7 @@ gem "importmap-rails"
 gem "sprockets-rails"
 gem "devise"
 
-gem "ruby2js" , path: "../ruby2js"
+gem "ruby2js" , git: "https://github.com/ruby2js/ruby2js/" , branch: "haml_fix"
 
 group :development, :test do
   gem "capybara"

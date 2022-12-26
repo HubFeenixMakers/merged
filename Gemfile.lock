@@ -1,5 +1,7 @@
-PATH
-  remote: ../ruby2js
+GIT
+  remote: https://github.com/ruby2js/ruby2js/
+  revision: f204f4e8f14cde6e4d4c6aafc55251a8d488a78d
+  branch: haml_fix
   specs:
     ruby2js (5.0.1)
       parser
