@@ -28,9 +28,9 @@
               - changeset(type , element).each do |name|
                 %span=name.last
 
-.flex.flex-col.bg-white
-  .flex.items-center.justify-center.flex-1
-    .max-w-xl.px-4.py-8.mx-auto.text-center
+.grid.grid-cols-3.bg-white
+  .items-center.justify-center.col-span-2
+    .max-w-xl.px-4.py-8.mx-auto.text-center.commit_changes
       = form_tag( merged.changes_commit_path() , {method: :post  } ) do
         %h1.text-2xl.font-bold.tracking-tight.text-gray-900.sm:text-4xl
           Commit changes
@@ -39,3 +39,9 @@
             %h4.text-lg.font-bold Message (short summary of changes)
             = text_field_tag( :message , "", class: "block w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
         =submit_button( "Commit")
+
+  .max-w-xl.px-4.py-8.mx-auto.text-center.reset_changes
+    = form_tag( merged.changes_reset_path() , {method: :post  } ) do
+      %h1.text-2xl.font-bold.tracking-tight.text-gray-900.sm:text-4xl
+        Reset changes
+      =submit_button( "Reset" ,true)

@@ -2,6 +2,7 @@ Merged::Engine.routes.draw do
 
   get  'changes/index'
   post 'changes/commit'
+  post 'changes/reset'
   get "styles/index"
 
   post 'form/sendit'

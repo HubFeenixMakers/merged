@@ -12,28 +12,30 @@ module Merged
     end
 
     def update
-      @page.add_redirect
-      @page.name = params[:name]
-      @page.save(current_member.email)
-      redirect_to page_url(@page) , notice: "Page renamed"
+      if( !params[:name].blank?  && (params[:name] != @page.name))
+        @page.add_redirect
+        @page.name = params[:name]
+        @page.edit_save(current_member.email)
+        message = "Page renamed"
+      end
+      redirect_to page_url(@page) , notice: message
     end
 
     def create
       name = params[:name]
-      message = "Must enter name" if name.blank?
-      if( ! message.nil?)
-        @page = Page.new_page(name)
-        @page.save(current_member.email)
-        redirect_to new_page_section_url(@page.id) , notice: "Page was successfully created."
-      else
+      if( name.blank? )
         @pages = Page.all
-        flash.now.alert = message
+        flash.now.alert = "Must enter name"
         render :index
+      else
+        @page = Page.new_page(name)
+        @page.add_save(current_member.email)
+        redirect_to new_page_section_url(@page.id) , notice: "Page was successfully created."
       end
     end
 
     def destroy
-      @page.destroy()
+      @page.delete()
       redirect_to pages_url, notice: "Page #{@page.name} was removed."
     end
 

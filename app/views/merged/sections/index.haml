@@ -63,7 +63,7 @@
   .relative.block
     %p
       = green_button( "New Section" , merged.new_page_section_path(@page.id) )
-  .relative.block
+  .relative.block.delete_page
     %p
       = form_tag( merged.page_path(@page.id) , {method: :delete  } ) do
         =submit_button( "Delete Page" , true)

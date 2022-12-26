@@ -36,6 +36,7 @@ class PagesWrite < ActionDispatch::IntegrationTest
     within(".new_page") do
       click_on ("New Page")
     end
+    assert_equal "/merged/pages" , current_path
   end
   def test_new_works_with_name
     visit "/merged/pages"
@@ -43,6 +44,17 @@ class PagesWrite < ActionDispatch::IntegrationTest
       fill_in 'Name', with: 'New Page'
       click_on ("New Page")
     end
+    assert_equal "/merged/sections/41/select_template" , current_path
+  end
+
+  def test_delete_works
+    id = Merged::Page.first.id
+    visit merged.page_sections_path(id)
+    within(".delete_page") do
+      click_on ("Delete Page")
+    end
+    assert_equal "/merged/pages" , current_path
+    assert_raise(ActiveHash::RecordNotFound) {visit merged.page_path(id)}
   end
 
 end

@@ -19,7 +19,7 @@ module Merged
       page = Page.find(params[:page_id])
       template = params[:template]
       new_section = page.new_section(template)
-      new_section.save(current_member.email)
+      new_section.add_save(current_member.email)
       if(template.blank?) # new
         redirect_to section_select_template_url(new_section.id), notice: "New section created"
       else # copy
@@ -28,13 +28,13 @@ module Merged
     end
 
     def destroy
-      @section.destroy()
+      @section.delete
       redirect_to page_sections_url(@section.page.id) , notice: "Section #{@section.header} removed"
     end
 
     def set_image
       @section.image_id = params[:image_id].to_i
-      @section.save
+      @section.edit_save(current_member.email)
       redirect_to section_url(@section.id) , notice: "Image selected: #{@section.image.name}"
     end
 
@@ -42,7 +42,7 @@ module Merged
       template = params[:template]
       raise "no template given" if template.blank?
       @section.set_template( template )
-      @section.save
+      @section.edit_save(current_member.email)
       redirect_to section_url(@section.id)
     end
 
@@ -50,7 +50,7 @@ module Merged
       card_template = params[:card_template]
       raise "no card template given" if card_template.blank?
       @section.card_template = card_template
-      @section.save
+      @section.edit_save(current_member.email)
       redirect_to section_url(@section.id)
     end
 
@@ -60,7 +60,7 @@ module Merged
       else
         @section.move_down
       end
-      @section.save
+      @section.edit_save(current_member.email)
       redirect_to page_sections_url(@section.page.id)
     end
 
@@ -74,7 +74,7 @@ module Merged
       @section.option_definitions.each do |option|
         @section.set_option(option.name,  options[option.name])
       end if options
-      @section.save(current_member.email)
+      @section.edit_save(current_member.email)
       redirect_to :section , notice: "Update ok"
     end
 

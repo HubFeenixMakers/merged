@@ -18,19 +18,19 @@ module Merged
       else
         @card.move_down
       end
-      @card.save(current_member)
+      @card.edit_save(current_member)
       redirect_to section_cards_url(@card.section.id),notice: "#{@card.header} moved"
     end
 
     def new
       @section = Section.find(params[:section_id])
       new_card =  @section.new_card
-      new_card.save(current_member.email)
+      new_card.add_save(current_member.email)
       redirect_to section_cards_url(@section.id) , notice: "Card created"
     end
 
     def destroy
-      @card.destroy
+      @card.delete_save!
       redirect_to section_cards_url(@card.section.id) , notice: "#{@card.header} removed"
     end
 
