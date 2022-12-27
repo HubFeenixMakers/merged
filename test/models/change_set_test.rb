@@ -49,7 +49,7 @@ module Merged
     end
 
     def test_page_new
-      studios = Page.new_page("new")
+      studios = Page.new_page("new" , :page)
       studios.add_save("email")
       assert_equal "new" , change.added("Page").first.last
       assert_nil change.edited("Page").first

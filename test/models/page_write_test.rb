@@ -8,6 +8,24 @@ module Merged
       Page.find_by_name('index')
     end
 
+    def test_creates_page
+      name = "randomname"
+      page = Page.new_page( name , "page")
+      assert_equal page.name , name
+      assert_equal page.sections.length , 0
+    end
+
+    def test_creates_blog
+      name = "randomname"
+      page = Page.new_page( name , "blog")
+      assert_equal page.name , name
+      page.add_save("me")
+      template = PageStyle.find_by_type(page.type).section_template
+      section = page.new_section(template)
+      section.add_save("me")
+      assert_equal page.sections.length , 1
+    end
+
     def test_deletes
       id = index.id
       index.delete

@@ -10,11 +10,6 @@ module Merged
     def test_all
       assert_equal 2 , Page.all.length
     end
-    def test_creates_page
-      name = "randomname"
-      page = Page.new_page( name)
-      assert_equal page.name , name
-    end
 
     def test_has_type
       assert_equal index.type ,  "page"

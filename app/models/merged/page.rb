@@ -63,8 +63,8 @@ module Merged
       super
     end
 
-    def self.new_page(name )
-      data = { name: name.dup , updated_at: Time.now }
+    def self.new_page(name , type)
+      data = { name: name.dup , updated_at: Time.now , type: type}
       Page.new(data)
     end
 

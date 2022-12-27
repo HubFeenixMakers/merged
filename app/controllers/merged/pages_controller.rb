@@ -25,13 +25,19 @@ module Merged
     def create
       name = params[:name]
       if( name.blank? )
-        @pages = Page.all
-        flash.now.alert = "Must enter name"
-        render :index
+        flash.alert = "Must enter name"
+        redirect_to pages_url
       else
         @page = Page.new_page(name , params[:type])
         @page.add_save(current_member.email)
-        redirect_to new_page_section_url(@page.id) , notice: "Page was successfully created."
+        template = PageStyle.find_by_type(@page.type).section_template
+        if(template)
+          section = @page.new_section(template)
+          section.add_save(current_member.email)
+          redirect_to section_url(section.id) , notice: "Page was successfully created."
+        else
+          redirect_to new_page_section_url(@page.id) , notice: "Page was successfully created. Choose first section"
+        end
       end
     end
 

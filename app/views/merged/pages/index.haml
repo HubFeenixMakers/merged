@@ -27,20 +27,19 @@
             =page.updated_by
             - s = page.sections_update
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            =distance_of_time_in_words_to_now(s.updated_at)
+            =distance_of_time_in_words_to_now(s.updated_at) if s
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
-            =s.updated_by
+            =s.updated_by if s
           %td.whitespace-nowrap.px-4.py-2
             %strong.rounded.bg-green-100.px-3.text-xs.font-medium.text-green-700{:class => "py-1.5"}
               = link_to 'Sections', merged.page_sections_path(page.id)
             %strong.rounded.bg-amber-100.px-3.text-xs.font-medium.text-amber-700{:class => "py-1.5"}
               = link_to 'Edit', merged.page_path(page.id)
 
-.grid.grid-cols-3.gap-2.m-8.new_page
-  .relative.block.border.border-gray-100
-    = form_tag( merged.pages_path , {method: :post  } ) do
-      %label.block
-        %h4.text-lg.font-bold Name
-        = text_field_tag( :name , params[:name], class: "block w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
-      - @page_styles.each do |page|
-        %button.mt-3.bg-cyan-200{class: button_classes , name: :type , value: page.type}= "New #{page.type.capitalize}"
+.flex.mx-20.new_page
+  = form_tag( merged.pages_path , {method: :post  } ) do
+    %label.block
+      %h4.text-lg.font-bold Name
+      = text_field_tag( :name , params[:name], class: "block w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
+    - @page_styles.each do |page|
+      %button.mt-3.bg-cyan-200{class: button_classes , name: :type , value: page.type}= "New #{page.type.capitalize}"

@@ -31,20 +31,29 @@ class PagesWrite < ActionDispatch::IntegrationTest
       click_on ("Update")
     end
   end
-  def test_new_works_without
+  def test_new_handles_noinput
     visit "/merged/pages"
     within(".new_page") do
       click_on ("New Page")
     end
     assert_equal "/merged/pages" , current_path
   end
-  def test_new_works_with_name
+  def test_new_page_works_with_name
     visit "/merged/pages"
     within(".new_page") do
       fill_in 'Name', with: 'New Page'
       click_on ("New Page")
     end
     assert_equal "/merged/sections/41/select_template" , current_path
+  end
+
+  def test_new_blog_works_with_name
+    visit "/merged/pages"
+    within(".new_page") do
+      fill_in 'Name', with: 'New Page'
+      click_on ("New Blog")
+    end
+    assert_equal "/merged/sections/41" , current_path
   end
 
   def test_delete_works
