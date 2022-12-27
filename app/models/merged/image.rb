@@ -5,7 +5,11 @@ module Merged
 
     set_root_path Rails.root
 
-    fields  :name , :tags , :type , :size , :created_at , :height , :width
+    fields  :name , :tags , :type , :size ,  :height , :width
+
+    def change_name
+      name
+    end
 
     def aspect_ratio
       ratio = self.ratio
@@ -19,7 +23,7 @@ module Merged
     end
 
     #save an io as new image. The filename is the id, type taken from io
-    def self.create_new!(name , tags,  io)
+    def self.create_new(name , tags,  io)
       original , ending = io.original_filename.split("/").last.split(".")
       name = original if( name.blank? )
       image = Image.new name: name , type: ending , tags: (tags || "")
@@ -29,7 +33,6 @@ module Merged
         file.write( io.read )
       end
       image.init_file_data
-      image.save
       image
     end
 
@@ -38,13 +41,13 @@ module Merged
       self.width = image.width
       self.height = image.height
       file =  File.open( full_filename )
-      self.created_at = file.birthtime
+      self.updated_at = file.birthtime
       self.size = (file.size/1024).to_i
     end
 
     def destroy
       File.delete self.full_filename
-      super
+      delete_save!
     end
 
     def asset_name

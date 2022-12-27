@@ -10,7 +10,7 @@ module Merged
 
     belongs_to :image , class_name: "Merged::Image"
 
-    fields :options , :updated_at , :updated_by
+    fields :options
 
     def last_update_for(elements)
       last = Time.now
@@ -24,17 +24,6 @@ module Merged
       last_section
     end
 
-    def edit_save( editor )
-      self.updated_at = Time.now
-      self.updated_by = editor
-      edit_save!
-    end
-
-    def add_save( editor )
-      self.updated_at = Time.now
-      self.updated_by = editor
-      add_save!
-    end
 
     def has_option?(option)
       options.has_key?(option) and !options[option].blank?

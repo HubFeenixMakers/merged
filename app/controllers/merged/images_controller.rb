@@ -8,8 +8,8 @@ module Merged
         data = i.attributes.dup
         data[:url] = view_context.asset_path(i.asset_name)
         data[:link] = build_link_for(i)
-        data[:created_at] = i.created_at.to_date
-        data[:created] = i.created_at.to_i
+        data[:updated_at] = i.updated_at.to_date if i.updated_at
+        data[:created] = i.updated_at.to_i
         data[:aspect_ratio] = i.aspect_ratio.join("/")
         data[:ratio] = i.aspect_ratio
         data
@@ -30,7 +30,8 @@ module Merged
     end
 
     def create
-      image = Image.create_new!(params['filename'] ,params['tags'], params['image_file'])
+      image = Image.create_new(params['filename'] ,params['tags'], params['image_file'])
+      image.add_save current_member.email
       where_to  = determine_redirect(image)
       redirect_to where_to , notice: "New image created: #{image.name}"
     end

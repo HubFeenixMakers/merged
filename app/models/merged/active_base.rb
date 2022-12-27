@@ -1,10 +1,23 @@
 module Merged
   class ActiveBase < ActiveYaml::Base
+    fields :updated_at , :updated_by
+
+    def edit_save( editor )
+      self.updated_at = Time.now
+      self.updated_by = editor
+      edit_save!
+    end
 
     def edit_save!
       ChangeSet.current.edit(self.class.name , self.change_name)
       save!()
       self.class.save_all
+    end
+
+    def add_save( editor )
+      self.updated_at = Time.now
+      self.updated_by = editor
+      add_save!
     end
 
     def add_save!
