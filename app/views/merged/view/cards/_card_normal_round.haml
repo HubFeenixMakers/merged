@@ -3,5 +3,5 @@
   %h3.p-5.text-2xl.bg-gray-100.text-black.font-bold{ text_align_option(card)}= card.header
   %div.h-full{background_option(card)}
     .p-5{options(card , :text_align , :color)}
-      %p.m-2.text-sm.leading-relaxed.line-clamp-3
+      %p.prose.m-2.text-sm.leading-relaxed.line-clamp-3
         = markdown(card)

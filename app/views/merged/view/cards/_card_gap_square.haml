@@ -5,4 +5,4 @@
     %h3.p-4.mt-10.text-3xl.font-bold= card.header
     -if card.has_option?("subheader")
       %h4.p-4.text-xl= card.option("subheader")
-    %p.m-10= markdown(card)
+    %p.prose.m-10= markdown(card)

@@ -5,7 +5,7 @@
         .mx-auto.max-w-xl{ options(section , :color, :text_align)}
           %h2.text-2xl.font-bold.md:text-5xl
             = section.header
-          %p.hidden.sm:mt-4.sm:block.text-2xl
+          %p.prose.hidden.sm:mt-4.sm:block.text-2xl
             = markdown(section)
           .mt-4.md:mt-8
             -if section.has_option?("button_text")
