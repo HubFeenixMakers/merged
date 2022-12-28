@@ -12,7 +12,7 @@ module Merged
       assert spacer
     end
     def test_has_sections
-      assert_equal SectionStyle.all.length ,  7
+      assert_equal SectionStyle.all.length ,  9
     end
     def test_finds_section_by_template
       spacer = SectionStyle.find_by_template("section_spacer")

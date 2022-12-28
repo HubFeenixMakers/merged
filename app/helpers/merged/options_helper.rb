@@ -17,6 +17,7 @@ module Merged
       if( precision == "precise")
         return date.to_formatted_s(:short) + " " + date.year.to_s
       end
+      return Date.today if date.blank?
       if(date.day < 10)
         attr = "Beginning"
       elsif date.day < 20

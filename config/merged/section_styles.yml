@@ -28,6 +28,18 @@
     - item_align
     - button_link
     - button_text
+- template: section_text
+  header: Text only section for longer passages of text, mostly news
+  text: Text may be markdown
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - color
+    - margin
+    - subheader
+    - text_align
 - template: section_half_image
   header: Split section with image left or right
   text: Image on one side, header and text on the other.

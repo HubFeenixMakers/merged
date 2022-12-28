@@ -1,6 +1,8 @@
 - content_for( :merged_menu ) do
   .text-xl.font-bold.text-gray-900
-    All Pages
+    = link_to( "All" , merged.pages_path(type: '') , class: "p-2 px-4 border border-gray-200 font-bold rounded-lg hover:bg-sky-100 #{params[:type].blank? ? 'bg-blue-200':''}")
+  - @page_styles.each do |style|
+    = link_to( "Only #{style.type.capitalize}s" , merged.pages_path(type: style.type) , class: "p-2 px-4 border border-gray-200 font-bold rounded-lg hover:bg-sky-100 #{(params[:type] == style.type) ? 'bg-blue-200':''}")
 
 = render "layouts/merged_header"
 .overflow-hidden.overflow-x-auto.rounded-lg.border.border-gray-200.m-20
