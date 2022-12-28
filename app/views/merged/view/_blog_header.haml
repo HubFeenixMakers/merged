@@ -1,0 +1,11 @@
+%section.overflow-hidden.grid.grid-cols-2.m-20
+  %div{ order_option(section)}
+    = image_for( section , "h-56 w-full object-cover sm:h-full")
+  .p-8.md:p-6.lg:px-16.lg:pt-10{ background_option(section)}
+    .mx-auto.max-w-xl{options(section , :text_align , :color)}
+      %h4.text-xl.mt-10.md:text-2xl
+        = date_precision(section.page , "published_date")
+      %h2.mt-12.text-2xl.font-bold.md:text-4xl
+        = section.header
+      .prose.mt-8.md:block
+        = markdown(section)

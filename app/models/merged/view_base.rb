@@ -24,7 +24,6 @@ module Merged
       last_section
     end
 
-
     def has_option?(option)
       options.has_key?(option) and !options[option].blank?
     end
@@ -43,6 +42,11 @@ module Merged
     end
 
     def set_option( option , value)
+      if( !value.is_a?(String) && value.respond_to?(:[]) && value[:month] )
+        year = value[:year] || Time.new.year
+        value = Time.new( year , value[:month] , value[:day]).to_date
+        puts "date is #{value}"
+      end
       options[option] = value
     end
 

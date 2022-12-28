@@ -11,6 +11,22 @@ module Merged
       all
     end
 
+    def date_precision(element , date_name)
+      precision = element.option("date_precision")
+      date = element.option(date_name)
+      if( precision == "precise")
+        return date.to_formatted_s(:short) + " " + date.year.to_s
+      end
+      if(date.day < 10)
+        attr = "Beginning"
+      elsif date.day < 20
+        attr = "Middle"
+      else
+        attr = "End"
+      end
+      "#{attr} of #{date.strftime('%B')} #{date.year}"
+    end
+
     def order_option(section , clazz = "")
       if section.has_option?("order")
         clazz += " order-last" if section.option('order') == "right"

@@ -91,3 +91,15 @@
     - handler
     - background
     - color
+- template: blog_header
+  header: Start of blog, with image left or right
+  text: Image on one side, header and text on the other.
+    Order depends on order option. Date is subheader.
+    Extra text possible under both text and picture, as markdown.
+  fields:
+    - header
+    - text
+  options:
+    - order
+    - background
+    - color

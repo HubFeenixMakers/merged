@@ -19,6 +19,15 @@ module Merged
         @page.edit_save(current_member.email)
         message = "Page renamed"
       end
+      options = params[:option]
+      if options
+        @page.option_definitions.each do |option|
+          puts "Option #{option.name}:#{options[option.name]}"
+          @page.set_option(option.name,  options[option.name])
+        end
+        @page.edit_save(current_member.email)
+        message = "Options saved"
+      end
       redirect_to page_url(@page) , notice: message
     end
 

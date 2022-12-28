@@ -6,6 +6,7 @@
     - meta
 - type: blog
   description: An news or similar article.
-  section_template: section_half_image
+  section_template: blog_header
   options:
-    - published
+    - published_date
+    - date_precision

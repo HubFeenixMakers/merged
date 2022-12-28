@@ -1,5 +1,6 @@
 .text-xl.font-bold.text-gray-900
-  Page #{link_to section.page.name, merged.page_sections_path(section.page.id), class: "underline"}
+  = section.page.type.capitalize
+  =link_to section.page.name, merged.page_sections_path(section.page.id), class: "underline"
 .inline-flex.items-center.justify-center.gap-3
   .text-xl.font-bold.text-gray-900
     Section #{section.header}

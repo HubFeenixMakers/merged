@@ -98,8 +98,15 @@
   :values:
   :default:
   :id: 18
-- :name: published
+- :name: published_date
   :description: Date when the blog is published
+  :type: date
   :values:
   :default:
   :id: 19
+- :name: date_precision
+  :description: Either the axact day, or something like in the middle
+                of October, or the end of December
+  :values: precise rough
+  :default: precise
+  :id: 20
