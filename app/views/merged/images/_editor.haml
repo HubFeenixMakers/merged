@@ -3,8 +3,12 @@
 
 %section.image
   .flex.justify-center
-    %range-slider.justify-self-start{"v-model":"scale" , ":min":0, ":max":100 ,
-                ":step": "1"} Scale {{scaled_x}} x {{scaled_y}}  == {{scale}} %
+    = form_tag( merged.image_path , {method: :patch  } ) do
+      %input{ hidden: true ,  id: :scale_id , name: :scale , "v-bind:value": "scale" }
+      %button.mt-3.bg-cyan-200{class: button_classes , name: :type , value: 'scale'} Scale  {{scale}} %
+
+    %range-slider.mx-20.justify-self-start{"v-model":"scale" , ":min":20, ":max":100 ,
+                ":step": "0.1"} Scale {{scaled_x}} x {{scaled_y}}
   .flex.justify-between
     %range-slider.justify-self-start.horizontal{"v-model":"off_y" , ":min":0, ":max":"size_y" ,
                 ":step": "1"} Y Offset {{off_y}}
@@ -31,6 +35,9 @@
       @initial_y = @image_data[:height]
       @size_x = @image_data[:width]
       @size_y = @image_data[:height]
+    end
+    def scole(ignored)
+      return @scale
     end
     def scaled_x
       (@initial_x * @scale / 100).to_i

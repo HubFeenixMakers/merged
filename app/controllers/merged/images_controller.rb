@@ -1,3 +1,5 @@
+require "mini_magick"
+
 module Merged
 
   class ImagesController < MergedController
@@ -19,9 +21,24 @@ module Merged
     def destroy
       @image = Image.find(params[:id])
       @image.destroy
-      redirect_to :images , nootice: "Image #{@image.name} deleted"
+      redirect_to :images , notice: "Image #{@image.name} deleted"
     end
 
+    def update
+      @image = Image.find(params[:id])
+      mini = MiniMagick::Image.new( @image.full_filename)
+      if(params[:scale])
+        message = "Image was scaled"
+        mini.resize( "#{params[:scale]}%")
+      else
+        mini.resize( "#{new_width}x#{new_height}+#{x_offset}+#{y_offset}")
+        # x offset to the right
+        # y offset from top down
+      end
+      @image.edit_save(current_member.email)
+      @image.init_file_data
+      redirect_to image_path , notice: message
+    end
     def show
       @image = Image.find(params[:id])
       @sections = Section.where(image_id: params[:id].to_i)
