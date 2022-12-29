@@ -1,0 +1,67 @@
+= render "range_slider"
+
+
+%section.image
+  .flex.justify-center
+    %range-slider.justify-self-start{"v-model":"scale" , ":min":0, ":max":100 ,
+                ":step": "1"} Scale {{scaled_x}} x {{scaled_y}}  == {{scale}} %
+  .flex.justify-between
+    %range-slider.justify-self-start.horizontal{"v-model":"off_y" , ":min":0, ":max":"size_y" ,
+                ":step": "1"} Y Offset {{off_y}}
+    %range-slider{"v-model":"off_x" , ":min":0, ":max":"#{image.height}" ,
+                ":step": "1"} X Offset {{off_x}}
+    %range-slider{"v-model":"size_x" , ":min":0, ":max":"#{image.width}" ,
+                ":step": "1"} X Size {{size_x}}
+    %range-slider.justify-self-end.horizontal{"v-model":"size_y" , ":min":0, ":max":"#{image.height}" ,
+                ":step": "1"} Y Size {{size_y}}
+  .flex.justify-center
+    .image-container.overflow-hidden.relative{ "v-bind:style": "{height: scaled_y + 'px' , width: scaled_x + 'px'} " }
+      = image_tag(image.asset_name , class: "")
+      .absolute.bg-transparent.border-4.border-black{ "v-bind:style": "{height: size_y + 'px' , width: size_x + 'px' , top: off_y + 'px', left: off_x + 'px' }" }
+
+:ruby2js
+  class Images < Vue
+    options el: '.image'
+    def initialize
+      @image_data = #{@image_data.to_json.html_safe}
+      @off_x = 0
+      @off_y = 0
+      @scale = 100
+      @initial_x = @image_data[:width]
+      @initial_y = @image_data[:height]
+      @size_x = @image_data[:width]
+      @size_y = @image_data[:height]
+    end
+    def scaled_x
+      (@initial_x * @scale / 100).to_i
+    end
+    def scaled_y
+      (@initial_y * @scale / 100).to_i
+    end
+    def filter_and_sort
+      dat = @image_data
+      if(@search_name.length > 0)
+        dat = dat.filter do |item|
+          return item["name"].toLowerCase().indexOf(@search_name) > -1
+        end
+      end
+      if(@search_tag.length > 0)
+        dat = dat.filter do |item|
+          return (item.tags.toLowerCase().indexOf(@search_tag) > -1)
+        end
+      end
+      dat = dat.slice().sort do |a, b| #a, b image data hashes
+        aa = a[@sort_by]
+        bb = b[@sort_by]
+        return (aa === bb ? 0 : (aa > bb ? 1 : -1) ) * @sort_dir
+      end
+      dat
+    end
+    def toggle_new()
+      if @show_new == true
+        @show_new = false
+      else
+        @show_new = true
+      end
+    end
+  end

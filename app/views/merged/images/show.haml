@@ -2,9 +2,14 @@
   .text-xl.font-bold.text-gray-900
     Image: #{@image.name}
 
+- if Rails.env.development?
+  = javascript_include_tag "merged/vue.js"
+-else
+  = javascript_include_tag "merged/vue.min.js"
+
 = render "layouts/merged_header"
 
-.flex.justify-center.gap-2
+.flex.gap-2.m-20
   %p
     .font-bold.mr-2 Name
     = @image.name
@@ -21,35 +26,40 @@
     .font-bold Ratio
     = @image.ratio.round(2)
     = @image.aspect_ratio
--if @used
-  .grid.grid-cols-2.m-20
-    %p
-      Sections
-      =@sections.length
-    %p
-      Cards
-      =@cards.length
-    %div
-      -@sections.each do |section|
-        %p
-          = link_to section.header , merged.section_path(section)
-          on Page
-          = link_to section.page.name , merged.page_sections_path(section.page)
-    %div
-      -@cards.each do |card|
-        %p
-          = link_to card.header , merged.section_cards_path(card.section)
-          on Page
-          = link_to card.section.page.name , merged.page_sections_path(card.section.page)
 
--else
-  .grid.grid-cols-2.m-20
-    %div
-      %p Not used, you may delete
-    %div
+=render "editor" , image: @image
+.flex.gap-2.m-20
+  -if @used
+    .grid.grid-cols-2
       %p
-        = form_tag( merged.image_path(@image.id) , {method: :delete  } ) do
-          =submit_button( "Delete" , true)
+        Sections
+        =@sections.length
+      %p
+        Cards
+        =@cards.length
+      %div
+        -@sections.each do |section|
+          %p
+            = link_to section.header , merged.section_path(section)
+            on Page
+            = link_to section.page.name , merged.page_sections_path(section.page)
+      %div
+        -@cards.each do |card|
+          %p
+            = link_to card.header , merged.section_cards_path(card.section)
+            on Page
+            = link_to card.section.page.name , merged.page_sections_path(card.section.page)
 
-.m-20
-  = image_tag(@image.asset_name)
+  -else
+    .grid.grid-cols-2
+      %div
+        %p Not used, you may delete
+      %div
+        %p
+          = form_tag( merged.image_path(@image.id) , {method: :delete  } ) do
+            =submit_button( "Delete" , true)
+
+:css
+  .horizontal input {
+    transform:rotate(270deg);
+  };

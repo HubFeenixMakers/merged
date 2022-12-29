@@ -27,6 +27,7 @@ module Merged
       @sections = Section.where(image_id: params[:id].to_i)
       @cards = Card.where(image_id: params[:id].to_i)
       @used = ((@cards.length > 0) || (@sections.length > 0))
+      @image_data = @image.attributes
     end
 
     def create
