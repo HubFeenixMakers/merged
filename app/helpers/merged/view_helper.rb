@@ -2,6 +2,14 @@ module Merged
   module ViewHelper
     include MergedHelper
 
+    def rows( text )
+      return 5 if text.blank?
+      text = text.text unless text.is_a?(String)
+      rows = (text.length / 60).to_i
+      return 5 if rows < 5
+      rows
+    end
+
     # background image as inline style
     def bg(section , clazz = "")
       attributes = {class: clazz}

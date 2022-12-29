@@ -35,7 +35,7 @@
         = text_field_tag( :header , @section.header, class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
       %label.block
         %h4.mt-4.text-lg.font-bold Text
-        = text_area_tag( :text , @section.text, rows: 5 ,class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
+        = text_area_tag( :text , @section.text, rows: rows(@section) ,class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
       .mt-4= submit_button("Update")
 
   - if( @section.has_cards? )

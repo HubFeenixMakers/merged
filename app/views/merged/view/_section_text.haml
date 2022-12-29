@@ -1,9 +1,14 @@
-%section{ options(section , :background , :margin)}
-  .px-4.py-16.mx-20{options(section , :text_align , :color)}
-    %h1.text-2xl.font-bold.tracking-tight.sm:text-4xl
-      = section.header
-    -if section.has_option?("subheader")
-      %h4.text-xl.mt-10.md:text-2xl
-        = section.option("subheader")
-    .prose.mt-4.text-lg.pt-10
-      = markdown(section)
+.p-20.my-20{ options(section , :background , :color)}
+  %section
+    .flex.justify-center
+      .max-w-prose{ options(section , :text_align)}
+        - if !section.header.blank?
+          %h1.mb-10.text-2xl.font-bold.tracking-tight.sm:text-4xl
+            = section.header
+        -if section.has_option?("subheader")
+          %p.prose.text-xl.pb-6
+            = section.option("subheader")
+
+    .mt-4.grid.gap-16{ column_option(section)}
+      - split_section(section).each do |part|
+        .prose.text-justify= part

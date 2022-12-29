@@ -18,6 +18,14 @@ module Merged
       self.renderer.render(text).html_safe
     end
 
+    def split_section(section)
+      return [""] if section.text.blank?
+      words = self.renderer.render(section.text).split
+      bins = (words.length + 3) / section.option("columns").to_i
+      parts = words.each_slice(bins).to_a
+      parts.collect{|part| part.join(" ").html_safe}
+    end
+
     def aspect_ratio image
       x , y = image.aspect_ratio
       "#{x} / #{y}"

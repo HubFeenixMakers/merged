@@ -1,9 +1,9 @@
 module Merged
   class Page < ViewBase
 
-    fields :name , :type , :options, :redirects
+    fields :name , :type , :options, :redirects , :section_template
 
-    alias :template :type
+    alias :template :section_template
 
     def change_name
       self.name
