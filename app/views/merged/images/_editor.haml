@@ -9,6 +9,16 @@
 
     %range-slider.mx-20.justify-self-start{"v-model":"scale" , ":min":20, ":max":100 ,
                 ":step": "0.1"} Scale {{scaled_x}} x {{scaled_y}}
+
+    = form_tag( merged.image_path , {method: :patch  } ) do
+      %input{ hidden: true ,  id: :width_id , name: :size_x , "v-bind:value": "size_x" }
+      %input{ hidden: true ,  id: :height_id , name: :size_y , "v-bind:value": "size_y" }
+      %input{ hidden: true ,  id: :off_x_id , name: :off_x , "v-bind:value": "off_x" }
+      %input{ hidden: true ,  id: :off_y_id , name: :off_y , "v-bind:value": "off_y" }
+      %button.mt-3.bg-cyan-200{class: button_classes , name: :type , value: 'resize'} Resize
+
+    %label Ratio {{ratio}} : 1
+
   .flex.justify-between
     %range-slider.justify-self-start.horizontal{"v-model":"off_y" , ":min":0, ":max":"size_y" ,
                 ":step": "1"} Y Offset {{off_y}}
@@ -36,8 +46,8 @@
       @size_x = @image_data[:width]
       @size_y = @image_data[:height]
     end
-    def scole(ignored)
-      return @scale
+    def ratio
+      ((@size_x / @size_y)*100).to_i / 100
     end
     def scaled_x
       (@initial_x * @scale / 100).to_i

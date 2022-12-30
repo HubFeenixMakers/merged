@@ -31,9 +31,10 @@ module Merged
         message = "Image was scaled"
         mini.resize( "#{params[:scale]}%")
       else
-        mini.resize( "#{new_width}x#{new_height}+#{x_offset}+#{y_offset}")
-        # x offset to the right
-        # y offset from top down
+        size = "#{params[:size_x]}x#{params[:size_y]}+#{params[:off_x]}+#{params[:off_y]}"
+        puts size
+        mini.crop( size )
+        message = "Image was resized"
       end
       @image.edit_save(current_member.email)
       @image.init_file_data
