@@ -32,7 +32,6 @@ module Merged
         mini.resize( "#{params[:scale]}%")
       else
         size = "#{params[:size_x]}x#{params[:size_y]}+#{params[:off_x]}+#{params[:off_y]}"
-        puts size
         mini.crop( size )
         message = "Image was resized"
       end
