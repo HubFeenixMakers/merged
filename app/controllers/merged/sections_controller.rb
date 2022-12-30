@@ -1,7 +1,6 @@
 module Merged
   class SectionsController < MergedController
     before_action :set_section , except: [:index ,:new]
-    #, only: %i[ show edit update destroy set_image select_image]
 
     def index
       @page = Page.find(params[:page_id])

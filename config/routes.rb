@@ -9,7 +9,6 @@ Merged::Engine.routes.draw do
 
   resources :pages , except: [:edit , :new] , shallow: true  do
     resources :sections do
-      get :select_image
       get :set_image
       get :select_template
       get :set_template
@@ -17,11 +16,12 @@ Merged::Engine.routes.draw do
       get :set_card_template
       get :move
       resources :cards do
-        get :select_image
         get :set_image
         get :move
       end
     end
   end
-  resources :images
+  resources :images do
+    get :copy
+  end
 end

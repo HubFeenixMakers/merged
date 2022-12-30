@@ -1,4 +1,5 @@
-  require "mini_magick"
+require "mini_magick"
+require "fileutils"
 
 module Merged
   class Image < ActiveBase
@@ -15,11 +16,19 @@ module Merged
       ratio = self.ratio
       ratios = (1..9).collect{ |i|  ((ratio * i) - (ratio * i).round(0)).abs }
       min , min_index = ratios.each_with_index.min
-      [(ratio *  (min_index + 1) ).to_i , (min_index + 1) ]
+      [(ratio *  (min_index + 1) ).round(0).to_i , (min_index + 1) ]
     end
 
     def ratio
       self.width.to_f / self.height
+    end
+
+    def copy()
+      image = Image.new name: "#{name}_copy" , type: type , tags: (tags || "")
+      Image.insert(image) # assigns next id
+      FileUtils.cp full_filename , image.full_filename
+      image.init_file_data
+      image
     end
 
     #save an io as new image. The filename is the id, type taken from io

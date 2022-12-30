@@ -1,8 +1,8 @@
 require "mini_magick"
 
 module Merged
-
   class ImagesController < MergedController
+    before_action :set_image, only: %i[ update destroy show copy ]
 
     def index
       @images = Image.all
@@ -19,13 +19,11 @@ module Merged
     end
 
     def destroy
-      @image = Image.find(params[:id])
       @image.destroy
       redirect_to :images , notice: "Image #{@image.name} deleted"
     end
 
     def update
-      @image = Image.find(params[:id])
       mini = MiniMagick::Image.new( @image.full_filename)
       if(params[:scale])
         message = "Image was scaled"
@@ -39,12 +37,18 @@ module Merged
       @image.init_file_data
       redirect_to image_path , notice: message
     end
+
     def show
-      @image = Image.find(params[:id])
       @sections = Section.where(image_id: params[:id].to_i)
       @cards = Card.where(image_id: params[:id].to_i)
       @used = ((@cards.length > 0) || (@sections.length > 0))
       @image_data = @image.attributes
+    end
+
+    def copy
+      image = @image.copy
+      image.add_save(current_member.email)
+      redirect_to image_path(image.id) , notice: "Image copied"
     end
 
     def create
@@ -56,6 +60,9 @@ module Merged
 
     private
 
+    def set_image
+      @image = Image.find(params[:id] || params[:image_id])
+    end
     def determine_redirect(image)
       if(params[:section_id])
         view_context.section_set_image_url(params[:section_id],image_id: image.id )
