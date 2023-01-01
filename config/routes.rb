@@ -23,5 +23,7 @@ Merged::Engine.routes.draw do
   end
   resources :images do
     get :copy
+    post :crop
+    post :scale
   end
 end

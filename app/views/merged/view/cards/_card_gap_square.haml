@@ -1,8 +1,9 @@
-.grid.grid-cols-1.gap-16.m-16
+.grid.grid-cols-1.gap-12.m-12.md:gap-8.md:m-8.lg:gap-12.lg:m-12
   %div{ order_option(card)}
     = image_for( card , "h-70 w-full object-cover grid")
-  %div.grid.h-70{options(card , :text_align , :color , :background )}
+  .grid.h-70{options(card , :text_align , :color , :background )}
     %h3.p-4.mt-10.text-3xl.font-bold= card.header
     -if card.has_option?("subheader")
       %h4.p-4.text-xl= card.option("subheader")
-    %p.prose.m-10= markdown(card)
+    .prose.m-6{options(card , :background , :color ) }
+      = markdown(card)

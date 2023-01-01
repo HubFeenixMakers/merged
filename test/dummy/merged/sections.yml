@@ -77,16 +77,18 @@
     shade_color: black_25
     color: solid_blue
     align: left
-  :updated_at: &2 2022-12-10 20:28:17.967357225 +02:00
+  :updated_at: 2023-01-01 14:31:09.419445755 +02:00
   :page_id: 6
   :index: 2
   :image_id: 16
+  :updated_by: torsten@villataika.fi
 - :template: section_spacer
   :id: 32
-  :updated_at: *2
+  :updated_at: &2 2022-12-10 20:28:17.967357225 +02:00
   :page_id: 6
   :index: 1
   :image_id:
+  :options: {}
 - :template: section_half_image
   :header: Retreats
   :text: Hub Feenix is a beautiful place, ideally situated in the country, but close

@@ -30,7 +30,7 @@ module Merged
 
     def order_option(section , clazz = "")
       if section.has_option?("order")
-        clazz += " order-last" if section.option('order') == "right"
+        clazz += " md:order-last" if section.option('order') == "right"
       end
       {class: clazz}
     end

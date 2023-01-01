@@ -12,14 +12,18 @@ module Merged
 
     # background image as inline style
     def bg(section , clazz = "")
-      attributes = {class: clazz}
-      return attributes if section.image.blank?
+      return {class: clazz} if section.image.blank?
       img = asset_url( section.image.asset_name )
-      attributes["style"] = "background-image: url('#{img}');"
+      style = "background-image: url('#{img}');"
       if(section.option("fixed") == "on")
-        attributes[:class] = attributes[:class] + " bg-fixed"
+        clazz += " bg-fixed"
       end
-      attributes
+      if(align = section.option("image_align"))
+        align += "-bottom" unless align == "center"
+        # for tailwind: bg-left-bottom bg-right-bottom bg-center
+        clazz += " bg-#{align}"
+      end
+      {class: clazz , style: style}
     end
 
     # works for with sections and cards that respond to .image

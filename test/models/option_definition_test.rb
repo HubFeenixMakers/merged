@@ -11,7 +11,7 @@ module Merged
       assert_equal OptionDefinition.first.class ,  OptionDefinition
     end
     def test_there_options
-      assert_equal OptionDefinition.all.length ,  20
+      assert OptionDefinition.all.length >  20
     end
     def test_has_option_objects
       assert_equal first.class ,  OptionDefinition

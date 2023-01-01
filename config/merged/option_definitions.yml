@@ -30,7 +30,7 @@
 - :name: text_align
   :description: Align text of children. Normal Word meaning
   :values: left center right
-  :default: left
+  :default: center
   :id: 6
 - :name: order
   :description: For two column layout determine order of sub-cards Values of left
@@ -91,7 +91,7 @@
   :description: Alignment of actual children. Usually some kind of boxes.
           Does not affect text, see text_align
   :values: left center right
-  :default: left
+  :default: center
   :id: 17
 - :name: meta
   :description: Meta tag for page
@@ -110,3 +110,10 @@
   :values: precise rough
   :default: precise
   :id: 20
+- :name: image_align
+  :description: Alignment of images. This affect what stays visible
+      on different size screens. Default is center, but if the focus
+      of the image is left or right, that may be hoosen.
+  :values: left center right
+  :default: center
+  :id: 21
