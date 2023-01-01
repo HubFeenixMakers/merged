@@ -2,7 +2,7 @@ require "mini_magick"
 
 module Merged
   class ImagesController < MergedController
-    before_action :set_image, only: %i[ update destroy show copy ]
+    before_action :set_image, only: %i[ update destroy show scale crop copy ]
 
     def index
       @images = Image.all
@@ -24,18 +24,27 @@ module Merged
     end
 
     def update
-      mini = MiniMagick::Image.new( @image.full_filename)
-      if(params[:scale])
-        message = "Image was scaled"
-        mini.resize( "#{params[:scale]}%")
-      else
-        size = "#{params[:size_x]}x#{params[:size_y]}+#{params[:off_x]}+#{params[:off_y]}"
-        mini.crop( size )
-        message = "Image was resized"
-      end
+      @image.name = params[:name]
+      @image.tags = params[:tags]
       @image.edit_save(current_member.email)
+      redirect_to image_path(@image) , notice: "Image updated"
+    end
+
+    def scale
+      mini = MiniMagick::Image.new( @image.full_filename)
+      mini.resize( "#{params[:scale]}%")
       @image.init_file_data
-      redirect_to image_path , notice: message
+      @image.edit_save(current_member.email)
+      redirect_to image_path(@image) , notice: "Image was scaled"
+    end
+
+    def crop
+      mini = MiniMagick::Image.new( @image.full_filename)
+      size = "#{params[:size_x]}x#{params[:size_y]}+#{params[:off_x]}+#{params[:off_y]}"
+      mini.crop( size )
+      @image.init_file_data
+      @image.edit_save(current_member.email)
+      redirect_to image_path(@image) , notice: "Image was resized"
     end
 
     def show

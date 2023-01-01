@@ -30,6 +30,7 @@ module Merged
       git = Git.open(Rails.root)
       begin
         git.checkout_file("HEAD" , "merged")
+        git.checkout_file("HEAD" , "app/assets/images/cms")
         ChangeSet.current.zero
         message = "Changes reset"
       rescue

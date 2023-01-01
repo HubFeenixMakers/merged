@@ -49,9 +49,7 @@ module Merged
       image = MiniMagick::Image.new(full_filename)
       self.width = image.width
       self.height = image.height
-      file =  File.open( full_filename )
-      self.updated_at = file.birthtime
-      self.size = (file.size/1024).to_i
+      self.size = (image.size/1024).to_i
     end
 
     def destroy

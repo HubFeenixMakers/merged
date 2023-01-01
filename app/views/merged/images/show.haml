@@ -2,6 +2,9 @@
   .text-xl.font-bold.text-gray-900
     Image: #{@image.name}
 
+  %button.mx-40.hover:bg-cyan-200{class: button_classes }
+    =link_to "Copy" , merged.image_copy_path(@image.id)
+
 - if Rails.env.development?
   = javascript_include_tag "merged/vue.js"
 -else
@@ -9,23 +12,26 @@
 
 = render "layouts/merged_header"
 
-.flex.gap-2.m-20
-  %p
-    .font-bold.mr-2 Name
-    = @image.name
-  %p
-    .mr-2.font-bold Type
-    = @image.type
-  %p
-    .font-bold Size
-    = @image.size
-  %p
-    .font-bold Tags
-    = @image.tags
-  %p
-    .font-bold Ratio
-    = @image.ratio.round(2)
-    = @image.aspect_ratio
+.flex.m-20
+  .left.flex.gap-2.mt-3
+    %p
+      .mr-2.font-bold Type
+      = @image.type
+    %p
+      .font-bold Size
+      = @image.size
+    %p
+      .font-bold Ratio
+      = @image.ratio.round(2)
+      = @image.aspect_ratio
+  = form_tag( merged.image_path , class: "ml-20 flex" , method: :patch) do
+    .font-bold.mt-3.mx-4 Name:
+    = text_field_tag( "name" , @image.name, class: "rounded border-gray-200 text-sm shadow-sm")
+    .font-bold.mt-3.mx-4 Tags:
+    = text_field_tag( "tags" , @image.tags, class: "rounded border-gray-200 text-sm shadow-sm")
+    %button.bg-cyan-200.mx-4{class: button_classes } Update
+
+
 
 =render "editor" , image: @image
 .flex.gap-2.m-20
