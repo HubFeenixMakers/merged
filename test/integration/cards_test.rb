@@ -25,4 +25,20 @@ class CardsTest < ActionDispatch::IntegrationTest
       find_button("Update").click
     end
   end
+
+  class CardsWriteTest < ActionDispatch::IntegrationTest
+    include Devise::Test::IntegrationHelpers # Rails >= 5
+    include Merged::Cleanup
+
+    def test_remove_image
+      visit "merged/sections/11/cards"
+      find_button("Remove image", match: :first).click
+      assert_equal 200 , page.status_code
+    end
+
+    def test_remove_image_force
+      visit "merged/cards/6/set_image?image=''"
+      assert_text page , "No image"
+    end
+  end
 end

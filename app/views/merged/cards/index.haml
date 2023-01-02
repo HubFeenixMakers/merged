@@ -21,7 +21,7 @@
           = form_tag( merged.card_path(card.id) , {method: :delete  } ) do
             =submit_button( "Delete" , true)
       .p-4
-        %h3.mt-4.text-lg.font-bold Image
+        %h3.mt-4.text-lg.font-bold.image_button Image
         = yellow_button("Change Image" , merged.images_path(card_id: card.id) )
         = red_button("Remove image", merged.card_set_image_path( card.id  , image: "") )
         .basis-full.mt-3
@@ -42,7 +42,7 @@
               = card.image.aspect_ratio
           = image_for( card )
         -else
-          %h3.mt-4.text-lg.font-bold No Image
+          %h3.mt-4.text-lg.font-bold No image
     .basis-72.grow
       %h3.mt-4.text-lg.font-bold Fields
       = form_tag( merged.card_path(card.id) , {method: :patch  , class: "mx-auto mt-8 mb-0 max-w space-y-4" } ) do

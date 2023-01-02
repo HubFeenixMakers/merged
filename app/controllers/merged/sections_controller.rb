@@ -34,7 +34,8 @@ module Merged
     def set_image
       @section.image_id = params[:image_id].to_i
       @section.edit_save(current_member.email)
-      redirect_to section_url(@section.id) , notice: "Image selected: #{@section.image.name}"
+      message = @section.image ? "#{@section.image.name} selected" : "Image removed"
+      redirect_to section_url(@section.id) , notice: message
     end
 
     def set_template

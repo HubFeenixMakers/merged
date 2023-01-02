@@ -8,8 +8,9 @@ module Merged
 
     def set_image
       @card.image_id = params[:image_id].to_i
-      @card.save
-      redirect_to section_cards_url(@card.section.id) , notice: "Image selected: #{@card.image.name}"
+      @card.edit_save(current_member.email)
+      message = @card.image ? "#{@card.image.name} selected" : "Image removed"
+      redirect_to section_cards_url(@card.section.id) , notice: message
     end
 
     def move
