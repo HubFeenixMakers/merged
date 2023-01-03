@@ -41,9 +41,9 @@
           =submit_button( "Delete" , true)
 
     .basis-72
-      %h3.mt-4.text-lg.font-bold Template
+      %h3.mt-4.text-lg.font-bold Style
       = link_to(merged.section_select_template_path(section.id)) do
-        %p= section.template
+        %p= section.template_style.header
         = section_preview(section , class: "object-contain")
     .basis-52.grow
       %h3.mt-4.text-lg.font-bold Header

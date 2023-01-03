@@ -45,7 +45,7 @@ module Merged
       @card.option_definitions.each do |option|
         @card.set_option(option.name,  options[option.name])
       end if options
-      @card.save(current_member.email)
+      @card.edit_save(current_member.email)
       redirect_to section_cards_url(@card.section.id) , notice: "Updated #{@card.header}"
     end
 

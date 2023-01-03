@@ -27,7 +27,7 @@ module Merged
     end
 
     def destroy
-      @section.delete
+      @section.delete_save!
       redirect_to page_sections_url(@section.page.id) , notice: "Section #{@section.header} removed"
     end
 

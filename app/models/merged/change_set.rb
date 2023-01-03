@@ -12,6 +12,7 @@ module Merged
     end
 
     def zero
+      [Page, Section, Card].each { |m| m.reload(true) }
       @adds = []
       @edits = []
       @deletes = []

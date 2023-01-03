@@ -8,9 +8,9 @@
 
 .flex.gap-4.m-8.flex-wrap
   .basis-96
-    %h3.mt-4.text-lg.font-bold Template  #{@section.template}
+    %h3.mt-4.text-lg.font-bold= @section.template_style.header
     = section_preview(@section , class: "w-full object-contain my-4")
-    = yellow_button( "Change Template" , merged.section_select_template_path(@section.id))
+    = yellow_button( "Change Style" , merged.section_select_template_path(@section.id))
     = green_button( "New Section" , merged.new_page_section_path(@section.page.id , template: @section.template) )
     .basis-full.mt-3
       Updated at:
@@ -48,10 +48,10 @@
   - if( @section.has_cards? )
     .basis-full.h-0
     .basis-96
-      .mx-3.text-lg.font-bold Card Template #{@section.card_template}
+      .mx-3.text-lg.font-bold Card Style #{@section.card_template}
       =card_preview(@section , class: "my-3")
       %p.py-3
-        =yellow_button("Change Card Template", merged.section_select_card_template_path(@section.id))
+        =yellow_button("Change Card Style", merged.section_select_card_template_path(@section.id))
 
     .basis-96.grow
       %h3.mt-4.text-lg.font-bold #{@section.cards.length} Cards

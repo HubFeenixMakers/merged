@@ -5,7 +5,8 @@ module Merged
     def rows( text )
       return 5 if text.blank?
       text = text.text unless text.is_a?(String)
-      rows = (text.length / 60).to_i
+      return 5 if text.blank?
+      rows = (text.length / 50).to_i
       return 5 if rows < 5
       rows
     end

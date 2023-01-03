@@ -53,7 +53,7 @@ module Merged
     end
 
     def destroy
-      @page.delete()
+      @page.delete_save!
       redirect_to pages_url, notice: "Page #{@page.name} was removed."
     end
 
