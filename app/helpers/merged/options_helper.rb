@@ -87,6 +87,20 @@ module Merged
       {class: clazz }
     end
 
+    def text_column_option( section)
+      option = section.option('columns')
+      option = 2 if option.blank?
+      case option
+      when "3"
+        columns = "columns-1 md:columns-2 lg:columns-3"
+      when "4"
+        columns = "columns-1 md:columns-2 lg:columns-3 xl:columns-4"
+      else # two
+        columns = "columns-1 md:columns-2"
+      end
+      {class: columns }
+    end
+
     def column_option(section)
       option = section.option('columns')
       option = 2 if option.blank?

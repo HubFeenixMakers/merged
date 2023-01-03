@@ -28,8 +28,11 @@
     - button_link
     - button_text
 - template: section_text
-  header: Text only section for longer passages of text, mostly news
-  text: Text may be markdown. For longer text culumns should be set.
+  header: Newspaper style section for longer passages of text.
+  text: Text may be markdown. The section may have one image than
+        can be embedded into the text by writing IMAGE (in caps)
+        where the image should be inserted. Not more than 200 words
+        or 1000 characters are best.
   fields:
     - header
     - text

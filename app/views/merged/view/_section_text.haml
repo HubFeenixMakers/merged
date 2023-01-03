@@ -1,14 +1,12 @@
-.p-20.my-20{ options(section , :background , :color)}
-  %section
-    .flex.justify-center
-      .max-w-prose{ options(section , :text_align)}
-        - if !section.header.blank?
-          %h1.mb-10.text-2xl.font-bold.tracking-tight.sm:text-4xl
-            = section.header
-        -if section.has_option?("subheader")
-          %p.prose.text-xl.pb-6
-            = section.option("subheader")
+%section.p-20.my-20{ options(section , :background , :color)}
+  .flex.justify-center
+    .max-w-prose{ options(section , :text_align)}
+      - if !section.header.blank?
+        %h1.mb-10.text-2xl.font-bold.tracking-tight.sm:text-4xl
+          = section.header
+      -if section.has_option?("subheader")
+        %p.prose.text-xl.pb-6
+          = section.option("subheader")
 
-    .mt-4.grid.gap-16{ column_option(section)}
-      - split_section(section).each do |part|
-        .prose.text-justify= part
+  .prose.max-w-full.mt-4.gap-16{ text_column_option(section)}
+    = markdown_image(section)

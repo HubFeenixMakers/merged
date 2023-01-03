@@ -12,18 +12,16 @@ module Merged
       Redcarpet::Markdown.new(html, options)
     end
 
+    def markdown_image(section)
+      down = self.renderer.render(section.text)
+      image = image_for(section)
+      down.gsub("IMAGE" , image).html_safe
+    end
+
     def markdown(text)
       text = text.text unless text.is_a?(String)
       return "" if text.blank?
       self.renderer.render(text).html_safe
-    end
-
-    def split_section(section)
-      return [""] if section.text.blank?
-      words = self.renderer.render(section.text).split
-      bins = (words.length + 3) / section.option("columns").to_i
-      parts = words.each_slice(bins).to_a
-      parts.collect{|part| part.join(" ").html_safe}
     end
 
     def aspect_ratio image
