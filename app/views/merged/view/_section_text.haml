@@ -8,6 +8,5 @@
         .text-xl.pb-6{ prose_classes }
           = section.option("subheader")
 
-  .max-w-full.mt-4.gap-16{ text_column_option(section)}
-    %div{ prose_classes }
-      = markdown_image(section)
+  .max-w-full.mt-4.gap-16{ options(section , :text_column , :prose ) }
+    = markdown_image(section)

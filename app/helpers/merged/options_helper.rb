@@ -31,6 +31,11 @@ module Merged
       "#{attr} of #{date.strftime('%B')} #{date.year}"
     end
 
+    # adds prose irrespective of options
+    def prose_option(section)
+      prose_classes
+    end
+
     def order_option(section , clazz = "")
       if section.has_option?("order")
         clazz += " md:order-last" if section.option('order') == "right"

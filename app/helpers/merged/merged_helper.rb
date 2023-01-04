@@ -14,10 +14,10 @@ module Merged
 
     def prose_classes
       classes  = "prose lg:prose-lg "
-      classes += "prose-headings:text-inherit"
+      classes += "prose-headings:text-inherit "
       { class: classes }
     end
-    
+
     def markdown_image(section)
       return "" unless section.text
       down = self.renderer.render(section.text)

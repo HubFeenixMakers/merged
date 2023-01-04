@@ -24,9 +24,9 @@
           %td.whitespace-nowrap.px-4.py-2.text-gray-700
             = type.to_s.capitalize
           -[:Page , :Section , :Card , :Image].each do |element|
-            %td.whitespace-nowrap.px-4.py-2.text-gray-700
+            %td.px-4.py-2.text-gray-700
               - changeset(type , element).each do |name|
-                %span=name.last
+                =name.last
 
 .grid.grid-cols-3.bg-white
   .items-center.justify-center.col-span-2
