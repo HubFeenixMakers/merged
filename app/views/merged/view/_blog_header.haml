@@ -7,5 +7,5 @@
         = date_precision(section.page , "published_date")
       %h2.mt-12.text-2xl.font-bold.md:text-4xl
         = section.header
-      .prose.mt-8.md:block
+      .mt-8.md:block{ prose_classes }
         = markdown(section)
