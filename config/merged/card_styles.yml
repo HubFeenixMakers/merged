@@ -1,7 +1,8 @@
 ---
 - template: card_full_image
   header: Full background
-  text: With text in bottom right corner, offset with solid color
+  text: Text in box on top of the imag. Adjustable background
+            and text color to mix/match with images.
   fields:
     - header
     - text
@@ -24,7 +25,9 @@
     - subheader
 - template: card_normal_square
   header: Standard card with square image
-  text: Image, header, text, normal stuff
+  text: Image, header, text, normal stuff. No margin between image and text.
+        Possible subheader. Text alignment option. Also option to turn upside
+        down with order.
   fields:
     - header
     - text
@@ -33,9 +36,22 @@
     - color
     - text_align
     - subheader
+    - order
+- template: card_wide_square
+  header: Sideway card with square image
+  text: Much like standard square card, just turned sideways.
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - color
+    - text_align
+    - subheader
+    - order
 - template: card_normal_round
-  header: Standard card with square image
-  text: Image, header, text, normal stuff
+  header: Standard card with rounded look
+  text: Otherwise quite similar to standard. But there is gap under the image.
   fields:
     - header
     - text

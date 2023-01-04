@@ -4,10 +4,13 @@ module Merged
     # use options with as many option names as neccessary
     def options(section, *args )
       all = {}
+      extra_class = ""
+      extra_class = args.pop if args.last.is_a?(String)
       args.each do |option_name|
         hash = send "#{option_name}_option".to_sym , section
         all.merge!(hash) { |key, one, two| one.to_s + " " + two.to_s }
       end
+      all[:class] = all[:class] + " #{extra_class}"
       all
     end
 

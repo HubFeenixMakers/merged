@@ -7,7 +7,7 @@ module Merged
     end
 
     def test_has_all
-      assert_equal CardStyle.all.length ,  5
+      assert_equal CardStyle.all.length ,  6
     end
 
     def test_has_fields
