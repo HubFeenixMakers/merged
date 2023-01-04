@@ -13,6 +13,7 @@ module Merged
     end
 
     def markdown_image(section)
+      return "" unless section.text
       down = self.renderer.render(section.text)
       image = image_for(section)
       down.gsub("IMAGE" , image).html_safe
