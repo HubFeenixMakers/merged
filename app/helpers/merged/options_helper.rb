@@ -111,8 +111,9 @@ module Merged
 
     def column_option(section)
       option = section.option('columns')
-      option = 2 if option.blank?
       case option
+      when "1"
+        columns = "grid-cols-1"
       when "3"
         columns = "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
       when "4"

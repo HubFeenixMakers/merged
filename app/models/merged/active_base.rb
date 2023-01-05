@@ -35,7 +35,7 @@ module Merged
     def self.save_all
       data = @records.collect {|obj| obj.attributes}
       File.write( self.full_path , data.to_yaml)
-      self.reload
+      self.reload(true)
     end
 
     def self.delete(id) # only works with id's

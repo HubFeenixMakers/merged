@@ -1,8 +1,23 @@
 ---
 - template: section_cards
-  header: Two or more column layout with header
-  text: A header with text and two column layout. Columns have a little gap, so
-    background color comes through. 2,3 or 4 columns. Cards freely choosable
+  header: Section with Cards, 2-6 columns
+  text: A header with text and column layout. Columns have a little gap, so
+    background color comes through. 2 - 6 columns. Cards freely choosable
+  cards: true
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - columns
+    - subheader
+    - color
+    - text_align
+- template: section_feature
+  header: Feature section with 2 column,
+  text: A split header with two column layout on the right.
+        Cards can be choosen freely but columns should be carefully
+        choosen to fit.
   cards: true
   fields:
     - header

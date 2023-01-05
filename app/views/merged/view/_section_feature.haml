@@ -1,0 +1,14 @@
+%section.m-5.md:m-12.lg:m-20{ options(section , :background , :color)}
+  .grid.grid-cols-1.md:grid-cols-2
+    .flex.flex-col.lg:flex-row
+      .max-w-xl.pr-16.mx-auto.mb-10
+        %h2.my-4.md:my-10.text-4xl.font-extrabold.leading-none
+          = section.header
+        .mb-6{ prose_classes }
+          = markdown(section)
+        .flex.items-center
+          %a.inline-flex.items-center.font-semibold.transition-colors.duration-200.text-deep-purple-accent-400.hover:text-deep-purple-800{"aria-label" => "", :href => "/"} Learn more
+    - template = "merged/view/cards/" + section.card_template
+    .grid{ column_option(section)}
+      - section.cards.each do |card|
+        = render( template , card: card)
