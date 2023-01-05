@@ -13,9 +13,9 @@ module Merged
 
     def zero
       [Page, Section, Card].each { |m| m.reload(true) }
-      @adds = []
-      @edits = []
-      @deletes = []
+      @adds = Set.new
+      @edits = Set.new
+      @deletes = Set.new
     end
 
     def add( type , text)
