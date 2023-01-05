@@ -1,10 +1,16 @@
 %section.m-5.md:m-12.lg:m-20{ options(section , :background , :color)}
   .flex.justify-center
-    .max-w-prose.px-4.py-16{ options(section , :text_align)}
-      %h1.text-2xl.font-bold.tracking-tight.sm:text-4xl
-        = section.header
-      .mt-4.text-lg.pt-10{ prose_classes }
-        = markdown(section)
+    - unless section.header.blank? and section.text.blank?
+      .max-w-prose.px-4.py-16{ options(section , :text_align)}
+        - unless section.header.blank?
+          %h1.text-2xl.font-bold.tracking-tight.sm:text-4xl
+            = section.header
+        - if section.has_option?("subheader")
+          %h2.text-xl.pt-10.font-bold.tracking-tight.sm:text-2xl
+            = section.option("subheader")
+        - unless section.text.blank?
+          .text-lg.pt-10{ prose_classes }
+            = markdown(section)
   - template = "merged/view/cards/" + section.card_template
   .grid{ column_option(section)}
     - section.cards.each do |card|

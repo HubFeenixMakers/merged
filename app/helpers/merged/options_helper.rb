@@ -117,6 +117,10 @@ module Merged
         columns = "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
       when "4"
         columns = "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
+      when "5"
+        columns = "grid-cols-1 md:grid-cols-3 lg:grid-cols-5"
+      when "6"
+        columns = "grid-cols-2 md:grid-cols-4 lg:grid-cols-6"
       else # two
         columns = "grid-cols-1 md:grid-cols-2"
       end
