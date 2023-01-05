@@ -49,6 +49,20 @@
     - text_align
     - subheader
     - order
+- template: card_feature_normal
+  header: Card looking feature
+  text: For things where no image is available or apropriate.
+        Making lists a little more interesting to look at.
+        May use svg as image.
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - color
+    - text_align
+    - button_link
+    - button_text
 - template: card_normal_round
   header: Standard card with rounded look
   text: Otherwise quite similar to standard. But there is gap under the image.

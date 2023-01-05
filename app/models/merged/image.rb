@@ -20,6 +20,7 @@ module Merged
     end
 
     def ratio
+      return 0 unless self.height
       self.width.to_f / self.height
     end
 
