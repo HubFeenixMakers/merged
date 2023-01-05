@@ -41,7 +41,8 @@ module Merged
     def delete_and_reset_index
       delete_save!
       section.reset_index
-      save
+      Section.find(section_id).reset_index
+      Card.save_all
     end
 
     def self.new_card(card_template , section_id , index)

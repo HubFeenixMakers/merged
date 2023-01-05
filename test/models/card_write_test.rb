@@ -16,7 +16,7 @@ module Merged
       section = first.section
       index = first.index
       first.delete_and_reset_index
-      assert_equal index , section.cards.second.index
+      assert_equal index , section.cards.first.index
     end
 
     def test_adds
@@ -24,7 +24,6 @@ module Merged
       card.add_save!
       assert_equal "NEW" , card.header
     end
-
 
   end
 end

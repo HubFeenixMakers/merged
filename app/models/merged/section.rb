@@ -78,8 +78,8 @@ module Merged
 
     def delete_and_reset_index
       delete
-      page.reset_index
-      save
+      Page.find(page_id).reset_index
+      Section.save_all
     end
 
     def self.new_section(template , page_id , index)
