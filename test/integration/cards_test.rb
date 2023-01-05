@@ -37,7 +37,8 @@ class CardsTest < ActionDispatch::IntegrationTest
     end
 
     def test_remove_image_force
-      visit "merged/cards/6/set_image?image=''"
+      first = Merged::Card.first.id
+      visit "merged/cards/#{first}/set_image?image=''"
       assert_text page , "No image"
     end
   end
