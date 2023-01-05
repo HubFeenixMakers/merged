@@ -31,7 +31,7 @@ module Merged
     end
 
     def destroy
-      @card.delete_save!
+      @card.delete_and_reset_index
       redirect_to section_cards_url(@card.section.id) , notice: "#{@card.header} removed"
     end
 

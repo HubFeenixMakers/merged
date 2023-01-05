@@ -12,6 +12,13 @@ module Merged
       assert_raises(ActiveHash::RecordNotFound) {Card.find(id) }
     end
 
+    def test_delete_index
+      section = first.section
+      index = first.index
+      first.delete_and_reset_index
+      assert_equal index , section.cards.second.index
+    end
+
     def test_adds
       card = Card.first.section.new_card
       card.add_save!

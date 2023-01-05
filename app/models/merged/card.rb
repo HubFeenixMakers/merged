@@ -38,6 +38,12 @@ module Merged
       CardStyle.find_by_template( self.template )
     end
 
+    def delete_and_reset_index
+      delete_save!
+      section.reset_index
+      save
+    end
+
     def self.new_card(card_template , section_id , index)
       data = { section_id: section_id , index: index}
       template = CardStyle.find_by_template( card_template )

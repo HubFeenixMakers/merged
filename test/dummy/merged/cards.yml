@@ -9,10 +9,11 @@
     background: solid_blue
     color: white
     align: left
-  :updated_at: &1 2022-12-09 17:50:02.733622073 +02:00
+  :updated_at: 2023-01-05 21:33:46.577677395 +02:00
   :section_id: 11
   :index: 1
   :image_id: 35
+  :updated_by: torsten@villataika.fi
 - :header: Large
   :text: The old four  patient rooms are basically twice the size as the small. They
     are large enough to be shared. The size is about 30m2 and the cost 240e. Like
@@ -23,7 +24,7 @@
     background: solid_blue
     color: white
     align: left
-  :updated_at: *1
+  :updated_at: &1 2022-12-09 17:50:02.733622073 +02:00
   :section_id: 11
   :index: 2
   :image_id: 17
@@ -129,6 +130,7 @@
   :section_id: 13
   :index: 4
   :image_id:
+  :options: {}
 - :id: 17
   :header: Message
   :text: ''

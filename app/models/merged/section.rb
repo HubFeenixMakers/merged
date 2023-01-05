@@ -76,6 +76,12 @@ module Merged
       delete_save!()
     end
 
+    def delete_and_reset_index
+      delete
+      page.reset_index
+      save
+    end
+
     def self.new_section(template , page_id , index)
       data = { template: template , index: index , page_id: page_id}
       style = SectionStyle.find_by_template( template)
