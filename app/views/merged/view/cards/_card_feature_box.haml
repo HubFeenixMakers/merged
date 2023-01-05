@@ -1,0 +1,15 @@
+.relative.p-px.overflow-hidden.transition.duration-300.transform.border.rounded.shadow-sm.hover:scale-105.group.hover:shadow-xl
+  .absolute.bottom-0.left-0.w-full.h-1.duration-300.origin-left.transform.scale-x-0.bg-deep-purple-accent-400.group-hover:scale-x-100
+  .absolute.bottom-0.left-0.w-1.h-full.duration-300.origin-bottom.transform.scale-y-0.bg-deep-purple-accent-400.group-hover:scale-y-100
+  .absolute.top-0.left-0.w-full.h-1.duration-300.origin-right.transform.scale-x-0.bg-deep-purple-accent-400.group-hover:scale-x-100
+  .absolute.bottom-0.right-0.w-1.h-full.duration-300.origin-top.transform.scale-y-0.bg-deep-purple-accent-400.group-hover:scale-y-100
+  .relative.p-5.bg-white.rounded-sm
+    .flex.flex-col.mb-2.lg:items-center.lg:flex-row
+      .flex.items-center.justify-center.w-16.h-16.mb-4.mr-2.rounded-full.lg:mb-0{options(card,:background )}
+        = image_for( card , "h-8 w-8")
+      %h6.font-semibold.leading-5{options(card, :color)}= card.header
+    %p.mb-2.text-sm.text-gray-900{ prose_classes }
+      = markdown(card)
+    - if card.has_option?("button_link")
+      %a.inline-flex.items-center.text-sm.font-semibold.transition-colors.duration-200.text-deep-purple-accent-400.hover:text-deep-purple-800{"aria-label" => "", :href => "/"} Learn more
+      

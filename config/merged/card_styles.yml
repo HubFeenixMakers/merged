@@ -63,8 +63,8 @@
     - text_align
     - button_link
     - button_text
-- template: card_feature_small
-  header: Card looking feature, smaller version
+- template: card_feature_box
+  header: Feature card with box
   text: For things where no image is available or apropriate.
         Making lists a little more interesting to look at.
         May use svg as image.
