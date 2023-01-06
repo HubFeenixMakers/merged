@@ -12,17 +12,17 @@ module Merged
   class ChangeSetTest < ActiveSupport::TestCase
     include Zero
     def test_has_add
-      change.add("Section" , "name")
+      change.add("Section" , "name" , "you")
       assert_equal "name",  change.added("Section").first.last
       assert_equal :Section,  change.added("Section").first.first
     end
     def test_has_edit
-      change.edit("Section" , "name")
+      change.edit("Section" , "name" , "me")
       assert_equal "name",  change.edited("Section").first.last
       assert_equal :Section,  change.edited("Section").first.first
     end
     def test_has_delete
-      change.delete("Section" , "name")
+      change.delete("Section" , "name", "him")
       assert_equal "name",  change.deleted("Section").first.last
       assert_equal :Section,  change.deleted("Section").first.first
     end
@@ -69,19 +69,19 @@ module Merged
 
     def test_page_delete
       studios = Page.first
-      studios.delete_save!
+      studios.delete_save!("random")
       assert_equal "studios" , change.deleted("Page").first.last
       assert_nil change.edited("Page").first
     end
     def test_section_delete
       studios = Section.first
-      studios.delete_save!()
+      studios.delete_save!("me")
       assert_equal "studios:Studios" , change.deleted("Section").first.last
       assert_nil change.edited("Section").first
     end
     def test_card_delete
       studios = Card.first
-      studios.delete_save!()
+      studios.delete_save!("you")
       assert_equal "studios:Standard" , change.deleted("Card").first.last
       assert_nil change.edited("Card").first
     end

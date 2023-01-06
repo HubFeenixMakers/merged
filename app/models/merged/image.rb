@@ -55,7 +55,7 @@ module Merged
 
     def destroy
       File.delete self.full_filename
-      delete_save!
+      delete_save!(current_member.email)
     end
 
     def asset_name

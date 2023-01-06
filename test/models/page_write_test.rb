@@ -28,18 +28,18 @@ module Merged
 
     def test_deletes
       id = index.id
-      index.delete
+      index.delete("you")
       assert_raises(ActiveHash::RecordNotFound){Page.find(id) }
     end
     def test_destroys
       id = index.id
-      index.delete
+      index.delete("you")
       Section.reload
       assert_raises(ActiveHash::RecordNotFound){Page.find(id) }
     end
     def test_destroys_sections
       id = index.sections.first.id
-      index.delete
+      index.delete("you")
       Section.reload
       assert_raises(ActiveHash::RecordNotFound){Page.find(id) }
     end

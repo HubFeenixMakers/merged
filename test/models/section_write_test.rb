@@ -19,14 +19,14 @@ module Merged
 
     def test_deletes
       last_id = last.id
-      last.delete
+      last.delete("you")
       assert_raises(ActiveHash::RecordNotFound){Section.find(last_id) }
     end
 
     def test_delete_index_section
       eleven = Section.find 11
       page = eleven.page
-      eleven.delete
+      eleven.delete("you")
       assert_equal eleven.index + 1 , page.sections.second.index
     end
 
@@ -34,19 +34,19 @@ module Merged
       eleven = Section.find 11
       page = eleven.page
       index = eleven.index
-      eleven.delete_and_reset_index
+      eleven.delete_and_reset_index("you")
       assert_equal index , page.sections.second.index
     end
 
     def test_destroys
       last_id = last.id
-      last.delete
+      last.delete("you")
       Section.reload
       assert_raises(ActiveHash::RecordNotFound){Section.find(last_id) }
     end
     def test_destroys_cards
       card_id = last.cards.first.id
-      last.delete
+      last.delete("you")
       Section.reload
       assert_raises(ActiveHash::RecordNotFound){Card.find(card_id) }
     end

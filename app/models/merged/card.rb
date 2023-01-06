@@ -38,8 +38,8 @@ module Merged
       CardStyle.find_by_template( self.template )
     end
 
-    def delete_and_reset_index
-      delete_save!
+    def delete_and_reset_index(editor)
+      delete_save!(editor)
       section.reset_index
       Section.find(section_id).reset_index
       Card.save_all

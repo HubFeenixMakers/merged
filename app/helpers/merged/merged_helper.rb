@@ -68,6 +68,38 @@ module Merged
         end
       end
     end
+
+    def last_change_digit
+      last = ChangeSet.current.last
+      puts "digit in #{last}"
+      return 10 unless last
+      last = (Time.now - last).to_i
+      puts "digit minus #{last}"
+      return 10 if ( last >= 600 )
+      digit =  last / 60
+      puts "digit ret #{digit}"
+      digit
+    end
+
+    def last_change_class
+      digit = last_change_digit
+      return button_classes if digit > 9
+      digit = 9 - digit
+      reds = { "1" => "bg-red-100","2" => "bg-red-200","3" => "bg-red-100",
+               "4" => "bg-red-400","5" => "bg-red-500","6" => "bg-red-600",
+               "7" => "bg-red-700","8" => "bg-red-600","9" => "bg-red-900"}
+
+      clazz = reds[digit.to_s].to_s
+      clazz += " " + "text-white" if digit > 7
+      button_classes + " " + clazz
+    end
+
+    def last_change_text
+      digit = last_change_digit
+      return "no change" if digit > 9
+      "#{digit} min. by #{ChangeSet.current.last_editor}"
+    end
+
     def button_classes
       "mr-3 inline-block rounded-lg px-4 py-3 text-md font-medium border border-gray-400"
     end

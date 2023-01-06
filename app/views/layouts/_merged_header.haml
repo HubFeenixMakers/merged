@@ -17,3 +17,5 @@
       %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => merged.changes_index_path}
         Changes
   = yield :merged_menu
+
+  %button.my-3{class: last_change_class}= last_change_text

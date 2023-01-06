@@ -51,9 +51,9 @@ module Merged
       sections.each_with_index{|section, index| section.index = index + 1}
     end
 
-    def delete
-      sections.each {|section| section.delete }
-      delete_save!
+    def delete(editor)
+      sections.each {|section| section.delete(editor) }
+      delete_save!(editor)
     end
 
     def save(editor)

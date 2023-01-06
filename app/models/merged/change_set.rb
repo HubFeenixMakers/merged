@@ -5,7 +5,7 @@ module Merged
     def self.current
       @@current ||= ChangeSet.new
     end
-    attr_reader :adds , :edits , :deletes
+    attr_reader :adds , :edits , :deletes , :last , :last_editor
 
     def initialize
       zero
@@ -16,16 +16,26 @@ module Merged
       @adds = Set.new
       @edits = Set.new
       @deletes = Set.new
+      @last = nil
+      @last_editor = nil
     end
 
-    def add( type , text)
+    def touch(editor)
+      @last = Time.now
+      @last_editor = editor
+    end
+
+    def add( type , text , editor)
+      touch(editor)
       @adds << [typed(type) , text ]
     end
 
-    def edit( type , text)
+    def edit( type , text, editor)
+      touch(editor)
       @edits << [typed(type) , text ]
     end
-    def delete( type , text)
+    def delete( type , text, editor)
+      touch(editor)
       @deletes << [typed(type) , text ]
     end
 

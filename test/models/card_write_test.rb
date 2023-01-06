@@ -8,20 +8,20 @@ module Merged
 
     def test_deletes
       id = first.id
-      first.delete_save!
+      first.delete_save!("random")
       assert_raises(ActiveHash::RecordNotFound) {Card.find(id) }
     end
 
     def test_delete_index
       section = first.section
       index = first.index
-      first.delete_and_reset_index
+      first.delete_and_reset_index("me")
       assert_equal index , section.cards.first.index
     end
 
     def test_adds
       card = Card.first.section.new_card
-      card.add_save!
+      card.add_save!("me me")
       assert_equal "NEW" , card.header
     end
 

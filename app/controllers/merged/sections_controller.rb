@@ -27,7 +27,7 @@ module Merged
     end
 
     def destroy
-      @section.delete_and_reset_index
+      @section.delete_and_reset_index(current_member.email)
       redirect_to page_sections_url(@section.page.id) , notice: "Section #{@section.header} removed"
     end
 

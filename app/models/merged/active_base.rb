@@ -5,11 +5,11 @@ module Merged
     def edit_save( editor )
       self.updated_at = Time.now
       self.updated_by = editor
-      edit_save!
+      edit_save!(editor)
     end
 
-    def edit_save!
-      ChangeSet.current.edit(self.class.name , self.change_name)
+    def edit_save!(editor)
+      ChangeSet.current.edit(self.class.name , self.change_name, editor)
       save!()
       self.class.save_all
     end
@@ -17,17 +17,17 @@ module Merged
     def add_save( editor )
       self.updated_at = Time.now
       self.updated_by = editor
-      add_save!
+      add_save!(editor)
     end
 
-    def add_save!
-      ChangeSet.current.add(self.class.name , self.change_name)
+    def add_save!(editor)
+      ChangeSet.current.add(self.class.name , self.change_name, editor)
       save!()
       self.class.save_all
     end
 
-    def delete_save!
-      ChangeSet.current.delete(self.class.name , self.change_name)
+    def delete_save!(editor)
+      ChangeSet.current.delete(self.class.name , self.change_name,editor)
       self.class.delete(self.id)
       self.class.save_all
     end

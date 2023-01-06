@@ -37,15 +37,6 @@ module Merged
       ! card_template.blank?
     end
 
-    def remove_card(card)
-      from_index = card.index
-      @cards.delete_at(from_index)
-      @content["cards"].delete_at(from_index)
-      @cards.each_with_index do |card, index|
-        card.set_index(index)
-      end
-    end
-
     def move_up
       swap_index_with(next_section)
     end
@@ -71,13 +62,13 @@ module Merged
       cards.each_with_index{|card, index| card.index = index + 1}
     end
 
-    def delete
-      cards.each {|card| card.delete_save! }
-      delete_save!()
+    def delete(editor)
+      cards.each {|card| card.delete_save!(editor) }
+      delete_save!(editor)
     end
 
-    def delete_and_reset_index
-      delete
+    def delete_and_reset_index(editor)
+      delete(editor)
       Page.find(page_id).reset_index
       Section.save_all
     end
