@@ -1,6 +1,6 @@
-.flex.m-2.md:flex-row.md:m-4.lg:m-6{background_option(card)}
-  = image_for( card , "object-cover w-3/5")
-  .mx-6{options(card , :text_align , :color , :order , "w-2/5")}
+.flex.m-2.flex-col.lg:flex-row.md:m-4.lg:m-6{background_option(card)}
+  = image_for( card , "object-cover lg:w-3/5")
+  .mx-6{options(card , :text_align , :color , :order , "lg:w-2/5")}
     %h3.px-4.mt-2.text-2xl.font-bold= card.header
     -if card.has_option?("subheader")
       %h4.p-4.text-xl= card.option("subheader")
