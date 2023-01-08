@@ -5,6 +5,7 @@
         = section.header
       .text-lg
         = distance_of_time_in_words_to_now last_blog.updated_at
+        ago
   %hr.mt-2.border.border-4.border-gray-600
   - template = find_template(last_blog)
   = render( template , section: last_blog)
@@ -12,5 +13,5 @@
     .ml-20.mb-2.text-lg
       = section.text
     .mr-20.mb-2.text-lg
-      %a.transition{:class => "hover:text-gray-500/75", :href => merged.pages_path}
+      %a.transition{:class => "hover:text-gray-500/75", :href => main_app.view_blog_path(blog.page.name)}
         Read More . . .

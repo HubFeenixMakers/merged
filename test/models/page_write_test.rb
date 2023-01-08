@@ -15,6 +15,13 @@ module Merged
       assert_equal page.sections.length , 0
     end
 
+    def test_creates_removes_spce
+      name = "Cap Space"
+      page = Page.new_page( name , "page")
+      assert_equal page.name , "cap_space"
+      assert_equal page.sections.length , 0
+    end
+
     def test_creates_blog
       name = "randomname"
       page = Page.new_page( name , "blog")

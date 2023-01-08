@@ -42,10 +42,10 @@ module Merged
     end
 
     def set_option( option , value)
-      if( !value.is_a?(String) && value.respond_to?(:[]) && value[:month] )
-        year = value[:year] || Time.new.year
-        value = Time.new( year , value[:month] , value[:day]).to_date
+      if( option.ends_with?"_date" )
         puts "date is #{value}"
+        year = value[:year] || Time.new.year
+        value = Time.new( year.to_i , value[:month] , value[:day]).to_date
       end
       options[option] = value
     end

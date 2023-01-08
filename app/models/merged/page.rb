@@ -9,10 +9,12 @@ module Merged
       self.name
     end
 
-    def add_redirect
+    def set_name new_name
+      new_name = Page.fix_name(new_name)
       olds = self.redirects.to_s.split(" ")
       olds << self.name unless olds.include?(self.name)
       self.redirects = olds.join(" ")
+      self.name = new_name
     end
 
     def sections
@@ -63,8 +65,12 @@ module Merged
       super
     end
 
+    def self.fix_name(name)
+      name.gsub(" ", "_").downcase
+    end
+
     def self.new_page(name , type)
-      data = { name: name.dup , updated_at: Time.now , type: type}
+      data = { name: self.fix_name(name) , updated_at: Time.now , type: type}
       Page.new(data)
     end
 

@@ -8,7 +8,6 @@
           = section.header
         .font-bold.text-center.mb-4.lg:mb-8
           = date_precision(section.page , "published_date")
-
         .max-w-full.mt-4.gap-16{ options(section , :text_column , :prose ) }
           = markdown(section)
           = header_list

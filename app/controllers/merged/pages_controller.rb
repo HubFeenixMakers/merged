@@ -17,8 +17,7 @@ module Merged
 
     def update
       if( !params[:name].blank?  && (params[:name] != @page.name))
-        @page.add_redirect
-        @page.name = params[:name]
+        @page.set_name params[:name]
         @page.edit_save(current_member.email)
         message = "Page renamed"
       end
