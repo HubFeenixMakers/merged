@@ -104,12 +104,12 @@ mount Merged::Engine => "/merged"
 
 Create route to serve content.
 ```ruby
-get ":id" , to: "merged/view#view" , id: :id
+get ":id" , to: "merged/view#page" , id: :id
 ```
 
 If Merged served the root:
 ```ruby
-root "merged/view#view" , id: 'index'
+root "merged/view#page" , id: 'index'
 ```
 
 ### Stylesheets
