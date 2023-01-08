@@ -4,10 +4,12 @@ module Merged
       sections = Section.all.select{|s| s.page.type == "blog"}
       sorted = sections.sort_by(&:updated_at)
       last =  sorted.pop
+      puts last.template.class
       puts last.template
-      return last unless last&.template == "blog_header"
-      return last unless last&.template == "section_news"
-      sorted.last
+      if (last&.template == "blog_header") or (last&.template == "section_news")
+        return sorted.last
+      end
+      return last
     end
 
     def header_list
