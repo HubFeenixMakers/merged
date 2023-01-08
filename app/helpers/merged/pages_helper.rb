@@ -9,5 +9,9 @@ module Merged
       return last unless last&.template == "section_news"
       sorted.last
     end
+
+    def header_list
+      markdown("- one \n- two\n- three\n- four")
+    end
   end
 end

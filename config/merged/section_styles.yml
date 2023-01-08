@@ -144,5 +144,6 @@
     - text
   options:
     - order
+    - columns
     - background
     - color

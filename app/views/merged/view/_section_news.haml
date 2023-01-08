@@ -1,5 +1,5 @@
 - if blog = last_blog
-  %section.border.py-20{ options(section , :background )}
+  %section.border.border-xl.mt-20{ options(section , :background )}
     .flex.mx-20.justify-between.items-center
       .text-2xl.font-bold.tracking-tight.sm:text-4xl
         = section.header
@@ -7,3 +7,5 @@
         = section.text
     - template = find_template(last_blog)
     = render( template , section: last_blog)
+    .mr-20.text-lg
+      = section.text

@@ -3,7 +3,7 @@
     = image_for( section , "h-56 w-full object-cover sm:h-full")
   .p-8.md:p-12.lg:px-16.lg:py-24{ background_option(section)}
     .mx-auto.max-w-xl{options(section , :text_align , :color)}
-      %h2.mt-12.text-2xl.font-bold.md:text-4xl
+      %h2.text-2xl.font-bold.md:text-4xl
         = section.header
       -if section.has_option?("subheader")
         %h4.text-xl.mt-10.md:text-2xl
