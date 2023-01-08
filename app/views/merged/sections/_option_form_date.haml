@@ -1,4 +1,4 @@
 %label.block
   .mt-4.text-lg.font-bold
     = option.name.camelcase
-  = select_date section.option(option.name) , :prefix => "option[#{option.name}]"
+.col-span-2= select_date section.option(option.name) , :prefix => "option[#{option.name}]"

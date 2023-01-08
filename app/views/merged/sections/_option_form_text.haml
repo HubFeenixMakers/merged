@@ -1,4 +1,4 @@
 %label.block
   .mt-4.text-lg.font-bold
     = option.name.camelcase
-  = text_field_tag( "option[#{option.name}]" , section.option(option.name), class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
+.col-span-2= text_field_tag( "option[#{option.name}]" , section.option(option.name), class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")

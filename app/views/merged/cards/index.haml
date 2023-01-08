@@ -12,7 +12,7 @@
 
 - @section.cards.each_with_index do |card , index|
   .flex.gap-10.px-20.py-10{class: (card.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "card_#{card.id}"}
-    .basis-96
+    .basis-80
       .p-4
         %h3.mt-4.text-lg.font-bold Card #{index + 1}:#{card.header}
         .flex.flex-wrap
@@ -21,17 +21,16 @@
           = form_tag( merged.card_path(card.id) , {method: :delete  } ) do
             =submit_button( "Delete" , true)
       .p-4
-        %h3.mt-4.text-lg.font-bold.image_button Image
         = yellow_button("Change Image" , merged.images_path(card_id: card.id) )
-        = red_button("Remove image", merged.card_set_image_path( card.id  , image: "") )
         .basis-full.mt-3
           Updated at:
           = distance_of_time_in_words_to_now(card.updated_at)
         .basis-full.mb-3
           Updated by:
           = card.updated_by
+        = red_button("Remove image", merged.card_set_image_path( card.id  , image: "") )
 
-    .basis-96
+    .basis-80
       = link_to(merged.images_path(card_id: card.id)) do
         -if card.image
           %h3.mt-4.text-lg.font-bold Image #{card.image.name}
@@ -58,7 +57,8 @@
       .mt-4.text-lg.font-bold Options
       = form_tag( merged.card_path(card.id) , {method: :patch , class: "mx-auto mt-8 mb-0 max-w space-y-4" }) do
         - card.option_definitions.each do |option|
-          =render "merged/sections/option_form_#{option.type}" , section: card , option: option
+          .grid.grid-cols-3
+            =render "merged/sections/option_form_#{option.type}" , section: card , option: option
         -if card.option_definitions.empty?
           %p No options
         -else
