@@ -43,6 +43,19 @@
     - item_align
     - button_link
     - button_text
+- template: section_news
+  header: Showing latest news
+  text: Always the latest available news section
+  fields:
+    - header
+    - text
+  options:
+    - background
+    - color
+    - text_align
+    - item_align
+    - button_link
+    - button_text
 - template: section_text
   header: Newspaper style section for longer passages of text.
   text: Text may be markdown. The section may have one image than

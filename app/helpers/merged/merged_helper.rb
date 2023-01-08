@@ -71,13 +71,10 @@ module Merged
 
     def last_change_digit
       last = ChangeSet.current.last
-      puts "digit in #{last}"
       return 10 unless last
       last = (Time.now - last).to_i
-      puts "digit minus #{last}"
       return 10 if ( last >= 600 )
       digit =  last / 60
-      puts "digit ret #{digit}"
       digit
     end
 

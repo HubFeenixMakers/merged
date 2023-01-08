@@ -1,6 +1,7 @@
 module Merged
   module ViewHelper
     include MergedHelper
+    include PagesHelper
 
     def rows( text )
       return 5 if text.blank?
