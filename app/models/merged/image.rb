@@ -53,9 +53,9 @@ module Merged
       self.size = (image.size/1024).to_i
     end
 
-    def destroy
+    def destroy(editor)
       File.delete self.full_filename
-      delete_save!(current_member.email)
+      delete_save!(editor)
     end
 
     def asset_name

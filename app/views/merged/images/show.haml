@@ -17,7 +17,7 @@
       = @image.type
     %p
       .font-bold Size
-      = @image.size
+      = "#{@image.size}k"
     %p
       .font-bold Ratio
       = @image.ratio.round(2)
@@ -32,33 +32,32 @@
 
 
 =render "editor" , image: @image
-.flex.gap-2.m-20
+.flex.gap-10.m-20
   -if @used
-    .grid.grid-cols-2
-      %p
-        Sections
-        =@sections.length
-      %p
-        Cards
-        =@cards.length
-      %div
+    .grid.grid-cols-2.gap-10
+      .grid.grid-cols-3.gap-10
+        %p.col-span-3.font-bold
+          Sections using the image
         -@sections.each do |section|
           %p
             = link_to section.header , merged.section_path(section)
-            on Page
+          %p
+            %em on Page
+          %p
             = link_to section.page.name , merged.page_sections_path(section.page)
-      %div
+      .grid.grid-cols-3.gap-10
+        %p.col-span-3.font-bold
+          Cards using the image
         -@cards.each do |card|
           %p
             = link_to card.header , merged.section_cards_path(card.section)
-            on Page
+          %p
+            %em on Page
+          %p
             = link_to card.section.page.name , merged.page_sections_path(card.section.page)
 
   -else
-    .grid.grid-cols-2
-      %div
-        %p Not used, you may delete
-      %div
-        %p
-          = form_tag( merged.image_path(@image.id) , {method: :delete  } ) do
-            =submit_button( "Delete" , true)
+    %p.align-center Not used, you may delete
+    %p
+      = form_tag( merged.image_path(@image.id) , {method: :delete  } ) do
+        =submit_button( "Delete" , true)

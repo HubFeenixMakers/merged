@@ -17,16 +17,25 @@ module Merged
     def text_for_new
       if(section_id)
         section = Section.find(section_id)
-        "Add image for Section"
+        "Add image for Section: #{section.header}"
       elsif(card_id)
         card = Card.find(card_id)
-        "Select image for Card"
+        "Select image for Card: #{card.header}"
       else
         "New Image"
       end
     end
 
-    def hidden_for_select
+    def new_link_params
+      if(params[:section_id])
+        return {section_id: params[:section_id]}
+      end
+      if(params[:card_id])
+        return {card_id: params[:card_id]}
+      end
+      nil
+    end
+    def hidden_for_select_image
       if(section_id)
         hidden_field_tag :section_id , section_id
       elsif(card_id)

@@ -1345,6 +1345,10 @@ select {
   grid-column: span 2 / span 2;
 }
 
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
 .m-0 {
   margin: 0px;
 }
@@ -1883,6 +1887,10 @@ select {
 
 .gap-8 {
   gap: 2rem;
+}
+
+.gap-20 {
+  gap: 5rem;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {

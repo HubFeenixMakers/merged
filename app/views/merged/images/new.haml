@@ -1,0 +1,12 @@
+.grid.grid-cols-3.gap-4.m-8{":class" => "{'hidden': !show_new }"}
+  %div
+  = form_tag(merged.images_path, multipart: true) do
+    .flex.flex-col.border.border-gray-100.rounded.p-4
+      %h3.my-4.text-xl.font-bold= text_for_new
+      = text_field_tag 'filename' ,nil, placeholder: "Optional name", class: "rounded mt-4"
+      %p.my-4 Name will be taken from uploaded file if not given
+      = text_field_tag 'tags' ,nil, placeholder: "Optional tags", class: "rounded mt-4"
+      %p.my-4 Tags describe the size or format
+      = hidden_for_select_image
+      = file_field_tag 'image_file' , class: "mb-8 w-full px-2 text-xl bg-clip-padding border border-solid border-gray-300  rounded"
+      = submit_button 'Submit'

@@ -9,7 +9,7 @@ module Merged
       @image_data = @images.collect{|i|
         data = i.attributes.dup
         data[:url] = view_context.asset_path(i.asset_name)
-        data[:link] = build_link_for(i)
+        data[:link] = build_select_link_for(i)
         data[:updated_at] = i.updated_at.to_date if i.updated_at
         data[:created] = i.updated_at.to_i
         data[:aspect_ratio] = i.aspect_ratio.join("/")
@@ -19,7 +19,7 @@ module Merged
     end
 
     def destroy
-      @image.destroy
+      @image.destroy(current_member.email)
       redirect_to :images , notice: "Image #{@image.name} deleted"
     end
 
@@ -82,7 +82,7 @@ module Merged
       end
     end
 
-    def build_link_for(image)
+    def build_select_link_for(image)
       if(params[:section_id])
         return view_context.section_set_image_url(params[:section_id] , image_id: image.id)
       end
