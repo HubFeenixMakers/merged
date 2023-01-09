@@ -4,7 +4,6 @@
   .text-xl.text-gray-900
     Select Card Style for Section #{@section.index} - #{@section.header}
 
-= render "layouts/merged_header"
 .grid.grid-cols-4.gap-6.m-8
   - @cards.each do |style|
     .border.border-gray-300.rounded-lg.p-2
