@@ -1,4 +1,4 @@
 module Merged
-  class ApplicationController < ApplicationController
+  class ApplicationController < ActionController::Base
   end
 end

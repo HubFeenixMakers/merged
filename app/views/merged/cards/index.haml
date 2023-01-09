@@ -1,26 +1,23 @@
-- content_for( :merged_menu ) do
+.mx-20.flex.h-16.items-center.gap-16
   = render "merged/sections/sections_pagination" , section: @section
   .text-xl.text-gray-900
     Cards for Section #{@section.index} -
     = link_to @section.header , merged.section_path( @section.id) , class: "underline"
   = link_to( "New Card" , merged.new_section_card_path(@section.id) , class: "p-2 border border-gray-200 bg-cyan-100 font-bold rounded-lg hover:bg-sky-100")
 
-= render "layouts/merged_header"
-
 - template = find_template(@section)
 = render( template , section: @section)
 
 - @section.cards.each_with_index do |card , index|
-  .flex.gap-10.px-20.py-10{class: (card.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "card_#{card.id}"}
+  .flex.gap-8.px-20.py-6.mb-2{class: (card.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "card_#{card.id}"}
     .basis-80
-      .p-4
-        %h3.mt-4.text-lg.font-bold Card #{index + 1}:#{card.header}
-        .flex.flex-wrap
-          = blue_button( "Up" , merged.card_move_path(card.id , dir: :up) )
-          = blue_button( "Down" , merged.card_move_path(card.id , dir: :down) )
-          = form_tag( merged.card_path(card.id) , {method: :delete  } ) do
-            =submit_button( "Delete" , true)
-      .p-4
+      %h3.mt-4.text-lg.font-bold Card #{index + 1}:#{card.header}
+      .flex.flex-wrap
+        = blue_button( "Up" , merged.card_move_path(card.id , dir: :up) )
+        = blue_button( "Down" , merged.card_move_path(card.id , dir: :down) )
+        = form_tag( merged.card_path(card.id) , {method: :delete  } ) do
+          =submit_button( "Delete" , true)
+      .mt-6
         = yellow_button("Change Image" , merged.images_path(card_id: card.id) )
         .basis-full.mt-3
           Updated at:

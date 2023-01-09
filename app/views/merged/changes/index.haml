@@ -1,11 +1,9 @@
-- content_for( :merged_menu ) do
+.mx-20.flex.h-16.items-center.gap-16
   .text-xl.font-bold.text-gray-900
     Changes
   .text-xl.text-gray-900
     Branch
     = @git.current_branch
-
-= render "layouts/merged_header"
 
 .overflow-hidden.overflow-x-auto.rounded-lg.border.border-gray-200.m-20
   %table.min-w-full.divide-y.divide-gray-200.text-sm

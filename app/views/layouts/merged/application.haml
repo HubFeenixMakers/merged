@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Hubfeenix
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "merged/merged"
+
+    = javascript_importmap_tags
+    - if false
+      %script{:src => "https://cdn.tailwindcss.com"}
+
+  %body
+    = render "layouts/merged/header"
+    = render "layouts/merged/messages"
+    = yield

@@ -1,13 +1,11 @@
-- content_for( :merged_menu ) do
+.mx-20.flex.h-16.items-center.gap-16
   = render "sections_pagination" , section: @section
-
-= render "layouts/merged_header"
 
 - template = find_template(@section)
 = render( template , section: @section)
 
-.flex.gap-4.m-8.flex-wrap
-  .basis-96
+.flex.gap-8.my-10.flex-wrap
+  .basis-80.ml-20
     %h3.mt-4.text-lg.font-bold= @section.template_style.header
     = section_preview(@section , class: "w-full object-contain my-4")
     = yellow_button( "Change Style" , merged.section_select_template_path(@section.id))
@@ -19,7 +17,7 @@
       Updated by:
       = @section.updated_by
 
-  .basis-96.image
+  .basis-80.image
     = link_to(merged.images_path(section_id: @section.id)) do
       -if @section.image
         %h3.mt-4.text-lg.font-bold Image #{@section.image.name}
@@ -62,11 +60,12 @@
         = yellow_button( "View and Edit Cards" , merged.section_cards_path(@section.id))
         = green_button( "New Card" , merged.new_section_card_path(@section.id) )
 
-  .basis-80.grow
+  .basis-80.grow.mr-20
     %h3.mt-4.text-lg.font-bold Options
     = section_form( class: "mx-auto mt-8 mb-0 max-w space-y-4") do
       - @section.option_definitions.each do |option|
-        =render "option_form_#{option.type}" , section: @section , option: option
+        .grid.grid-cols-3
+          =render "option_form_#{option.type}" , section: @section , option: option
       -if @section.option_definitions.empty?
         %p No options
       -else

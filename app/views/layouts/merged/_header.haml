@@ -1,0 +1,26 @@
+.mx-20.my-6.flex.h-16.items-center.gap-16
+  %a{:href => "/merged/pages"}
+    %span.sr-only Home
+    =image_tag("merged/merged_logo" , class: "h-10")
+
+  %ul.flex.items-center.gap-6.text-lg
+    %li
+      %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => merged.pages_path}
+        Pages
+    %li
+      %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => merged.images_path}
+        Images
+    %li
+      %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => merged.styles_index_path}
+        Styles
+    %li
+      %a.text-gray-500.transition{:class => "hover:text-gray-500/75", :href => merged.changes_index_path}
+        Changes
+
+  %button.my-3{class: last_change_class}= last_change_text
+
+  = form_tag( main_app.destroy_member_session_path , {method: :delete  } ) do
+    %button.flex.w-full.items-center.gap-2.rounded-lg.px-4.py-2.text-sm.text-blue-700.hover:bg-red-50{:role => "menuitem", :type => "submit"}
+      %svg.h-4.w-4{:fill => "none", :stroke => "currentColor", "stroke-width" => "2", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
+        %path{:d => "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16", "stroke-linecap" => "round", "stroke-linejoin" => "round"}
+      Sign out

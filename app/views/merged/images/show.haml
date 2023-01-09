@@ -1,4 +1,4 @@
-- content_for( :merged_menu ) do
+.mx-20.flex.h-16.items-center.gap-16
   .text-xl.font-bold.text-gray-900
     Image: #{@image.name}
 
@@ -9,8 +9,6 @@
   = javascript_include_tag "merged/vue.js"
 -else
   = javascript_include_tag "merged/vue.min.js"
-
-= render "layouts/merged_header"
 
 .flex.m-20
   .left.flex.gap-2.mt-3

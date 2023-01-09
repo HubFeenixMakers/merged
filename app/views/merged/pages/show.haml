@@ -1,4 +1,4 @@
-- content_for( :merged_menu ) do
+.mx-20.flex.h-16.items-center.gap-16
   .text-xl.font-bold.text-gray-900
     = @page.type.capitalize
   .text-xl.font-bold.text-gray-900
@@ -7,7 +7,6 @@
     = link_to 'Sections', merged.page_sections_path(@page.id)
 
   .text-xl= distance_of_time_in_words_to_now(@page.updated_at)
-= render "layouts/merged_header"
 
 .flex.gap-4.justify-center.m-20
   .flex.flex-col

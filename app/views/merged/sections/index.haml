@@ -1,4 +1,4 @@
-- content_for( :merged_menu ) do
+.mx-20.flex.h-16.items-center.gap-16.mb-10
   .text-xl.font-bold.text-gray-900
     = @page.type.capitalize
     = link_to @page.name , merged.page_path(@page)
@@ -6,11 +6,9 @@
     =link_to "View live" , "/#{@page.name}" , target: @page.name
   = link_to( "New Section" , merged.new_page_section_path(@page.id) , class: "p-2 border border-gray-200 bg-cyan-100 font-bold rounded-lg hover:bg-sky-100")
 
-= render "layouts/merged_header"
-
 -@page.sections.each do |section |
-  .flex.gap-10.p-4{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "section_#{section.id}"}
-    .basis-72
+  .flex.gap-10.mt-2{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "section_#{section.id}"}
+    .basis-72.mx-20
       %h3.mt-4.text-lg.font-bold Section #{section.index} : #{section.header}
       .flex.flex-wrap
         = yellow_button("Edit" , merged.section_path(section.id) )

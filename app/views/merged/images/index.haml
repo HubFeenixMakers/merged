@@ -1,8 +1,7 @@
-- content_for( :merged_menu ) do
+.mx-20.flex.h-16.items-center.gap-16
   .text-xl.font-bold.text-gray-900
     = text_for_index
 
-= render "layouts/merged_header"
 - if Rails.env.development?
   = javascript_include_tag "merged/vue.js"
 -else
