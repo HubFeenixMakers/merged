@@ -5,7 +5,7 @@ class PageTest < ActionDispatch::IntegrationTest
 
   def test_returns_success
     visit "/merged/pages"
-    assert_title page, "Dummy"
+    assert_title page, "Merged"
     assert_text page, "Pages"
   end
 

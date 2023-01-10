@@ -5,7 +5,7 @@ class ImagesTest < ActionDispatch::IntegrationTest
 
   def test_index
     visit "/merged/images"
-    assert_title page, "Dummy"
+    assert_title page, "Merged"
     assert_text page, "Pages"
   end
 

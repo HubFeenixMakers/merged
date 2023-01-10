@@ -5,7 +5,7 @@ class StylesTest < ActionDispatch::IntegrationTest
 
   def test_returns_success
     visit "/merged/styles/index"
-    assert_title page, "Dummy"
+    assert_title page, "Merged"
     assert_text page, "Styles"
   end
 end

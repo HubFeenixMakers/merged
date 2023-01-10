@@ -6,7 +6,7 @@ module Merged
       blog.sections.last
     end
     def last_blog
-      self.class.last_blog
+      PagesHelper.last_blog
     end
 
     def header_list

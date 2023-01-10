@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   get ":id" , to: "merged/view#page" , id: :id
 
+  get :destroy_member_session , to: "merged/view#page"
 end
