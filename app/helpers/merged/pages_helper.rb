@@ -1,8 +1,12 @@
 module Merged
   module PagesHelper
-    def last_blog
+    def self.last_blog
       blog = Page.where(type: :blog).order(updated_at: :asc).first
-      blog&.sections.last
+      return  nil unless blog
+      blog.sections.last
+    end
+    def last_blog
+      self.class.last_blog
     end
 
     def header_list

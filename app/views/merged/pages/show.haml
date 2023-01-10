@@ -3,7 +3,7 @@
     = @page.type.capitalize
   .text-xl.font-bold.text-gray-900
     =@page.name
-  %strong.rounded.bg-green-100.px-3.text-xs.font-medium.text-green-700{:class => "py-1.5"}
+  %strong.rounded.bg-green-100.px-4.py-2.text-lg.font-medium.text-green-700{:class => "py-1.5"}
     = link_to 'Sections', merged.page_sections_path(@page.id)
 
   .text-xl= distance_of_time_in_words_to_now(@page.updated_at)

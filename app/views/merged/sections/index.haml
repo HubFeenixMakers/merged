@@ -8,7 +8,7 @@
 
 -@page.sections.each do |section |
   .flex.gap-10.mt-2{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "section_#{section.id}"}
-    .basis-72.mx-20
+    .basis-72.ml-20
       %h3.mt-4.text-lg.font-bold Section #{section.index} : #{section.header}
       .flex.flex-wrap
         = yellow_button("Edit" , merged.section_path(section.id) )

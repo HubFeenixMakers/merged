@@ -1,5 +1,6 @@
 .mx-20.flex.h-16.items-center.gap-16
   = render "sections_pagination" , section: @section
+  = link_to( "New Section" , merged.new_page_section_path(@section.page.id) , class: "p-2 border border-gray-200 bg-cyan-100 font-bold rounded-lg hover:bg-sky-100")
 
 - template = find_template(@section)
 = render( template , section: @section)
