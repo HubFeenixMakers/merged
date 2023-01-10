@@ -97,10 +97,6 @@ module Merged
     def button_classes
       "mr-3 inline-block rounded-lg px-3 py-2 text-md font-medium border border-gray-500"
     end
-    # section should be hash with at least 'template' key
-    def find_template(section)
-      "merged/view/" + section.template
-    end
 
   end
 end

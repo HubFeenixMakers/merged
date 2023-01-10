@@ -2,8 +2,7 @@
   = render "sections_pagination" , section: @section
   = link_to( "New Section" , merged.new_page_section_path(@section.page.id) , class: button_classes + " bg-cyan-100")
 
-- template = find_template(@section)
-= render( template , section: @section)
+= render_section( @section )
 
 .flex.gap-8.my-10.flex-wrap.mx-20
   .basis-80

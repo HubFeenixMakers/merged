@@ -5,8 +5,7 @@
     = link_to @section.header , merged.section_path( @section.id) , class: "underline"
   = link_to( "New Card" , merged.new_section_card_path(@section.id) , class: "p-2 border border-gray-200 bg-cyan-100 font-bold rounded-lg hover:bg-sky-100")
 
-- template = find_template(@section)
-= render( template , section: @section)
+= render_section( @section )
 
 - @section.cards.each_with_index do |card , index|
   .flex.gap-10.px-20.pt-4.pb-2.mb-2.border.border-2.bg-neutral-50.border-slate-400{ id: "card_#{card.id}"}

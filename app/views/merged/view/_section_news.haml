@@ -7,8 +7,7 @@
         = distance_of_time_in_words_to_now last_blog.updated_at
         ago
   %hr.mt-2.border.border-4.border-gray-600
-  - template = find_template(last_blog)
-  = render( template , section: last_blog)
+  = render_section( last_blog )
   .flex.justify-between.items-center.border-b-8.border-gray-600
     .ml-20.mb-2.text-lg
       = section.text

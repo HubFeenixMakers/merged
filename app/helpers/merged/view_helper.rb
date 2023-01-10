@@ -3,6 +3,11 @@ module Merged
     include MergedHelper
     include PagesHelper
 
+    def render_section(section)
+      template = "merged/view/" + section.template
+      render( template , section: section)
+    end
+
     def rows( text )
       return 5 if text.blank?
       text = text.text unless text.is_a?(String)
