@@ -2,7 +2,7 @@
   .text-xl.font-bold.text-gray-900
     = text_for_index
 
-  = link_to( "New Image" , merged.new_image_path(new_link_params) , class: "p-2 border border-gray-200 bg-cyan-100 font-bold rounded-lg hover:bg-sky-100")
+  = link_to( "New Image" , merged.new_image_path(new_link_params) , class: button_classes + " bg-green-200")
 
 - if Rails.env.development?
   = javascript_include_tag "merged/vue.js"
@@ -34,7 +34,7 @@
       .flex.align-center.justify-between.mb-4
         .text-lg.font-bold.mt-2.mx-2
           {{image.name}}
-        %strong.inline-block.rounded.bg-yellow-200.px-3.py-1.text-md.font-medium
+        %strong.inline-block.rounded.bg-slate-200.px-3.py-1.text-md.font-medium
           {{image.aspect_ratio}}
       %a.w-full.object-contain.h-72{":href" => "image.link" }
         %img{ ":src": "image.url" , ":alt": "image.name" }

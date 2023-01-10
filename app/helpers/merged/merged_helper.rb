@@ -44,11 +44,8 @@ module Merged
     def blue_button( text, url)
       button( text , url , "bg-cyan-200" )
     end
-    def yellow_button( text, url)
-      button( text , url , "bg-yellow-200" )
-    end
     def red_button( text, url)
-      button( text , url , "bg-red-200" )
+      button( text , url , "bg-red-300" )
     end
     def green_button( text, url)
       button( text , url , "bg-green-200" )
@@ -98,7 +95,7 @@ module Merged
     end
 
     def button_classes
-      "mr-3 inline-block rounded-lg px-4 py-3 text-md font-medium border border-gray-400"
+      "mr-3 inline-block rounded-lg px-3 py-2 text-md font-medium border border-gray-500"
     end
     # section should be hash with at least 'template' key
     def find_template(section)

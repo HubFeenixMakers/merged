@@ -21,7 +21,7 @@
       %label.block
         %h4.text-lg.font-bold Name
         = text_field_tag( :name , @page.name, class: "w-full rounded-lg border-gray-200 p-4 pr-12 text-sm shadow-sm")
-      .mt-4= submit_button("Update")
+      .mt-4= submit_button("Update name")
       -unless @page.redirects.blank?
         .mt-4
           Page redirects from
@@ -35,4 +35,4 @@
       -if @page.option_definitions.empty?
         %p No options
       -else
-        .mt-4= submit_button("Update")
+        .mt-4= submit_button("Update Options")

@@ -4,15 +4,15 @@
     = link_to @page.name , merged.page_path(@page)
   .text-xl.text-gray-900
     =link_to "View live" , "/#{@page.name}" , target: @page.name
-  = link_to( "New Section" , merged.new_page_section_path(@page.id) , class: "p-2 border border-gray-200 bg-cyan-100 font-bold rounded-lg hover:bg-sky-100")
+  = link_to( "New Section" , merged.new_page_section_path(@page.id) , class: button_classes + " bg-cyan-200")
 
 -@page.sections.each do |section |
-  .flex.gap-10.mt-2{class: (section.index%2)==1 ? 'bg-cyan-50' : 'bg-red-50' , id: "section_#{section.id}"}
+  .flex.gap-10.mt-2.pt-4.pb-2.border-2.bg-neutral-50.border-slate-400{ id: "section_#{section.id}"}
     .basis-72.ml-20
-      %h3.mt-4.text-lg.font-bold Section #{section.index} : #{section.header}
+      %h3.text-lg.font-bold Section #{section.index} : #{section.header}
       .flex.flex-wrap
-        = yellow_button("Edit" , merged.section_path(section.id) )
-        = green_button( "Copy" , merged.new_page_section_path(@page.id, template: section.template) )
+        = green_button("Edit" , merged.section_path(section.id) )
+        = blue_button( "Copy" , merged.new_page_section_path(@page.id, template: section.template) )
         .p-2
           =link_to(merged.section_move_path(section.id , dir: :down)) do
             %svg.w-6.h-6{:fill => "none", :stroke => "currentColor", "stroke-width" => "1.5", :viewbox => "0 0 24 24", :xmlns => "http://www.w3.org/2000/svg"}
@@ -40,34 +40,35 @@
           =submit_button( "Delete" , true)
 
     .basis-72
-      %h3.mt-4.text-lg.font-bold Style
-      = link_to(merged.section_select_template_path(section.id)) do
-        %p= section.template_style.header
-        = section_preview(section , class: "object-contain")
+      .flow.flow-cols
+        %h3.text-lg.font-bold.border-bottom-2 Style
+        = link_to(merged.section_select_template_path(section.id)) do
+          %p= section.template_style.header
+          = section_preview(section , class: "object-contain")
     .basis-52.grow
-      %h3.mt-4.text-lg.font-bold Header
+      %h3.my-4.text-lg.font-bold Header
       %p= section.header
       %h3.mt-4.text-lg.font-bold Text
       %p= section.text[0..100] + " ..." if section.text
     .basis-72
       - if section.has_cards?
-        %h3.mt-4.text-lg.font-bold #{section.cards.length} Cards
+        %h3.text-lg.font-bold #{section.cards.length} Cards
         =link_to merged.section_cards_path(section.id) do
           =card_preview(section , class: "object-contain")
       - else
         = link_to(merged.images_path(section_id: section.id)) do
           -if section.image
-            %h3.mt-4.text-lg.font-bold Image #{section.image.name}
+            %h3.text-lg.font-bold Image #{section.image.name}
             .flex.align-center.justify-between.mb-4
               .text-lg.font-bold.mt-2.mx-2
                 = section.image.size.to_s + "k"
-              %strong.inline-block.rounded.bg-yellow-200.px-3.py-1.text-md.font-medium
+              %strong.inline-block.rounded.bg-gray-200.px-3.py-1.text-md.font-medium
                 = section.image.aspect_ratio
-            = image_for( section , "h-40")
+            = image_for( section , "h-40 mb-1")
           -else
-            %h3.mt-4.text-lg.font-bold No Image
+            %h3.mt-y.text-lg.font-bold No Image
     .basis-96
-      %h3.mt-4.text-lg.font-bold Options
+      %h3.text-lg.font-bold Options
       .grid.grid-cols-2.gap-3.mx-10
         - section.options.each do|name , value|
           -unless value.blank?
@@ -76,7 +77,7 @@
 .grid.grid-cols-2.gap-2.m-8
   .relative.block
     %p
-      = green_button( "New Section" , merged.new_page_section_path(@page.id) )
+      = blue_button( "New Section" , merged.new_page_section_path(@page.id) )
   .relative.block.delete_page
     %p
       = form_tag( merged.page_path(@page.id) , {method: :delete  } ) do
