@@ -1,7 +1,10 @@
 .flex.mx-20.my-6.h-16.justify-between
   .flex.items-center.gap-16
-    %a{:href => "/merged/pages"}
+    %a{:href => "/"}
       %span.sr-only Home
+      =image_tag("merged/home" , class: "h-10")
+    %a{:href => "/merged/pages"}
+      %span.sr-only Merged Home
       =image_tag("merged/merged_logo" , class: "h-10")
 
     %ul.flex.items-center.gap-6.text-lg
